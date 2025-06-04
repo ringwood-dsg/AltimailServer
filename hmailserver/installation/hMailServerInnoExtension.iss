@@ -286,12 +286,14 @@ begin
 	
 	// https://docs.microsoft.com/en-us/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed
 	// 378389 = .NET Framework 4.5
-	if (release < 378389) then begin
-		// Only .NET 4.0 installed
-		Result := false;
-		Exit;
-	end;
-	
+  // 528449 = .NET Framework 4.8 on Windows 11 + Server 2022
+  // 528372 = .NET Framework 4.8 on Windows 10 (May 2020/October 2020/May 2021 Update)
+  // 528040 = .NET Framework 4.8 on Windows 10 (May 2019/November 2019 Update)
+  // 528049 = .NET Framework 4.8 (all other OS versions) 
+  if (release < 528040) then begin 
+    Result := false;
+    Exit;
+  end;
 end;
 
 function ShouldSkipPage(PageID: Integer): Boolean;
@@ -392,7 +394,7 @@ begin
      Top := 90;
      Width := g_pageDBType.Surface.Width
 	 Height := 40;
-     Caption := 'Use external database engine (MSSQL, MySQL or PostgreSQL)';
+     Caption := 'Use external database engine (MSSQL, MySQL, MariaDB or PostgreSQL)';
      TabOrder := 1;
      if (g_bUseInternal) then
         Checked := False
@@ -470,7 +472,7 @@ begin
 	Result := true;
 			
 	if not IsNetFrameworkInstalled() then begin
-        MsgBox('hMailServer requires .NET Framework 4.5'#13#13
+        MsgBox('hMailServer requires .NET Framework 4.8'#13#13
             'Please install this version and then re-run the hMailServer setup program.', mbInformation, MB_OK);
         result := false;
 		Exit;

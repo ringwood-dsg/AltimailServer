@@ -1,6 +1,5 @@
 [CustomMessages]
 ;configurations
-AppName=hMailServer
 DependenciesDir=MyProgramDependencies
 
 MSI20Title=Windows Installer 2.0
