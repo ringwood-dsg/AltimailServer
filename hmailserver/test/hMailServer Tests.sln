@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36121.58 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegressionTests", "RegressionTests\RegressionTests.csproj", "{8F691179-0851-4A25-AC78-3548DD0514FA}"
 EndProject
@@ -24,11 +24,9 @@ Global
 		{8F691179-0851-4A25-AC78-3548DD0514FA}.Release|x64.ActiveCfg = Release|x64
 		{8F691179-0851-4A25-AC78-3548DD0514FA}.Release|x64.Build.0 = Release|x64
 		{B978166A-BDD6-4364-B271-E11279647BC9}.Debug|x64.ActiveCfg = Debug|x64
-		{B978166A-BDD6-4364-B271-E11279647BC9}.Debug|x64.Build.0 = Debug|x64
 		{B978166A-BDD6-4364-B271-E11279647BC9}.Release|x64.ActiveCfg = Release|x64
 		{B978166A-BDD6-4364-B271-E11279647BC9}.Release|x64.Build.0 = Release|x64
 		{4330EA2B-FA91-4725-850A-0D0992983B49}.Debug|x64.ActiveCfg = Debug|x64
-		{4330EA2B-FA91-4725-850A-0D0992983B49}.Debug|x64.Build.0 = Debug|x64
 		{4330EA2B-FA91-4725-850A-0D0992983B49}.Release|x64.ActiveCfg = Release|x64
 		{4330EA2B-FA91-4725-850A-0D0992983B49}.Release|x64.Build.0 = Release|x64
 		{BCB5B5E3-291F-475E-8200-32C918FB95C1}.Debug|x64.ActiveCfg = Debug|x64
