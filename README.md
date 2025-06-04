@@ -1,4 +1,4 @@
-hMailServer 5.8.0 (Build 2506.15)
+hMailServer 5.8.1 (Build 2506.16)
 ===========
 
 hMailServer is an open source email server for Microsoft Windows. This page describes how to compile and run hMailServer. 
@@ -16,7 +16,7 @@ Building hMailServer
 ====================
 ## Environment Setup
 
-   * An installed version of hMailServer 5.8.0 (configured with a database)
+   * An installed version of hMailServer 5.8.1 (configured with a database)
    * Visual Studio 2022
    * InnoSetup 6.4.3 or later
    * [Strawberry Perl 64-bit](https://www.strawberryperl.com)
