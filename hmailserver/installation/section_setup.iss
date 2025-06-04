@@ -1,15 +1,15 @@
 [Setup]
 AppId={{498BFBCF-97A5-4AA9-AF45-F93D63D35A82}
 AppName=hMailServer
-AppVersion=5.8.0.2506
-AppVerName=hMailServer 5.8.0.2506
+AppVersion=5.8.1.2506
+AppVerName=hMailServer 5.8.1.2506
 AppCopyright=(c) 2008-2025 hMailServer Authors and Contributors. All rights reserved.
 AppPublisher=Ringwood Digital Solutions Group (Pty) Ltd
 AppPublisherURL=https://www.ringwoodgroup.co.za
 AppSupportURL=http://www.hmailserver.com
 AppUpdatesURL=https://www.altimailserver.org
 ;For the setup bootstrap:
-VersionInfoVersion=5.8.0.2506
+VersionInfoVersion=5.8.1.2506
 VersionInfoCopyright=(c) 2008-2025 hMailServer Authors and Contributors. All rights reserved.
 DefaultDirName={pf}\hMailServer
 DefaultGroupName=hMailServer
@@ -24,9 +24,9 @@ LicenseFile=license.rtf
 CreateAppDir=true
 DirExistsWarning=no
 Uninstallable=true
-UninstallDisplayName=hMailServer 5.8.0
+UninstallDisplayName=hMailServer 5.8.1
 UninstallDisplayIcon={uninstallexe}
 MinVersion=6.1.7601
 ArchitecturesInstallIn64BitMode=x64
 ArchitecturesAllowed=x64
-OutputBaseFilename=hMailServer-5.8.0B2506.15-x64
+OutputBaseFilename=hMailServer-5.8.1B2506.16-x64
