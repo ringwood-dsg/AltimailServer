@@ -33,5 +33,19 @@ namespace hMailServer.Administrator
             MessageBox.Show("Web browser could not be started." + Environment.NewLine + ex.Message, EnumStrings.hMailServerAdministrator, MessageBoxButtons.OK, MessageBoxIcon.Warning);
          }
       }
+
+      private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+      {
+         string url = "https://github.com/ringwood-dsg/AltimailServer";
+
+         try
+         {
+            System.Diagnostics.Process.Start(url);
+         }
+         catch (Exception ex)
+         {
+            MessageBox.Show("Web browser could not be started." + Environment.NewLine + ex.Message, EnumStrings.hMailServerAdministrator, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+         }
+      }
    }
 }

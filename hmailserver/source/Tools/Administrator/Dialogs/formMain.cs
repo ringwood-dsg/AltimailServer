@@ -81,7 +81,7 @@ namespace hMailServer.Administrator
       {
          CreateMainNodes();
 
-         this.Text = "hMailServer Administrator - [" + _serverHost + "]";
+         this.Text = "hMailServer Administrator (Legacy Version) - [" + _serverHost + "]";
 
       }
 
@@ -724,6 +724,20 @@ namespace hMailServer.Administrator
       public void Repaint()
       {
          this.Refresh();
+      }
+
+      private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+      {
+         string url = "https://github.com/ringwood-dsg/AltimailServer";
+
+         try
+         {
+            System.Diagnostics.Process.Start(url);
+         }
+         catch (Exception ex)
+         {
+            MessageBox.Show("Web browser could not be started." + Environment.NewLine + ex.Message, EnumStrings.hMailServerAdministrator, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+         }
       }
    }
 }
