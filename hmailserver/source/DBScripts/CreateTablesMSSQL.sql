@@ -69,24 +69,24 @@ if exists (select * from sysobjects where id = object_id('hm_incoming_relays') a
 if exists (select * from sysobjects where id = object_id('hm_logon_failures') and objectproperty(id, 'isusertable') = 1) drop table hm_logon_failures
 
 create proc hm_drop_table_objects
-	@tablename	sysname
+    @tablename	sysname
 as
 set nocount on
 declare @constname	sysname,
-		@cmd		varchar(1024)
+        @cmd		varchar(1024)
 declare curs_constraints cursor for
-	select 	name
-	from 	sysobjects 
-	where 	xtype in ('C', 'F', 'PK', 'UQ', 'D')
-	and	(status & 64) = 0
-	and     parent_obj = object_id(@tablename)
+    select 	name
+    from 	sysobjects 
+    where 	xtype in ('C', 'F', 'PK', 'UQ', 'D')
+    and	(status & 64) = 0
+    and     parent_obj = object_id(@tablename)
 open curs_constraints
 fetch next from curs_constraints into @constname
 while (@@fetch_status = 0)
 begin
-	select @cmd = 'ALTER TABLE ' + @tablename + ' DROP CONSTRAINT ' + @constname
-	exec(@cmd)
-	fetch next from curs_constraints into @constname
+    select @cmd = 'ALTER TABLE ' + @tablename + ' DROP CONSTRAINT ' + @constname
+    exec(@cmd)
+    fetch next from curs_constraints into @constname
 end
 close curs_constraints
 deallocate curs_constraints
@@ -111,89 +111,89 @@ DEALLOCATE tableIndexes
 return 0 
 
 CREATE proc [dbo].[hm_drop_table_column]
-	@tablename sysname,
-	@columnname sysname
+    @tablename sysname,
+    @columnname sysname
 as
-	set nocount on
-	declare @constname sysname,
-	@cmd varchar(1024)
-	declare curs_constraints cursor for
-	-- delete constraints on column level
-	SELECT CONSTRAINT_NAME FROM INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE
-		WHERE TABLE_NAME = @tablename AND COLUMN_NAME = @columnname
-	open curs_constraints
-	fetch next from curs_constraints into @constname
-	while (@@fetch_status = 0)
-	begin
-		select @cmd = 'ALTER TABLE ' + @tablename + ' DROP CONSTRAINT ' + @constname
-		exec(@cmd)
-		fetch next from curs_constraints into @constname
-	end
-	close curs_constraints
-	deallocate curs_constraints
-	-- delete constraints on table level
-	declare curs_constraints cursor for
-	select name from sysobjects where id in 
-	(select constid from sysconstraints where id = OBJECT_ID(@tablename) and colid in
-	(select colid from syscolumns where id = OBJECT_ID(@tablename) and name = @columnname))
-	open curs_constraints
-	fetch next from curs_constraints into @constname
-	while (@@fetch_status = 0)
-	begin
-		select @cmd = 'ALTER TABLE ' + @tablename + ' DROP CONSTRAINT ' + @constname
-		exec(@cmd)
-		fetch next from curs_constraints into @constname
-	end
-	close curs_constraints
-	deallocate curs_constraints
-	declare curs_constraints cursor for
-	-- delete indexes for column
-	select name from sysindexes where id = OBJECT_ID(@tablename) and INDEXPROPERTY(id, name, 'IsStatistics') = 0 and
-	indid in (select indid from sysindexkeys where id = OBJECT_ID(@tablename)
-	and colid in (select colid from syscolumns where id = OBJECT_ID(@tablename) and name = @columnname))
-	open curs_constraints
-	fetch next from curs_constraints into @constname
-	while (@@fetch_status = 0)
-	begin
-		select @cmd = 'DROP INDEX ' + @tablename + '.' + @constname
-		exec(@cmd)
-		fetch next from curs_constraints into @constname
-	end
-	close curs_constraints
-	deallocate curs_constraints
-	select @cmd = 'ALTER TABLE ' + @tablename + ' DROP COLUMN ' + @columnname
-	exec(@cmd)
+    set nocount on
+    declare @constname sysname,
+    @cmd varchar(1024)
+    declare curs_constraints cursor for
+    -- delete constraints on column level
+    SELECT CONSTRAINT_NAME FROM INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE
+        WHERE TABLE_NAME = @tablename AND COLUMN_NAME = @columnname
+    open curs_constraints
+    fetch next from curs_constraints into @constname
+    while (@@fetch_status = 0)
+    begin
+        select @cmd = 'ALTER TABLE ' + @tablename + ' DROP CONSTRAINT ' + @constname
+        exec(@cmd)
+        fetch next from curs_constraints into @constname
+    end
+    close curs_constraints
+    deallocate curs_constraints
+    -- delete constraints on table level
+    declare curs_constraints cursor for
+    select name from sysobjects where id in 
+    (select constid from sysconstraints where id = OBJECT_ID(@tablename) and colid in
+    (select colid from syscolumns where id = OBJECT_ID(@tablename) and name = @columnname))
+    open curs_constraints
+    fetch next from curs_constraints into @constname
+    while (@@fetch_status = 0)
+    begin
+        select @cmd = 'ALTER TABLE ' + @tablename + ' DROP CONSTRAINT ' + @constname
+        exec(@cmd)
+        fetch next from curs_constraints into @constname
+    end
+    close curs_constraints
+    deallocate curs_constraints
+    declare curs_constraints cursor for
+    -- delete indexes for column
+    select name from sysindexes where id = OBJECT_ID(@tablename) and INDEXPROPERTY(id, name, 'IsStatistics') = 0 and
+    indid in (select indid from sysindexkeys where id = OBJECT_ID(@tablename)
+    and colid in (select colid from syscolumns where id = OBJECT_ID(@tablename) and name = @columnname))
+    open curs_constraints
+    fetch next from curs_constraints into @constname
+    while (@@fetch_status = 0)
+    begin
+        select @cmd = 'DROP INDEX ' + @tablename + '.' + @constname
+        exec(@cmd)
+        fetch next from curs_constraints into @constname
+    end
+    close curs_constraints
+    deallocate curs_constraints
+    select @cmd = 'ALTER TABLE ' + @tablename + ' DROP COLUMN ' + @columnname
+    exec(@cmd)
 return 0
 
 create table hm_accounts 
 (
-	accountid int identity (1, 1) not null,
-	accountdomainid int not null,
-	accountadminlevel tinyint not null ,
-	accountaddress nvarchar(255) not null,
-	accountpassword nvarchar(255) not null ,
-	accountactive int not null, 
-	accountisad int not null, 
-	accountaddomain nvarchar(255) not null ,
-	accountadusername nvarchar(255) not null,
-	accountmaxsize int not null,
-	accountvacationmessageon tinyint not null,
-	accountvacationmessage nvarchar(1000) not null,
-	accountvacationsubject nvarchar(200) not null,
-	accountpwencryption tinyint not null,
-	accountforwardenabled tinyint not null,
-	accountforwardaddress nvarchar(255) not null,
-	accountforwardkeeporiginal tinyint not null,
-	accountenablesignature tinyint not null,
-	accountsignatureplaintext ntext not null,
-	accountsignaturehtml ntext not null,
-	accountlastlogontime datetime not null,
-	accountvacationexpires tinyint not null,
-	accountvacationexpiredate datetime not null,
-	accountpersonfirstname nvarchar(60) not null,
-	accountpersonlastname nvarchar(60) not null,
-	accountvacationabortspamflagged tinyint not null,
-	accountforwardabortspamflagged tinyint not null
+    accountid int identity (1, 1) not null,
+    accountdomainid int not null,
+    accountadminlevel tinyint not null ,
+    accountaddress nvarchar(255) not null,
+    accountpassword nvarchar(255) not null ,
+    accountactive int not null, 
+    accountisad int not null, 
+    accountaddomain nvarchar(255) not null ,
+    accountadusername nvarchar(255) not null,
+    accountmaxsize int not null,
+    accountvacationmessageon tinyint not null,
+    accountvacationmessage nvarchar(1000) not null,
+    accountvacationsubject nvarchar(200) not null,
+    accountpwencryption tinyint not null,
+    accountforwardenabled tinyint not null,
+    accountforwardaddress nvarchar(255) not null,
+    accountforwardkeeporiginal tinyint not null,
+    accountenablesignature tinyint not null,
+    accountsignatureplaintext ntext not null,
+    accountsignaturehtml ntext not null,
+    accountlastlogontime datetime not null,
+    accountvacationexpires tinyint not null,
+    accountvacationexpiredate datetime not null,
+    accountpersonfirstname nvarchar(60) not null,
+    accountpersonlastname nvarchar(60) not null,
+    accountvacationabortspamflagged tinyint not null,
+    accountforwardabortspamflagged tinyint not null
 ) 
 
 ALTER TABLE hm_accounts ADD CONSTRAINT hm_accounts_pk PRIMARY KEY NONCLUSTERED (accountid) 
@@ -204,11 +204,11 @@ CREATE CLUSTERED INDEX idx_hm_accounts ON hm_accounts (accountaddress)
 
 create table hm_aliases 
 (
-	aliasid int identity (1, 1) not null,
-	aliasdomainid int not null ,
-	aliasname nvarchar(255) not null,
-	aliasvalue nvarchar(255) not null ,	
-	aliasactive tinyint not null
+    aliasid int identity (1, 1) not null,
+    aliasdomainid int not null ,
+    aliasname nvarchar(255) not null,
+    aliasvalue nvarchar(255) not null ,	
+    aliasactive tinyint not null
 ) 
 
 ALTER TABLE hm_aliases ADD CONSTRAINT hm_aliases_pk PRIMARY KEY NONCLUSTERED (aliasid) 
@@ -219,29 +219,29 @@ CREATE CLUSTERED INDEX idx_hm_aliases ON hm_aliases (aliasdomainid, aliasname)
 
 create table hm_domains 
 (
-	domainid int identity (1, 1) not null,
-	domainname nvarchar(80) not null,
-	domainactive tinyint not null,
-	domainpostmaster nvarchar(80) not null,
-	domainmaxsize int not null,
-	domainaddomain nvarchar(255) not null,
-	domainmaxmessagesize int not null,
-	domainuseplusaddressing  tinyint not null,
-	domainplusaddressingchar nvarchar(1) not null,
-	domainantispamoptions integer not null,
-	domainenablesignature tinyint not null,
-	domainsignaturemethod tinyint not null,
-	domainsignatureplaintext ntext not null,
-	domainsignaturehtml ntext not null,
-	domainaddsignaturestoreplies tinyint not null,
-	domainaddsignaturestolocalemail tinyint not null,
-	domainmaxnoofaccounts int not null,
-	domainmaxnoofaliases int not null,
-	domainmaxnoofdistributionlists int not null,
-	domainlimitationsenabled int not null,
-	domainmaxaccountsize int not null,
-	domaindkimselector nvarchar(255) not null,
-	domaindkimprivatekeyfile nvarchar(255) not null
+    domainid int identity (1, 1) not null,
+    domainname nvarchar(80) not null,
+    domainactive tinyint not null,
+    domainpostmaster nvarchar(80) not null,
+    domainmaxsize int not null,
+    domainaddomain nvarchar(255) not null,
+    domainmaxmessagesize int not null,
+    domainuseplusaddressing  tinyint not null,
+    domainplusaddressingchar nvarchar(1) not null,
+    domainantispamoptions integer not null,
+    domainenablesignature tinyint not null,
+    domainsignaturemethod tinyint not null,
+    domainsignatureplaintext ntext not null,
+    domainsignaturehtml ntext not null,
+    domainaddsignaturestoreplies tinyint not null,
+    domainaddsignaturestolocalemail tinyint not null,
+    domainmaxnoofaccounts int not null,
+    domainmaxnoofaliases int not null,
+    domainmaxnoofdistributionlists int not null,
+    domainlimitationsenabled int not null,
+    domainmaxaccountsize int not null,
+    domaindkimselector nvarchar(255) not null,
+    domaindkimprivatekeyfile nvarchar(255) not null
 ) 
 
 ALTER TABLE hm_domains ADD CONSTRAINT hm_domains_pk PRIMARY KEY NONCLUSTERED (domainid) 
@@ -252,28 +252,28 @@ CREATE CLUSTERED INDEX idx_hm_domains ON hm_domains (domainname)
 
 create table hm_domain_aliases 
 (
-	daid int identity (1, 1) not null,
-	dadomainid integer not null ,
-	daalias nvarchar(255) not null
+    daid int identity (1, 1) not null,
+    dadomainid integer not null ,
+    daalias nvarchar(255) not null
 ) 
 
 ALTER TABLE hm_domain_aliases ADD CONSTRAINT hm_domain_aliases_pk PRIMARY KEY NONCLUSTERED (daid) 
 
 create table hm_messages 
 (
-	messageid bigint identity (1, 1) not null,
-	messageaccountid int not null ,
-	messagefolderid int not null ,
-	messagefilename nvarchar(255) not null ,
-	messagetype tinyint not null ,
-	messagefrom nvarchar(255) not null ,
-	messagesize bigint not null,
-	messagecurnooftries int not null,
-	messagenexttrytime datetime not null,
-	messageflags tinyint not null,
-	messagecreatetime datetime not null,
-	messagelocked tinyint not null,
-	messageuid bigint not null
+    messageid bigint identity (1, 1) not null,
+    messageaccountid int not null ,
+    messagefolderid int not null ,
+    messagefilename nvarchar(255) not null ,
+    messagetype tinyint not null ,
+    messagefrom nvarchar(255) not null ,
+    messagesize bigint not null,
+    messagecurnooftries int not null,
+    messagenexttrytime datetime not null,
+    messageflags tinyint not null,
+    messagecreatetime datetime not null,
+    messagelocked tinyint not null,
+    messageuid bigint not null
 ) 
 
 ALTER TABLE hm_messages ADD CONSTRAINT hm_messages_pk PRIMARY KEY NONCLUSTERED (messageid) 
@@ -284,15 +284,15 @@ CREATE INDEX idx_hm_messages_type ON hm_messages (messagetype)
 
 create table hm_message_metadata 
 (
-	metadata_id bigint identity (1, 1) not null,
-	metadata_accountid int not null,
-	metadata_folderid int not null,
-	metadata_messageid bigint  not null,
-	metadata_dateutc datetime null,
-	metadata_from nvarchar(255) not null,
-	metadata_subject nvarchar(255) not null,
-	metadata_to nvarchar(255) not null,
-	metadata_cc nvarchar(255) not null
+    metadata_id bigint identity (1, 1) not null,
+    metadata_accountid int not null,
+    metadata_folderid int not null,
+    metadata_messageid bigint  not null,
+    metadata_dateutc datetime null,
+    metadata_from nvarchar(255) not null,
+    metadata_subject nvarchar(255) not null,
+    metadata_to nvarchar(255) not null,
+    metadata_cc nvarchar(255) not null
 )
 
 ALTER TABLE hm_message_metadata ADD CONSTRAINT hm_message_metadata_pk PRIMARY KEY CLUSTERED (metadata_id) 
@@ -303,10 +303,10 @@ CREATE NONCLUSTERED INDEX idx_message_metadata_id ON hm_message_metadata (metada
 
 create table hm_settings 
 (
-	settingid int identity (1, 1) not null,
-	settingname nvarchar(30) not null,
-	settingstring nvarchar(4000) not null ,
-	settinginteger int not null
+    settingid int identity (1, 1) not null,
+    settingname nvarchar(30) not null,
+    settingstring nvarchar(4000) not null ,
+    settinginteger int not null
 ) 
 
 ALTER TABLE hm_settings ADD CONSTRAINT hm_settings_pk PRIMARY KEY NONCLUSTERED (settingid) 
@@ -315,18 +315,18 @@ ALTER TABLE hm_settings ADD CONSTRAINT u_settingname UNIQUE NONCLUSTERED (settin
 
 create table hm_dbversion 
 (
-	value int not null
+    value int not null
 ) 
 
 create table hm_distributionlists 
 (
-	distributionlistid int identity (1, 1) not null,
-	distributionlistdomainid int not null,
-	distributionlistaddress nvarchar(255) not null,
-	distributionlistenabled tinyint not null,	
-	distributionlistrequireauth tinyint not null,
-	distributionlistrequireaddress nvarchar(255) not null,
-	distributionlistmode tinyint not null
+    distributionlistid int identity (1, 1) not null,
+    distributionlistdomainid int not null,
+    distributionlistaddress nvarchar(255) not null,
+    distributionlistenabled tinyint not null,	
+    distributionlistrequireauth tinyint not null,
+    distributionlistrequireaddress nvarchar(255) not null,
+    distributionlistmode tinyint not null
 ) 
 
 ALTER TABLE hm_distributionlists ADD CONSTRAINT hm_distributionlists_pk PRIMARY KEY NONCLUSTERED (distributionlistid) 
@@ -337,9 +337,9 @@ CREATE CLUSTERED INDEX idx_hm_distributionlists_distributionlistdomainid ON hm_d
 
 create table hm_distributionlistsrecipients
 (
-	distributionlistrecipientid int identity (1, 1) not null,
-	distributionlistrecipientlistid int not null,
-	distributionlistrecipientaddress nvarchar(255) not null
+    distributionlistrecipientid int identity (1, 1) not null,
+    distributionlistrecipientlistid int not null,
+    distributionlistrecipientaddress nvarchar(255) not null
 ) 
 
 ALTER TABLE hm_distributionlistsrecipients ADD CONSTRAINT hm_distributionlistsrecipients_pk PRIMARY KEY NONCLUSTERED (distributionlistrecipientid) 
@@ -348,11 +348,11 @@ CREATE CLUSTERED INDEX idx_hm_distributionlistsrecipients_distributionlistrecipi
 
 create table hm_messagerecipients
 (
-	recipientid bigint identity (1, 1) not null,
-	recipientmessageid bigint not null,
-	recipientaddress nvarchar(255) not null,
-	recipientlocalaccountid int not null,
-	recipientoriginaladdress nvarchar(255) not null
+    recipientid bigint identity (1, 1) not null,
+    recipientmessageid bigint not null,
+    recipientaddress nvarchar(255) not null,
+    recipientlocalaccountid int not null,
+    recipientoriginaladdress nvarchar(255) not null
 ) 
 
 ALTER TABLE hm_messagerecipients ADD CONSTRAINT hm_messagerecipients_pk PRIMARY KEY NONCLUSTERED (recipientid) 
@@ -361,13 +361,13 @@ CREATE CLUSTERED INDEX idx_hm_messagerecipients_recipientmessageid ON hm_message
 
 create table hm_imapfolders 
 (
-	folderid int identity (1, 1) not null,
-	folderaccountid int NOT NULL,
-	folderparentid int NOT NULL,
-	foldername nvarchar(255) NOT NULL,
-	folderissubscribed tinyint NOT NULL,
-	foldercreationtime datetime NOT NULL,
-	foldercurrentuid bigint NOT NULL
+    folderid int identity (1, 1) not null,
+    folderaccountid int NOT NULL,
+    folderparentid int NOT NULL,
+    foldername nvarchar(255) NOT NULL,
+    folderissubscribed tinyint NOT NULL,
+    foldercreationtime datetime NOT NULL,
+    foldercurrentuid bigint NOT NULL
 ) 
 
 ALTER TABLE hm_imapfolders ADD CONSTRAINT hm_imapfolders_pk PRIMARY KEY NONCLUSTERED (folderid) 
@@ -378,16 +378,16 @@ ALTER TABLE hm_imapfolders ADD CONSTRAINT idx_hm_imapfolders_unique UNIQUE NONCL
 
 create table hm_securityranges
 (
-	rangeid int identity (1, 1) not null,
-  	rangepriorityid int not null,
-	rangelowerip1 bigint not null,
-	rangelowerip2 bigint null,
-	rangeupperip1 bigint not null,
-	rangeupperip2 bigint null,
-	rangeoptions int not null,
-	rangename nvarchar(100) not null,
-	rangeexpires tinyint not null,
-	rangeexpirestime datetime not null
+    rangeid int identity (1, 1) not null,
+    rangepriorityid int not null,
+    rangelowerip1 bigint not null,
+    rangelowerip2 bigint null,
+    rangeupperip1 bigint not null,
+    rangeupperip2 bigint null,
+    rangeoptions int not null,
+    rangename nvarchar(100) not null,
+    rangeexpires tinyint not null,
+    rangeexpirestime datetime not null
 ) 
 
 ALTER TABLE hm_securityranges ADD CONSTRAINT hm_securityranges_pk PRIMARY KEY NONCLUSTERED (rangeid) 
@@ -396,20 +396,20 @@ ALTER TABLE hm_securityranges ADD CONSTRAINT u_rangename UNIQUE NONCLUSTERED (ra
 
 create table hm_routes 
 (
-	routeid int identity (1, 1) not null,
-	routedomainname nvarchar(255) NOT NULL,
-	routedescription nvarchar(255) NOT NULL,
-	routetargetsmthost nvarchar(255) NOT NULL,
-	routetargetsmtport int NOT NULL,
-	routenooftries int NOT NULL,
-	routeminutesbetweentry int NOT NULL,
-	routealladdresses tinyint NOT NULL,
-	routeuseauthentication tinyint NOT NULL,
-	routeauthenticationusername nvarchar(255) NOT NULL,
-	routeauthenticationpassword nvarchar(255) NOT NULL,
-	routetreatsecurityaslocal tinyint NOT NULL,
-	routeconnectionsecurity tinyint not null,
-	routetreatsenderaslocaldomain tinyint NOT NULL
+    routeid int identity (1, 1) not null,
+    routedomainname nvarchar(255) NOT NULL,
+    routedescription nvarchar(255) NOT NULL,
+    routetargetsmthost nvarchar(255) NOT NULL,
+    routetargetsmtport int NOT NULL,
+    routenooftries int NOT NULL,
+    routeminutesbetweentry int NOT NULL,
+    routealladdresses tinyint NOT NULL,
+    routeuseauthentication tinyint NOT NULL,
+    routeauthenticationusername nvarchar(255) NOT NULL,
+    routeauthenticationpassword nvarchar(255) NOT NULL,
+    routetreatsecurityaslocal tinyint NOT NULL,
+    routeconnectionsecurity tinyint not null,
+    routetreatsenderaslocaldomain tinyint NOT NULL
 ) 
 
 ALTER TABLE hm_routes ADD CONSTRAINT hm_routes_pk PRIMARY KEY NONCLUSTERED (routeid) 
@@ -418,57 +418,57 @@ ALTER TABLE hm_routes ADD CONSTRAINT u_routedomainname UNIQUE NONCLUSTERED (rout
 
 create table hm_routeaddresses
 (
-	routeaddressid int identity (1, 1) not null,
-	routeaddressrouteid int NOT NULL,
-	routeaddressaddress nvarchar(255) NOT NULL
+    routeaddressid int identity (1, 1) not null,
+    routeaddressrouteid int NOT NULL,
+    routeaddressaddress nvarchar(255) NOT NULL
 ) 
 
 ALTER TABLE hm_routeaddresses ADD CONSTRAINT hm_routeaddresses_pk PRIMARY KEY NONCLUSTERED (routeaddressid) 
 
 create table hm_dnsbl
 (
-	sblid int identity (1, 1) not null,
-	sblactive int not null,
-	sbldnshost nvarchar(255) not null,
-	sblresult nvarchar(255) not null,
-	sblrejectmessage nvarchar(255) not null,
-	sblscore int not null
+    sblid int identity (1, 1) not null,
+    sblactive int not null,
+    sbldnshost nvarchar(255) not null,
+    sblresult nvarchar(255) not null,
+    sblrejectmessage nvarchar(255) not null,
+    sblscore int not null
 ) 
 
 ALTER TABLE hm_dnsbl ADD CONSTRAINT hm_dnsbl_pk PRIMARY KEY NONCLUSTERED (sblid) 
 
 create table hm_fetchaccounts
 (	
-	faid int identity(1,1) not null,
-	faactive tinyint not null,
-	faaccountid int not null,
-	faaccountname nvarchar(255) not null,
-	faserveraddress nvarchar(255) not null,
-	faserverport int not null,
-	faservertype tinyint not null,
-	fausername nvarchar(255) not null,
-	fapassword nvarchar(255) not null,
-	faminutes int not null,
-	fanexttry datetime not null,
-	fadaystokeep int not null,
-	falocked tinyint not null,
-	faprocessmimerecipients tinyint not null,
-	faprocessmimedate tinyint not null,
-	faconnectionsecurity tinyint not null,
-	fauseantispam tinyint not null,
-	fauseantivirus tinyint not null,
-	faenablerouterecipients tinyint not null,
-	famimerecipientheaders nvarchar(255) not null DEFAULT 'To,CC,X-RCPT-TO,X-Envelope-To'
+    faid int identity(1,1) not null,
+    faactive tinyint not null,
+    faaccountid int not null,
+    faaccountname nvarchar(255) not null,
+    faserveraddress nvarchar(255) not null,
+    faserverport int not null,
+    faservertype tinyint not null,
+    fausername nvarchar(255) not null,
+    fapassword nvarchar(255) not null,
+    faminutes int not null,
+    fanexttry datetime not null,
+    fadaystokeep int not null,
+    falocked tinyint not null,
+    faprocessmimerecipients tinyint not null,
+    faprocessmimedate tinyint not null,
+    faconnectionsecurity tinyint not null,
+    fauseantispam tinyint not null,
+    fauseantivirus tinyint not null,
+    faenablerouterecipients tinyint not null,
+    famimerecipientheaders nvarchar(255) not null DEFAULT 'To,CC,X-RCPT-TO,X-Envelope-To'
 ) 
 
 ALTER TABLE hm_fetchaccounts ADD CONSTRAINT hm_fetchaccounts_pk PRIMARY KEY NONCLUSTERED (faid) 
 
 create table hm_fetchaccounts_uids
 (
-	uidid int identity(1,1) not null,
-	uidfaid int not null,
-	uidvalue nvarchar(255) not null,
-	uidtime datetime not null
+    uidid int identity(1,1) not null,
+    uidfaid int not null,
+    uidvalue nvarchar(255) not null,
+    uidtime datetime not null
 ) 
 
 ALTER TABLE hm_fetchaccounts_uids ADD CONSTRAINT hm_fetchaccounts_uids_pk PRIMARY KEY NONCLUSTERED (uidid) 
@@ -477,12 +477,12 @@ CREATE CLUSTERED INDEX idx_hm_fetchaccounts_uids ON hm_fetchaccounts_uids (uidfa
 
 create table hm_rules
 (
-	ruleid int identity(1,1) not null,
-	ruleaccountid int not null,
-	rulename nvarchar(100) not null,
-	ruleactive tinyint not null,
-	ruleuseand tinyint not null,
-	rulesortorder int not null
+    ruleid int identity(1,1) not null,
+    ruleaccountid int not null,
+    rulename nvarchar(100) not null,
+    ruleactive tinyint not null,
+    ruleuseand tinyint not null,
+    rulesortorder int not null
 ) 
 
 ALTER TABLE hm_rules ADD CONSTRAINT hm_rules_pk PRIMARY KEY NONCLUSTERED (ruleid) 
@@ -491,13 +491,13 @@ CREATE CLUSTERED INDEX idx_hm_rules ON hm_rules (ruleaccountid)
 
 create table hm_rule_criterias
 (
-	criteriaid int identity(1,1) not null,
-	criteriaruleid int not null,
-	criteriausepredefined tinyint not null,
-	criteriapredefinedfield tinyint not null,
-	criteriaheadername nvarchar(255) not null,
-	criteriamatchtype tinyint not null,
-	criteriamatchvalue nvarchar(255) not null
+    criteriaid int identity(1,1) not null,
+    criteriaruleid int not null,
+    criteriausepredefined tinyint not null,
+    criteriapredefinedfield tinyint not null,
+    criteriaheadername nvarchar(255) not null,
+    criteriamatchtype tinyint not null,
+    criteriamatchvalue nvarchar(255) not null
 ) 
 
 ALTER TABLE hm_rule_criterias ADD CONSTRAINT hm_rule_criterias_pk PRIMARY KEY NONCLUSTERED (criteriaid) 
@@ -506,22 +506,22 @@ CREATE CLUSTERED INDEX idx_hm_rule_criterias ON hm_rule_criterias (criteriarulei
 
 create table hm_rule_actions
 (
-	actionid int identity(1,1) not null,
-	actionruleid int not null,
-	actiontype tinyint not null,
-	actionimapfolder nvarchar(255) not null,
-	actionsubject nvarchar(255) not null,
-	actionfromname nvarchar(255) not null,
-	actionfromaddress nvarchar(255) not null,
-	actionto nvarchar(255) not null,
-	actionbody ntext not null,
-	actionfilename nvarchar(255) not null,
-	actionsortorder int not null,
-	actionscriptfunction nvarchar(255) not null,
-	actionheader nvarchar(80) not null,
-	actionvalue nvarchar(255) not null,
-	actionrouteid int not null,
-	actionabortspamflagged tinyint not null
+    actionid int identity(1,1) not null,
+    actionruleid int not null,
+    actiontype tinyint not null,
+    actionimapfolder nvarchar(255) not null,
+    actionsubject nvarchar(255) not null,
+    actionfromname nvarchar(255) not null,
+    actionfromaddress nvarchar(255) not null,
+    actionto nvarchar(255) not null,
+    actionbody ntext not null,
+    actionfilename nvarchar(255) not null,
+    actionsortorder int not null,
+    actionscriptfunction nvarchar(255) not null,
+    actionheader nvarchar(80) not null,
+    actionvalue nvarchar(255) not null,
+    actionrouteid int not null,
+    actionabortspamflagged tinyint not null
 ) 
 
 ALTER TABLE hm_rule_actions ADD CONSTRAINT hm_rule_actions_pk PRIMARY KEY NONCLUSTERED (actionid) 
@@ -530,27 +530,27 @@ CREATE CLUSTERED INDEX idx_hm_rule_actions ON hm_rule_actions (actionruleid)
 
 create table hm_surblservers
 (
-	surblid int identity(1,1) not null ,
-	surblactive tinyint not null,
-	surblhost nvarchar(255) not null,
-	surblrejectmessage nvarchar(255) not null,
-	surblscore int not null
+    surblid int identity(1,1) not null ,
+    surblactive tinyint not null,
+    surblhost nvarchar(255) not null,
+    surblrejectmessage nvarchar(255) not null,
+    surblscore int not null
 ) 
 
 ALTER TABLE hm_surblservers ADD CONSTRAINT hm_surblid_pk PRIMARY KEY NONCLUSTERED (surblid) 
 
 create table hm_greylisting_triplets
 (
-	glid bigint identity(1,1) not null,
-	glcreatetime datetime not null,
-	glblockendtime datetime not null,
-	gldeletetime datetime not null,
-	glipaddress1 bigint not null,
-	glipaddress2 bigint null,
-	glsenderaddress nvarchar(200) not null,
-	glrecipientaddress nvarchar(200) not null,
-	glblockedcount int not null,
-	glpassedcount int not null
+    glid bigint identity(1,1) not null,
+    glcreatetime datetime not null,
+    glblockendtime datetime not null,
+    gldeletetime datetime not null,
+    glipaddress1 bigint not null,
+    glipaddress2 bigint null,
+    glsenderaddress nvarchar(200) not null,
+    glrecipientaddress nvarchar(200) not null,
+    glblockedcount int not null,
+    glpassedcount int not null
 ) 
 
 ALTER TABLE hm_greylisting_triplets ADD CONSTRAINT hm_glid_pk PRIMARY KEY NONCLUSTERED (glid) 
@@ -559,9 +559,9 @@ ALTER TABLE hm_greylisting_triplets ADD CONSTRAINT u_gltriplet UNIQUE NONCLUSTER
 
 create table hm_greylisting_whiteaddresses
 (
-	whiteid bigint identity(1,1) not null,
-	whiteipaddress nvarchar(255) not null,
-	whiteipdescription nvarchar(255) not null
+    whiteid bigint identity(1,1) not null,
+    whiteipaddress nvarchar(255) not null,
+    whiteipdescription nvarchar(255) not null
 ) 
 
 ALTER TABLE hm_greylisting_whiteaddresses ADD CONSTRAINT hm_glwhite_pk PRIMARY KEY NONCLUSTERED (whiteid) 
@@ -570,83 +570,83 @@ ALTER TABLE hm_greylisting_whiteaddresses ADD CONSTRAINT u_glwhite UNIQUE NONCLU
 
 create table hm_blocked_attachments
 (
-	baid bigint identity(1,1) not null,
-	bawildcard nvarchar(255) not null,
-	badescription nvarchar(255) not null
+    baid bigint identity(1,1) not null,
+    bawildcard nvarchar(255) not null,
+    badescription nvarchar(255) not null
 ) 
 
 ALTER TABLE hm_blocked_attachments ADD CONSTRAINT hm_baid_pk PRIMARY KEY NONCLUSTERED (baid) 
 
 create table hm_servermessages
 (
-	smid int identity(1,1) not null , 
-	smname nvarchar(255) not null,
-	smtext ntext not null
+    smid int identity(1,1) not null , 
+    smname nvarchar(255) not null,
+    smtext ntext not null
 ) 
 
 ALTER TABLE hm_servermessages ADD CONSTRAINT hm_smid_pk PRIMARY KEY NONCLUSTERED (smid) 
 
 create table hm_tcpipports
 (
-	portid int identity(1,1) not null, 
-	portprotocol tinyint not null,
-	portnumber int not null,
-	portaddress1 bigint not null,
+    portid int identity(1,1) not null, 
+    portprotocol tinyint not null,
+    portnumber int not null,
+    portaddress1 bigint not null,
     portaddress2 bigint null,
-	portconnectionsecurity tinyint not null,
-	portsslcertificateid bigint not null
+    portconnectionsecurity tinyint not null,
+    portsslcertificateid bigint not null
 ) 
 
 ALTER TABLE hm_tcpipports ADD CONSTRAINT hm_tcpipports_pk PRIMARY KEY NONCLUSTERED (portid) 
 
 create table hm_whitelist
 (
-	whiteid bigint identity(1,1) not null,
-	whiteloweripaddress1 bigint not null,
-	whiteloweripaddress2 bigint null,
-	whiteupperipaddress1 bigint not null,
-	whiteupperipaddress2 bigint null,
-	whiteemailaddress nvarchar(255) not null,
-	whitedescription nvarchar(255) not null
+    whiteid bigint identity(1,1) not null,
+    whiteloweripaddress1 bigint not null,
+    whiteloweripaddress2 bigint null,
+    whiteupperipaddress1 bigint not null,
+    whiteupperipaddress2 bigint null,
+    whiteemailaddress nvarchar(255) not null,
+    whitedescription nvarchar(255) not null
 ) 
 
 ALTER TABLE hm_whitelist ADD CONSTRAINT hm_whitelist_pk PRIMARY KEY NONCLUSTERED (whiteid) 
 
 create table hm_sslcertificates
 (
-	sslcertificateid bigint identity(1,1) not null,
-	sslcertificatename nvarchar(255) not null,
-	sslcertificatefile nvarchar(255) not null,
-	sslprivatekeyfile nvarchar(255) not null
+    sslcertificateid bigint identity(1,1) not null,
+    sslcertificatename nvarchar(255) not null,
+    sslcertificatefile nvarchar(255) not null,
+    sslprivatekeyfile nvarchar(255) not null
 ) 
 
 ALTER TABLE hm_sslcertificates ADD CONSTRAINT hm_sslcertificates_pk PRIMARY KEY NONCLUSTERED (sslcertificateid) 
 
 create table hm_groups
 (
-	groupid bigint identity(1,1) not null,
-	groupname nvarchar(255)
+    groupid bigint identity(1,1) not null,
+    groupname nvarchar(255)
 ) 
 
 ALTER TABLE hm_groups ADD CONSTRAINT hm_groups_pk PRIMARY KEY NONCLUSTERED (groupid) 
 
 create table hm_group_members
 (
-	memberid bigint identity(1,1) not null,
-	membergroupid bigint not null,
-	memberaccountid bigint not null
+    memberid bigint identity(1,1) not null,
+    membergroupid bigint not null,
+    memberaccountid bigint not null
 ) 
 
 ALTER TABLE hm_group_members ADD CONSTRAINT hm_group_members_pk PRIMARY KEY NONCLUSTERED (memberid) 
 
 create table hm_acl
 (
-	aclid bigint identity(1,1) not null,
-	aclsharefolderid bigint not null,
-	aclpermissiontype tinyint not null,
-	aclpermissiongroupid bigint not null,
-	aclpermissionaccountid bigint not null,
-	aclvalue bigint not null
+    aclid bigint identity(1,1) not null,
+    aclsharefolderid bigint not null,
+    aclpermissiontype tinyint not null,
+    aclpermissiongroupid bigint not null,
+    aclpermissionaccountid bigint not null,
+    aclvalue bigint not null
 ) 
 
 ALTER TABLE hm_acl ADD CONSTRAINT hm_acl_pk PRIMARY KEY NONCLUSTERED (aclid) 
