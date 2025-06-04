@@ -136,4 +136,4 @@
 
 #define PROPERTY_IPV6_PREFERRED  _T("IPv6Preferred")
 
-#define REQUIRED_DB_VERSION            5708
+#define REQUIRED_DB_VERSION            5800

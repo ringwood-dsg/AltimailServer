@@ -28,22 +28,42 @@ namespace HM
    {
       try
       {
-         boost::asio::io_service io_service;
+         boost::asio::io_context io_service;
+         boost::system::error_code error = boost::asio::error::host_not_found;
 
          // Get a list of endpoints corresponding to the server name.
          tcp::resolver resolver(io_service);
-         tcp::resolver::query query(AnsiString(sServer), "80", tcp::resolver::query::numeric_service);
+         /*tcp::resolver::query query(AnsiString(sServer), "80", tcp::resolver::query::numeric_service);
          tcp::resolver::iterator endpoint_iterator = resolver.resolve(query);
-         tcp::resolver::iterator end;
+         tcp::resolver::iterator end;*/
+
+         tcp::resolver::results_type endpoints = resolver.resolve(
+            AnsiString(sServer),
+            "80",
+            boost::asio::ip::resolver_base::numeric_service,
+            error);
 
          // Try each endpoint until we successfully establish a connection.
          tcp::socket socket(io_service);
-         boost::system::error_code error = boost::asio::error::host_not_found;
+         /*boost::system::error_code error = boost::asio::error::host_not_found;
          while (error && endpoint_iterator != end)
          {
             socket.close();
             socket.connect(*endpoint_iterator++, error);
          }
+         if (error)
+            throw boost::system::system_error(error);*/
+
+         if (!error) {
+            for (const auto& endpoint : endpoints) {
+               socket.close();
+               socket.connect(endpoint.endpoint(), error);
+               if (!error) {
+                  break;
+               }
+            }
+         }
+
          if (error)
             throw boost::system::system_error(error);
 

@@ -23,7 +23,7 @@ namespace HM
    WorkQueue::WorkQueue(unsigned int iMaxSimultaneous, const String &sQueueName) :
       queue_name_ (sQueueName),
       max_simultaneous_(0),
-      work_( io_service_)
+      work_(boost::asio::make_work_guard(io_service_))
    {
       SetMaxSimultaneous(iMaxSimultaneous);
 

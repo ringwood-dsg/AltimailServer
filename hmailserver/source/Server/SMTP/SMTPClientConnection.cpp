@@ -22,7 +22,7 @@ namespace HM
 {
 
    SMTPClientConnection::SMTPClientConnection(ConnectionSecurity connection_security,
-      boost::asio::io_service& io_service, 
+      boost::asio::io_context& io_service, 
       boost::asio::ssl::context& context,
       std::shared_ptr<Event> disconnected,
       AnsiString expected_remote_hostname) :

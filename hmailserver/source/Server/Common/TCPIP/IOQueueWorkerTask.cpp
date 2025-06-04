@@ -18,7 +18,7 @@
 
 namespace HM
 {
-   IOCPQueueWorkerTask::IOCPQueueWorkerTask(boost::asio::io_service &io_service) :
+   IOCPQueueWorkerTask::IOCPQueueWorkerTask(boost::asio::io_context &io_service) :
       Task("IOCPQueueWorkerTask"),
       io_service_(io_service)
    {

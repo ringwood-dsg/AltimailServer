@@ -82,7 +82,7 @@ namespace HM
       boost::system::error_code error;
 
       if (addressString.Find(":") >= 0)
-         address_ = boost::asio::ip::address_v6::from_string(addressString, error);
+         address_ = boost::asio::ip::make_address_v6(addressString, error);
       else
       {
          // Windows 2000 Workaround:
@@ -97,7 +97,7 @@ namespace HM
          if (addressString == "255.255.255.255")
             SetIPV4Address_(0xFFFFFFFF);
          else
-            address_ = boost::asio::ip::address_v4::from_string(addressString, error);         
+            address_ = boost::asio::ip::make_address_v4(addressString, error);
 
       }
 
@@ -175,7 +175,8 @@ namespace HM
    IPAddress::ToString() const
    {
       boost::system::error_code error;
-      AnsiString result = address_.to_string(error);
+      //AnsiString result = address_.to_string(error);
+      AnsiString result = address_.to_string();
       
       if (error)
          return "";
@@ -337,7 +338,7 @@ namespace HM
    IPAddress::IsValid(const AnsiString &address)
    {
       boost::system::error_code errorCode;
-      boost::asio::ip::address adr = boost::asio::ip::address::from_string(address, errorCode);
+      boost::asio::ip::address adr = boost::asio::ip::make_address(address, errorCode);
 
       if (errorCode)
          return false;

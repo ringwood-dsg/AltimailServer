@@ -94,7 +94,7 @@ namespace HM
       for (int i = 1; i <= iMaxNumberOfTries; i++)
       {
          boost::system::error_code error_code;
-         boost::filesystem::copy_file(sFrom, sTo, boost::filesystem::copy_option::overwrite_if_exists, error_code);
+         boost::filesystem::copy_file(sFrom, sTo, boost::filesystem::copy_options::overwrite_existing, error_code);
 
          // Use classic api to copy the file
          if (!error_code)

@@ -4,7 +4,7 @@
 #include "stdafx.h"
 #include "PasswordRemover.h"
 
-#include <Boost/Regex.hpp>
+#include <boost/regex.hpp>
 
 #ifdef _DEBUG
 #define DEBUG_NEW new(_NORMAL_BLOCK, __FILE__, __LINE__)

@@ -38,7 +38,7 @@ namespace HM
 {
 
    POP3Connection::POP3Connection(ConnectionSecurity connection_security,
-      boost::asio::io_service& io_service, 
+      boost::asio::io_context& io_service, 
       boost::asio::ssl::context& context) :
       TCPConnection(connection_security, io_service, context, std::shared_ptr<Event>(), ""),
       current_state_(AUTHORIZATION),
@@ -620,7 +620,8 @@ namespace HM
          GetMailboxContents_(iMessageCount, iTotalBytes);
 
          // Allocate a reasonable size...
-         sResponse.SetBuf(messages_.size() * 10);
+         //sResponse.SetBuf(messages_.size() * 10);
+         sResponse.SetBuf(static_cast<int>(messages_.size()) * 10);
 
          // Send number of messages.
          sResponse.Format(_T("+OK %d messages (%I64d octets)\r\n"), iMessageCount, iTotalBytes);

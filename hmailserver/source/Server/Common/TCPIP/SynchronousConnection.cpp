@@ -47,6 +47,34 @@ namespace HM
    SynchronousConnection::Connect(const AnsiString &hostName, int port)
    {
       tcp::resolver resolver(ioservice_);
+      boost::system::error_code error = boost::asio::error::host_not_found;
+      tcp::resolver::results_type endpoints = resolver.resolve(
+         hostName,
+         AnsiString(StringParser::IntToString(port)),
+         boost::asio::ip::resolver_base::numeric_service,
+         error);
+
+      if (!error) {
+         for (const auto& endpoint : endpoints) {
+            socket_.close();
+            socket_.connect(endpoint.endpoint(), error);
+            if (!error) {
+               return true;
+               //Success
+            }
+         }
+
+         if (error) {
+            return false;
+            //All connection attempts failed
+         }
+      }
+      else { return false; }
+      //DNS resolution most likely failed.
+
+      return false;
+
+      /*tcp::resolver resolver(ioservice_);
       tcp::resolver::query query(hostName, 
             AnsiString(StringParser::IntToString(port)), 
             tcp::resolver::query::numeric_service);
@@ -63,7 +91,7 @@ namespace HM
       if (error)
          return false;
       else
-         return true;
+         return true;*/
    }
 
    bool
@@ -95,7 +123,7 @@ namespace HM
          boost::asio::streambuf readBuffer;
          boost::optional<error_code> write_result; 
          async_write(socket_, boost::asio::buffer(buf, bufSize), std::bind(set_result, &write_result, std::placeholders::_1));
-         ioservice_.reset(); 
+         ioservice_.restart();
 
          // Wait for data to be written. 
          while (ioservice_.run_one()) 
@@ -134,7 +162,7 @@ namespace HM
          boost::asio::streambuf readBuffer;
          boost::optional<error_code> read_result; 
          async_read_until(socket_, readBuffer, delimiter, std::bind(set_result, &read_result, std::placeholders::_1));
-         ioservice_.reset(); 
+         ioservice_.restart();
 
          // Wait for input. 
          while (ioservice_.run_one()) 

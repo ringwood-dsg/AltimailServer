@@ -188,7 +188,7 @@ namespace HM
       return client_context_;
    }
 
-   boost::asio::io_service &
+   boost::asio::io_context &
    IOService::GetIOService()
    {
       return io_service_;

@@ -30,7 +30,7 @@ using boost::asio::ip::tcp;
 
 namespace HM
 {
-   TCPServer::TCPServer(boost::asio::io_service& io_service, const IPAddress &ipaddress, int port, SessionType sessionType, std::shared_ptr<SSLCertificate> certificate, std::shared_ptr<TCPConnectionFactory> connectionFactory, ConnectionSecurity connection_security) :
+   TCPServer::TCPServer(boost::asio::io_context& io_service, const IPAddress &ipaddress, int port, SessionType sessionType, std::shared_ptr<SSLCertificate> certificate, std::shared_ptr<TCPConnectionFactory> connectionFactory, ConnectionSecurity connection_security) :
       acceptor_(io_service),
       context_(boost::asio::ssl::context::sslv23),
       io_service_(io_service),

@@ -2,6 +2,7 @@
 // http://www.hmailserver.com
 
 #include "stdafx.h"
+#include <boost/regex.hpp>
 
 // Application data
 #include "IMAPConnection.h"
@@ -24,7 +25,6 @@
 // Common utilities
 #include "../Common/Util/ByteBuffer.h"
 #include "../Common/Util/PasswordRemover.h"
-#include <Boost/Regex.hpp>
 
 // Commands
 #include "IMAPCommandAppend.h"
@@ -48,7 +48,7 @@
 namespace HM
 {
    IMAPConnection::IMAPConnection(ConnectionSecurity connection_security,
-         boost::asio::io_service& io_service, 
+         boost::asio::io_context& io_service, 
          boost::asio::ssl::context& context) :
       TCPConnection(connection_security, io_service, context, std::shared_ptr<Event>(), ""),
       is_idling_(false),
