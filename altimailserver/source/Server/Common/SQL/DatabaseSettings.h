@@ -16,7 +16,8 @@ namespace HM
          TypeMYSQLServer  = 1,
          TypeMSSQLServer  = 2,
          TypePGServer = 3,
-         TypeMSSQLCompactEdition = 4
+         TypeMSSQLCompactEdition = 4, //to be deprecated soon! Replace with localdb?
+         TypeMariaDbServer = 5
       };
 
 	   DatabaseSettings(const String &sDatabaseProvider, const String &sDatabaseServer, const String &sDatabaseName, const String &sUsername, const String &sPassword,

@@ -1,37 +1,39 @@
-// Copyright (c) 2010 Martin Knafve / hmailserver.com.  
-// http://www.hmailserver.com
+// (c) 2025 Ringwood Digital Solutions Group (Pty) Ltd.
+// https://www.ringwoodgroup.co.za
 
 #pragma once
 
 #include "DALConnection.h"
-#include "MySQLInterface.h"
+//#include "MariaDBInterface.h"
+#include <mysql.h>
 #include "ColumnPositionCache.h"
 
 namespace HM
 {
    
 
-   class MySQLConnection : public DALConnection, public std::enable_shared_from_this<MySQLConnection>
+   class MariaDBConnection : public DALConnection, public std::enable_shared_from_this<MariaDBConnection>
    {
    public:
 
       enum Server
       {
-         RequiredVersion = 50709 //5.7.9 minimum now, 29/05/2025
-         //RequiredVersion = 50505 //If using mariadb, 10.6.2 returns version 5.5.5/50505
+         RequiredVersion = 100529 //MariaDB 10.5.29GA or later
       };
 
-	   MySQLConnection(std::shared_ptr<DatabaseSettings> pSettings);
-	   virtual ~MySQLConnection();
+	   MariaDBConnection(std::shared_ptr<DatabaseSettings> pSettings);
+	   virtual ~MariaDBConnection();
 
       virtual ConnectionResult Connect(String &sErrorMessage);
       virtual bool Disconnect();
       virtual ExecutionResult TryExecute(const SQLCommand &command, String &sErrorMessage, __int64 *iInsertID = 0, int iIgnoreErrors = 0); 
       virtual bool IsConnected() const;
 
-      hm_MYSQL *GetConnection() const;
+      //hm_MARIADB *GetConnection() const;
+      MYSQL* GetConnection() const;
 
-      ExecutionResult CheckError(hm_MYSQL *pSQL, const String &sAdditionalInfo, String &sOutputErrorMessage) const;
+      //ExecutionResult CheckError(hm_MARIADB *pSQL, const String &sAdditionalInfo, String &sOutputErrorMessage) const;
+      ExecutionResult CheckError(MYSQL* pSQL, const String& sAdditionalInfo, String& sOutputErrorMessage) const;
 
       virtual void OnConnected();
 
@@ -53,7 +55,8 @@ namespace HM
 
    private:
 
-      DALConnection::ExecutionResult GetErrorType_(hm_MYSQL *pSQL);
+      //DALConnection::ExecutionResult GetErrorType_(hm_MARIADB *pSQL);
+      DALConnection::ExecutionResult GetErrorType_(MYSQL* pSQL);
 
       void UpdatePassword_();
       void RunScriptFile_(const String &sFile) ;
@@ -61,7 +64,8 @@ namespace HM
       void LoadSupportsTransactions_(const String &database);      
       void SetConnectionCharacterSet_();      
 
-      hm_MYSQL *dbconn_;
+      //hm_MARIADB *dbconn_;
+      MYSQL* dbconn_;
 
       bool is_connected_;
       bool supports_transactions_;

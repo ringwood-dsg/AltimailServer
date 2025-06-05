@@ -334,6 +334,7 @@ namespace HM
                case DatabaseSettings::TypeMYSQLServer:
                case DatabaseSettings::TypeMSSQLServer:
                case DatabaseSettings::TypeMSSQLCompactEdition:
+               case DatabaseSettings::TypeMariaDbServer:
                   sSQL += col.sName + " = " + parameterName;
                   break;
                case DatabaseSettings::TypePGServer:
@@ -373,6 +374,7 @@ namespace HM
                sSQL.append(value);
                break;
             case DatabaseSettings::TypeMYSQLServer:
+            case DatabaseSettings::TypeMariaDbServer:
                value.Format(_T(" LIMIT 0, %d "), top_rows_);
                sSQL.append(value);
                break;
@@ -412,6 +414,7 @@ namespace HM
          sSQL.Format(_T("create database %s"), sDatabaseName.c_str());
          break;
       case DatabaseSettings::TypeMYSQLServer:
+      case DatabaseSettings::TypeMariaDbServer:
          sSQL.Format(_T("create database %s character set 'utf8'"), sDatabaseName.c_str());
          break;
       case DatabaseSettings::TypePGServer:
@@ -444,6 +447,7 @@ namespace HM
       case DatabaseSettings::TypePGServer:
          return "current_timestamp";
       case DatabaseSettings::TypeMYSQLServer:
+      case DatabaseSettings::TypeMariaDbServer:
          return "NOW()";
       default:
          ErrorManager::Instance()->ReportError(ErrorManager::Critical, 5407, "SQLStatement::GetCurrentTimestamp()", Formatter::Format("Unknown database type: {0}", DBType));   
@@ -473,6 +477,7 @@ namespace HM
          sRetVal.Format(_T("SUBSTRING(%s FROM 1 FOR %d)"), sParamName.c_str(), iLength);
          break;
       case DatabaseSettings::TypeMYSQLServer:
+      case DatabaseSettings::TypeMariaDbServer:
          sRetVal.Format(_T("LEFT(%s, %d)"), sParamName.c_str(), iLength);
          break;
       default:
@@ -503,6 +508,7 @@ namespace HM
          sRetVal.Format(_T("SELECT * FROM %s LIMIT %d"), tableName.c_str(), rows);
          break;
       case DatabaseSettings::TypeMYSQLServer:
+      case DatabaseSettings::TypeMariaDbServer:
          sRetVal.Format(_T("SELECT * FROM %s LIMIT 0, %d"), tableName.c_str(), rows);
          break;
       default:
@@ -523,6 +529,7 @@ namespace HM
       switch (DBType)
       {
       case DatabaseSettings::TypeMYSQLServer:
+      case DatabaseSettings::TypeMariaDbServer:
          sRetVal.Format(_T("DATE_ADD(CONCAT(CURDATE(), ' ', CURTIME()), INTERVAL %d MINUTE)"), iMinutes);
          break;
       case DatabaseSettings::TypeMSSQLServer:
@@ -550,7 +557,7 @@ namespace HM
 
       HM::DatabaseSettings::SQLDBType iType = IniFileSettings::Instance()->GetDatabaseType();
 
-      if (iType == DatabaseSettings::TypeMYSQLServer || iType == DatabaseSettings::TypePGServer)
+      if (iType == DatabaseSettings::TypeMYSQLServer || iType == DatabaseSettings::TypePGServer || iType == DatabaseSettings::TypeMariaDbServer)
          sRetVal.Replace(_T("\\"), _T("\\\\"));
 
       return sRetVal;

@@ -114,7 +114,10 @@ typedef
 	hDBTypePostgreSQL = 3,
 
 	[helpstring("Database type Microsoft SQL Server Compact Edition.")]
-	hDBTypeMSSQLCE = 4,
+	hDBTypeMSSQLCE = 4, 
+
+	[helpstring("Database type MariaDB.")]
+	hDBTypeMariaDB = 5,
 
 
 } eDBtype;

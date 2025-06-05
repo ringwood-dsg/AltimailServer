@@ -370,10 +370,13 @@ xcopy /F /Y $(ProjectDir)..\..\..\..\libraries\libmariadb\*.dll $(OutDir)
     <ClCompile Include="..\Common\SQL\IPAddressSQLHelper.cpp" />
     <ClCompile Include="..\Common\SQL\Macros\Macro.cpp" />
     <ClCompile Include="..\Common\SQL\Macros\MacroParser.cpp" />
+    <ClCompile Include="..\Common\SQL\Macros\MariaDBMacroExpander.cpp" />
     <ClCompile Include="..\Common\SQL\Macros\MSSQLMacroExpander.cpp" />
     <ClCompile Include="..\Common\SQL\Macros\MySQLMacroExpander.cpp" />
     <ClCompile Include="..\Common\SQL\Macros\PGSQLMacroExpander.cpp" />
     <ClCompile Include="..\Common\SQL\Macros\SQLCEMacroExpander.cpp" />
+    <ClCompile Include="..\Common\SQL\MariaDBConnection.cpp" />
+    <ClCompile Include="..\Common\SQL\MariaDBRecordset.cpp" />
     <ClCompile Include="..\Common\Sql\MySQLConnection.cpp" />
     <ClCompile Include="..\Common\SQL\MySQLInterface.cpp" />
     <ClCompile Include="..\Common\Sql\MySQLRecordset.cpp" />
@@ -869,10 +872,13 @@ xcopy /F /Y $(ProjectDir)..\..\..\..\libraries\libmariadb\*.dll $(OutDir)
     <ClInclude Include="..\Common\SQL\Macros\IMacroExpander.h" />
     <ClInclude Include="..\Common\SQL\Macros\Macro.h" />
     <ClInclude Include="..\Common\SQL\Macros\MacroParser.h" />
+    <ClInclude Include="..\Common\SQL\Macros\MariaDBMacroExpander.h" />
     <ClInclude Include="..\Common\SQL\Macros\MSSQLMacroExpander.h" />
     <ClInclude Include="..\Common\SQL\Macros\MySQLMacroExpander.h" />
     <ClInclude Include="..\Common\SQL\Macros\PGSQLMacroExpander.h" />
     <ClInclude Include="..\Common\SQL\Macros\SQLCEMacroExpander.h" />
+    <ClInclude Include="..\Common\SQL\MariaDBConnection.h" />
+    <ClInclude Include="..\Common\SQL\MariaDBRecordset.h" />
     <ClInclude Include="..\Common\Sql\MySQLConnection.h" />
     <ClInclude Include="..\Common\SQL\MySQLInterface.h" />
     <ClInclude Include="..\Common\Sql\MySQLRecordset.h" />

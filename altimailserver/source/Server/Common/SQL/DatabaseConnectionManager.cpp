@@ -10,8 +10,9 @@
 
 #include "ADORecordset.h"
 #include "MySQLRecordset.h"
+#include "MariaDBRecordset.h"
 #include "PGRecordset.h"
-#include "SQLCERecordset.h"
+#include "SQLCERecordset.h" //to be deprecated soon! Replace with localdb.
 #include "MySQLInterface.h"
 
 #include "SQLCommand.h"

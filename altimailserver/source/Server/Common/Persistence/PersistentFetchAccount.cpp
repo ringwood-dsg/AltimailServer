@@ -216,6 +216,7 @@ namespace HM
       switch (IniFileSettings::Instance()->GetDatabaseType())
       {
       case DatabaseSettings::TypeMYSQLServer:
+      case DatabaseSettings::TypeMariaDbServer:
          command.SetQueryString(_T("update hm_fetchaccounts set fanexttry = DATE_ADD(CONCAT(CURDATE(), ' ', CURTIME()), INTERVAL faminutes MINUTE) where faid = @FAID"));
          break;
       case DatabaseSettings::TypeMSSQLServer:

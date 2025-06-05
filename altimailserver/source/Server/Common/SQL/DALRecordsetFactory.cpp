@@ -5,6 +5,7 @@
 #include "DALRecordsetFactory.h"
 #include "ADORecordset.h"
 #include "MySQLRecordset.h"
+#include "MariaDBRecordset.h"
 
 #ifdef _DEBUG
 #define DEBUG_NEW new(_NORMAL_BLOCK, __FILE__, __LINE__)

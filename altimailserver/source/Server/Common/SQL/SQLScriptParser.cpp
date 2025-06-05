@@ -45,6 +45,7 @@ namespace HM
          sCommandSeparator = "\r\n\r\n"; //TODO: We need to assess using \n\n here too.
          break;
       case HM::DatabaseSettings::TypeMYSQLServer:
+      case HM::DatabaseSettings::TypeMariaDbServer:
          sCommandSeparator = "\r\n\r\n"; //This is causing errors in MariaDB using MySql connector x64. It **does** work with \n\n -> 5.8.1
          break;
       case HM::DatabaseSettings::TypePGServer:

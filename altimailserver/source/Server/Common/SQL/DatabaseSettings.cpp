@@ -45,6 +45,7 @@ namespace HM
          sFile = "CreateTablesMSSQL.sql";
          break;
       case TypeMYSQLServer:
+      case TypeMariaDbServer:
          sFile = "CreateTablesMYSQL.sql";
          break;
       case TypePGServer:
@@ -66,6 +67,8 @@ namespace HM
       {
       case TypeMYSQLServer:
          return "MySQL";
+      case TypeMariaDbServer:
+         return "MariaDB";
       case TypeMSSQLServer:
          return "MSSQL";
       case TypePGServer:

@@ -352,6 +352,7 @@ namespace HM
       switch (IniFileSettings::Instance()->GetDatabaseType())
       {
       case DatabaseSettings::TypeMYSQLServer:
+      case DatabaseSettings::TypeMariaDbServer:
          iSize = (__int64) pRS->GetDoubleValue("mailboxsize");;
          break;
       case DatabaseSettings::TypeMSSQLServer:

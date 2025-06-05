@@ -300,7 +300,7 @@ namespace HM
                 "where messageaccountid in "
                 "(select accountdomainid from hm_accounts where accountdomainid = @DOMAINID) ";
       }
-      else if (DBType == DatabaseSettings::TypeMYSQLServer)
+      else if (DBType == DatabaseSettings::TypeMYSQLServer || DBType == DatabaseSettings::TypeMariaDbServer)
       {
          sSQL = "select sum(messagesize) as size from hm_messages "
                 "inner join hm_accounts on "

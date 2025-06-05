@@ -101,6 +101,8 @@ namespace HM
          sqldbtype_ = HM::DatabaseSettings::TypeMSSQLServer;
       else if (sDatabaseType.CompareNoCase(_T("MYSQL")) == 0)
          sqldbtype_ = HM::DatabaseSettings::TypeMYSQLServer;
+      else if (sDatabaseType.CompareNoCase(_T("MariaDB")) == 0)
+         sqldbtype_ = HM::DatabaseSettings::TypeMariaDbServer;
       else if (sDatabaseType.CompareNoCase(_T("PostgreSQL")) == 0)
          sqldbtype_ = HM::DatabaseSettings::TypePGServer;
       else if (sDatabaseType.CompareNoCase(_T("MSSQLCE")) == 0)
@@ -131,6 +133,7 @@ namespace HM
       no_of_dbconnection_attempts_ = ReadIniSettingInteger_("Database", "ConnectionAttempts", 6);  
       no_of_dbconnection_attempts_Delay = ReadIniSettingInteger_("Database", "ConnectionAttemptsDelay", 5);  
       
+      //TODO: We need to replace this with localdb!
       if (sqldbtype_ == HM::DatabaseSettings::TypeMSSQLCompactEdition)
       {
          // Always use one database connection when working with SQL CE. SQL CE is supposed
@@ -493,6 +496,9 @@ namespace HM
           break;
       case HM::DatabaseSettings::TypeMYSQLServer:
          sDatabaseType = _T("MYSQL");
+         break;
+      case HM::DatabaseSettings::TypeMariaDbServer:
+         sDatabaseType = _T("MariaDB");
          break;
       case HM::DatabaseSettings::TypePGServer:
          sDatabaseType = _T("PostgreSQL");

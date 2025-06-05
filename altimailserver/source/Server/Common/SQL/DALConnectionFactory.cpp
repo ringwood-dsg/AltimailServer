@@ -5,8 +5,9 @@
 #include "DALConnectionFactory.h"
 #include "ADOConnection.h"
 #include "MySQLConnection.h"
+#include "MariaDBConnection.h"
 #include "PGConnection.h"
-#include "SQLCEConnection.h"
+#include "SQLCEConnection.h" //To be deprecated soon! Use localdb instead.
 #include "DatabaseSettings.h"
 
 #ifdef _DEBUG
@@ -41,6 +42,9 @@ namespace HM
          break;
       case HM::DatabaseSettings::TypeMYSQLServer:
          pConn = std::shared_ptr<MySQLConnection>(new MySQLConnection(pSettings));
+         break;
+      case HM::DatabaseSettings::TypeMariaDbServer:
+         pConn = std::shared_ptr<MariaDBConnection>(new MariaDBConnection(pSettings));
          break;
       case HM::DatabaseSettings::TypePGServer:
          pConn = std::shared_ptr<PGConnection>(new PGConnection(pSettings));
