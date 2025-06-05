@@ -1,4 +1,15 @@
 ﻿#pragma once
+/*VERSION README (IMPORTANT):
+
+We use semantic versioning. The components are [Major].[Minor].[Revision].[Build] where
+[Major] = New and BREAKING changes.
+[Minor] = New features not vital to the operation including any bug fixes. Could be new features tested without any massive issues.
+[Revision] = Used AFTER a release was published. Incremental build number to indicate the after-release build number.
+[Build] = YYMM.BUILD_NO where BUILD_NO is incremental for each build and independent of [Revision].
+e.g. 6.1.2.2506 => Major = 6, Minor = 1, Revision = 2 (2nd build after release), Build = 2506 (June 2025)
+
+*/
+
 #define ALTIMAILSERVER_VERSION "6.0.0" 
 #define ALTIMAILSERVER_VERSION_NUMERIC 6,0,0,2506
 #define ALTIMAILSERVER_BUILD "2506.1" /*YYMM.BUILD_NO where BUILD_NO is always incremented with each build/release.*/
