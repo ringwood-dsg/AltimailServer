@@ -1,5 +1,5 @@
-// Copyright (c) 2010 Martin Knafve / AltimailServer.com.  
-// http://www.AltimailServer.com
+// Copyright (c) 2010 Martin Knafve / hmailserver.com.  
+// http://www.hmailserver.com
 
 using AltimailServer.Administrator.Dialogs;
 using AltimailServer.Administrator.Nodes;
@@ -122,7 +122,7 @@ namespace AltimailServer.Administrator
 
          // If out-of-office is not currently enabled, change the date to today. This makes it easier
          // for users to configure their out-of-office.
-         // http://www.AltimailServer.com/forum/viewtopic.php?f=7&t=17353
+         // http://www.hmailserver.com/forum/viewtopic.php?f=7&t=17353
          //
          if (!checkVacationMessageExpires.Checked)
          {

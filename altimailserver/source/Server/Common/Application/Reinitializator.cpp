@@ -1,4 +1,4 @@
-// Copyright (c) 2010 Martin Knafve / altimailserver.org.  
+// Copyright (c) 2010 Martin Knafve / hmailserver.com.  
 // http://www.hmailserver.com
 // This class is a bit whacky. The single purpose of it is to
 // reintialize the entire server. Sometimes, for example when

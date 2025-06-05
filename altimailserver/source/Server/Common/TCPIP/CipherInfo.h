@@ -1,4 +1,4 @@
-// Copyright (c) 2014 Martin Knafve / altimailserver.org.  
+// Copyright (c) 2014 Martin Knafve / hmailserver.com.  
 // http://www.hmailserver.com
 
 #pragma once

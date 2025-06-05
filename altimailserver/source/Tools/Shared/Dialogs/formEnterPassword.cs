@@ -1,12 +1,8 @@
-// Copyright (c) 2010 Martin Knafve / AltimailServer.com.  
-// http://www.AltimailServer.com
+// Copyright (c) 2010 Martin Knafve / hmailserver.com.  
+// http://www.hmailserver.com
 
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Diagnostics;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace AltimailServer.Shared
@@ -50,7 +46,7 @@ namespace AltimailServer.Shared
 
       private void linkWhatIsThis_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
       {
-         Process.Start("https://www.AltimailServer.com/documentation/latest/?page=reference_dialoghelp_hmailserver_password");
+         Process.Start("https://www.hmailserver.com/documentation/latest/?page=reference_dialoghelp_hmailserver_password");
       }
    }
 }

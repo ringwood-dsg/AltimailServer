@@ -1,5 +1,5 @@
 
-// Copyright (c) 2010 Martin Knafve / altimailserver.org.  
+// Copyright (c) 2010 Martin Knafve / hmailserver.com.  
 // http://www.hmailserver.com
 
 #include "stdafx.h"

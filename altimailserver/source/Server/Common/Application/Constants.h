@@ -1,4 +1,4 @@
-// Copyright (c) 2010 Martin Knafve / altimailserver.org.  
+// Copyright (c) 2010 Martin Knafve / hmailserver.com.  
 // http://www.hmailserver.com
 
 #define PROPERTY_MAXPOP3CONNECTIONS             _T("maxpop3connections")

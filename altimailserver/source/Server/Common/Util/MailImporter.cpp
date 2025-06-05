@@ -1,4 +1,4 @@
-// Copyright (c) 2006 Martin Knafve / altimailserver.org.  
+// Copyright (c) 2006 Martin Knafve / hmailserver.com.  
 // http://www.hmailserver.com
 
 #include "StdAfx.h"

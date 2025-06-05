@@ -1,5 +1,5 @@
-﻿// Copyright (c) 2010 Martin Knafve / AltimailServer.com.  
-// http://www.AltimailServer.com
+﻿// Copyright (c) 2010 Martin Knafve / hmailserver.com.  
+// http://www.hmailserver.com
 
 using System.Collections.Generic;
 

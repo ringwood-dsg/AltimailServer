@@ -1,4 +1,4 @@
-// Copyright (c) 2008 Martin Knafve / altimailserver.org.  
+// Copyright (c) 2008 Martin Knafve / hmailserver.com.  
 // http://www.hmailserver.com
 // Created 2008-08-12
 

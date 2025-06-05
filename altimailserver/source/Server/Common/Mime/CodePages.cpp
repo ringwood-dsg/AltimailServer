@@ -1,4 +1,4 @@
-// Copyright (c) 2007 Martin Knafve / altimailserver.org.  
+// Copyright (c) 2007 Martin Knafve / hmailserver.com.  
 // http://www.hmailserver.com
 //
 // Contains mapping between character sets and code pages
