@@ -1,0 +1,24 @@
+HKCR
+{
+	AltimailServer.EventLog.1 = s 'EventLog Class'
+	{
+		CLSID = s '{9A843A3D-BFCE-4EE1-9C28-64222C3F0436}'
+	}
+	AltimailServer.EventLog = s 'EventLog Class'
+	{
+		CLSID = s '{9A843A3D-BFCE-4EE1-9C28-64222C3F0436}'
+		CurVer = s 'AltimailServer.EventLog.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {9A843A3D-BFCE-4EE1-9C28-64222C3F0436} = s 'EventLog Class'
+		{
+			ProgID = s 'AltimailServer.EventLog.1'
+			VersionIndependentProgID = s 'AltimailServer.EventLog'
+			ForceRemove 'Programmable'
+			LocalServer32 = s '%MODULE%'
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{5DF0577A-9FAF-4472-B083-B38207DD848B}'
+		}
+	}
+}

@@ -1,0 +1,24 @@
+HKCR
+{
+	AltimailServer.DistributionLists.1 = s 'DistributionLists Class'
+	{
+		CLSID = s '{3B86F73C-83C5-4100-AEEC-C22EA0C9FB9E}'
+	}
+	AltimailServer.DistributionLists = s 'DistributionLists Class'
+	{
+		CLSID = s '{3B86F73C-83C5-4100-AEEC-C22EA0C9FB9E}'
+		CurVer = s 'AltimailServer.DistributionLists.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {3B86F73C-83C5-4100-AEEC-C22EA0C9FB9E} = s 'DistributionLists Class'
+		{
+			ProgID = s 'AltimailServer.DistributionLists.1'
+			VersionIndependentProgID = s 'AltimailServer.DistributionLists'
+			ForceRemove 'Programmable'
+			LocalServer32 = s '%MODULE%'
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{5DF0577A-9FAF-4472-B083-B38207DD848B}'
+		}
+	}
+}

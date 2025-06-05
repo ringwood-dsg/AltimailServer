@@ -1,0 +1,24 @@
+HKCR
+{
+	AltimailServer.Scripting.1 = s 'Scripting Class'
+	{
+		CLSID = s '{47A0A3FB-035E-402A-97F5-526AC4D3709A}'
+	}
+	AltimailServer.Scripting = s 'Scripting Class'
+	{
+		CLSID = s '{47A0A3FB-035E-402A-97F5-526AC4D3709A}'
+		CurVer = s 'AltimailServer.Scripting.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {47A0A3FB-035E-402A-97F5-526AC4D3709A} = s 'Scripting Class'
+		{
+			ProgID = s 'AltimailServer.Scripting.1'
+			VersionIndependentProgID = s 'AltimailServer.Scripting'
+			ForceRemove 'Programmable'
+			LocalServer32 = s '%MODULE%'
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{5DF0577A-9FAF-4472-B083-B38207DD848B}'
+		}
+	}
+}

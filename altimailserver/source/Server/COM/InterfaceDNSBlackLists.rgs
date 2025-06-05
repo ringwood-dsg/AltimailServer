@@ -1,0 +1,24 @@
+HKCR
+{
+	AltimailServer.DNSBlackLists.1 = s 'DNSBlackLists Class'
+	{
+		CLSID = s '{70C63DBC-1087-4AB4-A06E-C583AC4DC957}'
+	}
+	AltimailServer.DNSBlackLists = s 'DNSBlackLists Class'
+	{
+		CLSID = s '{70C63DBC-1087-4AB4-A06E-C583AC4DC957}'
+		CurVer = s 'AltimailServer.DNSBlackLists.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {70C63DBC-1087-4AB4-A06E-C583AC4DC957} = s 'DNSBlackLists Class'
+		{
+			ProgID = s 'AltimailServer.DNSBlackLists.1'
+			VersionIndependentProgID = s 'AltimailServer.DNSBlackLists'
+			ForceRemove 'Programmable'
+			LocalServer32 = s '%MODULE%'
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{5DF0577A-9FAF-4472-B083-B38207DD848B}'
+		}
+	}
+}

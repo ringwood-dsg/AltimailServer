@@ -1,0 +1,24 @@
+HKCR
+{
+	AltimailServer.SecurityRanges.1 = s 'SecurityRanges Class'
+	{
+		CLSID = s '{99C7154E-7709-4E47-A0AF-17FA954CA7EE}'
+	}
+	AltimailServer.SecurityRanges = s 'SecurityRanges Class'
+	{
+		CLSID = s '{99C7154E-7709-4E47-A0AF-17FA954CA7EE}'
+		CurVer = s 'AltimailServer.SecurityRanges.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {99C7154E-7709-4E47-A0AF-17FA954CA7EE} = s 'SecurityRanges Class'
+		{
+			ProgID = s 'AltimailServer.SecurityRanges.1'
+			VersionIndependentProgID = s 'AltimailServer.SecurityRanges'
+			ForceRemove 'Programmable'
+			LocalServer32 = s '%MODULE%'
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{5DF0577A-9FAF-4472-B083-B38207DD848B}'
+		}
+	}
+}

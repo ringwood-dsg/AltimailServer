@@ -1,0 +1,24 @@
+HKCR
+{
+	AltimailServer.GlobalObjects.1 = s 'GlobalObjects Class'
+	{
+		CLSID = s '{200608D6-9849-49A4-9474-E7880B3E56FF}'
+	}
+	AltimailServer.GlobalObjects = s 'GlobalObjects Class'
+	{
+		CLSID = s '{200608D6-9849-49A4-9474-E7880B3E56FF}'
+		CurVer = s 'AltimailServer.GlobalObjects.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {200608D6-9849-49A4-9474-E7880B3E56FF} = s 'GlobalObjects Class'
+		{
+			ProgID = s 'AltimailServer.GlobalObjects.1'
+			VersionIndependentProgID = s 'AltimailServer.GlobalObjects'
+			ForceRemove 'Programmable'
+			LocalServer32 = s '%MODULE%'
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{5DF0577A-9FAF-4472-B083-B38207DD848B}'
+		}
+	}
+}

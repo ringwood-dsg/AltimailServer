@@ -1,0 +1,24 @@
+HKCR
+{
+	AltimailServer.RouteAddress.1 = s 'RouteAddress Class'
+	{
+		CLSID = s '{A110E007-40F7-440E-B6FB-EAD917E2563F}'
+	}
+	AltimailServer.RouteAddress = s 'RouteAddress Class'
+	{
+		CLSID = s '{A110E007-40F7-440E-B6FB-EAD917E2563F}'
+		CurVer = s 'AltimailServer.RouteAddress.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {A110E007-40F7-440E-B6FB-EAD917E2563F} = s 'RouteAddress Class'
+		{
+			ProgID = s 'AltimailServer.RouteAddress.1'
+			VersionIndependentProgID = s 'AltimailServer.RouteAddress'
+			ForceRemove 'Programmable'
+			LocalServer32 = s '%MODULE%'
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{5DF0577A-9FAF-4472-B083-B38207DD848B}'
+		}
+	}
+}

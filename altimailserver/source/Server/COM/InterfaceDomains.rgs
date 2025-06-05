@@ -1,0 +1,24 @@
+HKCR
+{
+	AltimailServer.Domains.1 = s 'Domains Class'
+	{
+		CLSID = s '{006EF958-6CDC-4486-BC96-ACFF9DA6D975}'
+	}
+	AltimailServer.Domains = s 'Domains Class'
+	{
+		CLSID = s '{006EF958-6CDC-4486-BC96-ACFF9DA6D975}'
+		CurVer = s 'AltimailServer.Domains.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {006EF958-6CDC-4486-BC96-ACFF9DA6D975} = s 'Domains Class'
+		{
+			ProgID = s 'AltimailServer.Domains.1'
+			VersionIndependentProgID = s 'AltimailServer.Domains'
+			ForceRemove 'Programmable'
+			LocalServer32 = s '%MODULE%'
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{5DF0577A-9FAF-4472-B083-B38207DD848B}'
+		}
+	}
+}

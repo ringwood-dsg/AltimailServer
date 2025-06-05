@@ -1,0 +1,24 @@
+HKCR
+{
+	AltimailServer.BlockedAttachment.1 = s 'BlockedAttachment Class'
+	{
+		CLSID = s '{131E8DBC-EADD-46DD-AF22-BCF67D01E25B}'
+	}
+	AltimailServer.BlockedAttachment = s 'BlockedAttachment Class'
+	{
+		CLSID = s '{131E8DBC-EADD-46DD-AF22-BCF67D01E25B}'
+		CurVer = s 'AltimailServer.BlockedAttachment.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {131E8DBC-EADD-46DD-AF22-BCF67D01E25B} = s 'BlockedAttachment Class'
+		{
+			ProgID = s 'AltimailServer.BlockedAttachment.1'
+			VersionIndependentProgID = s 'AltimailServer.BlockedAttachment'
+			ForceRemove 'Programmable'
+			LocalServer32 = s '%MODULE%'
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{5DF0577A-9FAF-4472-B083-B38207DD848B}'
+		}
+	}
+}

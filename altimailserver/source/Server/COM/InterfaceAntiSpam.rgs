@@ -1,0 +1,24 @@
+HKCR
+{
+	AltimailServer.AntiSpam.1 = s 'AntiSpam Class'
+	{
+		CLSID = s '{CF184C4A-D307-4462-96A1-A2CD976FB427}'
+	}
+	AltimailServer.AntiSpam = s 'AntiSpam Class'
+	{
+		CLSID = s '{CF184C4A-D307-4462-96A1-A2CD976FB427}'
+		CurVer = s 'AltimailServer.AntiSpam.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {CF184C4A-D307-4462-96A1-A2CD976FB427} = s 'AntiSpam Class'
+		{
+			ProgID = s 'AltimailServer.AntiSpam.1'
+			VersionIndependentProgID = s 'AltimailServer.AntiSpam'
+			ForceRemove 'Programmable'
+			LocalServer32 = s '%MODULE%'
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{5DF0577A-9FAF-4472-B083-B38207DD848B}'
+		}
+	}
+}

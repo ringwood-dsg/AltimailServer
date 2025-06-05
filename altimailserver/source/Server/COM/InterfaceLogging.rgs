@@ -1,0 +1,24 @@
+HKCR
+{
+	AltimailServer.Logging.1 = s 'Logging Class'
+	{
+		CLSID = s '{5B5B8DBA-90DF-4146-9266-BEE442EB9907}'
+	}
+	AltimailServer.Logging = s 'Logging Class'
+	{
+		CLSID = s '{5B5B8DBA-90DF-4146-9266-BEE442EB9907}'
+		CurVer = s 'AltimailServer.Logging.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {5B5B8DBA-90DF-4146-9266-BEE442EB9907} = s 'Logging Class'
+		{
+			ProgID = s 'AltimailServer.Logging.1'
+			VersionIndependentProgID = s 'AltimailServer.Logging'
+			ForceRemove 'Programmable'
+			LocalServer32 = s '%MODULE%'
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{5DF0577A-9FAF-4472-B083-B38207DD848B}'
+		}
+	}
+}

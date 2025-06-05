@@ -1,0 +1,24 @@
+HKCR
+{
+	AltimailServer.RuleAction.1 = s 'RuleAction Class'
+	{
+		CLSID = s '{F2DB7440-D603-42D1-B9C2-910D527728FD}'
+	}
+	AltimailServer.RuleAction = s 'RuleAction Class'
+	{
+		CLSID = s '{F2DB7440-D603-42D1-B9C2-910D527728FD}'
+		CurVer = s 'AltimailServer.RuleAction.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {F2DB7440-D603-42D1-B9C2-910D527728FD} = s 'RuleAction Class'
+		{
+			ProgID = s 'AltimailServer.RuleAction.1'
+			VersionIndependentProgID = s 'AltimailServer.RuleAction'
+			ForceRemove 'Programmable'
+			LocalServer32 = s '%MODULE%'
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{5DF0577A-9FAF-4472-B083-B38207DD848B}'
+		}
+	}
+}

@@ -1,0 +1,24 @@
+HKCR
+{
+	AltimailServer.MessageHeaders.1 = s 'MessageHeaders Class'
+	{
+		CLSID = s '{3D83ECDA-666C-438E-80BA-ED67D0527E60}'
+	}
+	AltimailServer.MessageHeaders = s 'MessageHeaders Class'
+	{
+		CLSID = s '{3D83ECDA-666C-438E-80BA-ED67D0527E60}'
+		CurVer = s 'AltimailServer.MessageHeaders.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {3D83ECDA-666C-438E-80BA-ED67D0527E60} = s 'MessageHeaders Class'
+		{
+			ProgID = s 'AltimailServer.MessageHeaders.1'
+			VersionIndependentProgID = s 'AltimailServer.MessageHeaders'
+			ForceRemove 'Programmable'
+			LocalServer32 = s '%MODULE%'
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{5DF0577A-9FAF-4472-B083-B38207DD848B}'
+		}
+	}
+}

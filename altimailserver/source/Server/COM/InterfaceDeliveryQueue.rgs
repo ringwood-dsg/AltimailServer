@@ -1,0 +1,24 @@
+HKCR
+{
+	AltimailServer.DeliveryQueue.1 = s 'DeliveryQueue Class'
+	{
+		CLSID = s '{377B5CD7-D4C9-406C-A804-8804332BF5F0}'
+	}
+	AltimailServer.DeliveryQueue = s 'DeliveryQueue Class'
+	{
+		CLSID = s '{377B5CD7-D4C9-406C-A804-8804332BF5F0}'
+		CurVer = s 'AltimailServer.DeliveryQueue.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {377B5CD7-D4C9-406C-A804-8804332BF5F0} = s 'DeliveryQueue Class'
+		{
+			ProgID = s 'AltimailServer.DeliveryQueue.1'
+			VersionIndependentProgID = s 'AltimailServer.DeliveryQueue'
+			ForceRemove 'Programmable'
+			LocalServer32 = s '%MODULE%'
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{5DF0577A-9FAF-4472-B083-B38207DD848B}'
+		}
+	}
+}

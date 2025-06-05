@@ -1,0 +1,26 @@
+HKCR
+{
+	AltimailServer.DiagnosticResult.1 = s 'DiagnosticResult Class'
+	{
+		CLSID = s '{DD510567-2582-45B0-B839-32B992D7F9C8}'
+	}
+	AltimailServer.DiagnosticResult = s 'DiagnosticResult Class'
+	{
+		CLSID = s '{DD510567-2582-45B0-B839-32B992D7F9C8}'
+		CurVer = s 'AltimailServer.DiagnosticResult.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {DD510567-2582-45B0-B839-32B992D7F9C8} = s 'DiagnosticResult Class'
+		{
+			ProgID = s 'AltimailServer.DiagnosticResult.1'
+			VersionIndependentProgID = s 'AltimailServer.DiagnosticResult'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{E89A9B6A-8310-4AA4-865D-FADA515A82FC}'
+		}
+	}
+}

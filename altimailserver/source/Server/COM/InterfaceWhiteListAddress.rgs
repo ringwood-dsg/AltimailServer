@@ -1,0 +1,24 @@
+HKCR
+{
+	AltimailServer.WhiteListAddress.1 = s 'WhiteListAddress Class'
+	{
+		CLSID = s '{455FA581-DD15-48D7-BEB1-8575FE977BC0}'
+	}
+	AltimailServer.WhiteListAddress = s 'WhiteListAddress Class'
+	{
+		CLSID = s '{455FA581-DD15-48D7-BEB1-8575FE977BC0}'
+		CurVer = s 'AltimailServer.WhiteListAddress.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {455FA581-DD15-48D7-BEB1-8575FE977BC0} = s 'WhiteListAddress Class'
+		{
+			ProgID = s 'AltimailServer.WhiteListAddress.1'
+			VersionIndependentProgID = s 'AltimailServer.WhiteListAddress'
+			ForceRemove 'Programmable'
+			LocalServer32 = s '%MODULE%'
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{5DF0577A-9FAF-4472-B083-B38207DD848B}'
+		}
+	}
+}

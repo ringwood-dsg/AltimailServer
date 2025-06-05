@@ -1,0 +1,24 @@
+HKCR
+{
+	AltimailServer.RuleCriterias.1 = s 'RuleCriterias Class'
+	{
+		CLSID = s '{D8E7C0D6-8647-4858-9654-85FE1F64B23E}'
+	}
+	AltimailServer.RuleCriterias = s 'RuleCriterias Class'
+	{
+		CLSID = s '{D8E7C0D6-8647-4858-9654-85FE1F64B23E}'
+		CurVer = s 'AltimailServer.RuleCriterias.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {D8E7C0D6-8647-4858-9654-85FE1F64B23E} = s 'RuleCriterias Class'
+		{
+			ProgID = s 'AltimailServer.RuleCriterias.1'
+			VersionIndependentProgID = s 'AltimailServer.RuleCriterias'
+			ForceRemove 'Programmable'
+			LocalServer32 = s '%MODULE%'
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{5DF0577A-9FAF-4472-B083-B38207DD848B}'
+		}
+	}
+}

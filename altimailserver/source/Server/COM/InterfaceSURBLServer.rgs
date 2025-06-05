@@ -1,0 +1,24 @@
+HKCR
+{
+	AltimailServer.SURBLServer.1 = s 'SURBLServer Class'
+	{
+		CLSID = s '{EA9E4C99-DCFF-45ED-AA99-BB4D12A6C4CB}'
+	}
+	AltimailServer.SURBLServer = s 'SURBLServer Class'
+	{
+		CLSID = s '{EA9E4C99-DCFF-45ED-AA99-BB4D12A6C4CB}'
+		CurVer = s 'AltimailServer.SURBLServer.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {EA9E4C99-DCFF-45ED-AA99-BB4D12A6C4CB} = s 'SURBLServer Class'
+		{
+			ProgID = s 'AltimailServer.SURBLServer.1'
+			VersionIndependentProgID = s 'AltimailServer.SURBLServer'
+			ForceRemove 'Programmable'
+			LocalServer32 = s '%MODULE%'
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{5DF0577A-9FAF-4472-B083-B38207DD848B}'
+		}
+	}
+}

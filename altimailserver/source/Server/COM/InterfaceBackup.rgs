@@ -1,0 +1,24 @@
+HKCR
+{
+	AltimailServer.Backup.1 = s 'Backup Class'
+	{
+		CLSID = s '{F3AB9470-A8F2-4486-8A68-AA0231607390}'
+	}
+	AltimailServer.Backup = s 'Backup Class'
+	{
+		CLSID = s '{F3AB9470-A8F2-4486-8A68-AA0231607390}'
+		CurVer = s 'AltimailServer.Backup.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {F3AB9470-A8F2-4486-8A68-AA0231607390} = s 'Backup Class'
+		{
+			ProgID = s 'AltimailServer.Backup.1'
+			VersionIndependentProgID = s 'AltimailServer.Backup'
+			ForceRemove 'Programmable'
+			LocalServer32 = s '%MODULE%'
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{5DF0577A-9FAF-4472-B083-B38207DD848B}'
+		}
+	}
+}

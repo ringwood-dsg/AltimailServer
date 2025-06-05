@@ -1,0 +1,24 @@
+HKCR
+{
+	AltimailServer.Attachments.1 = s 'Attachments Class'
+	{
+		CLSID = s '{F9C4A8C0-3A36-410D-A090-59ECC7D547B6}'
+	}
+	AltimailServer.Attachments = s 'Attachments Class'
+	{
+		CLSID = s '{F9C4A8C0-3A36-410D-A090-59ECC7D547B6}'
+		CurVer = s 'AltimailServer.Attachments.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {F9C4A8C0-3A36-410D-A090-59ECC7D547B6} = s 'Attachments Class'
+		{
+			ProgID = s 'AltimailServer.Attachments.1'
+			VersionIndependentProgID = s 'AltimailServer.Attachments'
+			ForceRemove 'Programmable'
+			LocalServer32 = s '%MODULE%'
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{5DF0577A-9FAF-4472-B083-B38207DD848B}'
+		}
+	}
+}

@@ -1,0 +1,24 @@
+HKCR
+{
+	AltimailServer.Utilities.1 = s 'Utilities Class'
+	{
+		CLSID = s '{CECA6B7F-6454-4011-B505-F0B07BF72EE0}'
+	}
+	AltimailServer.Utilities = s 'Utilities Class'
+	{
+		CLSID = s '{CECA6B7F-6454-4011-B505-F0B07BF72EE0}'
+		CurVer = s 'AltimailServer.Utilities.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {CECA6B7F-6454-4011-B505-F0B07BF72EE0} = s 'Utilities Class'
+		{
+			ProgID = s 'AltimailServer.Utilities.1'
+			VersionIndependentProgID = s 'AltimailServer.Utilities'
+			ForceRemove 'Programmable'
+			LocalServer32 = s '%MODULE%'
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{5DF0577A-9FAF-4472-B083-B38207DD848B}'
+		}
+	}
+}

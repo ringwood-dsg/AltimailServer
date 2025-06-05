@@ -1,4 +1,2 @@
-hmailserver-dependencies-v1
-===========================
-
-This repository contains hMailServer external dependencies. These dependencies are required to compile hMailServer.
+# Altimail Server Dependencies
+This folder contains dependencies needed to compile and run Altimail Server.

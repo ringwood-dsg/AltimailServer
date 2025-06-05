@@ -1,0 +1,24 @@
+HKCR
+{
+	AltimailServer.AntiVirus.1 = s 'AntiVirus Class'
+	{
+		CLSID = s '{04ECABC3-3422-45AD-A5F7-3E70DA39561A}'
+	}
+	AltimailServer.AntiVirus = s 'AntiVirus Class'
+	{
+		CLSID = s '{04ECABC3-3422-45AD-A5F7-3E70DA39561A}'
+		CurVer = s 'AltimailServer.AntiVirus.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {04ECABC3-3422-45AD-A5F7-3E70DA39561A} = s 'AntiVirus Class'
+		{
+			ProgID = s 'AltimailServer.AntiVirus.1'
+			VersionIndependentProgID = s 'AltimailServer.AntiVirus'
+			ForceRemove 'Programmable'
+			LocalServer32 = s '%MODULE%'
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{5DF0577A-9FAF-4472-B083-B38207DD848B}'
+		}
+	}
+}

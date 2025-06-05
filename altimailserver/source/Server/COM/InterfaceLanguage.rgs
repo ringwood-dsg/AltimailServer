@@ -1,0 +1,24 @@
+HKCR
+{
+	AltimailServer.Language.1 = s 'Language Class'
+	{
+		CLSID = s '{CAD39F6B-1132-4C7B-826B-9126176A75AB}'
+	}
+	AltimailServer.Language = s 'Language Class'
+	{
+		CLSID = s '{CAD39F6B-1132-4C7B-826B-9126176A75AB}'
+		CurVer = s 'AltimailServer.Language.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {CAD39F6B-1132-4C7B-826B-9126176A75AB} = s 'Language Class'
+		{
+			ProgID = s 'AltimailServer.Language.1'
+			VersionIndependentProgID = s 'AltimailServer.Language'
+			ForceRemove 'Programmable'
+			LocalServer32 = s '%MODULE%'
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{5DF0577A-9FAF-4472-B083-B38207DD848B}'
+		}
+	}
+}

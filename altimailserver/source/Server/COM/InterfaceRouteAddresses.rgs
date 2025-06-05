@@ -1,0 +1,24 @@
+HKCR
+{
+	AltimailServer.RouteAddresses.1 = s 'RouteAddresses Class'
+	{
+		CLSID = s '{F572B89B-A21B-4C05-A4B0-0683FA1D8A82}'
+	}
+	AltimailServer.RouteAddresses = s 'RouteAddresses Class'
+	{
+		CLSID = s '{F572B89B-A21B-4C05-A4B0-0683FA1D8A82}'
+		CurVer = s 'AltimailServer.RouteAddresses.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {F572B89B-A21B-4C05-A4B0-0683FA1D8A82} = s 'RouteAddresses Class'
+		{
+			ProgID = s 'AltimailServer.RouteAddresses.1'
+			VersionIndependentProgID = s 'AltimailServer.RouteAddresses'
+			ForceRemove 'Programmable'
+			LocalServer32 = s '%MODULE%'
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{5DF0577A-9FAF-4472-B083-B38207DD848B}'
+		}
+	}
+}

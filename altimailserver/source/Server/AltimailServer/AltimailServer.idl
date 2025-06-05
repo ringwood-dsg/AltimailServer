@@ -1,0 +1,3551 @@
+// Altimail Server.idl : IDL source for Altimail Server
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (Altimail Server.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+// COM FORWARDS
+
+interface IInterfaceSettings;
+interface IInterfaceCache;
+interface IInterfaceDomain;
+interface IInterfaceDomains;
+interface IInterfaceAlias;
+interface IInterfaceAliases;
+interface IInterfaceAccount;
+interface IInterfaceAccounts;
+interface IInterfaceUtilities;
+interface IInterfaceDatabase;
+interface IInterfaceLinks;
+interface IInterfaceMessage;
+interface IInterfaceMessages;
+interface IInterfaceAttachments;
+interface IInterfaceAttachment;
+interface IInterfaceLogging;
+interface IInterfaceDistributionLists;
+interface IInterfaceDistributionList;
+interface IInterfaceDistributionListRecipients;
+interface IInterfaceDistributionListRecipient;
+interface IInterfaceSecurityRange;
+interface IInterfaceSecurityRanges;
+interface IInterfaceAntiVirus;
+interface IInterfaceRoute;
+interface IInterfaceRoutes;
+interface IInterfaceDNSBlackLists;
+interface IInterfaceDNSBlackList;
+interface IInterfaceRouteAddresses;
+interface IInterfaceFetchAccounts;
+interface IInterfaceFetchAccount;
+interface IInterfaceScripting;
+interface IInterfaceDomainAliases;
+interface IInterfaceDomainAlias;
+interface IInterfaceRules;
+interface IInterfaceRule;
+interface IInterfaceRuleCriterias;
+interface IInterfaceRuleCriteria;
+interface IInterfaceRuleActions;
+interface IInterfaceRuleAction;
+interface IInterfaceRecipients;
+interface IInterfaceRecipient;
+interface IInterfaceBackupSettings;
+interface IInterfaceBackupManager;
+interface IInterfaceBackup;
+interface IInterfaceGlobalObjects;
+interface IInterfaceDeliveryQueue;
+interface IInterfaceLanguage;
+interface IInterfaceIMAPFolder;
+interface IInterfaceIMAPFolders;
+interface IInterfaceSURBLServers;
+interface IInterfaceSURBLServer;
+interface IInterfaceAntiSpam;
+interface IInterfaceBlockedAttachments;
+interface IInterfaceBlockedAttachment;
+interface IInterfaceServerMessage;
+interface IInterfaceServerMessages;
+interface IInterfaceGreyListingWhiteAddress;
+interface IInterfaceGreyListingWhiteAddresses;
+interface IInterfaceTCPIPPort;
+interface IInterfaceTCPIPPorts;
+interface IInterfaceWhiteListAddress;
+interface IInterfaceWhiteListAddresses;
+interface IInterfaceMessageHeader;
+interface IInterfaceMessageHeaders;
+interface IInterfaceSSLCertificate;
+interface IInterfaceSSLCertificates;
+interface IInterfaceGroup;
+interface IInterfaceGroups;
+interface IInterfaceGroupMember;
+interface IInterfaceGroupMembers;
+interface IInterfaceIMAPFolderPermission;
+interface IInterfaceIMAPFolderPermissions;
+interface IInterfaceDirectories;
+interface IInterfaceLanguages;
+interface IInterfaceIncomingRelay;
+interface IInterfaceIncomingRelays;
+interface IInterfaceMessageIndexing;
+interface IInterfaceDiagnostics;
+interface IInterfaceDiagnosticResults;
+interface IInterfaceDiagnosticResult;
+
+// interface IInterfaceIMAPFolderACL;
+
+// 
+// ENUMS BEGIN
+//
+
+typedef
+[uuid(880DD6EC-6F65-4831-90E4-52183DBEF473),
+	helpstring("Altimail Server database types")] 
+	enum 
+{
+	[hidden]
+	hDBTypeUnknown = 0,
+
+	[helpstring("Database type MySQL.")]
+	hDBTypeMySQL = 1,
+
+	[helpstring("Database type Microsoft SQL Server.")]
+	hDBTypeMSSQL = 2,
+
+	[helpstring("Database type PostgreSQL.")]
+	hDBTypePostgreSQL = 3,
+
+	[helpstring("Database type Microsoft SQL Server Compact Edition.")]
+	hDBTypeMSSQLCE = 4,
+
+
+} eDBtype;
+
+typedef
+[uuid(BBF8A7DA-A722-401E-A729-068A6F51CB43),
+	helpstring("Antivirus actions")] 
+	enum 
+{
+	[helpstring("Delete email")]
+	hDeleteEmail = 0,
+
+	[helpstring("Delete attachments")]
+	hDeleteAttachments = 1,
+
+} eAntivirusAction;
+
+
+typedef
+[uuid(635D8198-9E53-4D6D-AA9D-BB50937E00F0),
+	helpstring("Altimail Server server state")] 
+	enum 
+{
+	[hidden]
+	hStateUnknown = 0,
+
+	[helpstring("Server is stopped.")]
+	hStateStopped = 1,
+
+	[helpstring("Server is starting.")]
+	hStateStarting = 2,
+
+	[helpstring("Server is running.")]
+	hStateRunning = 3,
+
+	[helpstring("Server is stopping.")]
+	hStateStopping = 4,
+
+
+} eServerState;
+
+typedef
+[uuid(D039DC8F-5FCC-4078-A387-90FBCDF9DA12),
+	helpstring("Altimail Server logging device")] 
+	enum 
+{
+	[hidden]
+	hLogDeviceUnknown = 0,
+
+	[helpstring("SQL logging device.")]
+	hLogDeviceSQL = 1,
+
+	[helpstring("File logging device.")]
+	hLogDeviceFile = 2,
+
+} eLogDevice;
+
+typedef
+[uuid(A4046F75-D62A-449A-A16A-F00F9C804D5F),
+	helpstring("Altimail Server log output format")] 
+	enum 
+{
+	[helpstring("Default Altimail Server log format")]
+	hLogFormatDefault = 1,
+
+	[helpstring("NCSA Common log format")]
+	hLogFormatCSA = 2,
+
+} eLogOutputFormat;
+
+
+typedef
+[uuid(C2AC39EC-D631-4F22-A6A6-F68A3D4C9AA9),
+	helpstring("Altimail Server administration level")] 
+	enum 
+{
+	[helpstring("Normal user")]
+	hAdminLevelNormal = 0,
+
+	[helpstring("Domain administrator")]
+	hAdminLevelDomainAdmin = 1,
+
+	[helpstring("Server administrator")]
+	hAdminLevelServerAdmin = 2,
+
+} eAdminLevel;
+
+// RULE ENUMS
+typedef
+[uuid(B1F4BF01-DB31-474F-920A-8DA590758C6A),
+	helpstring("Rule criteria field type")] 
+	enum 
+{
+	[helpstring("Unknown")]
+	eFTUnknown = 0,
+
+	[helpstring("From")]
+	eFTFrom = 1,
+
+	[helpstring("To")]
+	eFTTo = 2,
+
+	[helpstring("CC")]
+	eFTCC = 3,
+	
+   [helpstring("Subject")]
+	eFTSubject = 4,
+
+   [helpstring("Body")]
+	eFTBody = 5,
+
+   [helpstring("Message Size")]
+	eFTMessageSize = 6,
+
+   [helpstring("Recipient list")]
+	eFTRecipientList = 7,
+
+   [helpstring("The number of delivery attempts (including this one).")]
+	eFTDeliveryAttempts = 8,
+
+} eRulePredefinedField;
+
+typedef
+[uuid(2C60A44E-9075-4470-A70E-A1B04FF97502),
+	helpstring("Rule criteria match type")] 
+	enum 
+{
+	[helpstring("Unknown")]
+	eMTUnknown = 0,
+
+	[helpstring("Equals")]
+	eMTEquals = 1,
+
+	[helpstring("Contains")]
+	eMTContains = 2,
+
+	[helpstring("Less than")]
+	eMTLessThan = 3,
+	
+   [helpstring("Greater than")]
+	eMTGreaterThan = 4,
+
+   [helpstring("RegExMatch")]
+	eMTRegExMatch = 5,
+
+   [helpstring("Not contains")]
+	eMTNotContains = 6,
+
+   [helpstring("Not equals")]
+	eMTNotEquals = 7,
+
+   [helpstring("Wildcard match")]
+	eMTWildcard = 8,
+
+} eRuleMatchType;
+
+typedef
+[uuid(BAB5B7BA-1889-4ED9-B725-1FBCA34C4EAD),
+	helpstring("Rule action")] 
+	enum 
+{
+	[helpstring("Unknown")] 
+	eRAUnknown = 0,
+
+	[helpstring("Delete")]
+	eRADeleteEmail = 1,
+
+	[helpstring("Forward")]
+	eRAForwardEmail = 2,
+
+   [helpstring("Reply")]
+	eRAReply = 3,
+
+   [helpstring("Move to IMAP folder")]
+	eRAMoveToImapFolder = 4,
+
+   [helpstring("Run script function")]
+	eRARunScriptFunction = 5,
+
+   [helpstring("Stop rule procssing")]
+	eRAStopRuleProcessing = 6,
+
+   [helpstring("Set header value")]
+	eRASetHeaderValue = 7,
+
+   [helpstring("Send message via route")]
+	eRASendUsingRoute = 8,      
+
+   [helpstring("Create copy of message and put in queue")]
+	eRACreateCopy = 9, 
+
+   [helpstring("Bind to TCP/IP-address")]
+	eRABindToAddress = 10, 
+
+} eRuleActionType;
+
+typedef
+[uuid(F37A8404-51A9-4859-B410-5F7B7CD46DE4),
+	helpstring("Distribution list mode")] 
+	enum 
+{
+	[helpstring("Anyone can send messages to this distribution list.")] 
+	eLMPublic = 0,
+
+	[helpstring("Only members of the distribution list can send to the list.")] 
+	eLMMembership = 1,
+
+	[helpstring("List is only for announcements.")] 
+	eLMAnnouncement = 2,
+
+	[helpstring("Anyone in the domain can send to the list.")] 
+	eLMDomainMembers = 3,
+
+	[helpstring("Anyone with an account on the server can send to the list.")] 
+	eLMServerMembers = 4,
+
+} eDistributionListMode;
+
+typedef
+[uuid(92603C28-DD63-4E06-BE84-470BB24A5233),
+	helpstring("Session type")] 
+	enum 
+{
+	[helpstring("Unknown session type.")] 
+	eSTUnknown = 0,
+	[helpstring("SMTP server session.")] 
+	eSTSMTP = 1,
+	[helpstring("SMTP client session.")] 
+	eSTSMTPClient = 2,
+	[helpstring("POP3 session.")] 
+	eSTPOP3 = 3,
+	[helpstring("POP3 client session.")] 
+	eSTPOP3Client = 4,
+	[helpstring("IMAP sever session.")] 
+	eSTIMAP = 5,
+   
+} eSessionType;
+
+typedef
+[uuid(FC9C09E4-8EF3-4B4A-8A73-EF172EF47376),
+	helpstring("Connection security")] 
+	enum 
+{
+	[helpstring("None.")] 
+	eCSNone = 0,
+	[helpstring("SSL")] 
+	eCSTLS = 1,
+	[helpstring("STARTTLS (Optional).")] 
+	eCSSTARTTLSOptional = 2,
+   [helpstring("STARTTLS (Required).")] 
+	eCSSTARTTLSRequired = 3,
+} eConnectionSecurity;
+
+typedef
+[uuid(CC116E2A-23ED-48A1-8132-D46DE8DB6ECC),
+	helpstring("Signature method")] 
+	enum 
+{
+	[helpstring("Unknown method.")] 
+	eSMUnknown = 0,
+	[helpstring("Use domain signature if no signature specified in account.")] 
+	eSMSetIfNotSpecifiedInAccount = 1,
+	[helpstring("Overwrite account signature with domain signature.")] 
+	eSMOverwriteAccountSignature = 2,
+	[helpstring("Append account signature with domain signature.")] 
+	eSMAppendToAccountSignature = 3,   
+} eDomainSignatureMethod;
+
+typedef
+[uuid(CE1A6C87-E728-4396-8AF2-95FA5C4C0400),
+	helpstring("Message flags")] 
+	enum 
+{
+	[helpstring("Seen flag")] 
+	eMFSeen = 1,
+	[helpstring("Deleted flag")] 
+	eMFDeleted = 2,
+	[helpstring("Flagged flag")] 
+	eMFFlagged = 4,
+	[helpstring("Answered flag")] 
+	eMFAnswered = 8,
+	[helpstring("Draft flag")] 
+	eMFDraft = 16,
+	[helpstring("Recent flag")] 
+	eMFRecent = 32,
+	[helpstring("Virus scan")] 
+	eMFVirusScan = 64,
+    [helpstring("Spam")]
+    eMFSpam = 128,
+} eMessageFlag;
+
+typedef
+[uuid(9A9BE8B9-F1C9-45E1-9F9F-068DD1CD30E2),
+	helpstring("ACL permissions")] 
+	enum 
+{
+	[helpstring("Lookup (Mailbox is visible to LIST/LSUB commands, SUBSCRIBE mailbox)")] 
+	ePermissionLookup = 1,
+	[helpstring("Read (SELECT the mailbox, perform STATUS)")] 
+	ePermissionRead = 2,
+	[helpstring("Keep seen/unseen information across sessions")] 
+	ePermissionWriteSeen = 4,
+	[helpstring("Write (set or clear flags other than \SEEN and \DELETED via STORE, also set them during APPEND/COPY)")] 
+	ePermissionWriteOthers = 8,
+	[helpstring("Insert (perform APPEND, COPY into mailbox)")] 
+	ePermissionInsert = 16,
+	[helpstring("Post (send mail to submission address for mailbox, not enforced by IMAP4 itself)")] 
+	ePermissionPost = 32,
+	[helpstring("Create mailboxes")] 
+	ePermissionCreate = 64,
+	[helpstring("Delete mailbox")] 
+	ePermissionDeleteMailbox = 128,
+	[helpstring("Delete messages")] 
+	ePermissionWriteDeleted = 256,
+	[helpstring("Perform EXPUNGE and expunge as a part of CLOSE")] 
+	ePermissionExpunge = 512,
+	[helpstring("Administer (perform ACL commands)")] 
+	ePermissionAdminister = 1024,
+} eACLPermission;
+
+typedef
+[uuid(DE780FA2-45BA-4990-B8D6-5B31A85933EF),
+	helpstring("ACL permissions type")] 
+	enum 
+{
+	[helpstring("User permission")] 
+	ePermissionTypeUser = 0,
+	[helpstring("Group permission")] 
+	ePermissionTypeGroup = 1,
+	[helpstring("Anyone permission")] 
+	ePermissionTypeAnyone = 2
+} eACLPermissionType;
+
+   typedef
+[uuid(0A9198BB-A3BF-42D6-B11B-B2F731048054),
+	helpstring("DKIM test result")] 
+	enum 
+{
+	[helpstring("Neutral")] 
+	eDKNeutral = 0,
+	[helpstring("Pass")] 
+	eDKPass = 1,
+	[helpstring("Temporary failure")] 
+	eDKTempFail = 2,
+	[helpstring("Permanent failure")] 
+	eDKPermFail = 3
+} eDKIMResult;
+
+   typedef
+[uuid(3F05A30E-3C4B-4AAB-8F5B-9F6F3834A65D),
+	helpstring("DKIM canonicalization method")] 
+	enum 
+{
+	[helpstring("Simple")] 
+	eCanonicalizationSimple = 1,
+	[helpstring("Pass")] 
+	eCanonicalizationRelaxed = 2,
+} eDKIMCanonicalizationMethod;
+
+   typedef
+[uuid(24793139-303A-48C8-B9F8-528BDC1AD74B),
+	helpstring("DKIM algorithm")] 
+	enum 
+{
+	[helpstring("SHA1")] 
+	eSHA1 = 1,
+	[helpstring("SHA256")] 
+	eSHA256 = 2,
+} eDKIMAlgorithm;
+
+
+typedef
+[uuid(29441441-BA3F-4CEC-840D-E7E254BB5A5F),
+	helpstring("Maintenance operations")] 
+	enum 
+{
+	[helpstring("Updates the UID for IMAP folders to their current value.")] 
+	eUpdateIMAPFolderUID = 1,
+} eMaintenanceOperation;
+
+// 
+// ENUMS END
+//
+
+[
+	object,
+	uuid(36819C3F-2602-4D6D-9227-7DF42D09F742),
+	dual,
+	nonextensible,
+	helpstring("The Status object contains information on your system, such as uptime and basic statistics."),
+	pointer_default(unique)
+]
+interface IInterfaceStatus : IDispatch {
+   [propget, id(1), helpstring("Gets a list of undelivered messages.")] HRESULT UndeliveredMessages([out, retval] BSTR *pVal);
+   [propget, id(2), helpstring("Gets the server start time")] HRESULT StartTime([out, retval] BSTR *pVal);
+   [propget, id(3), helpstring("Gets the number of delivered messages")] HRESULT ProcessedMessages([out, retval] long *pVal);
+   [propget, id(4), helpstring("Gets the number of removed virues")] HRESULT RemovedViruses([out, retval] long *pVal);
+   [propget, id(5), helpstring("Gets the number of detected spam messages")] HRESULT RemovedSpamMessages([out, retval] long *pVal);
+   [propget, id(6), helpstring("Gets the current number of sessions")] HRESULT SessionCount([in] eSessionType iType, [out, retval] long *pVal);
+   [propget, id(7), helpstring("Gets the current thread number")] HRESULT ThreadID([out, retval] long *pVal);
+};
+
+[
+	object,
+	uuid(65DD3275-A111-40EC-9625-D488DBDAE8A2),
+	dual,
+	nonextensible,
+	helpstring("The Settings object is the root-object for all Altimail Server settings which are not related to a specific domain."),
+	pointer_default(unique)
+]
+interface IInterfaceSettings : IDispatch{
+   [propget, id(5), helpstring("Gets or sets the maximum number of simultaneous SMTP connections.")] HRESULT MaxSMTPConnections([out, retval] long *pVal);
+   [propput, id(5), helpstring("Gets or sets the maximum number of simultaneous SMTP connections.")] HRESULT MaxSMTPConnections([in] long newVal);
+   [propget, id(6), helpstring("Gets or sets the maximum number of simultaneous POP3 connections.")] HRESULT MaxPOP3Connections([out, retval] long *pVal);
+   [propput, id(6), helpstring("Gets or sets the maximum number of simultaneous POP3 connections.")] HRESULT MaxPOP3Connections([in] long newVal);
+   [propget, id(7), helpstring("A copy of all e-mails are sent to the address.")] HRESULT MirrorEMailAddress([out, retval] BSTR *pVal);
+   [propput, id(7), helpstring("A copy of all e-mails are sent to the address.")] HRESULT MirrorEMailAddress([in] BSTR newVal);
+   [propget, id(8), helpstring("Allow plain SMTP authentication.")] HRESULT AllowSMTPAuthPlain([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(8), helpstring("Allow plain SMTP authentication.")] HRESULT AllowSMTPAuthPlain([in] VARIANT_BOOL newVal);
+   [propget, id(11), helpstring("Deny mail with empty sender address.")] HRESULT DenyMailFromNull([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(11), helpstring("Deny mail with empty sender address.")] HRESULT DenyMailFromNull([in] VARIANT_BOOL newVal);
+   [propget, id(13), helpstring("Gets the logging interface.")] HRESULT Logging([out, retval] IInterfaceLogging * *pVal);
+   [propget, id(18), helpstring("Security ranges.")] HRESULT SecurityRanges([out, retval] IInterfaceSecurityRanges **pVal);
+   [propget, id(19), helpstring("Number of retries when SMTP server delivers an e-mail.")] HRESULT SMTPNoOfTries([out, retval] long *pVal);
+   [propput, id(19), helpstring("Number of retries when SMTP server delivers an e-mail.")] HRESULT SMTPNoOfTries([in] long newVal);
+   [propget, id(20), helpstring("Number of minutes between each try when delivering an e-mail.")] HRESULT SMTPMinutesBetweenTry([out, retval] long *pVal);
+   [propput, id(20), helpstring("Number of minutes between each try when delivering an e-mail")] HRESULT SMTPMinutesBetweenTry([in] long newVal);
+   [propget, id(22), helpstring("Fixed relaying server.")] HRESULT SMTPRelayer([out, retval] BSTR *pVal);
+   [propput, id(22), helpstring("Fixed relaying server.")] HRESULT SMTPRelayer([in] BSTR newVal);
+   [propget, id(23), helpstring("Welcome message for SMTP server.")] HRESULT WelcomeSMTP([out, retval] BSTR *pVal);
+   [propput, id(23), helpstring("Welcome message for SMTP server.")] HRESULT WelcomeSMTP([in] BSTR newVal);
+   [propget, id(24), helpstring("Welcome message for POP3 server.")] HRESULT WelcomePOP3([out, retval] BSTR *pVal);
+   [propput, id(24), helpstring("Welcome message for POP3 server.")] HRESULT WelcomePOP3([in] BSTR newVal);
+   [propget, id(25), helpstring("Welcome message for IMAP server.")] HRESULT WelcomeIMAP([out, retval] BSTR *pVal);
+   [propput, id(25), helpstring("Welcome message for IMAP server.")] HRESULT WelcomeIMAP([in] BSTR newVal);
+   [propget, id(26), helpstring("Enable SMTP service.")] HRESULT ServiceSMTP([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(26), helpstring("Enable SMTP service.")] HRESULT ServiceSMTP([in] VARIANT_BOOL newVal);
+   [propget, id(27), helpstring("Enable POP3 service.")] HRESULT ServicePOP3([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(27), helpstring("Enable POP3 service.")] HRESULT ServicePOP3([in] VARIANT_BOOL newVal);
+   [propget, id(28), helpstring("Enable IMAP service.")] HRESULT ServiceIMAP([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(28), helpstring("Enable IMAP service")] HRESULT ServiceIMAP([in] VARIANT_BOOL newVal);
+   [propget, id(29), helpstring("The maximum number of SMTP delivery threads.")] HRESULT MaxDeliveryThreads([out, retval] long *pVal);
+   [propput, id(29), helpstring("The maximum number of SMTP delivery threads.")] HRESULT MaxDeliveryThreads([in] long newVal);
+   [propget, id(30), helpstring("AntiVirus Settings.")] HRESULT AntiVirus([out, retval] IInterfaceAntiVirus * *pVal);
+   [propget, id(31), helpstring("Routes collection.")] HRESULT Routes([out, retval] IInterfaceRoutes* *pVal);
+   [propget, id(33), helpstring("Gets or sets the host name Altimail Server identifies itself with.")] HRESULT HostName([out, retval] BSTR *pVal);
+   [propput, id(33), helpstring("Gets or sets the host name Altimail Server identifies itself with.")] HRESULT HostName([in] BSTR newVal);
+   [propget, id(34), helpstring("SMTP relayer requires authentication")] HRESULT SMTPRelayerRequiresAuthentication([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(34), helpstring("SMTP relayer requires authentication")] HRESULT SMTPRelayerRequiresAuthentication([in] VARIANT_BOOL newVal);
+   [propget, id(35), helpstring("SMTP relayer username")] HRESULT SMTPRelayerUsername([out, retval] BSTR *pVal);
+   [propput, id(35), helpstring("SMTP relayer username")] HRESULT SMTPRelayerUsername([in] BSTR newVal);
+   [id(36), helpstring("Set SMTP relayer password")] HRESULT SetSMTPRelayerPassword([in] BSTR newVal);
+   [propget, id(37), helpstring("Fixed relaying server port.")] HRESULT SMTPRelayerPort([out, retval] long *pVal);
+   [propput, id(37), helpstring("Fixed relaying server port.")] HRESULT SMTPRelayerPort([in] long newVal);
+   [propget, id(42), helpstring("User interface language")] HRESULT UserInterfaceLanguage([out, retval] BSTR *pVal);
+   [propput, id(42), helpstring("User interface language")] HRESULT UserInterfaceLanguage([in] BSTR newVal);
+
+   [propget, id(43), helpstring("Script settings")] HRESULT Scripting([out, retval] IInterfaceScripting **pVal);
+   [propget, id(44), helpstring("The maximum message size when sending from this server.")] HRESULT MaxMessageSize([out, retval] long *pVal);
+   [propput, id(44), helpstring("The maximum message size when sending from this server.")] HRESULT MaxMessageSize([in] long newVal);
+   [propget, id(47), helpstring("Cache settings")] HRESULT Cache([out, retval] IInterfaceCache **pVal);
+   
+   [propget, id(48), helpstring("The maximum number of times a message can be processed by rules.")] HRESULT RuleLoopLimit([out, retval] long *pVal);
+   [propput, id(48), helpstring("The maximum number of times a message can be processed by rules.")] HRESULT RuleLoopLimit([in] long newVal);
+
+   [propget, id(49), helpstring("Gets the backup settings object")] HRESULT Backup([out, retval] IInterfaceBackupSettings **pVal);
+   [propget, id(50), helpstring("Domain to use if domain has not been specified when user logs on.")] HRESULT DefaultDomain([out, retval] BSTR *pVal);
+   [propput, id(50), helpstring("Domain to use if domain has not been specified when user logs on.")] HRESULT DefaultDomain([in] BSTR newVal);
+   [propget, id(51), helpstring("TCP/IP address to bind to when delivering messages to remote hosts.")] HRESULT SMTPDeliveryBindToIP([out, retval] BSTR *pVal);
+   [propput, id(51), helpstring("TCP/IP address to bind to when delivering messages to remote hosts.")] HRESULT SMTPDeliveryBindToIP([in] BSTR newVal);
+
+   [propget, id(53), helpstring("Maximum number of simultaneous IMAP connections.")] HRESULT MaxIMAPConnections([out, retval] long *pVal);
+   [propput, id(53), helpstring("Maximum number of simultaneous IMAP connections.")] HRESULT MaxIMAPConnections([in] long newVal);
+
+   [propget, id(54), helpstring("Enable the SORT IMAP extension.")] HRESULT IMAPSortEnabled([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(54), helpstring("Enable the SORT IMAP extension")] HRESULT IMAPSortEnabled([in] VARIANT_BOOL newVal);
+   [propget, id(55), helpstring("Enable the QUOTA IMAP extension.")] HRESULT IMAPQuotaEnabled([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(55), helpstring("Enable the QUOTA IMAP extension")] HRESULT IMAPQuotaEnabled([in] VARIANT_BOOL newVal);
+   [propget, id(56), helpstring("Enable the IDLE IMAP extension.")] HRESULT IMAPIdleEnabled([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(56), helpstring("Enable the IDLE IMAP extension")] HRESULT IMAPIdleEnabled([in] VARIANT_BOOL newVal);
+   
+   [propget, id(57), helpstring("Priority to give to worker threads.")] HRESULT WorkerThreadPriority([out, retval] long *pVal);
+   [propput, id(57), helpstring("Priority to give to worker threads.")] HRESULT WorkerThreadPriority([in] long newVal);
+   [propget, id(60), helpstring("Number of TCP/IP-threads (for communication) to run.")] HRESULT TCPIPThreads([out, retval] long *pVal);
+   [propput, id(60), helpstring("Number of TCP/IP-threads (for communication) to run.")] HRESULT TCPIPThreads([in] long newVal);
+
+   [propget, id(61), helpstring("Allow mail with incorrect line endings (missing CR or LF).")] HRESULT AllowIncorrectLineEndings([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(61), helpstring("Allow mail with incorrect line endings (missing CR or LF).")] HRESULT AllowIncorrectLineEndings([in] VARIANT_BOOL newVal);
+   [propget, id(62), helpstring("Maximum number of SMTP recipients in batch during delivery.")] HRESULT MaxSMTPRecipientsInBatch([out, retval] long *pVal);
+   [propput, id(62), helpstring("Maximum number of SMTP recipients in batch during delivery")] HRESULT MaxSMTPRecipientsInBatch([in] long newVal);
+   [propget, id(63), helpstring("AntiSpam settings")] HRESULT AntiSpam([out, retval] IInterfaceAntiSpam **pVal);
+
+   [propget, id(64), helpstring("Disconnect clients not following the RFCs")] HRESULT DisconnectInvalidClients([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(64), helpstring("Disconnect clients not following the RFCs")] HRESULT DisconnectInvalidClients([in] VARIANT_BOOL newVal);
+   [propget, id(65), helpstring("Maximum number of invalid client commands before disconnect.")] HRESULT MaxNumberOfInvalidCommands([out, retval] long *pVal);
+   [propput, id(65), helpstring("Maximum number of invalid client commands before disconnect.")] HRESULT MaxNumberOfInvalidCommands([in] long newVal);
+
+   [propget, id(66), helpstring("Server messages")] HRESULT ServerMessages([out, retval] IInterfaceServerMessages **pVal);
+   [propget, id(70), helpstring("TCP/IP ports to be used.")] HRESULT TCPIPPorts([out, retval] IInterfaceTCPIPPorts **pVal);
+
+   [propget, id(71), helpstring("Determines whether SSL should be used when delivering to the relay server.")] HRESULT SMTPRelayerUseSSL([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(71), helpstring("Determines whether SSL should be used when delivering to the relay server")] HRESULT SMTPRelayerUseSSL([in] VARIANT_BOOL newVal);
+   [propget, id(72), helpstring("SSL certificates.")] HRESULT SSLCertificates([out, retval] IInterfaceSSLCertificates **pVal);
+   [propget, id(73), helpstring("Determines whether a Delivered-To header should be added to incoming messages.")] HRESULT AddDeliveredToHeader([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(73), helpstring("Determines whether a Delivered-To header should be added to incoming messages.")] HRESULT AddDeliveredToHeader([in] VARIANT_BOOL newVal);
+   [propget, id(74), helpstring("The name of the public folder when IMAP is used.")] HRESULT IMAPPublicFolderName([out, retval] BSTR *pVal);
+   [propput, id(74), helpstring("The name of the public folder when IMAP is used.")] HRESULT IMAPPublicFolderName([in] BSTR newVal);
+   [propget, id(75), helpstring("Enable the IDLE ACL extension.")] HRESULT IMAPACLEnabled([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(75), helpstring("Enable the IDLE ACL extension")] HRESULT IMAPACLEnabled([in] VARIANT_BOOL newVal);
+
+   [id(76), helpstring("Set main Altimail Server Administration password")] HRESULT SetAdministratorPassword([in] BSTR newVal);
+   [propget, id(77), helpstring("Gets an object containing Altimail Server directory settings.")] HRESULT Directories([out, retval] IInterfaceDirectories **pVal);
+   [propget, id(78), helpstring("Gets a collection all public folders.")] HRESULT PublicFolders([out, retval] IInterfaceIMAPFolders **pVal);
+   
+   [propget, id(79), helpstring("The name of the folder on disk in which public folders are stored.")] HRESULT PublicFolderDiskName([out, retval] BSTR *pVal);
+   [propget, id(80), helpstring("A collection of groups.")] HRESULT Groups([out, retval] IInterfaceGroups **pVal);
+   [propget, id(81), helpstring("A collection of all incoming relays.")] HRESULT IncomingRelays([out, retval] IInterfaceIncomingRelays **pVal);
+
+   [propget, id(82), helpstring("Gets or sets whether auto ban on logon failure is enabled.")] HRESULT AutoBanOnLogonFailure([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(82), helpstring("Gets or sets whether auto ban on logon failure is enabled.")] HRESULT AutoBanOnLogonFailure([in] VARIANT_BOOL newVal);
+   [propget, id(83), helpstring("Gets or sets the maximum number of invalid logon attempts before auto ban.")] HRESULT MaxInvalidLogonAttempts([out, retval] long *pVal);
+   [propput, id(83), helpstring("Gets or sets the maximum number of invalid logon attempts before auto ban.")] HRESULT MaxInvalidLogonAttempts([in] long newVal);
+   [propget, id(84), helpstring("Gets or sets the number of minutes before an invalid logon attempt record is removed.")] HRESULT MaxInvalidLogonAttemptsWithin([out, retval] long *pVal);
+   [propput, id(84), helpstring("Gets or sets the number of minutes before an invalid logon attempt record is removed.")] HRESULT MaxInvalidLogonAttemptsWithin([in] long newVal);
+   [propget, id(85), helpstring("Gets or sets the number of minutes a client is auto banned.")] HRESULT AutoBanMinutes([out, retval] long *pVal);
+   [propput, id(85), helpstring("Gets or sets the number of minutes a client is auto banned.")] HRESULT AutoBanMinutes([in] long newVal);
+   [id(86), helpstring("Clears the list of logon failures.")] HRESULT ClearLogonFailureList();
+   [propget, id(87), helpstring("Gets or sets the hierarchy delimiter to use in the IMAP protocol.")] HRESULT IMAPHierarchyDelimiter([out, retval] BSTR *pVal);
+   [propput, id(87), helpstring("Gets or sets the hierarchy delimiter to use in the IMAP protocol.")] HRESULT IMAPHierarchyDelimiter([in] BSTR newVal);
+   [propget, id(88), helpstring("Gets or sets the maximum number of asynchronous task threads.")] HRESULT MaxAsynchronousThreads([out, retval] long *pVal);
+   [propput, id(88), helpstring("Gets or sets the maximum number of asynchronous task threads.")] HRESULT MaxAsynchronousThreads([in] long newVal);
+   [propget, id(89), helpstring("Gets an object containing settings related to message indexing.")] HRESULT MessageIndexing([out, retval] IInterfaceMessageIndexing **pVal);
+   [propget, id(90), helpstring("Gets or sets the maximum number of hosts Altimail Server should perform SMTP-delivery to.")] HRESULT MaxNumberOfMXHosts([out, retval] long *pVal);
+   [propput, id(90), helpstring("Gets or sets the maximum number of hosts Altimail Server should perform SMTP-delivery to.")] HRESULT MaxNumberOfMXHosts([in] long newVal);
+   [propget, id(91), helpstring("Connection security for the SMTP relayer.")] HRESULT SMTPRelayerConnectionSecurity([out, retval] eConnectionSecurity *pVal);
+   [propput, id(91), helpstring("Connection security for the SMTP relayer.")] HRESULT SMTPRelayerConnectionSecurity([in] eConnectionSecurity newVal);
+   [propget, id(92), helpstring("Connection security to use when delivering after a MX lookup")] HRESULT SMTPConnectionSecurity([out, retval] eConnectionSecurity *pVal);
+   [propput, id(92), helpstring("Connection security to use when delivering after a MX lookup")] HRESULT SMTPConnectionSecurity([in] eConnectionSecurity newVal);
+   [propget, id(93), helpstring("Verify the SSL/TLS server certificate.")] HRESULT VerifyRemoteSslCertificate([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(93), helpstring("Verify the SSL/TLS server certificate.")] HRESULT VerifyRemoteSslCertificate([in] VARIANT_BOOL newVal);
+
+   [propget, id(94), helpstring("List of SSL/TLS ciphers which should be permitted (OpenSSL format).")] HRESULT SslCipherList([out, retval] BSTR *pVal);
+   [propput, id(94), helpstring("List of SSL/TLS ciphers which should be permitted (OpenSSL format).")] HRESULT SslCipherList([in] BSTR newVal);
+
+   [propget, id(96), helpstring("Enable TLS version 1.0.")] HRESULT TlsVersion10Enabled([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(96), helpstring("Enable TLS version 1.0")] HRESULT TlsVersion10Enabled([in] VARIANT_BOOL newVal);
+   [propget, id(97), helpstring("Enable TLS version 1.1.")] HRESULT TlsVersion11Enabled([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(97), helpstring("Enable TLS version 1.1")] HRESULT TlsVersion11Enabled([in] VARIANT_BOOL newVal);
+   [propget, id(98), helpstring("Enable TLS version 1.2.")] HRESULT TlsVersion12Enabled([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(98), helpstring("Enable TLS version 1.2")] HRESULT TlsVersion12Enabled([in] VARIANT_BOOL newVal);
+
+   [propget, id(99), helpstring("Crash simulation mode")] HRESULT CrashSimulationMode([out, retval] long *pVal);
+   [propput, id(99), helpstring("Crash simulation mode")] HRESULT CrashSimulationMode([in] long newVal);
+
+   [propget, id(100), helpstring("IMAP Master user")] HRESULT IMAPMasterUser([out, retval] BSTR *pVal);
+   [propput, id(100), helpstring("IMAP Master user")] HRESULT IMAPMasterUser([in] BSTR newVal);
+
+   [propget, id(101), helpstring("IMAP Enable SASL Plain")] HRESULT IMAPSASLPlainEnabled([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(101), helpstring("IMAP Enable SASL Plain")] HRESULT IMAPSASLPlainEnabled([in] VARIANT_BOOL newVal);
+
+   [propget, id(102), helpstring("IMAP Enable SASL Plain Initial Response")] HRESULT IMAPSASLInitialResponseEnabled([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(102), helpstring("IMAP Enable SASL Plain Initial Response")] HRESULT IMAPSASLInitialResponseEnabled([in] VARIANT_BOOL newVal);
+   
+   [propget, id(103), helpstring("Enable TLS version 1.3")] HRESULT TlsVersion13Enabled([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(103), helpstring("Enable TLS version 1.3")] HRESULT TlsVersion13Enabled([in] VARIANT_BOOL newVal);
+
+   [propget, id(104), helpstring("Prefer IPv6 over IPv4.")] HRESULT IPv6PreferredEnabled([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(104), helpstring("Prefer IPv6 over IPv4.")] HRESULT IPv6PreferredEnabled([in] VARIANT_BOOL newVal);
+
+   [propget, id(105), helpstring("Prefer SSL/TLS server ciphers over client ciphers")] HRESULT TlsOptionPreferServerCiphersEnabled([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(105), helpstring("Prefer SSL/TLS server ciphers over client ciphers")] HRESULT TlsOptionPreferServerCiphersEnabled([in] VARIANT_BOOL newVal);
+   [propget, id(106), helpstring("Prioritize ChaCha20Poly1305 when client does.")] HRESULT TlsOptionPrioritizeChaChaEnabled([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(106), helpstring("Prioritize ChaCha20Poly1305 when client does.")] HRESULT TlsOptionPrioritizeChaChaEnabled([in] VARIANT_BOOL newVal);
+};
+
+
+[
+	object,
+	uuid(31AEC027-30EE-4B32-BC49-F5C18E27C411),
+	dual,
+	nonextensible,
+	helpstring("The domain object represents one Altimail Server domain."),
+	pointer_default(unique)
+]
+interface IInterfaceDomain : IDispatch
+{
+		[propget, id(1), helpstring("Name of the domain.")] HRESULT Name([out, retval] BSTR *pVal);
+		[propput, id(1), helpstring("Name of the domain.")] HRESULT Name([in] BSTR newVal);
+		[id(2), helpstring("Saves changes of the object in the database.")] HRESULT Save();
+		[propget, id(3), helpstring("The unique database identifier for the domain.")] HRESULT ID([out, retval] long *pVal);
+		[propget, id(4), helpstring("The enabled-state of the domain.")] HRESULT Active([out, retval] VARIANT_BOOL *pVal);
+		[propput, id(4), helpstring("The enabled-state of the domain.")] HRESULT Active([in] VARIANT_BOOL newVal);
+		[propget, id(5), helpstring("The accounts collection for the domain.")] HRESULT Accounts([out, retval] IInterfaceAccounts** pVal);
+		[id(6), helpstring("Deletes the domain from the database.")] HRESULT Delete();
+		[propget, id(7), helpstring("The aliases collection for the domain.")] HRESULT Aliases([out, retval] IInterfaceAliases **pVal);
+      [propget, id(9), helpstring("The distribution lists collection for the domain.")] HRESULT DistributionLists([out, retval] IInterfaceDistributionLists **pVal);
+		[propget, id(10), helpstring("The postmaster for this domain. E-mail sent to an nonexistent address will be redirected to this address.")] HRESULT Postmaster([out, retval] BSTR *pVal);
+		[propput, id(10), helpstring("The postmaster for this domain. E-mail sent to an nonexistent address will be redirected to this address.")] HRESULT Postmaster([in] BSTR newVal);
+      [propget, id(11), helpstring("The aliases of the domain name.")] HRESULT DomainAliases([out, retval] IInterfaceDomainAliases **pVal);
+		[propget, id(12), helpstring("The active directory domain this domain will be synchronised to.")] HRESULT ADDomainName([out, retval] BSTR *pVal);
+		[propput, id(12), helpstring("The active directory domain this domain will be synchronised to.")] HRESULT ADDomainName([in] BSTR newVal);
+      [id(13), helpstring("OBSOLETE. Only included to make all clients continue working.")] HRESULT SynchronizeDirectory();
+	   [propget, id(14), helpstring("Maximum message size when sending from this domain.")] HRESULT MaxMessageSize([out, retval] long *pVal);
+	   [propput, id(14), helpstring("Maximum message size when sending from this domain.")] HRESULT MaxMessageSize([in] long pVal);
+
+		[propget, id(15), helpstring("Use plus addressing for this domain.")] HRESULT PlusAddressingEnabled([out, retval] VARIANT_BOOL *pVal);
+		[propput, id(15), helpstring("Use plus addressing for this domain.")] HRESULT PlusAddressingEnabled([in] VARIANT_BOOL newVal);
+		[propget, id(16), helpstring("Plus addressing character.")] HRESULT PlusAddressingCharacter([out, retval] BSTR *pVal);
+		[propput, id(16), helpstring("Plus addressing character.")] HRESULT PlusAddressingCharacter([in] BSTR newVal);
+
+		[propget, id(17), helpstring("Enable greylisting for this domain.")] HRESULT AntiSpamEnableGreylisting([out, retval] VARIANT_BOOL *pVal);
+		[propput, id(17), helpstring("Enable greylisting for this domain.")] HRESULT AntiSpamEnableGreylisting([in] VARIANT_BOOL newVal);
+	   [propget, id(18), helpstring("Maximum size of this domain in MB.")] HRESULT MaxSize([out, retval] long *pVal);
+	   [propput, id(18), helpstring("Maximum size of this domain in MB.")] HRESULT MaxSize([in] long pVal);
+
+	   [propget, id(19), helpstring("Current size of this domain in MB.")] HRESULT Size([out, retval] long *pVal);
+      [propget, id(20), helpstring("Allocated space for this domain.")] HRESULT AllocatedSize([out, retval] hyper *pVal);
+
+	   [propget, id(21), helpstring("Enable the signature")] HRESULT SignatureEnabled([out, retval] VARIANT_BOOL *pVal);
+	   [propput, id(21), helpstring("Enable the signature")] HRESULT SignatureEnabled([in] VARIANT_BOOL newVal);
+	   [propget, id(22), helpstring("The domain signature method")] HRESULT SignatureMethod([out, retval] eDomainSignatureMethod *pVal);
+	   [propput, id(22), helpstring("The domain signature method")] HRESULT SignatureMethod([in] eDomainSignatureMethod newVal);
+      [propget, id(23), helpstring("The plain text version of the signature")] HRESULT SignaturePlainText([out, retval] BSTR *pVal);
+	   [propput, id(23), helpstring("The plain text version of the signature")] HRESULT SignaturePlainText([in] BSTR newVal);
+	   [propget, id(24), helpstring("The HTML version of the signature")] HRESULT SignatureHTML([out, retval] BSTR *pVal);
+	   [propput, id(24), helpstring("The HTML version of the signature")] HRESULT SignatureHTML([in] BSTR newVal);
+      [propget, id(25), helpstring("Add signatures to replies on email")] HRESULT AddSignaturesToReplies([out, retval] VARIANT_BOOL *pVal);
+      [propput, id(25), helpstring("Add signatures to replies on email")] HRESULT AddSignaturesToReplies([in] VARIANT_BOOL newVal);
+      [propget, id(26), helpstring("Add signatures to local email")] HRESULT AddSignaturesToLocalMail([out, retval] VARIANT_BOOL *pVal);
+      [propput, id(26), helpstring("Add signatures to local email")] HRESULT AddSignaturesToLocalMail([in] VARIANT_BOOL newVal);   
+
+	   [propget, id(27), helpstring("Maximum number of accounts which can be added to this domain.")] HRESULT MaxNumberOfAccounts([out, retval] long *pVal);
+	   [propput, id(27), helpstring("Maximum number of accounts which can be added to this domain.")] HRESULT MaxNumberOfAccounts([in] long pVal);
+	   [propget, id(28), helpstring("Maximum number of aliases which can be added to this domain.")] HRESULT MaxNumberOfAliases([out, retval] long *pVal);
+	   [propput, id(28), helpstring("Maximum number of aliases which can be added to this domain.")] HRESULT MaxNumberOfAliases([in] long pVal);
+	   [propget, id(29), helpstring("Maximum number of distribution lists which can be added to this domain.")] HRESULT MaxNumberOfDistributionLists([out, retval] long *pVal);
+      [propput, id(29), helpstring("Maximum number of distribution lists which can be added to this domain.")] HRESULT MaxNumberOfDistributionLists([in] long pVal);
+
+	   [propget, id(30), helpstring("Enable maximum number of accounts.")] HRESULT MaxNumberOfAccountsEnabled([out, retval] VARIANT_BOOL *pVal);
+	   [propput, id(30), helpstring("Enable maximum number of accounts.")] HRESULT MaxNumberOfAccountsEnabled([in] VARIANT_BOOL pVal);
+	   [propget, id(31), helpstring("Enable maximum number of aliases.")] HRESULT MaxNumberOfAliasesEnabled([out, retval] VARIANT_BOOL *pVal);
+	   [propput, id(31), helpstring("Enable maximum number of aliases.")] HRESULT MaxNumberOfAliasesEnabled([in] VARIANT_BOOL pVal);
+	   [propget, id(32), helpstring("Enable maximum number of distribution lists.")] HRESULT MaxNumberOfDistributionListsEnabled([out, retval] VARIANT_BOOL *pVal);
+	   [propput, id(32), helpstring("Enable maximum number of distribution lists.")] HRESULT MaxNumberOfDistributionListsEnabled([in] VARIANT_BOOL pVal);
+	   [propget, id(33), helpstring("Maximum size of accounts created in this domain.")] HRESULT MaxAccountSize([out, retval] long *pVal);
+	   [propput, id(33), helpstring("Maximum size of accounts created in this domain.")] HRESULT MaxAccountSize([in] long pVal);
+
+      [propget, id(34), helpstring("Enable DKIM signing for this domain.")] HRESULT DKIMSignEnabled([out, retval] VARIANT_BOOL *pVal);
+	   [propput, id(34), helpstring("Enable DKIM signing for this domain.")] HRESULT DKIMSignEnabled([in] VARIANT_BOOL pVal);
+      [propget, id(35), helpstring("Gets or sets the DKIM selector to use for this domain.")] HRESULT DKIMSelector([out, retval] BSTR *pVal);
+	   [propput, id(35), helpstring("Gets or sets the DKIM selector to use for this domain.")] HRESULT DKIMSelector([in] BSTR newVal);
+      [propget, id(36), helpstring("Gets or sets the DKIM private key file to use for this domain.")] HRESULT DKIMPrivateKeyFile([out, retval] BSTR *pVal);
+	   [propput, id(36), helpstring("Gets or sets the DKIM private key file to use for this domain.")] HRESULT DKIMPrivateKeyFile([in] BSTR newVal);
+	   [propget, id(37), helpstring("Gets or sets the header canonicalization method.")] HRESULT DKIMHeaderCanonicalizationMethod([out, retval] eDKIMCanonicalizationMethod *pVal);
+	   [propput, id(37), helpstring("Gets or sets the header canonicalization method.")] HRESULT DKIMHeaderCanonicalizationMethod([in] eDKIMCanonicalizationMethod newVal);
+	   [propget, id(38), helpstring("Gets or sets the body canonicalization method.")] HRESULT DKIMBodyCanonicalizationMethod([out, retval] eDKIMCanonicalizationMethod *pVal);
+	   [propput, id(38), helpstring("Gets or sets the body canonicalization method.")] HRESULT DKIMBodyCanonicalizationMethod([in] eDKIMCanonicalizationMethod newVal);
+	   [propget, id(39), helpstring("Gets or sets the signing algorithm.")] HRESULT DKIMSigningAlgorithm([out, retval] eDKIMAlgorithm *pVal);
+	   [propput, id(39), helpstring("Gets or sets the signing algorithm.")] HRESULT DKIMSigningAlgorithm([in] eDKIMAlgorithm newVal);
+	   [propget, id(40), helpstring("Enable DKIM signing for aliases.")] HRESULT DKIMSignAliasesEnabled([out, retval] VARIANT_BOOL *pVal);
+	   [propput, id(40), helpstring("Enable DKIM signing for aliases.")] HRESULT DKIMSignAliasesEnabled([in] VARIANT_BOOL pVal);   
+
+};
+[
+	object,
+	uuid(8C63AF42-04E3-46F3-825C-9B0CB0FFF52E),
+	dual,
+	nonextensible,
+	helpstring("The accounts object is a collection of all accounts connected to a specific domain."),
+	pointer_default(unique)
+]
+interface IInterfaceAccounts : IDispatch
+{
+	[propget, id(0), defaultbind, helpstring("Returns an account by its given index in the collection.")] HRESULT Item([in] long Index, [out, retval] IInterfaceAccount **pVal);
+	[propget, id(1), helpstring("Returns the number of items in the collection")] HRESULT Count([out, retval] long *pVal);
+	[id(2), helpstring("Adds a new item to the collection.")] HRESULT Add([out, retval] IInterfaceAccount** pVal);
+	[id(3), helpstring("Deletes an item by its given index in the collection.")] HRESULT Delete([in] long Index);
+	[id(4), helpstring("Refreshes the collection")] HRESULT Refresh();
+	[propget, id(5), helpstring("Returns an account by its given database identifier.")] HRESULT ItemByDBID([in] long DBID, [out, retval] IInterfaceAccount **pVal);
+	[propget, id(6), helpstring("Returns an account by its given email address.")] HRESULT ItemByAddress([in] BSTR Address, [out, retval] IInterfaceAccount* *pVal);
+	[id(7), helpstring("Deletes an account in the database by its given database identifier.")] HRESULT DeleteByDBID([in] long DBID);
+   
+};
+[
+	object,
+	uuid(850F18C2-0B82-42E1-B76A-AFC2E24DF7DE),
+	dual,
+	nonextensible,
+	helpstring("The account object represents a single Altimail Server account."),
+	pointer_default(unique)
+]
+interface IInterfaceAccount : IDispatch
+{
+	[propget, id(1), helpstring("Active")] HRESULT Active([out, retval] VARIANT_BOOL *pVal);
+	[propput, id(1), helpstring("Active")] HRESULT Active([in] VARIANT_BOOL newVal);
+	[propget, id(2), helpstring("Name of the active directory domain.")] HRESULT ADDomain([out, retval] BSTR *pVal);
+	[propput, id(2), helpstring("Name of the active directory domain.")] HRESULT ADDomain([in] BSTR newVal);
+	[propget, id(3), helpstring("The e-mail address of the account.")] HRESULT Address([out, retval] BSTR *pVal);
+	[propput, id(3), helpstring("The e-mail address of the account.")] HRESULT Address([in] BSTR newVal);
+	[propget, id(4), helpstring("The database identifier of the domain in which the account belong.")] HRESULT DomainID([out, retval] long *pVal);
+	[propput, id(4), helpstring("The database identifier of the domain in which the account belong.")] HRESULT DomainID([in] long newVal);
+	[propget, id(5), helpstring("The database identifier for the account.")] HRESULT ID([out, retval] long *pVal);
+	[propget, id(6), helpstring("The account is connected to Active Directory.")] HRESULT IsAD([out, retval] VARIANT_BOOL *pVal);
+	[propput, id(6), helpstring("The account is connected to Active Directory.")] HRESULT IsAD([in] VARIANT_BOOL newVal);
+	[propget, id(7), helpstring("The password of the account.")] HRESULT Password([out, retval] BSTR *pVal);
+	[propput, id(7), helpstring("The password of the account.")] HRESULT Password([in] BSTR newVal);
+	[propget, id(8), helpstring("The size of the account.")] HRESULT Size([out, retval] float *pVal);
+	[id(9), helpstring("Saves the account in the database.")] HRESULT Save();
+	[propget, id(10), helpstring("Name of the active directory user account.")] HRESULT ADUsername([out, retval] BSTR *pVal);
+	[propput, id(10), helpstring("Name of the active directory user account.")] HRESULT ADUsername([in] BSTR newVal);
+	[id(11), helpstring("Deletes all IMAP folders and messages that exists in the account.")] HRESULT DeleteMessages();
+	[propget, id(13), helpstring("Messages in the accounts mailbox.")] HRESULT Messages([out, retval] IInterfaceMessages** pVal);
+	[propget, id(15), helpstring("Maximum size in of the account (MB).")] HRESULT MaxSize([out, retval] long *pVal);
+	[propput, id(15), helpstring("Maximum size in of the account (MB).")] HRESULT MaxSize([in] long pVal);
+	[propget, id(16), helpstring("Vacation message is turned on.")] HRESULT VacationMessageIsOn([out, retval] VARIANT_BOOL *pVal);
+	[propput, id(16), helpstring("Vacation message is turned on.")] HRESULT VacationMessageIsOn([in] VARIANT_BOOL newVal);
+	[propget, id(17), helpstring("The vacation message")] HRESULT VacationMessage([out, retval] BSTR *pVal);
+	[propput, id(17), helpstring("The vacation message")] HRESULT VacationMessage([in] BSTR newVal);
+	[propget, id(18), helpstring("The vacation message subject")] HRESULT VacationSubject([out, retval] BSTR *pVal);
+	[propput, id(18), helpstring("The vacation message subject")] HRESULT VacationSubject([in] BSTR newVal);
+   [propget, id(19), helpstring("External fetch accounts connected to this account.")] HRESULT FetchAccounts([out, retval] IInterfaceFetchAccounts **pVal);
+	[propget, id(20), helpstring("Administration level.")] HRESULT AdminLevel([out, retval] eAdminLevel *pVal);
+	[propput, id(20), helpstring("Administration level.")] HRESULT AdminLevel([in] eAdminLevel newVal);
+   [propget, id(21), helpstring("The rules specified for this account.")] HRESULT Rules([out, retval] IInterfaceRules** pVal);
+   [id(22), helpstring("Validates the password. Returns true if the password is correct.")] HRESULT ValidatePassword([in] BSTR Password, [out, retval] VARIANT_BOOL *pVal);
+   [id(23), helpstring("Unlocks the POP3 mailbox.")] HRESULT UnlockMailbox();
+   [propget, id(24), helpstring("The IMAP folders belonging to this account.")] HRESULT IMAPFolders([out, retval] IInterfaceIMAPFolders** pVal);
+   [propget, id(25), helpstring("Percentage of quota used (0-100).")] HRESULT QuotaUsed([out, retval] long *pVal);
+
+	[propget, id(26), helpstring("Forwarding for this account is enabled.")] HRESULT ForwardEnabled([out, retval] VARIANT_BOOL *pVal);
+	[propput, id(26), helpstring("Forwarding for this account is enabled.")] HRESULT ForwardEnabled([in] VARIANT_BOOL newVal);
+	[propget, id(27), helpstring("Address messages to this account should be forwarded to.")] HRESULT ForwardAddress([out, retval] BSTR *pVal);
+	[propput, id(27), helpstring("Address messages to this account should be forwarded to")] HRESULT ForwardAddress([in] BSTR newVal);
+	[propget, id(28), helpstring("Keep original message after forwarding has been applied.")] HRESULT ForwardKeepOriginal([out, retval] VARIANT_BOOL *pVal);
+	[propput, id(28), helpstring("Keep original message after forwarding has been applied.")] HRESULT ForwardKeepOriginal([in] VARIANT_BOOL newVal);
+
+	[propget, id(29), helpstring("Enable the signature")] HRESULT SignatureEnabled([out, retval] VARIANT_BOOL *pVal);
+	[propput, id(29), helpstring("Enable the signature")] HRESULT SignatureEnabled([in] VARIANT_BOOL newVal);
+	[propget, id(30), helpstring("The plain text version of the signature")] HRESULT SignaturePlainText([out, retval] BSTR *pVal);
+	[propput, id(30), helpstring("The plain text version of the signature")] HRESULT SignaturePlainText([in] BSTR newVal);
+	[propget, id(31), helpstring("The HTML version of the signature")] HRESULT SignatureHTML([out, retval] BSTR *pVal);
+	[propput, id(31), helpstring("The HTML version of the signature")] HRESULT SignatureHTML([in] BSTR newVal);
+
+	[propget, id(32), helpstring("The timestamp for the last usage of this account.")] HRESULT LastLogonTime([out, retval] VARIANT *pVal);
+
+	[propget, id(33), helpstring("Vacation message is set to expire")] HRESULT VacationMessageExpires([out, retval] VARIANT_BOOL *pVal);
+	[propput, id(33), helpstring("Vacation message is set to expire")] HRESULT VacationMessageExpires([in] VARIANT_BOOL newVal);
+  
+   [propget, id(34), helpstring("The vacation message expires this date")] HRESULT VacationMessageExpiresDate([out, retval] BSTR *pVal);
+   [propput, id(34), helpstring("The vacation message expires this date")] HRESULT VacationMessageExpiresDate([in] BSTR pVal);
+   
+	[propget, id(35), helpstring("First name of the account holder.")] HRESULT PersonFirstName([out, retval] BSTR *pVal);
+	[propput, id(35), helpstring("First name of the account holder.")] HRESULT PersonFirstName([in] BSTR newVal);
+
+	[propget, id(36), helpstring("Last name of the account holder.")] HRESULT PersonLastName([out, retval] BSTR *pVal);
+	[propput, id(36), helpstring("Last name of the account holder.")] HRESULT PersonLastName([in] BSTR newVal);
+   [id(37), helpstring("Deletes the account from the database.")] HRESULT Delete();
+   
+    [propget, id(38), helpstring("Vacation message is set to be aborted on messages marked as spam.")] HRESULT VacationMessageAbortSpamFlagged([out, retval] VARIANT_BOOL *pVal);
+    [propput, id(38), helpstring("Vacation message is set to be aborted on messages marked as spam.")] HRESULT VacationMessageAbortSpamFlagged([in] VARIANT_BOOL newVal);
+    [propget, id(39), helpstring("Forwarding is set to be aborted on messages marked as spam.")] HRESULT ForwardAbortSpamFlagged([out, retval] VARIANT_BOOL *pVal);
+    [propput, id(39), helpstring("Forwarding is set to be aborted on messages marked as spam.")] HRESULT ForwardAbortSpamFlagged([in] VARIANT_BOOL newVal);
+};
+
+
+[
+	object,
+	uuid(F2241FA9-EFB4-4C3E-9393-AB0A8392B45E),
+	dual,
+	nonextensible,
+	helpstring("The database object contains information on current database set-up and basic methods to run SQL towards the database."),
+	pointer_default(unique)
+]
+interface IInterfaceDatabase : IDispatch
+{
+	[propget, id(1), helpstring("Required database version.")] HRESULT RequiredVersion([out, retval] long *pVal);
+	[propget, id(2), helpstring("Current databaseversion.")] HRESULT CurrentVersion([out, retval] long *pVal);
+	[id(3), helpstring("Executes an SQL statement.")] HRESULT ExecuteSQL(BSTR sSQLStatement);
+	[propget, id(4), helpstring("The type of the database.")] HRESULT DatabaseType([out, retval] eDBtype *pVal);
+   [id(5), helpstring("Returns the filename for a given message id.")] HRESULT UtilGetFileNameByMessageID([in ] hyper MessageID, [out, retval] BSTR *Output);
+   [propget, id(6), helpstring("Database needs to be upgraded.")] HRESULT RequiresUpgrade([out, retval] VARIANT_BOOL *pVal);
+   [id(7), helpstring("Create internal database")] HRESULT CreateInternalDatabase();
+   [id(8), helpstring("Create external database")] HRESULT CreateExternalDatabase(eDBtype ServerType, BSTR ServerName, long lPort, BSTR DatabaseName, BSTR Username, BSTR Password);
+   [propget, id(9), helpstring("Checks whether an existing database exists.")] HRESULT DatabaseExists([out, retval] VARIANT_BOOL *pVal);
+
+   [id(10), helpstring("Starts a new SQL transaction. Only affects ExecuteSQL().")] HRESULT BeginTransaction();
+   [id(11), helpstring("Commits a SQL transaction. Only affects ExecuteSQL().")] HRESULT CommitTransaction();
+   [id(12), helpstring("Rollbacks a SQL transaction. Only affects ExecuteSQL().")] HRESULT RollbackTransaction();
+   [id(13), helpstring("Executes an script file containing SQL statements.")] HRESULT ExecuteSQLScript(BSTR sFilename);
+   [id(14), helpstring("Set default database")] HRESULT SetDefaultDatabase(eDBtype ServerType, BSTR ServerName, long lPort, BSTR DatabaseName, BSTR Username, BSTR Password);
+   [propget, id(15), helpstring("Returns true if there is a database available.")] HRESULT IsConnected([out, retval] VARIANT_BOOL *pVal);
+
+   [propget, id(16), helpstring("Server name.")] HRESULT ServerName([out, retval] BSTR *pVal);
+   [propget, id(17), helpstring("Database name.")] HRESULT DatabaseName([out, retval] BSTR *pVal);
+   [id(18), helpstring("Executes an SQL statement and returns the unique ID.")] HRESULT ExecuteSQLWithReturn(BSTR sSQLStatement, [out, retval] long *uniqueID);
+   [id(19), helpstring("Ensures that the prerequisites for a specific build is fulfilled.")] HRESULT EnsurePrerequisites(long DBVersion);
+};
+
+
+[
+	object,
+	uuid(0045AFBD-7AF2-461E-9D4E-D28CB00A680B),
+	dual,
+	nonextensible,
+	helpstring("The message object represents a single e-mail message."),
+	pointer_default(unique)
+]
+interface IInterfaceMessage : IDispatch
+{
+	[propget, id(1), helpstring("The unique database identifier for the e-mail.")] HRESULT ID([out, retval] hyper *pVal);
+	[propget, id(2), helpstring("The name of the file in witch the message is stored.")] HRESULT Filename([out, retval] BSTR *pVal);
+	[propget, id(3), helpstring("The subject of the e-mail.")] HRESULT Subject([out, retval] BSTR *pVal);
+	[propput, id(3), helpstring("The subject of the e-mail.")] HRESULT Subject([in] BSTR newVal);
+	[propget, id(4), helpstring("The contents of the From message header.")] HRESULT From([out, retval] BSTR *pVal);
+	[propput, id(4), helpstring("The contents of the From message header.")] HRESULT From([in] BSTR newVal);
+	[propget, id(5), helpstring("The contents of the Date message header.")] HRESULT Date([out, retval] BSTR *pVal);
+   [propput, id(5), helpstring("The contents of the Date message header.")] HRESULT Date([in] BSTR newVal);
+	[propget, id(6), helpstring("The plain text contents of the e-mail.")] HRESULT Body([out, retval] BSTR *pVal);
+	[propput, id(6), helpstring("The plain text contents of the e-mail.")] HRESULT Body([in] BSTR newVal);
+	[propget, id(7), helpstring("The HTML contents of the e-mail.")] HRESULT HTMLBody([out, retval] BSTR *pVal);
+   [propput, id(7), helpstring("The HTML contents of the e-mail.")] HRESULT HTMLBody([in] BSTR newVal);
+	[propget, id(8), helpstring("The attachments of the message.")] HRESULT Attachments([out, retval] IInterfaceAttachments* *pVal);
+	[id(9), helpstring("Saves the email. If this is a new email, it will be delivered after save.")] HRESULT Save();
+	[propget, id(10), helpstring("The To-header of the email.")] HRESULT To([out, retval] BSTR *pVal);
+	[id(11), helpstring("Adds a recipient to the e-mail.")] HRESULT AddRecipient([in]BSTR sName, [in]BSTR sAddress);
+	[propget, id(12), helpstring("The From address specified in the message envelope.")] HRESULT FromAddress([out, retval] BSTR *pVal);
+	[propput, id(12), helpstring("The From address specified in the message envelope.")] HRESULT FromAddress([in] BSTR newVal);
+	[propget, id(13), helpstring("The state of the message.")] HRESULT State([out, retval] long *pVal);
+   [propget, id(14), helpstring("The size of the message, counted in kilobytes.")] HRESULT Size([out, retval] long *pVal);
+   [id(15), helpstring("Clears the recipient of the email (including the MIME-headers).")] HRESULT ClearRecipients();
+   [propget, id(16), helpstring("The CC-header of the email.")] HRESULT CC([out, retval] BSTR *pVal);
+   [propget, id(17), helpstring("An list of recipients of this email")] HRESULT Recipients([out,retval] IInterfaceRecipients** pvar); 
+	[propget, id(18), helpstring("Value of the given header field.")] HRESULT HeaderValue([in] BSTR FieldName, [out, retval] BSTR *pVal);
+	[propput, id(18), helpstring("Value of the given header field.")] HRESULT HeaderValue([in] BSTR FieldName, [in] BSTR FieldValue);
+   [id(19), helpstring("Check whether an email contains a specific content-type.")] HRESULT HasBodyType([in] BSTR BodyType, [out, retval] VARIANT_BOOL *bIsValid);
+   [propget, id(20), helpstring("Encode fields.")] HRESULT EncodeFields([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(20), helpstring("Encode fields.")] HRESULT EncodeFields([in] VARIANT_BOOL newVal);
+   [propget, id(21), helpstring("Message flags")] HRESULT Flag([in] eMessageFlag iType, [out, retval] VARIANT_BOOL *pVal);
+   [propput, id(21), helpstring("Message flags")] HRESULT Flag([in] eMessageFlag iType, [in] VARIANT_BOOL pVal);
+   [propget, id(22), helpstring("The internal date and time of this message.")] HRESULT InternalDate([out, retval] VARIANT *pVal);
+   [propget, id(23), helpstring("Collection of message heades.")] HRESULT Headers([out, retval] IInterfaceMessageHeaders ** pVal);
+   [id(24), helpstring("Refreshes the message content")] HRESULT RefreshContent();
+   [propget, id(25), helpstring("The number of this delivery attempt.")] HRESULT DeliveryAttempt([out, retval] long *pVal);
+	[propget, id(26), helpstring("The main character set of the email.")] HRESULT Charset([out, retval] BSTR *pVal);
+	[propput, id(26), helpstring("The main character set of the email.")] HRESULT Charset([in] BSTR newVal);
+   [id(27), helpstring("Copies the message to the specified IMAP folder")] HRESULT Copy([in] long iDestinationFolderID);
+	[propget, id(28), helpstring("The mailbox-unique identifier for the e-mail.")] HRESULT UID([out, retval] long *pVal);
+};
+
+
+[
+	object,
+	uuid(B29E672E-1B16-4FE1-9B38-6E54E57BBF5F),
+	dual,
+	nonextensible,
+	helpstring("The messages object is a collection of messages, typically connected to a specific IMAP folder."),
+	pointer_default(unique)
+]
+interface IInterfaceMessages : IDispatch
+{
+	[propget, id(0), defaultbind, helpstring("Returns the message in the collection with the given index.")] HRESULT Item([in] long Index, [out, retval] IInterfaceMessage** pVal);
+	[propget, id(1), helpstring("Returns the number of messages in the collection.")] HRESULT Count([out, retval] long *pVal);
+	[propget, id(2), helpstring("Returns the message in the collection with the given database index.")] HRESULT ItemByDBID([in] hyper DBID, [out, retval] IInterfaceMessage** pVal);
+	[id(3), helpstring("Deletes a message.")] HRESULT DeleteByDBID([in] hyper lDBID);
+   [id(4), helpstring("Adds a new message to this collection.")] HRESULT Add([out, retval] IInterfaceMessage **pMessage);
+   [id(5), helpstring("Removes all messages in the collection.")] HRESULT Clear();
+};
+
+[
+	object,
+	uuid(EBAB27E9-3790-47C6-AF7E-308A40ACE947),
+	dual,
+	nonextensible,
+	helpstring("The aliases object is a collection of all aliases connected to a specific domain."),
+	pointer_default(unique)
+]
+interface IInterfaceAliases : IDispatch
+{
+	[propget, id(0), defaultbind, helpstring("Returns a alias by a given index.")] HRESULT Item([in] long Index, [out, retval] IInterfaceAlias **pVal);
+	[propget, id(1), helpstring("Returns the number of aliases in the collection.")] HRESULT Count([out, retval] long *pVal);
+	[id(2), helpstring("Deletes the alias with the specified index.")] HRESULT Delete([in] long Index);
+	[id(3), helpstring("Refreshes the collection.")] HRESULT Refresh();
+	[id(4), helpstring("Adds a new alias to the collection.")] HRESULT Add([out, retval] IInterfaceAlias **pVal);
+	[propget, id(5), helpstring("Returns an alias by its given database identifier.")] HRESULT ItemByDBID([in] long DBID, [out, retval] IInterfaceAlias **pVal);
+	[id(6), helpstring("Deletes an alias by its given database identifier.")] HRESULT DeleteByDBID([in] long DBID);
+	[propget, id(7), helpstring("Returns an alias by it's name.")] HRESULT ItemByName([in] BSTR Name, [out, retval] IInterfaceAlias **pVal);
+};
+
+[
+	object,
+	uuid(8865E3B1-E227-45BE-B135-4448F5A3554D),
+	dual,
+	nonextensible,
+	helpstring("The utilities object contains misc. functions used by Altimail Server Administrator."),
+	pointer_default(unique)
+]
+interface IInterfaceUtilities : IDispatch{
+   [id(1), helpstring("Returns the mail server handling e-mail for the specified email address.")] HRESULT GetMailServer([in] BSTR EMailAddress, [out, retval] BSTR *MailServer);
+   [id(2), helpstring("Returns true if the given e-mail address is valid. false otherwise.")] HRESULT IsValidEmailAddress([in] BSTR EMailAddress, [out, retval] VARIANT_BOOL *bIsValid);
+   [id(3), helpstring("Returns true if the given domain name is valid.")] HRESULT IsValidDomainName([in] BSTR sDomainName, [out, retval] VARIANT_BOOL *bIsValid);
+   [id(4), helpstring("Returns the MD5 hex string for a string.")] HRESULT MD5([in] BSTR Input, [out, retval] BSTR *Output);
+   [id(5), helpstring("Encrypts a string to blowfish.")] HRESULT BlowfishEncrypt([in] BSTR Input, [out, retval] BSTR *Output);
+   [id(6), helpstring("Decrypts a string from blowfish.")] HRESULT BlowfishDecrypt([in] BSTR Input, [out, retval] BSTR *Output);
+   [id(7), helpstring("Makes the Altimail Server service dependent on another service.")] HRESULT MakeDependent([in] BSTR OtherService);
+   [id(8), helpstring("Imports a message from a file on disk for delivery or to a specific account.")] HRESULT ImportMessageFromFile([in] BSTR sFilename, [in] long iAccountID, [out, retval] VARIANT_BOOL *bIsSuccessful);
+   [id(9), helpstring("Sends an email message to accounts on the server.")] HRESULT EmailAllAccounts([in] BSTR sRecipientWildcard, [in] BSTR sFromAddress, [in] BSTR sFromName, [in] BSTR sSubject, [in] BSTR sBody, [out, retval] VARIANT_BOOL *bIsSuccessful);
+   [id(10), helpstring("Returns a unique GUID")] HRESULT GenerateGUID([out, retval] BSTR *Output);
+   [id(11), helpstring("Runs test suite. This will delete all objects on the server.")] HRESULT RunTestSuite([in] BSTR sTestPassword);
+   [id(12), helpstring("Checks if the given host name points at localhost.")] HRESULT IsLocalHost([in] BSTR sHostname, [out, retval] VARIANT_BOOL *bIsValid);
+   [id(13), helpstring("Imports a message from a file on disk for delivery or to a specific account.")] HRESULT ImportMessageFromFileToIMAPFolder([in] BSTR sFilename, [in] long iAccountID, [in] BSTR sIMAPFolder, [out, retval] VARIANT_BOOL *bIsSuccessful);   
+   [id(14), helpstring("Returns true if the given password is weak")] HRESULT IsStrongPassword([in] BSTR Username, [in] BSTR Password, [out, retval] VARIANT_BOOL *bIsValid);
+   [id(15), helpstring("Returns a salted SHA256 hex string for a string.")] HRESULT SHA256([in] BSTR Input, [out, retval] BSTR *Output);
+   [id(16), helpstring("Returns true if a rule criteria matches a value.")] HRESULT CriteriaMatch([in] BSTR MatchValue, [in] eRuleMatchType, [in] BSTR TestValue, [out, retval] VARIANT_BOOL *bMatch);
+   [id(17), helpstring("Returns the ID of the message file")] HRESULT RetrieveMessageID([in] BSTR sFilename, [out, retval] hyper *messageID);
+   [id(18), helpstring("Returns true if the given IP-address is parseable")] HRESULT IsValidIPAddress([in] BSTR IPAddress, [out, retval] VARIANT_BOOL *bIsValid);
+   [id(19), helpstring("Performs maintenance operations in the database.")] HRESULT PerformMaintenance([in] eMaintenanceOperation operation);
+};
+
+[
+	object,
+	uuid(C700637A-9BBB-4427-9660-A210ACA3F55D),
+	dual,
+	nonextensible,
+	helpstring("The alias object represents one Altimail Server alias."),
+	pointer_default(unique)
+]
+interface IInterfaceAlias : IDispatch
+{
+	[propget, id(1), helpstring("The alias is active.")] HRESULT Active([out, retval] VARIANT_BOOL *pVal);
+	[propput, id(1), helpstring("The alias is active.")] HRESULT Active([in] VARIANT_BOOL newVal);
+	[propget, id(2), helpstring("The identifier of the domain in which the alias belong.")] HRESULT DomainID([out, retval] long *pVal);
+	[propput, id(2), helpstring("The identifier of the domain in which the alias belong.")] HRESULT DomainID([in] long newVal);
+	[propget, id(3), helpstring("The unique database identifier for the alias.")] HRESULT ID([out, retval] long *pVal);
+	[propget, id(4), helpstring("The name of the alias.")] HRESULT Name([out, retval] BSTR *pVal);
+	[propput, id(4), helpstring("The name of the alias.")] HRESULT Name([in] BSTR newVal);
+	[propget, id(6), helpstring("The value of the alias.")] HRESULT Value([out, retval] BSTR *pVal);
+	[propput, id(6), helpstring("The value of the alias.")] HRESULT Value([in] BSTR newVal);
+	[id(7), helpstring("Deletes the alias from the database.")] HRESULT Delete();
+	[id(8), helpstring("Saves the alias to the database.")] HRESULT Save();
+
+};
+[
+	object,
+	uuid(17CC1733-C6D8-4892-975E-758691DE7A95),
+	dual,
+	nonextensible,
+	helpstring("The attachment object represents a single email attachment."),
+	pointer_default(unique)
+]
+interface IInterfaceAttachment : IDispatch
+{
+	[propget, id(1), helpstring("The filename of the attachment.")] HRESULT Filename([out, retval] BSTR *pVal);
+	[propget, id(2), helpstring("The size of the attachment.")] HRESULT Size([out, retval] long *pVal);
+   [id(3), helpstring("Saves the attachment to a file with the given name.")] HRESULT SaveAs(BSTR sName);
+   [id(4), helpstring("Removes this attachment from the message.")] HRESULT Delete();
+};
+[
+	object,
+	uuid(95843B06-8477-4212-9E43-42D15D83B491),
+	dual,
+	nonextensible,
+	helpstring("The attachments object is a collection of all attachments in a single email message."),
+	pointer_default(unique)
+]
+interface IInterfaceAttachments : IDispatch
+{
+	[propget, id(0), defaultbind, helpstring("Returns an attachment by its given index.")] HRESULT Item([in] long Index, [out, retval] IInterfaceAttachment* *pVal);
+	[propget, id(1), helpstring("The number of objects in the collection.")] HRESULT Count([out, retval] long *pVal);
+   [id(2), helpstring("Removes all attachments from the message.")] HRESULT Clear();
+   [id(3), helpstring("Adds an attachment to the collection.")] HRESULT Add([in] BSTR sFilename);
+};
+
+
+[
+	object,
+	uuid(C2586E5F-C6A3-4363-AD8E-363C0E4C3278),
+	dual,
+	nonextensible,
+	helpstring("The logging object contains all settings related to logging."),
+	pointer_default(unique)
+]
+interface IInterfaceLogging : IDispatch
+{
+	[propget, id(1), helpstring("Logging enabled.")] HRESULT Enabled([out, retval] VARIANT_BOOL *pVal);
+	[propput, id(1), helpstring("Logging enabled.")] HRESULT Enabled([in] VARIANT_BOOL newVal);
+	[propget, id(2), helpstring("Log SMTP conversations.")] HRESULT LogSMTP([out, retval] VARIANT_BOOL *pVal);
+	[propput, id(2), helpstring("Log SMTP conversations.")] HRESULT LogSMTP([in] VARIANT_BOOL newVal);
+	[propget, id(3), helpstring("Log POP3 conversations.")] HRESULT LogPOP3([out, retval] VARIANT_BOOL *pVal);
+	[propput, id(3), helpstring("Log POP3 conversations.")] HRESULT LogPOP3([in] VARIANT_BOOL newVal);
+	[propget, id(4), helpstring("Log tcp/ip.")] HRESULT LogTCPIP([out, retval] VARIANT_BOOL *pVal);
+	[propput, id(4), helpstring("Log tcp/ip.")] HRESULT LogTCPIP([in] VARIANT_BOOL newVal);
+	[propget, id(5), helpstring("Log application.")] HRESULT LogApplication([out, retval] VARIANT_BOOL *pVal);
+	[propput, id(5), helpstring("Log application.")] HRESULT LogApplication([in] VARIANT_BOOL newVal);
+	[propget, id(9), helpstring("Logging device.")] HRESULT Device([out, retval] eLogDevice *pVal);
+	[propput, id(9), helpstring("Logging device.")] HRESULT Device([in] eLogDevice newVal);
+	[propget, id(10), helpstring("Format of the log file")] HRESULT LogFormat([out, retval] eLogOutputFormat *pVal);
+	[propput, id(10), helpstring("Format of the log file")] HRESULT LogFormat([in] eLogOutputFormat newVal);
+	[propget, id(11), helpstring("Log debug messages")] HRESULT LogDebug([out, retval] VARIANT_BOOL *pVal);
+	[propput, id(11), helpstring("Log debug messages")] HRESULT LogDebug([in] VARIANT_BOOL newVal);
+
+	[propget, id(12), helpstring("Log IMAP conversations.")] HRESULT LogIMAP([out, retval] VARIANT_BOOL *pVal);
+	[propput, id(12), helpstring("Log IMAP conversations.")] HRESULT LogIMAP([in] VARIANT_BOOL newVal);
+
+	[id(13), helpstring("Enable live logging.")] HRESULT EnableLiveLogging([in] VARIANT_BOOL newVal);
+
+   [propget, id(14), helpstring("Path to the log directory")] HRESULT Directory([out, retval] BSTR *pVal);
+   [propget, id(15), helpstring("Current live log output")] HRESULT LiveLog([out, retval] BSTR *pVal);
+
+	[propget, id(16), helpstring("Create AWStats log")] HRESULT AWStatsEnabled([out, retval] VARIANT_BOOL *pVal);
+	[propput, id(16), helpstring("Create AWStats log")] HRESULT AWStatsEnabled([in] VARIANT_BOOL newVal);
+   
+   [propget, id(17), helpstring("Obsolete: Masking of passwords are is always done for security reasons.")] HRESULT MaskPasswordsInLog([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(17), helpstring("Obsolete: Masking of passwords are is always done for security reasons.")] HRESULT MaskPasswordsInLog([in] VARIANT_BOOL newVal);
+
+   [propget, id(18), helpstring("Full path to the current event log")] HRESULT CurrentEventLog([out, retval] BSTR *pVal);
+   [propget, id(19), helpstring("Full path to the current error log")] HRESULT CurrentErrorLog([out, retval] BSTR *pVal);
+   [propget, id(20), helpstring("Full path to the current awstats log")] HRESULT CurrentAwstatsLog([out, retval] BSTR *pVal);
+   [propget, id(21), helpstring("Full path to the current default log")] HRESULT CurrentDefaultLog([out, retval] BSTR *pVal);
+
+   [propget, id(22), helpstring("Keep log file open between writes.")] HRESULT KeepFilesOpen([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(22), helpstring("Keep log file open between writes.")] HRESULT KeepFilesOpen([in] VARIANT_BOOL newVal);
+
+   [propget, id(23), helpstring("Returns true if live logging is enabled. False otherwise.")] HRESULT LiveLoggingEnabled([out, retval] VARIANT_BOOL *pVal);
+};
+
+[
+	object,
+	uuid(C9684649-FC34-4D6D-A8AD-AA8A4C47543B),
+	dual,
+	nonextensible,
+	helpstring("The DistributionLists object is a collection of all distribution lists connected to a specific domain."),
+	pointer_default(unique)
+]
+interface IInterfaceDistributionLists : IDispatch
+{
+	[propget, id(0), defaultbind, helpstring("Returns the distribution list by the given index.")] HRESULT Item([in] long Index, [out, retval] IInterfaceDistributionList** pVal);
+	[propget, id(1), helpstring("Returns the number of lists in the collection.")] HRESULT Count([out, retval] long *pVal);
+	[propget, id(2), helpstring("Returns the list in the collection by the given database identifier.")] HRESULT ItemByDBID([in] long DBID, [out, retval] IInterfaceDistributionList** pVal);
+	[id(3), helpstring("Adds a new list to the collection.")] HRESULT Add([out, retval] IInterfaceDistributionList **pVal);
+	[id(4), helpstring("Deletes a list from the collection.")] HRESULT DeleteByDBID([in] long lDBID);
+   [propget, id(5), helpstring("Returns the list in the collection by the given address.")] HRESULT ItemByAddress([in] BSTR sAddress, [out, retval] IInterfaceDistributionList** pVal);
+   [id(6), helpstring("Refreshes the collection from the database.")] HRESULT Refresh();
+
+};
+[
+	object,
+	uuid(1899F995-5E71-417E-8508-5A268F7D92BF),
+	dual,
+	nonextensible,
+	helpstring("The DistributionList object represents a Altimail Server distribution list."),
+	pointer_default(unique)
+]
+interface IInterfaceDistributionList : IDispatch
+{
+   [propget, id(1), helpstring("The unique database identifier for the distribution list.")] HRESULT ID([out, retval] long* pVal);
+   [id(2), helpstring("Deletes the distribution list from the database.")] HRESULT Delete();
+   [id(4), helpstring("Saves the distribution list in the database.")] HRESULT Save();
+   [propget, id(5), helpstring("True if the distribution list is active, false otherwise")] HRESULT Active([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(5), helpstring("True if the distribution list is active, false otherwise")] HRESULT Active([in] VARIANT_BOOL newVal);
+   [propget, id(6), helpstring("The recipients in the distribution list.")] HRESULT Recipients([out, retval] IInterfaceDistributionListRecipients **pVal);
+   [propget, id(7), helpstring("The address of the distribution list.")] HRESULT Address([out, retval] BSTR  * pVal);
+   [propput, id(7), helpstring("The address of the distribution list.")] HRESULT Address([in] BSTR newVal);
+   [propget, id(8), helpstring("Sets wether the list requires a user to SMTP Authenticate before sending mail to it.")] HRESULT RequireSMTPAuth([out, retval] VARIANT_BOOL* pVal);
+   [propput, id(8), helpstring("Sets wether the list requires a user to SMTP Authenticate before sending mail to it.")] HRESULT RequireSMTPAuth([in] VARIANT_BOOL newVal);
+   [propget, id(9), helpstring("Require the user to send from the adress.")] HRESULT RequireSenderAddress([out, retval] BSTR  * pVal);
+   [propput, id(9), helpstring("Require the user to send from the adress.")] HRESULT RequireSenderAddress([in] BSTR newVal);
+   [propget, id(10), helpstring("Distribution list mode.")] HRESULT Mode([out, retval] eDistributionListMode *pVal);
+   [propput, id(10), helpstring("Distribution list mode.")] HRESULT Mode([in] eDistributionListMode newVal);
+
+};
+
+[
+	object,
+	uuid(C75D7A60-5EF4-4EDC-8D5C-09532C274F07),
+	dual,
+	nonextensible,
+	helpstring("The DistributionListRecipients object is a collection of all recipients in a single distribution list."),
+	pointer_default(unique)
+]
+interface IInterfaceDistributionListRecipients : IDispatch
+{
+		[propget, id(0), defaultbind, helpstring("Returns the recipient in the collection with the given index.")] HRESULT Item([in] long Index, [out, retval] IInterfaceDistributionListRecipient** pVal);
+		[propget, id(1), helpstring("Returns the number of recipients in the collection.")] HRESULT Count([out, retval] long *pVal);
+		[propget, id(2), helpstring("Returns the recipient in the collection with the given database index.")] HRESULT ItemByDBID([in] long DBID, [out, retval] IInterfaceDistributionListRecipient** pVal);
+		[id(3), helpstring("Adds a new recipient to the collection.")] HRESULT Add([out, retval] IInterfaceDistributionListRecipient **pVal);
+		[id(4), helpstring("Deletes a recipient from the collection.")] HRESULT DeleteByDBID([in] long lDBID);
+};
+
+
+[
+	object,
+	uuid(195CE77F-F10E-4244-BF97-B4F581565B01),
+	dual,
+	nonextensible,
+	helpstring("The DistributionListRecipient object represents a single recipient in a Altimail Server distribution list."),
+	pointer_default(unique)
+]
+interface IInterfaceDistributionListRecipient : IDispatch
+{
+   [propget, id(1), helpstring("The unique database identifier for the recipient.")] HRESULT ID([out, retval] long* pVal);
+   [propget, id(2), helpstring("The email address of the recipient.")] HRESULT RecipientAddress([out, retval] BSTR* pVal);
+   [propput, id(2), helpstring("The email address of the recipient.")] HRESULT RecipientAddress([in] BSTR newVal);
+   [id(3), helpstring("Deletes the recipient from the distribution list.")] HRESULT Delete();
+   [id(4), helpstring("Saves the recipient in the database.")] HRESULT Save();
+};
+
+
+[
+	object,
+	uuid(E6FBB26A-B4C3-4FD0-86E6-5E15313C3551),
+	dual,
+	nonextensible,
+	helpstring("The security range object represents one Altimail Server IP range."),
+	pointer_default(unique)
+]
+interface IInterfaceSecurityRange : IDispatch{
+		[propget, id(0), helpstring("Database identifier")] HRESULT ID([out, retval] long *pVal);
+		[propget, id(1), helpstring("Lower IP")] HRESULT LowerIP([out, retval] BSTR *pVal);
+		[propput, id(1), helpstring("Lower IP")] HRESULT LowerIP([in] BSTR pVal);
+		[propget, id(2), helpstring("Upper IP")] HRESULT UpperIP([out, retval] BSTR *pVal);
+		[propput, id(2), helpstring("Upper IP")] HRESULT UpperIP([in] BSTR pVal);
+		[propget, id(3), helpstring("Allow SMTP connections.")] HRESULT AllowSMTPConnections([out, retval] VARIANT_BOOL *pVal);
+		[propput, id(3), helpstring("Allow SMTP connections")] HRESULT AllowSMTPConnections([in] VARIANT_BOOL newVal);
+		[propget, id(5), helpstring("Allow POP3 connections.")] HRESULT AllowPOP3Connections([out, retval] VARIANT_BOOL *pVal);
+		[propput, id(5), helpstring("Allow POP3 connections")] HRESULT AllowPOP3Connections([in] VARIANT_BOOL newVal);
+		[propget, id(6), helpstring("Priority of this security range.")] HRESULT Priority([out, retval] long *pVal);
+		[propput, id(6), helpstring("Priority of this security range.")] HRESULT Priority([in] long newVal);
+
+		[id(10), helpstring("Saves the security range to the database.")] HRESULT Save(void);
+		[propget, id(11), helpstring("AllowIMAPConnections")] HRESULT AllowIMAPConnections([out, retval] VARIANT_BOOL *pVal);
+		[propput, id(11), helpstring("AllowIMAPConnections")] HRESULT AllowIMAPConnections([in] VARIANT_BOOL newVal);
+		[propget, id(12), helpstring("The name of this object.")] HRESULT Name([out, retval] BSTR *pVal);
+		[propput, id(12), helpstring("The name of this object")] HRESULT Name([in] BSTR newVal);
+		
+
+		// Auth
+      [propget, id(13), helpstring("Obsolete: Use RequireSMTPAuth* instead.")] HRESULT RequireAuthForDeliveryToLocal([out, retval] VARIANT_BOOL *pVal);
+		[propput, id(13), helpstring("Obsolete: Use RequireSMTPAuth* instead.")] HRESULT RequireAuthForDeliveryToLocal([in] VARIANT_BOOL newVal);
+		[propget, id(14), helpstring("Obsolete: Use RequireSMTPAuth* instead.")] HRESULT RequireAuthForDeliveryToRemote([out, retval] VARIANT_BOOL *pVal);
+		[propput, id(14), helpstring("Obsolete: Use RequireSMTPAuth* instead.")] HRESULT RequireAuthForDeliveryToRemote([in] VARIANT_BOOL newVal);
+
+		// Relaing
+		[propget, id(15), helpstring("Allow deliveries from local to local.")] HRESULT AllowDeliveryFromLocalToLocal([out, retval] VARIANT_BOOL *pVal);
+		[propput, id(15), helpstring("Allow deliveries from local to local")] HRESULT AllowDeliveryFromLocalToLocal([in] VARIANT_BOOL newVal);
+		[propget, id(16), helpstring("Allow deliveries from local to remote.")] HRESULT AllowDeliveryFromLocalToRemote([out, retval] VARIANT_BOOL *pVal);
+		[propput, id(16), helpstring("Allow deliveries from local to remote")] HRESULT AllowDeliveryFromLocalToRemote([in] VARIANT_BOOL newVal);
+		[propget, id(17), helpstring("Allow deliveries from remote to local.")] HRESULT AllowDeliveryFromRemoteToLocal([out, retval] VARIANT_BOOL *pVal);
+		[propput, id(17), helpstring("Allow deliveries from remote to local")] HRESULT AllowDeliveryFromRemoteToLocal([in] VARIANT_BOOL newVal);
+		[propget, id(18), helpstring("Allow deliveries from remote to remote.")] HRESULT AllowDeliveryFromRemoteToRemote([out, retval] VARIANT_BOOL *pVal);
+		[propput, id(18), helpstring("Allow deliveries from remote to remote")] HRESULT AllowDeliveryFromRemoteToRemote([in] VARIANT_BOOL newVal);
+
+		[propget, id(19), helpstring("Enable spam protection for this IP range.")] HRESULT EnableSpamProtection([out, retval] VARIANT_BOOL *pVal);
+		[propput, id(19), helpstring("Enable spam protection for this IP range")] HRESULT EnableSpamProtection([in] VARIANT_BOOL newVal);
+      [propget, id(20), helpstring("Obsolete: Used IncomingRelays colleciton instead.")] HRESULT IsForwardingRelay([out, retval] VARIANT_BOOL *pVal);
+      [propput, id(20), helpstring("Obsolete: Used IncomingRelays colleciton instead.")] HRESULT IsForwardingRelay([in] VARIANT_BOOL newVal);
+		[propget, id(21), helpstring("Enable virus protection for this IP range.")] HRESULT EnableAntiVirus([out, retval] VARIANT_BOOL *pVal);
+		[propput, id(21), helpstring("Enable virus protection for this IP range")] HRESULT EnableAntiVirus([in] VARIANT_BOOL newVal);
+
+      [id(22), helpstring("Deletes the object from the database.")] HRESULT Delete();
+
+		[propget, id(23), helpstring("Gets or sets whether this IP range expires.")] HRESULT Expires([out, retval] VARIANT_BOOL *pVal);
+		[propput, id(23), helpstring("Gets or sets whether this IP range expires.")] HRESULT Expires([in] VARIANT_BOOL newVal);
+      [propget, id(24), helpstring("Gets or sets the time the IP range expires (if expiration is enabled).")] HRESULT ExpiresTime([out, retval] VARIANT *pVal);
+      [propput, id(24), helpstring("Gets or sets the time the IP range expires (if expiration is enabled).")] HRESULT ExpiresTime([in] VARIANT pVal);
+
+      [propget, id(25), helpstring("Require SMTP authentication for deliveries from local to local.")] HRESULT RequireSMTPAuthLocalToLocal([out, retval] VARIANT_BOOL *pVal);
+		[propput, id(25), helpstring("Require SMTP authentication for deliveries from local to local")] HRESULT RequireSMTPAuthLocalToLocal([in] VARIANT_BOOL newVal);
+      [propget, id(26), helpstring("Require SMTP authentication for deliveries from local to external.")] HRESULT RequireSMTPAuthLocalToExternal([out, retval] VARIANT_BOOL *pVal);
+		[propput, id(26), helpstring("Require SMTP authentication for deliveries from local to external")] HRESULT RequireSMTPAuthLocalToExternal([in] VARIANT_BOOL newVal);
+      [propget, id(27), helpstring("Require SMTP authentication for deliveries from external to local.")] HRESULT RequireSMTPAuthExternalToLocal([out, retval] VARIANT_BOOL *pVal);
+		[propput, id(27), helpstring("Require SMTP authentication for deliveries from external to local")] HRESULT RequireSMTPAuthExternalToLocal([in] VARIANT_BOOL newVal);
+      [propget, id(28), helpstring("Require SMTP authentication for deliveries from external to external.")] HRESULT RequireSMTPAuthExternalToExternal([out, retval] VARIANT_BOOL *pVal);
+		[propput, id(28), helpstring("Require SMTP authentication for deliveries from external to external")] HRESULT RequireSMTPAuthExternalToExternal([in] VARIANT_BOOL newVal);
+
+      [propget, id(29), helpstring("Require users to use SSL/TLS when authenticating.")] HRESULT RequireSSLTLSForAuth([out, retval] VARIANT_BOOL *pVal);
+		[propput, id(29), helpstring("Require users to use SSL/TLS when authenticating.")] HRESULT RequireSSLTLSForAuth([in] VARIANT_BOOL newVal);
+};
+
+[
+	object,
+	uuid(07CC29FA-AAF7-4B2D-A1DA-7C4CAE313585),
+	dual,
+	nonextensible,
+	helpstring("The security ranges object is a collection of all IP ranges set up in the Altimail Server installation."),
+	pointer_default(unique)
+]
+interface IInterfaceSecurityRanges : IDispatch
+{
+		[propget, id(0), defaultbind, helpstring("Returns a securityrange by a given index.")] HRESULT Item([in] long Index, [out, retval] IInterfaceSecurityRange **pVal);
+		[propget, id(1), helpstring("Returns a securityrange by a given database identifier.")] HRESULT ItemByDBID([in] long DBID, [out, retval] IInterfaceSecurityRange **pVal);
+		[id(2), helpstring("Deletes the security range with the specified index.")] HRESULT Delete([in] long Index);
+		[id(3), helpstring("Deletes the security range with the specified database identifier.")] HRESULT DeleteByDBID([in] long DBID);
+		[id(4), helpstring("Refreshes the collection.")] HRESULT Refresh();
+		[id(5), helpstring("Adds a new security range to the collection.")] HRESULT Add([out, retval] IInterfaceSecurityRange **pVal);
+		[propget, id(6), helpstring("The number of objects in the collection.")] HRESULT Count([out, retval] long *pVal);
+		[propget, id(7), helpstring("Returns a securityrange by a given name.")] HRESULT ItemByName([in] BSTR sName, [out, retval] IInterfaceSecurityRange **pVal);
+      [id(8), helpstring("Reverts IP range settings back to their default values.")] HRESULT SetDefault();
+};
+[
+	object,
+	uuid(963FE592-6399-41C6-A0C6-69126F139738),
+	dual,
+	nonextensible,
+	helpstring("The anti virus object settings related to virus scanning."),
+	pointer_default(unique)
+]
+interface IInterfaceAntiVirus : IDispatch{
+   [propget, id(1), helpstring("ClamWin enabled.")] HRESULT ClamWinEnabled([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(1), helpstring("ClamWin enabled.")] HRESULT ClamWinEnabled([in] VARIANT_BOOL newVal);
+   [propget, id(2), helpstring("ClamWin Executable path.")] HRESULT ClamWinExecutable([out, retval] BSTR *pVal);
+   [propput, id(2), helpstring("ClamWin Executable path.")] HRESULT ClamWinExecutable([in] BSTR newVal);
+   [propget, id(3), helpstring("ClamWIn database folder.")] HRESULT ClamWinDBFolder([out, retval] BSTR *pVal);
+   [propput, id(3), helpstring("ClamWIn database folder.")] HRESULT ClamWinDBFolder([in] BSTR newVal);
+
+   [propget, id(4), helpstring("Action.")] HRESULT Action([out, retval] eAntivirusAction *pVal);
+   [propput, id(4), helpstring("Action.")] HRESULT Action([in] eAntivirusAction newVal);
+
+   [propget, id(5), helpstring("Notify receiver that email has been deleted.")] HRESULT NotifyReceiver([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(5), helpstring("Notify receiver that email has been deleted.")] HRESULT NotifyReceiver([in] VARIANT_BOOL newVal);
+   [propget, id(6), helpstring("Notify sender that email has been deleted.")] HRESULT NotifySender([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(6), helpstring("Notify sender that email has been deleted.")] HRESULT NotifySender([in] VARIANT_BOOL newVal);
+
+   [propget, id(7), helpstring("Custom scanner enabled.")] HRESULT CustomScannerEnabled([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(7), helpstring("Custom scanner enabled.")] HRESULT CustomScannerEnabled([in] VARIANT_BOOL newVal);
+   [propget, id(8), helpstring("Custom executable path.")] HRESULT CustomScannerExecutable([out, retval] BSTR *pVal);
+   [propput, id(8), helpstring("Custom executable path.")] HRESULT CustomScannerExecutable([in] BSTR newVal);
+   [propget, id(9), helpstring("Custom scanner return value.")] HRESULT CustomScannerReturnValue([out, retval] long *pVal);
+   [propput, id(9), helpstring("Custom scanner return value.")] HRESULT CustomScannerReturnValue([in] long newVal);
+
+   [propget, id(10), helpstring("Maximum message size when running anti virus (KB).")] HRESULT MaximumMessageSize([out, retval] long *pVal);
+   [propput, id(10), helpstring("Maximum message size when running anti virus (KB).")] HRESULT MaximumMessageSize([in] long newVal);
+   
+   [propget, id(11), helpstring("Blocked attachments")] HRESULT BlockedAttachments([out, retval] IInterfaceBlockedAttachments * *pVal);
+   [propget, id(12), helpstring("Enable attachment blocking.")] HRESULT EnableAttachmentBlocking([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(12), helpstring("Enable attachment blocking.")] HRESULT EnableAttachmentBlocking([in] VARIANT_BOOL newVal);
+
+   [propget, id(13), helpstring("ClamAV enabled.")] HRESULT ClamAVEnabled([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(13), helpstring("ClamAV enabled.")] HRESULT ClamAVEnabled([in] VARIANT_BOOL newVal);
+   [propget, id(14), helpstring("ClamAV host.")] HRESULT ClamAVHost([out, retval] BSTR *pVal);
+   [propput, id(14), helpstring("ClamAV host.")] HRESULT ClamAVHost([in] BSTR newVal);
+   [propget, id(15), helpstring("ClamAV port.")] HRESULT ClamAVPort([out, retval] long *pVal);
+   [propput, id(15), helpstring("ClamAV port.")] HRESULT ClamAVPort([in] long newVal);
+
+   [id(16), helpstring("Tests to use the custom virus scanner.")] HRESULT TestCustomerScanner([in] BSTR customExecutable, long virusReturnCode, [out] BSTR *ResultText, [out, retval] VARIANT_BOOL *pResult);
+   [id(17), helpstring("Tests to use the ClamWin")] HRESULT TestClamWinScanner([in] BSTR clamWinExecutable, BSTR clamWinDatabase, [out] BSTR *ResultText, [out, retval] VARIANT_BOOL *pResult);
+   [id(18), helpstring("Tests to connect to ClamAV")] HRESULT TestClamAVScanner([in] BSTR ClamAVHostName, long ClamAVPort, [out] BSTR *ResultText, [out, retval] VARIANT_BOOL *pResult);
+};
+[
+	object,
+	uuid(9809D04A-6D08-4769-AE4C-13DA667EB22C),
+	dual,
+	nonextensible,
+	helpstring("The route object represents one Altimail Server route."),
+	pointer_default(unique)
+]
+interface IInterfaceRoute : IDispatch
+{
+	[propget, id(1), helpstring("Database identifier.")] HRESULT ID([out, retval] long *pVal);
+
+	[propget, id(2), helpstring("Domain name.")] HRESULT DomainName([out, retval] BSTR *pVal);
+	[propput, id(2), helpstring("Domain name.")] HRESULT DomainName([in] BSTR newVal);
+	[propget, id(3), helpstring("Target SMTP host")] HRESULT TargetSMTPHost([out, retval] BSTR *pVal);
+	[propput, id(3), helpstring("Target SMTP host")] HRESULT TargetSMTPHost([in] BSTR newVal);
+	[propget, id(4), helpstring("Target SMTP host")] HRESULT TargetSMTPPort([out, retval] long *pVal);
+	[propput, id(4), helpstring("Target SMTP host")] HRESULT TargetSMTPPort([in] long newVal);
+	[propget, id(5), helpstring("Number of tries")] HRESULT NumberOfTries([out, retval] long *pVal);
+	[propput, id(5), helpstring("Number of tries")] HRESULT NumberOfTries([in] long newVal);
+	[propget, id(6), helpstring("Number of minutes between every try")] HRESULT MinutesBetweenTry([out, retval] long *pVal);
+	[propput, id(6), helpstring("Number of minutes between every try")] HRESULT MinutesBetweenTry([in] long newVal);
+
+	[propget, id(7), helpstring("Route to all addresses")] HRESULT AllAddresses([out, retval] VARIANT_BOOL *pVal);
+	[propput, id(7), helpstring("Route to all addresses")] HRESULT AllAddresses([in] VARIANT_BOOL newVal);
+
+	[propget, id(8), helpstring("Valid addresses")] HRESULT Addresses([out, retval] IInterfaceRouteAddresses * *pVal);
+
+	[propget, id(9), helpstring("SMTP server requires authentication")] HRESULT RelayerRequiresAuth([out, retval] VARIANT_BOOL *pVal);
+	[propput, id(9), helpstring("SMTP server requires authentication")] HRESULT RelayerRequiresAuth([in] VARIANT_BOOL newVal);
+
+	[propget, id(10), helpstring("SMTP server username")] HRESULT RelayerAuthUsername([out, retval] BSTR *pVal);
+	[propput, id(10), helpstring("SMTP server username")] HRESULT RelayerAuthUsername([in] BSTR newVal);
+
+	[id(11), helpstring("Set SMTP server password")] HRESULT SetRelayerAuthPassword([in] BSTR newVal);
+
+	[propget, id(12), helpstring("Obsolete. Use TreatRecipientAsLocalDomain instead.")] HRESULT TreatSecurityAsLocalDomain([out, retval] VARIANT_BOOL *pVal);
+	[propput, id(12), helpstring("Obsolete. Use TreatRecipientAsLocalDomain instead.")] HRESULT TreatSecurityAsLocalDomain([in] VARIANT_BOOL newVal);
+
+	[id(13), helpstring("Saves changes of the object in the database.")] HRESULT Save();
+	
+   [propget, id(14), helpstring("Use SSL for this route.")] HRESULT UseSSL([out, retval] VARIANT_BOOL *pVal);
+	[propput, id(14), helpstring("Use SSL for this route.")] HRESULT UseSSL([in] VARIANT_BOOL newVal);
+	[propget, id(15), helpstring("Description for this route.")] HRESULT Description([out, retval] BSTR *pVal);
+	[propput, id(15), helpstring("Description for this route.")] HRESULT Description([in] BSTR newVal);
+   [id(16), helpstring("Deletes the domain object the database.")] HRESULT Delete();
+
+   [propget, id(17), helpstring("When email is sent from the route domain name, treat sender domain as a local domain.")] HRESULT TreatSenderAsLocalDomain([out, retval] VARIANT_BOOL *pVal);
+	[propput, id(17), helpstring("When email is sent from the route domain name, treat sender domain as a local domain.")] HRESULT TreatSenderAsLocalDomain([in] VARIANT_BOOL newVal);
+
+   [propget, id(18), helpstring("When email is sent to the route domain name, treat recipient domain as a local domain.")] HRESULT TreatRecipientAsLocalDomain([out, retval] VARIANT_BOOL *pVal);
+	[propput, id(18), helpstring("When email is sent to the route domain name, treat recipient domain as a local domain.")] HRESULT TreatRecipientAsLocalDomain([in] VARIANT_BOOL newVal);
+
+   [propget, id(19), helpstring("Connection security for the route.")] HRESULT ConnectionSecurity([out, retval] eConnectionSecurity *pVal);
+   [propput, id(19), helpstring("Connection security for the route.")] HRESULT ConnectionSecurity([in] eConnectionSecurity newVal);
+
+};
+
+
+[
+	object,
+	uuid(0D577668-9AB3-4DEE-ACD7-0B3A7FCBA717),
+	dual,
+	nonextensible,
+	helpstring("The DNSBlackLists object is a collection of all DNS black lists set up in the Altimail Server installation."),
+	pointer_default(unique)
+]
+interface IInterfaceDNSBlackLists : IDispatch{
+      [propget, id(0), defaultbind, helpstring("Returns a DNS blacklist by its given index.")] HRESULT Item([in] long Index, [out, retval] IInterfaceDNSBlackList **pVal);
+      [propget, id(1), helpstring("The number of objects in the collection.")] HRESULT Count([out, retval] long *pVal);
+      [id(2), helpstring("Deletes an object in the database by its given database identifier.")] HRESULT DeleteByDBID([in] long DBID);
+      [id(3), helpstring("Adds a new object to the collection.")] HRESULT Add([out, retval] IInterfaceDNSBlackList **pVal);
+      [propget, id(5), helpstring("Returns a DNS blacklist by its database identifier")] HRESULT ItemByDBID([in] long DBID, [out, retval] IInterfaceDNSBlackList* *pVal);
+      [id(6), helpstring("Refreshes the collection.")] HRESULT Refresh();
+      [propget, id(7), helpstring("Returns a DNS blacklist by its DNS host")] HRESULT ItemByDNSHost([in] BSTR sDNSHost, [out, retval] IInterfaceDNSBlackList* *pVal);
+};
+[
+	object,
+	uuid(3420B799-5058-4986-A9B2-407FCD209067),
+	dual,
+	nonextensible,
+	helpstring("The DNS blacklist object represents a single Altimail Server black list."),
+	pointer_default(unique)
+]
+interface IInterfaceDNSBlackList : IDispatch
+{
+   [propget, id(1), helpstring("The object is active.")] HRESULT Active([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(1), helpstring("The object is active.")] HRESULT Active([in] VARIANT_BOOL newVal);
+   [propget, id(2), helpstring("The unique database identifier for the object.")] HRESULT ID([out, retval] long *pVal);
+   [propget, id(3), helpstring("The DNS host to query.")] HRESULT DNSHost([out, retval] BSTR *pVal);
+   [propput, id(3), helpstring("The DNS host to query.")] HRESULT DNSHost([in] BSTR newVal);
+   [propget, id(4), helpstring("The message to send to the client if server rejects message.")] HRESULT RejectMessage([out, retval] BSTR *pVal);
+   [propput, id(4), helpstring("The message to send to the client if server rejects message.")] HRESULT RejectMessage([in] BSTR newVal);
+   [propget, id(5), helpstring("The IP address the query will resolve to if host is in black list.")] HRESULT ExpectedResult([out, retval] BSTR *pVal);
+   [propput, id(5), helpstring("The IP address the query will resolve to if host is in black list.")] HRESULT ExpectedResult([in] BSTR newVal);
+   [id(6), helpstring("Saves changes of the object in the database.")] HRESULT Save();
+   [propget, id(7), helpstring("Spam score")] HRESULT Score([out, retval] long *pVal);
+   [propput, id(7), helpstring("Spam score")] HRESULT Score([in] long newVal);
+   [id(8), helpstring("Deletes the object from the database.")] HRESULT Delete();
+};
+[
+	object,
+	uuid(13C2FEC9-DCB6-4721-8A6E-83463E603BCE),
+	dual,
+	nonextensible,
+	helpstring("The application object is the root object in the Altimail Server API. It's the first object you should create when you want to access the Altimail Server API"),
+	pointer_default(unique)
+]
+interface IInterfaceApplication : IDispatch{
+   [id(1), helpstring("Starts an Altimail Server server.")] HRESULT Start();
+   [id(2), helpstring("Stops an Altimail Server server.")] HRESULT Stop();
+   
+   [propget, id(3), helpstring("Gets the Settings object.")] HRESULT Settings([out, retval] IInterfaceSettings** pVal);
+   [propget, id(4), helpstring("Gets the Domains collection.")] HRESULT Domains([out, retval] IInterfaceDomains **pVal);
+   [propget, id(5), helpstring("Gets the current state of the server.")] HRESULT ServerState([out, retval] eServerState *pVal);
+   [propget, id(6), helpstring("Gets the database interface.")] HRESULT Database([out, retval] IInterfaceDatabase **pVal);
+   [propget, id(7), helpstring("Gets the Utilities object.")] HRESULT Utilities([out, retval] IInterfaceUtilities * *pVal);
+   [id(8), helpstring("Submits pending email messages. May be triggered if an email has been manually inserted into the database.")] HRESULT SubmitEMail();
+   [propget, id(9), helpstring("Returns the Status object.")] HRESULT Status([out, retval] IInterfaceStatus** pVal);
+   [propget, id(10), helpstring("Gets the current Altimail Server version")] HRESULT Version([out, retval] BSTR *pVal);
+   
+   [id(11), helpstring("Opens a connection to the Altimail Server database.")] HRESULT Connect();
+   [propget, id(12), helpstring("The initialization file currently in use.")] HRESULT InitializationFile([out, retval] BSTR *pVal);
+   [id(13), helpstring("Reloads all the server settinsg")] HRESULT Reinitialize();
+   [propget, id(14), helpstring("Gets a colleciton of global rules.")] HRESULT Rules([out, retval] IInterfaceRules** pVal);
+   [propget, id(15), helpstring("Gets the backup manager.")] HRESULT BackupManager([out, retval] IInterfaceBackupManager **pVal);
+   [propget, id(16), helpstring("Gets the global objects object.")] HRESULT GlobalObjects([out, retval] IInterfaceGlobalObjects **pVal);
+   [id(17), helpstring("Authenticate the client.")] HRESULT Authenticate([in] BSTR Username, [in] BSTR Password, [out, retval] IInterfaceAccount** pAccount);
+   [propget, id(18), helpstring("Quick links to access objects")] HRESULT Links([out, retval] IInterfaceLinks **pVal);
+   [propget, id(19), helpstring("Gets a diagnostics object.")] HRESULT Diagnostics([out, retval] IInterfaceDiagnostics **pVal);
+
+   [propget, id(20), helpstring("Gets the current Altimail Server architecture (x86/x64)")] HRESULT VersionArchitecture([out, retval] BSTR *pVal);
+};
+
+[
+	object,
+	uuid(D2220158-7E91-4AE6-BE7A-016F982E1D0D),
+	dual,
+	nonextensible,
+	helpstring("The Domains object is a collection of all domains set up in the Altimail Server installation."),
+	pointer_default(unique)
+]
+interface IInterfaceDomains : IDispatch
+{
+   [propget, id(0), defaultbind, helpstring("Returns a domain by its given index in the collection.")] HRESULT Item([in] long Index, [out, retval] IInterfaceDomain* *pVal);
+   [id(1), helpstring("Refreshes the collection.")] HRESULT Refresh();
+   [propget, id(2), helpstring("The number of objects in the collection.")] HRESULT Count([out, retval] long *pVal);
+   [id(3), helpstring("Adds a new item to the collection")] HRESULT Add([out, retval] IInterfaceDomain **pVal);
+   [propget, id(4), helpstring("Returns a domain by its name")] HRESULT ItemByName([in] BSTR ItemName, [out, retval] IInterfaceDomain** pVal);
+   [propget, id(5), helpstring("ItemByDBID")] HRESULT ItemByDBID([in] long DBID, [out, retval] IInterfaceDomain* *pVal);
+   [propget, id(6), helpstring("Returns a list containing id\tname\tid\tname")] HRESULT Names([out, retval] BSTR* pVal);
+   [id(7), helpstring("Deletes the domain with the given database identifier.")] HRESULT DeleteByDBID([in] long DBID);
+};
+
+
+[
+	object,
+	uuid(B303F451-BDA7-444E-89A2-967AB126CECF),
+	dual,
+	nonextensible,
+	helpstring("The routes object is a collection of all routes set up in the Altimail Server installation."),
+	pointer_default(unique)
+]
+interface IInterfaceRoutes : IDispatch{
+	[propget, id(0), defaultbind, helpstring("Returns a route by its given index.")] HRESULT Item([in] long Index, [out, retval] IInterfaceRoute **pVal);
+	[propget, id(1), helpstring("The number of objects in the collection.")] HRESULT Count([out, retval] long *pVal);
+	[id(2), helpstring("Deletes an object in the database by its given database identifier.")] HRESULT DeleteByDBID([in] long DBID);
+	[id(3), helpstring("Adds a new object to the collection.")] HRESULT Add([out, retval] IInterfaceRoute **pVal);
+	[propget, id(4), helpstring("Returns a route by its given domainname.")] HRESULT ItemByName([in] BSTR ItemName, [out, retval] IInterfaceRoute** pVal);
+	[propget, id(5), helpstring("Returns a route by its database identifier")] HRESULT ItemByDBID([in] long DBID, [out, retval] IInterfaceRoute* *pVal);
+	[id(6), helpstring("Refreshes the collection.")] HRESULT Refresh();
+};
+
+[
+	object,
+	uuid(4CE740CC-CE24-4FA3-B025-46CA0595A8E2),
+	dual,
+	nonextensible,
+	helpstring("The route address object represents a single recipient in a route."),
+	pointer_default(unique)
+]
+interface IInterfaceRouteAddress : IDispatch{
+   [propget, id(1), helpstring("Database identifier.")] HRESULT ID([out, retval] long *pVal);
+
+   [propget, id(2), helpstring("Address.")] HRESULT Address([out, retval] BSTR *pVal);
+   [propput, id(2), helpstring("Address.")] HRESULT Address([in] BSTR newVal);
+   [propget, id(3), helpstring("Route identifier")] HRESULT RouteID([out, retval] long *pVal);
+   [propput, id(3), helpstring("Route identifier")] HRESULT RouteID([in] long newVal);
+
+   [id(4), helpstring("Saves changes of the object in the database.")] HRESULT Save();
+   [id(5), helpstring("Deletes the domain object the database.")] HRESULT Delete();
+};
+
+[
+	object,
+	uuid(F7A1CA14-CE94-4700-984B-3036E139301A),
+	dual,
+	nonextensible,
+	helpstring("The RouteAddresses object is a collection of all recipients in a single Altimail Server route."),
+	pointer_default(unique)
+]
+interface IInterfaceRouteAddresses : IDispatch{
+   [propget, id(0), defaultbind, helpstring("Returns an attachment by its given index.")] HRESULT Item([in] long Index, [out, retval] IInterfaceRouteAddress **pVal);
+   [propget, id(1), helpstring("The number of objects in the collection.")] HRESULT Count([out, retval] long *pVal);
+   [id(2), helpstring("Deletes an object in the database by its given identifier.")] HRESULT DeleteByDBID([in] long DBID);
+   [id(3), helpstring("Adds a new object to the collection.")] HRESULT Add([out, retval] IInterfaceRouteAddress **pVal);
+   [id(4), helpstring("Deletes an object in the database by its given address.")] HRESULT DeleteByAddress([in] BSTR sAddress);
+   [propget, id(5), helpstring("Returns a route address by its database identifier")] HRESULT ItemByDBID([in] long DBID, [out, retval] IInterfaceRouteAddress* *pVal);
+};
+
+
+[
+	object,
+	uuid(5E1707EB-2915-4821-A8A3-B13F6DD0C36B),
+	dual,
+	nonextensible,
+	helpstring("The result object is a temporary object used in Altimail Server events which allows event implementations to request a specific behavior in Altimail Server."),
+	pointer_default(unique)
+]
+interface IInterfaceResult : IDispatch
+{
+   [propget, id(1), helpstring("Value")] HRESULT Value([out, retval] long* pVal);
+   [propput, id(1), helpstring("Value")] HRESULT Value([in] long newVal);
+   [propget, id(2), helpstring("Message")] HRESULT Message([out, retval] BSTR* pVal);
+   [propput, id(2), helpstring("Message")] HRESULT Message([in] BSTR newVal);
+   [propget, id(3), helpstring("Parameter")] HRESULT Parameter([out, retval] long* pVal);
+   [propput, id(3), helpstring("Parameter")] HRESULT Parameter([in] long newVal);
+};
+[
+	object,
+	uuid(56F3F3B9-0E26-4DA0-9772-85BAE02A6FDC),
+	dual,
+	nonextensible,
+	helpstring("The client object is a temporary object used in Altimail Server events which allows scripts to check the address and username of a connected client."),
+	pointer_default(unique)
+]
+interface IInterfaceClient : IDispatch{
+   [propget, id(1), helpstring("The TCP/IP port the client is connected to.")] HRESULT Port([out, retval] LONG* pVal);
+   [propget, id(2), helpstring("The TCP/IP address the client is connected to.")] HRESULT IPAddress([out, retval] BSTR* pVal);
+   [propget, id(3), helpstring("The username of the client.")] HRESULT Username([out, retval] BSTR* pVal);
+   [propget, id(4), helpstring("The HELO greeting sent by client.")] HRESULT HELO([out, retval] BSTR* pVal);
+   [propget, id(5), helpstring("The logon status of the client.")] HRESULT Authenticated([out, retval] VARIANT_BOOL* pVal);
+   [propget, id(6), helpstring("The SSL/TLS status of the client.")] HRESULT EncryptedConnection([out, retval] VARIANT_BOOL* pVal);
+   [propget, id(7), helpstring("The SSL/TLS cipher version of the client connection.")] HRESULT CipherVersion([out, retval] BSTR* pVal);
+   [propget, id(8), helpstring("The SSL/TLS cipher name of the client connection.")] HRESULT CipherName([out, retval] BSTR* pVal);
+   [propget, id(9), helpstring("The SSL/TLS cipher bits of the client connection.")] HRESULT CipherBits([out, retval] LONG* pVal);
+   [propget, id(10), helpstring("The assigned SessionID for the TCP/IP connection.")] HRESULT SessionID([out, retval] LONG* pVal);
+};
+[
+	object,
+	uuid(41DF4954-0843-4C21-B0E8-87EF0E11A90E),
+	dual,
+	nonextensible,
+	helpstring("The fetch account object represents one external account which Altimail Server downloads email messages from."),
+	pointer_default(unique)
+]
+interface IInterfaceFetchAccount : IDispatch{
+   [propget, id(1), helpstring("ID")] HRESULT ID([out, retval] LONG* pVal);
+   [propget, id(2), helpstring("The name of the fetch account.")] HRESULT Name([out, retval] BSTR* pVal);
+   [propput, id(2), helpstring("The name of the fetch account.")] HRESULT Name([in] BSTR newVal);
+   [propget, id(3), helpstring("The POP3 server address Altimail Server should connect to.")] HRESULT ServerAddress([out, retval] BSTR* pVal);
+   [propput, id(3), helpstring("The POP3 server address Altimail Server should connect to.")] HRESULT ServerAddress([in] BSTR newVal);
+   [propget, id(4), helpstring("The TCP/IP port Altimail Server should connect to.")] HRESULT Port([out, retval] LONG* pVal);
+   [propput, id(4), helpstring("The TCP/IP port Altimail Server should connect to.")] HRESULT Port([in] LONG newVal);
+   [propget, id(5), helpstring("The type of server, only POP3 at the moment.")] HRESULT ServerType([out, retval] LONG* pVal);
+   [propput, id(5), helpstring("The type of server, only POP3 at the moment.")] HRESULT ServerType([in] LONG newVal);
+   [propget, id(6), helpstring("The user name to use when logging on the external server.")] HRESULT Username([out, retval] BSTR* pVal);
+   [propput, id(6), helpstring("The user name to use when logging on the external server.")] HRESULT Username([in] BSTR newVal);
+   [propget, id(7), helpstring("The password to use when logging on the external server.")] HRESULT Password([out, retval] BSTR* pVal);
+   [propput, id(7), helpstring("The password to use when logging on the external server.")] HRESULT Password([in] BSTR newVal);
+   [propget, id(8), helpstring("The number of minutes to wait between every download.")] HRESULT MinutesBetweenFetch([out, retval] LONG* pVal);
+   [propput, id(8), helpstring("The number of minutes to wait between every download.")] HRESULT MinutesBetweenFetch([in] LONG newVal);
+   [propget, id(9), helpstring("The number of days to keep messages on the external server.")] HRESULT DaysToKeepMessages([out, retval] LONG* pVal);
+   [propput, id(9), helpstring("The number of days to keep messages on the external server.")] HRESULT DaysToKeepMessages([in] LONG newVal);
+   [id(10), helpstring("Saves the object in the database.")] HRESULT Save(void);
+   [propget, id(11), helpstring("The account that this fetch account is connected to.")] HRESULT AccountID([out, retval] LONG* pVal);
+   [propput, id(11), helpstring("The account that this fetch account is connected to.")] HRESULT AccountID([in] LONG newVal);
+   [propget, id(12), helpstring("The fetch account is enabled.")] HRESULT Enabled([out, retval] VARIANT_BOOL* pVal);
+   [propput, id(12), helpstring("The fetch account is enabled.")] HRESULT Enabled([in] VARIANT_BOOL newVal);
+   [propget, id(13), helpstring("Read message recipients from To/CC headers.")] HRESULT ProcessMIMERecipients([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(13), helpstring("Read message recipients from To/CC headers")] HRESULT ProcessMIMERecipients([in] VARIANT_BOOL newVal);
+   [id(14), helpstring("Performs an download now.")] HRESULT DownloadNow(void);
+   [propget, id(15), helpstring("Read receive date in Received header.")] HRESULT ProcessMIMEDate([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(15), helpstring("Read receive date in Received header")] HRESULT ProcessMIMEDate([in] VARIANT_BOOL newVal);
+   [propget, id(16), helpstring("Use SSL for external account.")] HRESULT UseSSL([out, retval] VARIANT_BOOL *pVal);
+	[propput, id(16), helpstring("Use SSL for external account.")] HRESULT UseSSL([in] VARIANT_BOOL newVal);
+   [id(17), helpstring("Deletes the object from the database.")] HRESULT Delete();
+   [propget, id(18), helpstring("Next download attempt")] HRESULT NextDownloadTime([out, retval] BSTR* pVal);
+   [propget, id(19), helpstring("Gets or sets whether anti spam should be performed on messages downloaded from this account.")] HRESULT UseAntiSpam([out, retval] VARIANT_BOOL *pVal);
+	[propput, id(19), helpstring("Gets or sets whether anti spam should be performed on messages downloaded from this account.")] HRESULT UseAntiSpam([in] VARIANT_BOOL newVal);
+   [propget, id(20), helpstring("Gets or sets whether anti virus should be performed on messages downloaded from this account.")] HRESULT UseAntiVirus([out, retval] VARIANT_BOOL *pVal);
+	[propput, id(20), helpstring("Gets or sets whether anti virus should be performed on messages downloaded from this account.")] HRESULT UseAntiVirus([in] VARIANT_BOOL newVal);
+   [propget, id(21), helpstring("Gets or sets whether Altimail Server should deliver to recipients in routes.")] HRESULT EnableRouteRecipients([out, retval] VARIANT_BOOL *pVal);
+	[propput, id(21), helpstring("Gets or sets whether Altimail Server should deliver to recipients in routes.")] HRESULT EnableRouteRecipients([in] VARIANT_BOOL newVal);
+	[propget, id(22), helpstring("Gets whether the fetch account is currently locked")] HRESULT IsLocked([out, retval] VARIANT_BOOL* pVal);
+	[propget, id(23), helpstring("Connection security for this fetch account.")] HRESULT ConnectionSecurity([out, retval] eConnectionSecurity *pVal);
+	[propput, id(23), helpstring("Connection security for this fetch account.")] HRESULT ConnectionSecurity([in] eConnectionSecurity newVal);
+	[propget, id(24), helpstring("Read message recipients from these MIME headers.")] HRESULT MIMERecipientHeaders([out, retval] BSTR* pVal);
+	[propput, id(24), helpstring("Read message recipients from these MIME headers.")] HRESULT MIMERecipientHeaders([in] BSTR newVal);
+};
+[
+	object,
+	uuid(C8097F11-D697-44C6-A225-09AF4BB12289),
+	dual,
+	nonextensible,
+	helpstring("The FetchAccounts object is a collection of all fetch accounts set up in a Altimail Server account."),
+	pointer_default(unique)
+]
+interface IInterfaceFetchAccounts : IDispatch{
+   [propget, id(1), helpstring("Count")] HRESULT Count([out, retval] LONG* pVal);
+   [propget, id(2), helpstring("ItemByDBID")] HRESULT ItemByDBID([in] long DBID, [out, retval] IInterfaceFetchAccount** pVal);
+   [propget, id(3), defaultbind, helpstring("Item")] HRESULT Item([in] long Index, [out, retval] IInterfaceFetchAccount** pVal);
+   [id(5), helpstring("Refresh")] HRESULT Refresh(void);
+   [id(6), helpstring("Delete")] HRESULT Delete(long Index);
+   [id(7), helpstring("DeleteByDBID")] HRESULT DeleteByDBID(long DBID);
+   [id(8), helpstring("Adds a new item to the collection.")] HRESULT Add([out, retval] IInterfaceFetchAccount** pVal);
+};
+
+
+[
+	object,
+	uuid(D1A7C67E-80F6-4506-ADEE-9D8B164DF54C),
+	dual,
+	nonextensible,
+	helpstring("The scripting object contains all settings related to scripting."),
+	pointer_default(unique)
+]
+interface IInterfaceScripting : IDispatch
+{
+   [propget, id(1), helpstring("Enable script server")] HRESULT Enabled([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(1), helpstring("Enable script server")] HRESULT Enabled([in] VARIANT_BOOL newVal);
+   [propget, id(2), helpstring("Script language")] HRESULT Language([out, retval] BSTR *pVal);
+   [propput, id(2), helpstring("Script language")] HRESULT Language([in] BSTR newVal);
+
+   [id(3), helpstring("Reloads the script from the event directory.")] HRESULT Reload(void);
+   [id(4), helpstring("Compiles the script in the event directory and returns the result.")] HRESULT CheckSyntax([out, retval] BSTR *pVal);
+   [propget, id(5), helpstring("Path to the events directory")] HRESULT Directory([out, retval] BSTR *pVal);
+   [propget, id(6), helpstring("The script file currently in use")] HRESULT CurrentScriptFile([out, retval] BSTR *pVal);
+  
+};
+
+
+[
+	object,
+	uuid(DD5F9111-9E99-4026-9040-2DCB5F1A24AB),
+	dual,
+	nonextensible,
+	helpstring("The DomainAliases object is a collection of all domain name aliases set up for a specific domain."),
+	pointer_default(unique)
+]
+interface IInterfaceDomainAliases : IDispatch{
+   [propget, id(0), defaultbind, helpstring("Item")] HRESULT Item([in] long Index, [out, retval] IInterfaceDomainAlias** pVal);
+   [propget, id(1), helpstring("Count")] HRESULT Count([out, retval] LONG* pVal);
+   [propget, id(2), helpstring("ItemByDBID")] HRESULT ItemByDBID([in] long DBID, [out, retval] IInterfaceDomainAlias** pVal);
+   [id(3), helpstring("Refresh")] HRESULT Refresh(void);
+   [id(4), helpstring("Delete")] HRESULT Delete(long Index);
+   [id(5), helpstring("DeleteByDBID")] HRESULT DeleteByDBID(long DBID);
+   [id(6), helpstring("Adds a new item to the collection.")] HRESULT Add([out, retval] IInterfaceDomainAlias** pVal);
+};
+
+
+[
+	object,
+	uuid(E849D6B8-1E97-4BCA-8166-6EEC69246DEE),
+	dual,
+	nonextensible,
+	helpstring("The DomainAlias object represents a single Altimail Server domain name alias. Do not confuse this with a normal Alias."),
+	pointer_default(unique)
+]
+interface IInterfaceDomainAlias : IDispatch{
+   [propget, id(1), helpstring("ID")] HRESULT ID([out, retval] LONG* pVal);
+   [propget, id(2), helpstring("Alias")] HRESULT AliasName([out, retval] BSTR* pVal);
+   [propput, id(2), helpstring("Alias")] HRESULT AliasName([in] BSTR newVal);
+   [propget, id(3), helpstring("The ID of the domain")] HRESULT DomainID([out, retval] LONG* pVal);
+   [propput, id(3), helpstring("DomainID")] HRESULT DomainID([in] LONG newVal);
+   [id(4), helpstring("Saves changes of the object in the database.")] HRESULT Save();
+   [id(5), helpstring("Deletes the object from the database.")] HRESULT Delete();
+};
+
+
+[
+	object,
+	uuid(0878020E-EE84-4CCB-8D44-6BA77B9A61DC),
+	dual,
+	nonextensible,
+	helpstring("The Rules object is a collection of rules. They are either global or connected to a specific account."),
+	pointer_default(unique)
+]
+interface IInterfaceRules : IDispatch{
+   [propget, id(0), defaultbind, helpstring("Item")] HRESULT Item([in] long Index, [out, retval] IInterfaceRule** pVal);
+   [propget, id(1), helpstring("ItemByDBID")] HRESULT ItemByDBID([in] long DBID, [out, retval] IInterfaceRule** pVal);
+   [propget, id(2), helpstring("property Count")] HRESULT Count([out, retval] LONG* pVal);
+   [id(3), helpstring("Add")] HRESULT Add([out, retval] IInterfaceRule** pVal);
+   [id(4), helpstring("DeleteByDBID")] HRESULT DeleteByDBID([in] LONG DBID);
+   [id(5), helpstring("Refresh")] HRESULT Refresh(void);
+};
+[
+	object,
+	uuid(889CEA0B-0DAE-406E-8CD5-85824E5AE8E3),
+	dual,
+	nonextensible,
+	helpstring("The Rule object represents a single Altimail Server rule."),
+	pointer_default(unique)
+]
+interface IInterfaceRule : IDispatch{
+   [propget, id(1), helpstring("ID")] HRESULT ID([out, retval] LONG* pVal);
+   [propget, id(2), helpstring("AccountID")] HRESULT AccountID([out, retval] LONG* pVal);
+   [propput, id(2), helpstring("AccountID")] HRESULT AccountID([in] LONG newVal);
+   [propget, id(3), helpstring("Name")] HRESULT Name([out, retval] BSTR* pVal);
+   [propput, id(3), helpstring("Name")] HRESULT Name([in] BSTR newVal);
+   [propget, id(4), helpstring("Active")] HRESULT Active([out, retval] VARIANT_BOOL* pVal);
+   [propput, id(4), helpstring("Active")] HRESULT Active([in] VARIANT_BOOL newVal);
+   [propget, id(5), helpstring("UseAND")] HRESULT UseAND([out, retval] VARIANT_BOOL* pVal);
+   [propput, id(5), helpstring("UseAND")] HRESULT UseAND([in] VARIANT_BOOL newVal);
+   [propget, id(6), helpstring("The criterias for this rule.")] HRESULT Criterias([out, retval] IInterfaceRuleCriterias** pVal);
+   [propget, id(7), helpstring("The actions for this rule.")] HRESULT Actions([out, retval] IInterfaceRuleActions** pVal);
+   [id(8), helpstring("Saves changes of the object in the database.")] HRESULT Save();
+   [id(9), helpstring("Moves the rule up in the priority order.")] HRESULT MoveUp();
+   [id(10), helpstring("Moves the rule down in the priority order")] HRESULT MoveDown();
+   [id(11), helpstring("Deletes the object from the database.")] HRESULT Delete();
+};
+
+[
+	object,
+	uuid(BB08DAAC-797C-4C58-8D25-EE0C3265BACC),
+	dual,
+	nonextensible,
+	helpstring("The RuleCriteria object represents a single criteria in a rule."),
+	pointer_default(unique)
+]
+interface IInterfaceRuleCriteria : IDispatch
+{
+   [propget, id(1), helpstring("ID")] HRESULT ID([out, retval] LONG* pVal);
+   [propget, id(2), helpstring("RuleID")] HRESULT RuleID([out, retval] LONG* pVal);
+   [propput, id(2), helpstring("RuleID")] HRESULT RuleID([in] LONG newVal);   
+   [propget, id(4), helpstring("Value")] HRESULT MatchValue([out, retval] BSTR* pVal);
+   [propput, id(4), helpstring("Value")] HRESULT MatchValue([in] BSTR newVal);   
+   [propget, id(5), helpstring("UsePredefined")] HRESULT UsePredefined([out, retval] VARIANT_BOOL* pVal);
+   [propput, id(5), helpstring("UsePredefined")] HRESULT UsePredefined([in] VARIANT_BOOL newVal); 
+   [propget, id(6), helpstring("PredefinedField")] HRESULT PredefinedField([out, retval] eRulePredefinedField* pVal);
+   [propput, id(6), helpstring("PredefinedField")] HRESULT PredefinedField([in] eRulePredefinedField newVal); 
+   [propget, id(7), helpstring("MatchType")] HRESULT MatchType([out, retval] eRuleMatchType* pVal);
+   [propput, id(7), helpstring("MatchType")] HRESULT MatchType([in] eRuleMatchType newVal); 
+   [propget, id(8), helpstring("HeaderField")] HRESULT HeaderField([out, retval] BSTR* pVal);
+   [propput, id(8), helpstring("HeaderField")] HRESULT HeaderField([in] BSTR newVal);
+   [id(9), helpstring("Saves changes of the object in the database.")] HRESULT Save();
+   [id(10), helpstring("Deletes the object from the database.")] HRESULT Delete();
+
+};
+
+[
+	object,
+	uuid(636FE029-5C71-40AB-AC4E-2EAF1FE6DAF3),
+	dual,
+	nonextensible,
+	helpstring("The RuleCriterias object is a collection of all criteria set up in a single rule."),
+	pointer_default(unique)
+]
+interface IInterfaceRuleCriterias : IDispatch
+{
+   [propget, id(0), defaultbind, helpstring("Item")] HRESULT Item([in] long Index, [out, retval] IInterfaceRuleCriteria** pVal);
+   [propget, id(1), helpstring("ItemByDBID")] HRESULT ItemByDBID([in] long DBID, [out, retval] IInterfaceRuleCriteria** pVal);
+   [propget, id(2), helpstring("property Count")] HRESULT Count([out, retval] LONG* pVal);
+   [id(3), helpstring("Add")] HRESULT Add([out, retval] IInterfaceRuleCriteria** pVal);
+   [id(4), helpstring("DeleteByDBID")] HRESULT DeleteByDBID([in] LONG DBID);
+   [id(5), helpstring("Refresh")] HRESULT Refresh(void);
+   [id(6), helpstring("Deletes an object in the database by its index.")] HRESULT Delete([in] long DBID);
+};
+[
+	object,
+	uuid(DC658E3C-101F-43AD-B038-E1C0165911FD),
+	dual,
+	nonextensible,
+	helpstring("The RuleAction object represents a single action in a specific rule."),
+	pointer_default(unique)
+]
+interface IInterfaceRuleAction : IDispatch
+{
+   [propget, id(1), helpstring("ID")] HRESULT ID([out, retval] LONG* pVal);
+   [propget, id(2), helpstring("RuleID")] HRESULT RuleID([out, retval] LONG* pVal);
+   [propput, id(2), helpstring("RuleID")] HRESULT RuleID([in] LONG newVal);   
+   [propget, id(3), helpstring("Type")] HRESULT Type([out, retval] eRuleActionType* pVal);
+   [propput, id(3), helpstring("Type")] HRESULT Type([in] eRuleActionType newVal);   
+   [propget, id(4), helpstring("Subject")] HRESULT Subject([out, retval] BSTR* pVal);
+   [propput, id(4), helpstring("Subject")] HRESULT Subject([in] BSTR newVal);   
+   [propget, id(5), helpstring("Body")] HRESULT Body([out, retval] BSTR* pVal);
+   [propput, id(5), helpstring("Body")] HRESULT Body([in] BSTR newVal);   
+   [propget, id(6), helpstring("From (name)")] HRESULT FromName([out, retval] BSTR* pVal);
+   [propput, id(6), helpstring("From (name)")] HRESULT FromName([in] BSTR newVal);   
+   [propget, id(7), helpstring("From (address)")] HRESULT FromAddress([out, retval] BSTR* pVal);
+   [propput, id(7), helpstring("From (address)")] HRESULT FromAddress([in] BSTR newVal);   
+   [propget, id(8), helpstring("Filename")] HRESULT Filename([out, retval] BSTR* pVal);
+   [propput, id(8), helpstring("Filename")] HRESULT Filename([in] BSTR newVal);   
+   [propget, id(9), helpstring("To")] HRESULT To([out, retval] BSTR* pVal);
+   [propput, id(9), helpstring("To")] HRESULT To([in] BSTR newVal);   
+   [propget, id(10), helpstring("IMAP folder")] HRESULT IMAPFolder([out, retval] BSTR* pVal);
+   [propput, id(10), helpstring("IMAP folder")] HRESULT IMAPFolder([in] BSTR newVal);   
+   [id(11), helpstring("Saves changes of the object in the database.")] HRESULT Save();
+   [propget, id(12), helpstring("Script function to run")] HRESULT ScriptFunction([out, retval] BSTR* pVal);
+   [propput, id(12), helpstring("Script function to run")] HRESULT ScriptFunction([in] BSTR newVal);   
+   [id(13), helpstring("Moves the action up in the order.")] HRESULT MoveUp();
+   [id(14), helpstring("Moves the action up in the order.")] HRESULT MoveDown();
+   [propget, id(15), helpstring("Header name")] HRESULT HeaderName([out, retval] BSTR* pVal);
+   [propput, id(15), helpstring("Header name")] HRESULT HeaderName([in] BSTR newVal);   
+   [propget, id(16), helpstring("Value")] HRESULT Value([out, retval] BSTR* pVal);
+   [propput, id(16), helpstring("Value")] HRESULT Value([in] BSTR newVal);   
+   [id(17), helpstring("Deletes the object from the database.")] HRESULT Delete();
+   [propget, id(18), helpstring("Route ID to deliver via")] HRESULT RouteID([out, retval] LONG* pVal);
+   [propput, id(18), helpstring("Route ID to deliver via")] HRESULT RouteID([in] LONG newVal);
+   [propget, id(19), helpstring("Abort on messages marked as spam.")] HRESULT AbortSpamFlagged([out, retval] VARIANT_BOOL* pVal);
+   [propput, id(19), helpstring("Abort on messages marked as spam.")] HRESULT AbortSpamFlagged([in] VARIANT_BOOL newVal);
+};
+
+[
+	object,
+	uuid(E77BDEA3-6BD9-410C-AB0B-5F79408C455F),
+	dual,
+	nonextensible,
+	helpstring("The RuleActions object is a collection of all actions set up in a single rule."),
+	pointer_default(unique)
+]
+interface IInterfaceRuleActions : IDispatch
+{
+   [propget, id(0), defaultbind, helpstring("Item")] HRESULT Item([in] long Index, [out, retval] IInterfaceRuleAction** pVal);
+   [propget, id(1), helpstring("ItemByDBID")] HRESULT ItemByDBID([in] long DBID, [out, retval] IInterfaceRuleAction** pVal);
+   [propget, id(2), helpstring("Count")] HRESULT Count([out, retval] LONG* pVal);
+   [id(3), helpstring("Add")] HRESULT Add([out, retval] IInterfaceRuleAction** pVal);
+   [id(4), helpstring("DeleteByDBID")] HRESULT DeleteByDBID([in] LONG DBID);
+   [id(5), helpstring("Refresh")] HRESULT Refresh(void);
+   [id(6), helpstring("Deletes an object in the database by its index.")] HRESULT Delete([in] long DBID);
+};
+
+
+[
+	object,
+	uuid(37052637-5F76-4BCF-A8CB-773861CA0F77),
+	dual,
+	nonextensible,
+	helpstring("The Recipients object is a collection of all the recipients of an email message."),
+	pointer_default(unique)
+]
+interface IInterfaceRecipients : IDispatch
+{
+   [propget, id(0), defaultbind, helpstring("Item")] HRESULT Item([in] long Index, [out, retval] IInterfaceRecipient** pVal);
+   [propget, id(1), helpstring("Count")] HRESULT Count([out, retval] LONG* pVal);
+
+};
+
+[
+	object,
+	uuid(0FCB01F2-BD1C-4999-BF65-3CD32A128468),
+	dual,
+	nonextensible,
+	helpstring("The Recipient object represents a single email recipient (found in the SMTP envelope)."),
+	pointer_default(unique)
+]
+interface IInterfaceRecipient : IDispatch
+{
+   [propget, id(1), helpstring("The e-mail address of this recipient")] HRESULT Address([out, retval] BSTR *pVal);
+   [propget, id(2), helpstring("Is this user a local user?")] HRESULT IsLocalUser([out, retval] VARIANT_BOOL *pVal);
+   [propget, id(3), helpstring("The original e-mail address")] HRESULT OriginalAddress([out, retval] BSTR *pVal);
+};
+
+
+[
+	object,
+	uuid(15875AB4-CCEB-4E6C-A147-69BEB6769FD2),
+	dual,
+	nonextensible,
+	helpstring("The cache object contains all settings related to Altimail Server caching."),
+	pointer_default(unique)
+]
+interface IInterfaceCache : IDispatch{
+   [propget, id(1), helpstring("Cache is enabled.")] HRESULT Enabled([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(1), helpstring("Cache is enabled")] HRESULT Enabled([in] VARIANT_BOOL newVal);
+
+   [propget, id(2), helpstring("Domain cache time (seconds).")] HRESULT DomainCacheTTL([out, retval] long *pVal);
+   [propput, id(2), helpstring("Domain cache time (seconds)")] HRESULT DomainCacheTTL([in] long newVal);
+   [propget, id(3), helpstring("Domain hit rate.")] HRESULT DomainHitRate([out, retval] long *pVal);
+
+   [propget, id(4), helpstring("Account cache time (seconds).")] HRESULT AccountCacheTTL([out, retval] long *pVal);
+   [propput, id(4), helpstring("Account cache time (seconds)")] HRESULT AccountCacheTTL([in] long newVal);
+   [propget, id(5), helpstring("Account hit rate.")] HRESULT AccountHitRate([out, retval] long *pVal);
+
+   [id(8), helpstring("Clears the cache and resets the statistics.")] HRESULT Clear();
+
+   [propget, id(9), helpstring("Alias cache time (seconds).")] HRESULT AliasCacheTTL([out, retval] long *pVal);
+   [propput, id(9), helpstring("Alias cache time (seconds)")] HRESULT AliasCacheTTL([in] long newVal);
+   [propget, id(10), helpstring("Alias hit rate.")] HRESULT AliasHitRate([out, retval] long *pVal);
+
+   [propget, id(11), helpstring("Distribution list cache time (seconds).")] HRESULT DistributionListCacheTTL([out, retval] long *pVal);
+   [propput, id(11), helpstring("Distribution list cache time (seconds)")] HRESULT DistributionListCacheTTL([in] long newVal);
+   [propget, id(12), helpstring("Distribution list hit rate.")] HRESULT DistributionListHitRate([out, retval] long *pVal);
+
+   [propget, id(13), helpstring("Maximum size of cache (in kilobytes)")] HRESULT DomainCacheMaxSizeKb([out, retval] long *pVal);
+   [propput, id(13), helpstring("Maximum size of cache (in kilobytes)")] HRESULT DomainCacheMaxSizeKb([in] long pVal);
+
+   [propget, id(14), helpstring("Current size of cache (in kilobytes)")] HRESULT DomainCacheSizeKb([out, retval] long *pVal);
+
+   [propget, id(15), helpstring("Maximum size of cache (in kilobytes)")] HRESULT AccountCacheMaxSizeKb([out, retval] long *pVal);
+   [propput, id(15), helpstring("Maximum size of cache (in kilobytes)")] HRESULT AccountCacheMaxSizeKb([in] long pVal);
+
+   [propget, id(16), helpstring("Current size of cache (in kilobytes)")] HRESULT AccountCacheSizeKb([out, retval] long *pVal);
+
+   [propget, id(17), helpstring("Maximum size of cache (in kilobytes)")] HRESULT AliasCacheMaxSizeKb([out, retval] long *pVal);
+   [propput, id(17), helpstring("Maximum size of cache (in kilobytes)")] HRESULT AliasCacheMaxSizeKb([in] long pVal);
+
+   [propget, id(18), helpstring("Current size of cache (in kilobytes)")] HRESULT AliasCacheSizeKb([out, retval] long *pVal);
+
+   [propget, id(19), helpstring("Maximum size of cache (in kilobytes)")] HRESULT DistributionListCacheMaxSizeKb([out, retval] long *pVal);
+   [propput, id(19), helpstring("Maximum size of cache (in kilobytes)")] HRESULT DistributionListCacheMaxSizeKb([in] long pVal);
+
+   [propget, id(20), helpstring("Current size of cache (in kilobytes)")] HRESULT DistributionListCacheSizeKb([out, retval] long *pVal);
+
+};
+
+[
+	object,
+	uuid(8C3E988C-4114-465E-9395-C134E6B58A78),
+	dual,
+	nonextensible,
+	helpstring("The BackupManager is the object which starts and restores backups."),
+	pointer_default(unique)
+]
+interface IInterfaceBackupManager : IDispatch
+{
+   [id(1), helpstring("Starts a backup.")] HRESULT StartBackup();
+   [id(2), helpstring("Loads a backup from a file.")] HRESULT LoadBackup([in] BSTR sXMLFile, [out, retval] IInterfaceBackup ** pVal);
+
+};
+[
+	object,
+	uuid(FB40EDA5-B152-43ED-876D-49B98FD87259),
+	dual,
+	nonextensible,
+	helpstring("The BackupSettings object contains all settings related to backup."),
+	pointer_default(unique)
+]
+interface IInterfaceBackupSettings : IDispatch{
+	[propget, id(1), helpstring("Backup destination")] HRESULT Destination([out, retval] BSTR *pVal);
+	[propput, id(1), helpstring("Backup destination")] HRESULT Destination([in] BSTR pVal);
+
+	[propget, id(2), helpstring("Backup settings.")] HRESULT BackupSettings([out, retval] VARIANT_BOOL *pVal);
+	[propput, id(2), helpstring("Backup settings")] HRESULT BackupSettings([in] VARIANT_BOOL newVal);
+	[propget, id(3), helpstring("Backup domains.")] HRESULT BackupDomains([out, retval] VARIANT_BOOL *pVal);
+	[propput, id(3), helpstring("Backup domains")] HRESULT BackupDomains([in] VARIANT_BOOL newVal);
+	[propget, id(4), helpstring("Backup messages.")] HRESULT BackupMessages([out, retval] VARIANT_BOOL *pVal);
+	[propput, id(4), helpstring("Backup messages")] HRESULT BackupMessages([in] VARIANT_BOOL newVal);
+	[propget, id(5), helpstring("Compress destination files")] HRESULT CompressDestinationFiles([out, retval] VARIANT_BOOL *pVal);
+	[propput, id(5), helpstring("Compress destination files")] HRESULT CompressDestinationFiles([in] VARIANT_BOOL newVal);
+
+	[propget, id(7), helpstring("Backup log file")] HRESULT LogFile([out, retval] BSTR *pVal);
+
+};
+[
+	object,
+	uuid(E4A7F396-CADA-4722-9CEB-65AE0B7C297C),
+	dual,
+	nonextensible,
+	helpstring("The backup object represents a single Altimail Server backup."),
+	pointer_default(unique)
+]
+interface IInterfaceBackup : IDispatch
+{
+   [id(1), helpstring("Starts a restore of this backup.")] HRESULT StartRestore();
+
+	[propget, id(2), helpstring("Contains settings.")] HRESULT ContainsSettings([out, retval] VARIANT_BOOL *pVal);
+	[propget, id(3), helpstring("Contains domains.")] HRESULT ContainsDomains([out, retval] VARIANT_BOOL *pVal);
+	[propget, id(4), helpstring("Contains messages.")] HRESULT ContainsMessages([out, retval] VARIANT_BOOL *pVal);
+
+	[propget, id(5), helpstring("Restore settings.")] HRESULT RestoreSettings([out, retval] VARIANT_BOOL *pVal);
+	[propput, id(5), helpstring("Restore settings")] HRESULT RestoreSettings([in] VARIANT_BOOL newVal);
+	[propget, id(6), helpstring("Restore domains.")] HRESULT RestoreDomains([out, retval] VARIANT_BOOL *pVal);
+	[propput, id(6), helpstring("Restore domains")] HRESULT RestoreDomains([in] VARIANT_BOOL newVal);
+	[propget, id(7), helpstring("Restore messages.")] HRESULT RestoreMessages([out, retval] VARIANT_BOOL *pVal);
+	[propput, id(7), helpstring("Restore messages")] HRESULT RestoreMessages([in] VARIANT_BOOL newVal);
+};
+
+[
+	object,
+	uuid(59A76775-DECB-4AEB-BECA-31FA72421AA7),
+	dual,
+	nonextensible,
+	helpstring("The GlobalObjects object is the root object for global Altimail Server objects."),
+	pointer_default(unique)
+]
+interface IInterfaceGlobalObjects : IDispatch{
+   [propget, id(1), helpstring("Delivery queue")] HRESULT DeliveryQueue([out, retval] IInterfaceDeliveryQueue **pVal);
+   [propget, id(2), helpstring("Returns a collection of GUI languages.")] HRESULT Languages([out, retval] IInterfaceLanguages **pVal);
+   
+};
+[
+	object,
+	uuid(22655B70-41CA-4359-B57A-393FB48782E1),
+	dual,
+	nonextensible,
+	helpstring("The DeliveryQueue object contains method to manipulate the Altimail Server queue."),
+	pointer_default(unique)
+]
+interface IInterfaceDeliveryQueue : IDispatch{
+   [id(1), helpstring("Clears the delivery queue.")] HRESULT Clear();
+   [id(2), helpstring("Reset next delivery time")] HRESULT ResetDeliveryTime([in] hyper iMessageID);
+   [id(3), helpstring("Forces the SMTP deliverer to look for messages to deliver.")] HRESULT StartDelivery();
+   [id(4), helpstring("Removes the message from the delivery queue.")] HRESULT Remove([in] hyper iMessageID);
+
+};
+[
+	object,
+	uuid(D2E5223B-EBA6-429E-B298-1B908DC97929),
+	dual,
+	nonextensible,
+	helpstring("The language object represents a single language and contains functionality to do translation."),
+	pointer_default(unique)
+]
+interface IInterfaceLanguage : IDispatch{
+   [propget, id(1), helpstring("A string")] HRESULT String([in] BSTR EnglishString, [out, retval] BSTR *pVal);
+   [propget, id(2), helpstring("Name of the language")] HRESULT Name([out, retval] BSTR *pVal);
+   [propget, id(3), helpstring("Gets whether the language has been downloaded.")] HRESULT IsDownloaded([out, retval] VARIANT_BOOL *pVal);
+   [id(4), helpstring("Not implemented: Downlods the translation from Altimail Server.com.")] HRESULT Download();
+};
+[
+	object,
+	uuid(1FDA27D3-5EA7-482D-8667-238901D2636C),
+	dual,
+	nonextensible,
+	helpstring("The IMAPFolder object represents a single IMAP folder."),
+	pointer_default(unique)
+]
+interface IInterfaceIMAPFolder : IDispatch{
+   [propget, id(0), helpstring("The database identifier for the IMAP folder.")] HRESULT ID([out, retval] long *pVal);
+	[propget, id(1), helpstring("The name of the IMAP folder.")] HRESULT Name([out, retval] BSTR *pVal);
+	[propput, id(1), helpstring("The name of the IMAP folder.")] HRESULT Name([in] BSTR newVal);
+	[propget, id(2), helpstring("The subscribed state of the IMAP folder.")] HRESULT Subscribed([out, retval] VARIANT_BOOL *pVal);
+	[propput, id(2), helpstring("The subscribed state of the IMAP folder.")] HRESULT Subscribed([in] VARIANT_BOOL newVal);
+   [propget, id(3), helpstring("The messages in this folder.")] HRESULT Messages([out, retval] IInterfaceMessages** pVal);
+   [propget, id(4), helpstring("The IMAP folders in this folder.")] HRESULT SubFolders([out, retval] IInterfaceIMAPFolders** pVal);
+   [id(6), helpstring("Saves changes of the object in the database.")] HRESULT Save();
+   [propget, id(7), helpstring("The database identifier for the parent IMAP folder.")] HRESULT ParentID([out, retval] long *pVal);
+   [propget, id(8), helpstring("The permissions for this IMAP folder")] HRESULT Permissions([out, retval] IInterfaceIMAPFolderPermissions **pVal);
+   [id(9), helpstring("Deletes the object from the database.")] HRESULT Delete();
+   [propget, id(10), helpstring("The latest message UID.")] HRESULT CurrentUID([out, retval] long *pVal);
+   [propget, id(11), helpstring("The folder creation time.")] HRESULT CreationTime([out, retval] BSTR *pVal);
+};
+
+[
+	object,
+	uuid(9B1CB973-E2E6-4DB8-8E2F-D66903257692),
+	dual,
+	nonextensible,
+	helpstring("The IMAPFolders object is a collection of the root IMAP folders in an account, or the public folders."),
+	pointer_default(unique)
+]
+interface IInterfaceIMAPFolders : IDispatch{
+	[propget, id(0), defaultbind, helpstring("Returns an IMAP folder by it's index in the collection.")] HRESULT Item([in] long Index, [out, retval] IInterfaceIMAPFolder **pVal);
+	[propget, id(1), helpstring("Returns an IMAP folder by it's database ID.")] HRESULT ItemByDBID([in] long DBID, [out, retval] IInterfaceIMAPFolder **pVal);
+   [propget, id(2), helpstring("Returns an IMAP folder by it's name.")] HRESULT ItemByName([in] BSTR sName, [out, retval] IInterfaceIMAPFolder* *pVal);
+   [propget, id(3), helpstring("Returns the number of IMAP folders in the collection")] HRESULT Count([out, retval] long *pVal);
+   [id(4), helpstring("Adds an IMAP folder with the given name to the collection. It is saved immediately.")] HRESULT Add([in] BSTR sName , [out, retval] IInterfaceIMAPFolder **pVal);
+   [id(5), helpstring("Deletes an IMAP folder with the given database identifier.")] HRESULT DeleteByDBID([in] long lDBID);
+};
+
+[
+	object,
+	uuid(8E3F5140-349B-47A3-8EE7-4B5E72095C8A),
+	dual,
+	nonextensible,
+	helpstring("The event log object is used by event-implementors to write messages to the event log."),
+	pointer_default(unique)
+]
+interface IInterfaceEventLog : IDispatch
+{
+   [id(1), helpstring("Writes a mesage to the Altimail Server event log.")] HRESULT Write(BSTR sMessage);     
+};
+
+[
+	object,
+	uuid(C5F08375-3BF7-43E2-93EA-D11A960E20B5),
+	dual,
+	nonextensible,
+	helpstring("The SURBLServers object is a collection of all SURBL servers set up in the Altimail Server installation."),
+	pointer_default(unique)
+]
+interface IInterfaceSURBLServers : IDispatch
+{
+   [propget, id(0), defaultbind, helpstring("Returns a SURBL server by its given index.")] HRESULT Item([in] long Index, [out, retval] IInterfaceSURBLServer **pVal);
+   [propget, id(1), helpstring("The number of objects in the collection.")] HRESULT Count([out, retval] long *pVal);
+   [id(2), helpstring("Deletes an object in the database by its given database identifier.")] HRESULT DeleteByDBID([in] long DBID);
+   [id(3), helpstring("Adds a new object to the collection.")] HRESULT Add([out, retval] IInterfaceSURBLServer **pVal);
+   [propget, id(5), helpstring("Returns a SURBL server by its database identifier")] HRESULT ItemByDBID([in] long DBID, [out, retval] IInterfaceSURBLServer* *pVal);
+   [id(6), helpstring("Refreshes the collection.")] HRESULT Refresh();
+   [propget, id(7), helpstring("Returns a SURBL server by its DNS host")] HRESULT ItemByDNSHost([in] BSTR sDNSHost, [out, retval] IInterfaceSURBLServer* *pVal);
+};
+
+[
+	object,
+	uuid(A247A8DD-0504-40DC-A71A-1581405D36C3),
+	dual,
+	nonextensible,
+	helpstring("The SURBL server object represents a single SURBL server."),
+	pointer_default(unique)
+]
+interface IInterfaceSURBLServer : IDispatch
+{
+   [propget, id(1), helpstring("The object is active.")] HRESULT Active([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(1), helpstring("The object is active.")] HRESULT Active([in] VARIANT_BOOL newVal);
+   [propget, id(2), helpstring("The unique database identifier for the object.")] HRESULT ID([out, retval] long *pVal);
+   [propget, id(3), helpstring("The DNS host to query.")] HRESULT DNSHost([out, retval] BSTR *pVal);
+   [propput, id(3), helpstring("The DNS host to query.")] HRESULT DNSHost([in] BSTR newVal);
+   [propget, id(4), helpstring("The message to send to the client if server rejects message.")] HRESULT RejectMessage([out, retval] BSTR *pVal);
+   [propput, id(4), helpstring("The message to send to the client if server rejects message.")] HRESULT RejectMessage([in] BSTR newVal);
+   [id(6), helpstring("Saves changes of the object in the database.")] HRESULT Save();
+   [propget, id(7), helpstring("Spam score")] HRESULT Score([out, retval] long *pVal);
+   [propput, id(7), helpstring("Spam score")] HRESULT Score([in] long newVal);
+   [id(8), helpstring("Deletes the object from the database.")] HRESULT Delete();
+};
+
+
+[
+	object,
+	uuid(15DFAAD7-F220-4525-A6ED-E97332A7F1A3),
+	dual,
+	nonextensible,
+	helpstring("The AntiSpam object contains all server-wide settings related to anti-spam."),
+	pointer_default(unique)
+]
+interface IInterfaceAntiSpam : IDispatch
+{
+   [propget, id(1), helpstring("Use grey listing.")] HRESULT GreyListingEnabled([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(1), helpstring("Use grey listing..")] HRESULT GreyListingEnabled([in] VARIANT_BOOL newVal);
+   [propget, id(2), helpstring("GreyListing - Delay before accepting messages (minutes).")] HRESULT GreyListingInitialDelay([out, retval] long *pVal);
+   [propput, id(2), helpstring("GreyListing - Delay before accepting messages (minutes).")] HRESULT GreyListingInitialDelay([in] long newVal);
+   [propget, id(3), helpstring("GreyListing - Delete unused triplet after this time (hours).")] HRESULT GreyListingInitialDelete([out, retval] long *pVal);
+   [propput, id(3), helpstring("GreyListing - Delete unused triplet after this time (hours).")] HRESULT GreyListingInitialDelete([in] long newVal);
+   [propget, id(4), helpstring("GreyListing - Delete used triplet after this time (hours).")] HRESULT GreyListingFinalDelete([out, retval] long *pVal);
+   [propput, id(4), helpstring("GreyListing - Delete used triplet after this time (hours).")] HRESULT GreyListingFinalDelete([in] long newVal);
+
+   [propget, id(6), helpstring("SURBL servers collection.")] HRESULT SURBLServers([out, retval] IInterfaceSURBLServers* *pVal);
+   [propget, id(7), helpstring("Check host specified in HELO command.")] HRESULT CheckHostInHelo([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(7), helpstring("Check host specified in HELO command.")] HRESULT CheckHostInHelo([in] VARIANT_BOOL newVal);
+
+   [propget, id(8), helpstring("Add header X-Altimail Server-Spam when spam message is found.")] HRESULT AddHeaderSpam([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(8), helpstring("Add header X-Altimail Server-Spam when spam message is found.")] HRESULT AddHeaderSpam([in] VARIANT_BOOL newVal);
+   [propget, id(9), helpstring("Add header X-Altimail Server-Reason when spam message is found.")] HRESULT AddHeaderReason([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(9), helpstring("Add header X-Altimail Server-Reason when spam message is found.")] HRESULT AddHeaderReason([in] VARIANT_BOOL newVal);
+   [propget, id(10), helpstring("Prepend message subject.")] HRESULT PrependSubject([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(10), helpstring("Prepend message subject.")] HRESULT PrependSubject([in] VARIANT_BOOL newVal);
+   [propget, id(11), helpstring("Text to prepend to message subject.")] HRESULT PrependSubjectText([out, retval] BSTR *pVal);
+   [propput, id(11), helpstring("Text to prepend to message subject.")] HRESULT PrependSubjectText([in] BSTR newVal);
+   [propget, id(12), helpstring("White list for greylisting.")] HRESULT GreyListingWhiteAddresses([out, retval] IInterfaceGreyListingWhiteAddresses** pVal);
+   [propget, id(13), helpstring("Global white list.")] HRESULT WhiteListAddresses([out, retval] IInterfaceWhiteListAddresses **pVal);
+   [propget, id(14), helpstring("Check host specified in HELO command (SpamScore).")] HRESULT CheckHostInHeloScore([out, retval] long *pVal);
+   [propput, id(14), helpstring("Check host specified in HELO command (SpamScore).")] HRESULT CheckHostInHeloScore([in] long newVal);
+   [propget, id(15), helpstring("Spam mark threshold")] HRESULT SpamMarkThreshold([out, retval] long *pVal);
+   [propput, id(15), helpstring("Spam mark threshold")] HRESULT SpamMarkThreshold([in] long newVal);
+   [propget, id(16), helpstring("Spam delete threshold")] HRESULT SpamDeleteThreshold([out, retval] long *pVal);
+   [propput, id(16), helpstring("Spam delete threshold")] HRESULT SpamDeleteThreshold([in] long newVal);
+   
+   [propget, id(17), helpstring("Antispam: Use SPF.")] HRESULT UseSPF([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(17), helpstring("Antispam: Use SPF.")] HRESULT UseSPF([in] VARIANT_BOOL newVal);
+   [propget, id(18), helpstring("Antispam: Use MX checks.")] HRESULT UseMXChecks([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(18), helpstring("Antispam: Use MX checks.")] HRESULT UseMXChecks([in] VARIANT_BOOL newVal);
+   [propget, id(19), helpstring("Antispam: Use SPF (score).")] HRESULT UseSPFScore([out, retval] long  *pVal);
+   [propput, id(19), helpstring("Antispam: Use SPF (score).")] HRESULT UseSPFScore([in] long newVal);
+   [propget, id(20), helpstring("Antispam: Use MX checks (score).")] HRESULT UseMXChecksScore([out, retval] long  *pVal);
+   [propput, id(20), helpstring("Antispam: Use MX checks  (score).")] HRESULT UseMXChecksScore([in] long  newVal);
+
+   [propget, id(21), helpstring("Antispam: DNS black lists collection.")] HRESULT DNSBlackLists([out, retval] IInterfaceDNSBlackLists* *pVal);
+   [propget, id(22), helpstring("Tarpit delay (Obsolete: No longer used).")] HRESULT TarpitDelay([out, retval] long *pVal);
+   [propput, id(22), helpstring("Tarpit delay (Obsolete: No longer used).")] HRESULT TarpitDelay([in] long newVal);
+   [propget, id(23), helpstring("Tarpit count (Obsolete: No longer used).")] HRESULT TarpitCount([out, retval] long *pVal);
+   [propput, id(23), helpstring("Tarpit count (Obsolete: No longer used).")] HRESULT TarpitCount([in] long newVal);
+
+   [propget, id(24), helpstring("Antispam: Enable SpamAssassin integration")] HRESULT SpamAssassinEnabled([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(24), helpstring("Antispam: Enable SpamAssassin integration")] HRESULT SpamAssassinEnabled([in] VARIANT_BOOL newVal);
+   [propget, id(25), helpstring("Antispam: SpamAssassin (score).")] HRESULT SpamAssassinScore([out, retval] long  *pVal);
+   [propput, id(25), helpstring("Antispam: SpamAssassin (score).")] HRESULT SpamAssassinScore([in] long newVal);
+   [propget, id(26), helpstring("Antispam: Merge score from SpamAssassin.")] HRESULT SpamAssassinMergeScore([out, retval] VARIANT_BOOL  *pVal);
+   [propput, id(26), helpstring("Antispam: Merge score from SpamAssassin.")] HRESULT SpamAssassinMergeScore([in] VARIANT_BOOL newVal);
+   [propget, id(27), helpstring("Antispam: SpamAssassin host name")] HRESULT SpamAssassinHost([out, retval] BSTR  *pVal);
+   [propput, id(27), helpstring("Antispam: SpamAssassin host name")] HRESULT SpamAssassinHost([in] BSTR newVal);
+   [propget, id(28), helpstring("Antispam: SpamAssassin port")] HRESULT SpamAssassinPort([out, retval] long  *pVal);
+   [propput, id(28), helpstring("Antispam: SpamAssassin port")] HRESULT SpamAssassinPort([in] long newVal);
+   [id(29), helpstring("Clear greylisting triplets.")] HRESULT ClearGreyListingTriplets();
+
+   [propget, id(30), helpstring("Maximum message size to run anti-spam on.")] HRESULT MaximumMessageSize([out, retval] long *pVal);
+   [propput, id(30), helpstring("Maximum message size to run anti-spam on.")] HRESULT MaximumMessageSize([in] long newVal);
+
+   [id(31), helpstring("Verifies the DKIM-signature of the specified file. Returns true if neutral or pass.")] HRESULT DKIMVerify([in] BSTR File, [out, retval] eDKIMResult *pResult);
+   
+   [propget, id(32), helpstring("Enable DKIM header verification.")] HRESULT DKIMVerificationEnabled([out, retval] VARIANT_BOOL  *pVal);
+   [propput, id(32), helpstring("Enable DKIM header verification.")] HRESULT DKIMVerificationEnabled([in] VARIANT_BOOL newVal);
+   [propget, id(33), helpstring("DKIM verification failure score.")] HRESULT DKIMVerificationFailureScore([out, retval] long  *pVal);
+   [propput, id(33), helpstring("DKIM verification failure score.")] HRESULT DKIMVerificationFailureScore([in] long newVal);
+   [propget, id(34), helpstring("Bypass grey listing if SPF verifies successfully.")] HRESULT BypassGreylistingOnSPFSuccess([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(34), helpstring("Bypass grey listing if SPF verifies successfully")] HRESULT BypassGreylistingOnSPFSuccess([in] VARIANT_BOOL newVal);
+   [propget, id(35), helpstring("Bypass grey listing if mail comes from domain A or MX record.")] HRESULT BypassGreylistingOnMailFromMX([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(35), helpstring("Bypass grey listing if mail comes from domain A or MX record.")] HRESULT BypassGreylistingOnMailFromMX([in] VARIANT_BOOL newVal);
+
+   [id(36), helpstring("Tests to connect to SpamAssassin")] HRESULT TestSpamAssassinConnection([in] BSTR Hostname, long Port, [out] BSTR *ResultText, [out, retval] VARIANT_BOOL *pResult);
+   
+   [propget, id(37), helpstring("Check rDNS/PTR record.")] HRESULT CheckPTR([out, retval] VARIANT_BOOL* pVal);
+   [propput, id(37), helpstring("Check rDNS/PTR record.")] HRESULT CheckPTR([in] VARIANT_BOOL newVal);
+   [propget, id(38), helpstring("Check rDNS/PTR record (SpamScore).")] HRESULT CheckPTRScore([out, retval] long* pVal);
+   [propput, id(38), helpstring("Check rDNS/PTR record (SpamScore).")] HRESULT CheckPTRScore([in] long newVal);
+};
+
+
+[
+	object,
+	uuid(6A7B5B64-A764-4411-A7FE-0192B50F3BAB),
+	dual,
+	nonextensible,
+	helpstring("The BlockedAttachment object represents a single blocked file extension (or wildcard)."),
+	pointer_default(unique)
+]
+interface IInterfaceBlockedAttachment : IDispatch
+{
+   [propget, id(1), helpstring("The unique database identifier for the object.")] HRESULT ID([out, retval] long *pVal);
+   [propget, id(2), helpstring("Wildcard for blocked attachment.")] HRESULT Wildcard([out, retval] BSTR *pVal);
+   [propput, id(2), helpstring("Wildcard for blocked attachment.")] HRESULT Wildcard([in] BSTR newVal);
+   [id(3), helpstring("Saves changes of the object in the database.")] HRESULT Save();
+   [propget, id(4), helpstring("Description for block.")] HRESULT Description([out, retval] BSTR *pVal);
+   [propput, id(4), helpstring("Description for block.")] HRESULT Description([in] BSTR newVal);
+   [id(5), helpstring("Deletes the object.")] HRESULT Delete();
+
+};
+
+[
+	object,
+	uuid(426279C8-2451-429A-8258-FB7AAE8D1287),
+	dual,
+	nonextensible,
+	helpstring("The BlockedAttachments object is a collection of all blocked attachments set up in the Altimail Server installation."),
+	pointer_default(unique)
+]
+interface IInterfaceBlockedAttachments : IDispatch
+{
+   [propget, id(0), defaultbind, helpstring("Returns a blocked attachment by its given index.")] HRESULT Item([in] long Index, [out, retval] IInterfaceBlockedAttachment **pVal);
+   [propget, id(1), helpstring("The number of objects in the collection.")] HRESULT Count([out, retval] long *pVal);
+   [id(2), helpstring("Deletes an object in the database by its given database identifier.")] HRESULT DeleteByDBID([in] long DBID);
+   [id(3), helpstring("Adds a new object to the collection.")] HRESULT Add([out, retval] IInterfaceBlockedAttachment **pVal);
+   [propget, id(5), helpstring("Returns a blocked attachment by its database identifier")] HRESULT ItemByDBID([in] long DBID, [out, retval] IInterfaceBlockedAttachment* *pVal);
+   [id(6), helpstring("Refreshes the collection.")] HRESULT Refresh();
+
+};
+
+[
+	object,
+	uuid(78CB75E2-69AC-4853-A301-19E31660AC7A),
+	dual,
+	nonextensible,
+	helpstring("The ServerMessages object is a collection of customizable server messages."),
+	pointer_default(unique)
+]
+interface IInterfaceServerMessages : IDispatch
+{
+   [propget, id(0), defaultbind, helpstring("Returns a object by its given index.")] HRESULT Item([in] long Index, [out, retval] IInterfaceServerMessage **pVal);
+   [propget, id(1), helpstring("Number of items in the collection.")] HRESULT Count([out, retval] long *pVal);
+   [propget, id(2), helpstring("Returns a object by its database identifier")] HRESULT ItemByDBID([in] long DBID, [out, retval] IInterfaceServerMessage* *pVal);
+   [propget, id(3), helpstring("Returns a object by its name")] HRESULT ItemByName([in] BSTR sName, [out, retval] IInterfaceServerMessage* *pVal);
+   [id(4), helpstring("Refreshes the collection.")] HRESULT Refresh();
+
+};
+[
+	object,
+	uuid(9EAEC24C-1881-4501-AEE5-E5E3219D3091),
+	dual,
+	nonextensible,
+	helpstring("The ServerMessage object represents a single customizable server message."),
+	pointer_default(unique)
+]
+interface IInterfaceServerMessage : IDispatch
+{
+   [propget, id(1), helpstring("The unique database identifier for the object.")] HRESULT ID([out, retval] long *pVal);
+   [propget, id(2), helpstring("Name of the server message.")] HRESULT Name([out, retval] BSTR *pVal);
+   [propput, id(2), helpstring("Name of the server message.")] HRESULT Name([in] BSTR newVal);
+   [id(3), helpstring("Saves changes of the object in the database.")] HRESULT Save();
+   [propget, id(4), helpstring("Server message.")] HRESULT Text([out, retval] BSTR *pVal);
+   [propput, id(4), helpstring("Server message.")] HRESULT Text([in] BSTR newVal);
+};
+
+[
+	object,
+	uuid(628DB5F3-88BD-4918-80EE-FCBAE3FC462D),
+	dual,
+	nonextensible,
+	helpstring("The GreyListingWhiteAddresses object is a collection of all addresses whitelisted from grey listing."),
+	pointer_default(unique)
+]
+interface IInterfaceGreyListingWhiteAddresses : IDispatch
+{
+   [propget, id(0), defaultbind, helpstring("Returns an object by its given index.")] HRESULT Item([in] long Index, [out, retval] IInterfaceGreyListingWhiteAddress **pVal);
+   [propget, id(1), helpstring("The number of objects in the collection.")] HRESULT Count([out, retval] long *pVal);
+   [id(2), helpstring("Deletes an object in the database by its given database identifier.")] HRESULT DeleteByDBID([in] long DBID);
+   [id(3), helpstring("Adds a new object to the collection.")] HRESULT Add([out, retval] IInterfaceGreyListingWhiteAddress **pVal);
+   [propget, id(5), helpstring("Returns a object by its database identifier")] HRESULT ItemByDBID([in] long DBID, [out, retval] IInterfaceGreyListingWhiteAddress* *pVal);
+   [id(6), helpstring("Refreshes the collection.")] HRESULT Refresh();
+   [propget, id(7), helpstring("Returns an object by it's IP address.")] HRESULT ItemByName([in] BSTR sName, [out, retval] IInterfaceGreyListingWhiteAddress **pVal);
+};
+
+[
+	object,
+	uuid(227F51FB-1AB8-48BC-822B-BBDFC3FD82A4),
+	dual,
+	nonextensible,
+	helpstring("The GreyListingWhiteAddress object contains a single whitelisted address which will not be affected by grey listing."),
+	pointer_default(unique)
+]
+interface IInterfaceGreyListingWhiteAddress : IDispatch
+{
+   [propget, id(1), helpstring("The unique database identifier for the object.")] HRESULT ID([out, retval] long *pVal);
+   [propget, id(2), helpstring("IP address.")] HRESULT IPAddress([out, retval] BSTR *pVal);
+   [propput, id(2), helpstring("IP address.")] HRESULT IPAddress([in] BSTR newVal);
+   [propget, id(3), helpstring("Description of the IP address.")] HRESULT Description([out, retval] BSTR *pVal);
+   [propput, id(3), helpstring("Description of the IP address.")] HRESULT Description([in] BSTR newVal);
+   [id(4), helpstring("Saves changes of the object in the database.")] HRESULT Save();
+   [id(5), helpstring("Deletes the object from the database.")] HRESULT Delete();
+
+};
+[
+	object,
+	uuid(22E955A9-ED1F-4FBE-85F6-90F44F5F3801),
+	dual,
+	nonextensible,
+	helpstring("The TCP/IP ports object contains a collection of all TCP/IP ports and addresses Altimail Server is configured to listen on."),
+	pointer_default(unique)
+]
+interface IInterfaceTCPIPPorts : IDispatch
+{
+   [propget, id(0), defaultbind, helpstring("Returns an object by its given index.")] HRESULT Item([in] long Index, [out, retval] IInterfaceTCPIPPort **pVal);
+   [propget, id(1), helpstring("The number of objects in the collection.")] HRESULT Count([out, retval] long *pVal);
+   [id(2), helpstring("Deletes an object in the database by its given database identifier.")] HRESULT DeleteByDBID([in] long DBID);
+   [id(3), helpstring("Adds a new object to the collection.")] HRESULT Add([out, retval] IInterfaceTCPIPPort **pVal);
+   [propget, id(5), helpstring("Returns a object by its database identifier")] HRESULT ItemByDBID([in] long DBID, [out, retval] IInterfaceTCPIPPort* *pVal);
+   [id(6), helpstring("Refreshes the collection.")] HRESULT Refresh();
+   [id(7), helpstring("Generate default set of objects in this collection")] HRESULT SetDefault();
+};
+[
+	object,
+	uuid(C5C403EA-617B-45A9-A900-31759240007D),
+	dual,
+	nonextensible,
+	helpstring("The TCPIPPort object represents a single address and port Altimail Server is configured to listen on."),
+	pointer_default(unique)
+]
+interface IInterfaceTCPIPPort : IDispatch
+{
+   [propget, id(1), helpstring("The unique database identifier for the object.")] HRESULT ID([out, retval] long *pVal);
+   [propget, id(2), helpstring("The type of protocol connected to this port.")] HRESULT Protocol([out, retval] eSessionType *pVal);
+   [propput, id(2), helpstring("The type of protocol connected to this port.")] HRESULT Protocol([in] eSessionType newVal);
+   [propget, id(3), helpstring("The TCP/IP port number.")] HRESULT PortNumber([out, retval] long *pVal);
+   [propput, id(3), helpstring("The TCP/IP port number.")] HRESULT PortNumber([in] long newVal);
+   [id(4), helpstring("Saves changes of the object in the database.")] HRESULT Save();
+   [propget, id(5), helpstring("The TCP/IP address to bind to.")] HRESULT Address([out, retval] BSTR *pVal);
+   [propput, id(5), helpstring("The TCP/IP address to bind to.")] HRESULT Address([in] BSTR newVal);
+   [propget, id(6), helpstring("Use SSL for this TCP/IP port.")] HRESULT UseSSL([out, retval] VARIANT_BOOL *pVal);
+   [propput, id(6), helpstring("Use SSL for this TCP/IP port.")] HRESULT UseSSL([in] VARIANT_BOOL newVal);
+   [propget, id(7), helpstring("The id of the SSL certificate to use.")] HRESULT SSLCertificateID([out, retval] long *pVal);
+   [propput, id(7), helpstring("The id of the SSL certificate to use.")] HRESULT SSLCertificateID([in] long newVal);
+   [id(8), helpstring("Deletes the object from the database.")] HRESULT Delete();
+   [propget, id(9), helpstring("Connection security for this TCP/IP port.")] HRESULT ConnectionSecurity([out, retval] eConnectionSecurity *pVal);
+   [propput, id(9), helpstring("Connection security for this TCP/IP port.")] HRESULT ConnectionSecurity([in] eConnectionSecurity newVal);
+};
+
+
+[
+	object,
+	uuid(B948B4F3-13A8-4D08-B013-A97945693700),
+	dual,
+	nonextensible,
+	helpstring("The WhiteListAdresses object is a collection of all whitelisted email addresses / IP addresses."),
+	pointer_default(unique)
+]
+interface IInterfaceWhiteListAddresses : IDispatch
+{
+   [propget, id(0), defaultbind, helpstring("Returns an object by its given index.")] HRESULT Item([in] long Index, [out, retval] IInterfaceWhiteListAddress **pVal);
+   [propget, id(1), helpstring("The number of objects in the collection.")] HRESULT Count([out, retval] long *pVal);
+   [id(2), helpstring("Deletes an object in the database by its given database identifier.")] HRESULT DeleteByDBID([in] long DBID);
+   [id(3), helpstring("Adds a new object to the collection.")] HRESULT Add([out, retval] IInterfaceWhiteListAddress **pVal);
+   [propget, id(5), helpstring("Returns a object by its database identifier")] HRESULT ItemByDBID([in] long DBID, [out, retval] IInterfaceWhiteListAddress* *pVal);
+   [id(6), helpstring("Refreshes the collection.")] HRESULT Refresh();
+   [id(7), helpstring("Clears the collection.")] HRESULT Clear();
+};
+
+// 
+[
+	object,
+	uuid(6B4DE9DE-1624-4D18-869F-74BC46508ABF),
+	dual,
+	nonextensible,
+	helpstring("The WhiteListAddress object represents a single white listed IP address or email address."),
+	pointer_default(unique)
+]
+interface IInterfaceWhiteListAddress : IDispatch
+{
+   [propget, id(1), helpstring("The unique database identifier for the object.")] HRESULT ID([out, retval] long *pVal);
+   [propget, id(2), helpstring("Lower IP address.")] HRESULT LowerIPAddress([out, retval] BSTR *pVal);
+   [propput, id(2), helpstring("Lower IP address.")] HRESULT LowerIPAddress([in] BSTR newVal);
+   [propget, id(3), helpstring("Upper IP address.")] HRESULT UpperIPAddress([out, retval] BSTR *pVal);
+   [propput, id(3), helpstring("Upper IP address.")] HRESULT UpperIPAddress([in] BSTR newVal);
+   [propget, id(4), helpstring("E-mail address to whitelist")] HRESULT EmailAddress([out, retval] BSTR *pVal);
+   [propput, id(4), helpstring("E-mail address to whitelist")] HRESULT EmailAddress([in] BSTR newVal);
+   [propget, id(5), helpstring("Description of the record.")] HRESULT Description([out, retval] BSTR *pVal);
+   [propput, id(5), helpstring("Description of the record.")] HRESULT Description([in] BSTR newVal);
+   [id(6), helpstring("Saves changes of the object in the database.")] HRESULT Save();
+   [id(7), helpstring("Deletes the object from the database.")] HRESULT Delete();
+   
+};
+
+[
+	object,
+	uuid(39C22147-4B6F-406E-A499-0DC546AA7D0B),
+	dual,
+	nonextensible,
+	helpstring("The MessageHeader object represents a single email message header (a MIME header)."),
+	pointer_default(unique)
+]
+interface IInterfaceMessageHeader : IDispatch
+{
+   [propget, id(1), helpstring("Name of the MIME header.")] HRESULT Name([out, retval] BSTR *pVal);
+   [propput, id(1), helpstring("Name of the MIME header.")] HRESULT Name([in] BSTR newVal);
+   [propget, id(2), helpstring("Value of the MIME header")] HRESULT Value([out, retval] BSTR *pVal);
+   [propput, id(2), helpstring("Value of the MIME header")] HRESULT Value([in] BSTR newVal);
+   [id(3), helpstring("Deletes the header field.")] HRESULT Delete();
+};
+
+
+[
+	object,
+	uuid(ABC1B0D1-3D0D-4320-AB88-1C8905F147D9),
+	dual,
+	nonextensible,
+	helpstring("The MessageHeaders object is a collection of all MIME headers in a single email message."),
+	pointer_default(unique)
+]
+interface IInterfaceMessageHeaders : IDispatch
+{
+   [propget, id(0), defaultbind, helpstring("Returns an object by its given index.")] HRESULT Item([in] long Index, [out, retval] IInterfaceMessageHeader **pVal);
+   [propget, id(1), helpstring("The number of objects in the collection.")] HRESULT Count([out, retval] long *pVal);
+   [propget, id(2), defaultbind, helpstring("Returns an object by it's name. If multiple matching, first is returned.")] HRESULT ItemByName([in] BSTR sName, [out, retval] IInterfaceMessageHeader **pVal);
+};
+
+
+
+[
+	object,
+	uuid(1B0FCE30-EE70-417C-AC7A-724EBA142C28),
+	dual,
+	nonextensible,
+	helpstring("The SSLCertificate object represents a single SSL certificate set up in Altimail Server."),
+	pointer_default(unique)
+]
+interface IInterfaceSSLCertificate : IDispatch
+{
+   [propget, id(1), helpstring("The unique database identifier for the object.")] HRESULT ID([out, retval] long *pVal);
+   [propget, id(2), helpstring("The name of the object.")] HRESULT Name([out, retval] BSTR *pVal);
+   [propput, id(2), helpstring("The name of the object")] HRESULT Name([in] BSTR newVal);
+   [id(3), helpstring("Saves changes of the object in the database.")] HRESULT Save();
+   [propget, id(4), helpstring("The certificate file.")] HRESULT CertificateFile([out, retval] BSTR *pVal);
+   [propput, id(4), helpstring("The certificate file")] HRESULT CertificateFile([in] BSTR newVal);
+   [propget, id(5), helpstring("The private key file.")] HRESULT PrivateKeyFile([out, retval] BSTR *pVal);
+   [propput, id(5), helpstring("The private key file")] HRESULT PrivateKeyFile([in] BSTR newVal);
+   [id(6), helpstring("Deletes the object from the database.")] HRESULT Delete();
+};
+
+
+[
+	object,
+	uuid(67E0168E-6384-47D9-B57D-CBF3BB38FA92),
+	dual,
+	nonextensible,
+	helpstring("The SSLCertificates object is a collection of all SSL certificates set up in Altimail Server."),
+	pointer_default(unique)
+]
+interface IInterfaceSSLCertificates : IDispatch
+{
+   [propget, id(0), defaultbind, helpstring("Returns a SSL certificate by its given index.")] HRESULT Item([in] long Index, [out, retval] IInterfaceSSLCertificate **pVal);
+   [propget, id(1), helpstring("The number of objects in the collection.")] HRESULT Count([out, retval] long *pVal);
+   [id(2), helpstring("Deletes an object in the database by its given database identifier.")] HRESULT DeleteByDBID([in] long DBID);
+   [id(3), helpstring("Adds a new object to the collection.")] HRESULT Add([out, retval] IInterfaceSSLCertificate **pVal);
+   [propget, id(5), helpstring("Returns a SSL certificate by its database identifier")] HRESULT ItemByDBID([in] long DBID, [out, retval] IInterfaceSSLCertificate* *pVal);
+   [id(6), helpstring("Refreshes the collection.")] HRESULT Refresh();
+   [id(7), helpstring("Clears the collection.")] HRESULT Clear();
+};
+
+[
+	object,
+	uuid(42224ABE-044E-4A8D-A128-F860CC137703),
+	dual,
+	nonextensible,
+	helpstring("The Groups object is a collection of all server-wide groups set up in Altimail Server."),
+	pointer_default(unique)
+]
+interface IInterfaceGroups : IDispatch
+{
+   [propget, id(0), defaultbind, helpstring("Returns an object by it's index.")] HRESULT Item([in] long Index, [out, retval] IInterfaceGroup **pVal);
+   [propget, id(1), helpstring("The number of objects in the collection.")] HRESULT Count([out, retval] long *pVal);
+   [id(2), helpstring("Deletes an object in the database by its given database identifier.")] HRESULT DeleteByDBID([in] long DBID);
+   [id(3), helpstring("Adds a new object to the collection.")] HRESULT Add([out, retval] IInterfaceGroup **pVal);
+   [propget, id(5), helpstring("Returns an object by its database identifier")] HRESULT ItemByDBID([in] long DBID, [out, retval] IInterfaceGroup* *pVal);
+   [propget, id(6), helpstring("Returns an object by its name")] HRESULT ItemByName([in] BSTR Name, [out, retval] IInterfaceGroup* *pVal);
+   [id(7), helpstring("Refreshes the collection.")] HRESULT Refresh();
+};
+[
+	object,
+	uuid(C9D9772B-E18A-4130-820F-D71DE4E6AA5B),
+	dual,
+	nonextensible,
+	helpstring("The Group object represents a single group set up in Altimail Server."),
+	pointer_default(unique)
+]
+interface IInterfaceGroup : IDispatch
+{
+   [propget, id(1), helpstring("The unique database identifier for the object.")] HRESULT ID([out, retval] long *pVal);
+   [propget, id(4), helpstring("The name of the group.")] HRESULT Name([out, retval] BSTR *pVal);
+   [propput, id(4), helpstring("The name of the group.")] HRESULT Name([in] BSTR sVal);
+   [propget, id(5), helpstring("Collection of group members")] HRESULT Members([out, retval] IInterfaceGroupMembers **pVal);
+   [id(7), helpstring("Saves changes of the object in the database.")] HRESULT Save();
+   [id(8), helpstring("Deletes the object from the database.")] HRESULT Delete();
+};
+
+[
+	object,
+	uuid(1480681E-E4D9-4C2F-A7AF-5CF522E97C69),
+	dual,
+	nonextensible,
+	helpstring("The GrupMembers object is a collection of all members in a group."),
+	pointer_default(unique)
+]
+interface IInterfaceGroupMembers : IDispatch
+{
+   [propget, id(0), defaultbind, helpstring("Returns an object by it's index.")] HRESULT Item([in] long Index, [out, retval] IInterfaceGroupMember **pVal);
+   [propget, id(1), helpstring("The number of objects in the collection.")] HRESULT Count([out, retval] long *pVal);
+   [id(2), helpstring("Deletes an object in the database by its given database identifier.")] HRESULT DeleteByDBID([in] long DBID);
+   [id(3), helpstring("Adds a new object to the collection.")] HRESULT Add([out, retval] IInterfaceGroupMember **pVal);
+   [propget, id(5), helpstring("Returns an object by its database identifier")] HRESULT ItemByDBID([in] long DBID, [out, retval] IInterfaceGroupMember* *pVal);
+   [id(6), helpstring("Refreshes the collection.")] HRESULT Refresh();
+};
+[
+	object,
+	uuid(A063C334-35C4-4C9D-8136-D20D5983969D),
+	dual,
+	nonextensible,
+	helpstring("The GroupMember object represents a single member in a Altimail Server group."),
+	pointer_default(unique)
+]
+interface IInterfaceGroupMember : IDispatch
+{
+   [propget, id(1), helpstring("The unique database identifier for the object.")] HRESULT ID([out, retval] long *pVal);
+   [propget, id(2), helpstring("The database identifier of the group this member belongs to.")] HRESULT GroupID([out, retval] long *pVal);
+   [propput, id(2), helpstring("The database identifier of the group this member belongs to.")] HRESULT GroupID([in] long pVal);
+   [propget, id(3), helpstring("The database identifier of the member account.")] HRESULT AccountID([out, retval] long *pVal);
+   [propput, id(3), helpstring("The database identifier of the member account.")] HRESULT AccountID([in] long pVal);
+   [id(4), helpstring("Saves changes of the object in the database.")] HRESULT Save();
+   [id(5), helpstring("Deletes the object from the database.")] HRESULT Delete();
+   [propget, id(6), helpstring("Returns the account referenced by this member.")] HRESULT Account([out, retval] IInterfaceAccount **pVal);
+};
+
+[
+	object,
+	uuid(82F956B1-5E18-4D29-B216-A48C60CEBD2B),
+	dual,
+	nonextensible,
+	helpstring("The IMAPFolderPermission represents a single permission attached to an IMAP folder."),
+	pointer_default(unique)
+]
+interface IInterfaceIMAPFolderPermission : IDispatch
+{
+   [propget, id(1), helpstring("The unique database identifier for the ACL permission.")] HRESULT ID([out, retval] long *pVal);
+   [propget, id(3), helpstring("The folder which has been shared (read-only)")] HRESULT ShareFolderID([out, retval] long *pVal);
+	[propget, id(4), helpstring("The type of object this ACL permission is connected to.")] HRESULT PermissionType([out, retval] eACLPermissionType *pVal);
+	[propput, id(4), helpstring("The type of object this ACL permission is connected to.")] HRESULT PermissionType([in] eACLPermissionType newVal);
+	
+   [propget, id(5), helpstring("The identifier of the group this ACL permission is connected to.")] HRESULT PermissionGroupID([out, retval] long *pVal);
+	[propput, id(5), helpstring("The identifier of the group this ACL permission is connected to.")] HRESULT PermissionGroupID([in] long newVal);
+	[propget, id(6), helpstring("The identifier of the account this ACL permission is connected to.")] HRESULT PermissionAccountID([out, retval] long *pVal);
+	[propput, id(6), helpstring("The identifier of the account this ACL permission is connected to.")] HRESULT PermissionAccountID([in] long newVal);
+   [propget, id(7), helpstring("The ACL permission value.")] HRESULT Value([out, retval] long *pVal);
+	[propput, id(7), helpstring("The ACL permission value.")] HRESULT Value([in] long newVal);
+   [propget, id(8), helpstring("ACL permission")] HRESULT Permission([in] eACLPermission iType, [out, retval] VARIANT_BOOL *pVal);
+   [propput, id(8), helpstring("ACL permission")] HRESULT Permission([in] eACLPermission iType, [in] VARIANT_BOOL pVal);
+   [id(9), helpstring("Saves changes of the object in the database.")] HRESULT Save();
+   [id(10), helpstring("Deletes the object from the database.")] HRESULT Delete();
+   [propget, id(11), helpstring("Gets the account referenced by this permission.")] HRESULT Account([out, retval] IInterfaceAccount **pVal);
+   [propget, id(12), helpstring("Gets the group referenced by this permission.")] HRESULT Group([out, retval] IInterfaceGroup **pVal);
+};
+
+
+[
+	object,
+	uuid(533A46D3-BF3F-42EE-B631-DED688B1251A),
+	dual,
+	nonextensible,
+	helpstring("The IMAPFolderPermissions object is a collection of all permissions connected to a specific public IMAP folder."),
+	pointer_default(unique)
+]
+interface IInterfaceIMAPFolderPermissions : IDispatch
+{
+	[propget, id(0), defaultbind, helpstring("Returns a permission by a given index.")] HRESULT Item([in] long Index, [out, retval] IInterfaceIMAPFolderPermission **pVal);
+	[propget, id(1), helpstring("Returns the number of permissions in the collection.")] HRESULT Count([out, retval] long *pVal);
+	[id(2), helpstring("Deletes the permission with the specified index.")] HRESULT Delete([in] long Index);
+	[id(3), helpstring("Refreshes the collection.")] HRESULT Refresh();
+	[id(4), helpstring("Adds a new permission to the collection.")] HRESULT Add([out, retval] IInterfaceIMAPFolderPermission **pVal);
+	[propget, id(5), helpstring("Returns an permission by its given database identifier.")] HRESULT ItemByDBID([in] long DBID, [out, retval] IInterfaceIMAPFolderPermission **pVal);
+	[id(6), helpstring("Deletes an permission by its given database identifier.")] HRESULT DeleteByDBID([in] long DBID);
+	[propget, id(7), helpstring("Returns an permission by it's name.")] HRESULT ItemByName([in] BSTR Name, [out, retval] IInterfaceIMAPFolderPermission **pVal);
+};
+
+[
+	object,
+	uuid(8AA9449A-730C-4AEE-85B7-66C694EA50E2),
+	dual,
+	nonextensible,
+	helpstring("The Directories object contains all directories set up in Altimail Server.ini."),
+	pointer_default(unique)
+]
+interface IInterfaceDirectories : IDispatch
+{
+   [propget, id(1), helpstring("Program folder")] HRESULT ProgramDirectory([out, retval] BSTR *pVal);
+   [propput, id(1), helpstring("Program folder")] HRESULT ProgramDirectory([in] BSTR newVal);   
+   [propget, id(2), helpstring("Database folder")] HRESULT DatabaseDirectory([out, retval] BSTR *pVal);
+   [propput, id(2), helpstring("Database folder")] HRESULT DatabaseDirectory([in] BSTR newVal);   
+   [propget, id(3), helpstring("Data folder")] HRESULT DataDirectory([out, retval] BSTR *pVal);
+   [propput, id(3), helpstring("Data folder")] HRESULT DataDirectory([in] BSTR newVal);   
+   [propget, id(4), helpstring("Log folder")] HRESULT LogDirectory([out, retval] BSTR *pVal);
+   [propput, id(4), helpstring("Log folder")] HRESULT LogDirectory([in] BSTR newVal);   
+   [propget, id(5), helpstring("Temp folder")] HRESULT TempDirectory([out, retval] BSTR *pVal);
+   [propput, id(5), helpstring("Temp folder")] HRESULT TempDirectory([in] BSTR newVal);   
+   [propget, id(6), helpstring("Event folder")] HRESULT EventDirectory([out, retval] BSTR *pVal);
+   [propput, id(6), helpstring("Event folder")] HRESULT EventDirectory([in] BSTR newVal);   
+   [propget, id(7), helpstring("Database script folder")] HRESULT DBScriptDirectory([out, retval] BSTR *pVal);
+};
+
+[
+	object,
+	uuid(C42BD292-1F01-4FCD-B28C-DBD4BB025524),
+	dual,
+	nonextensible,
+	helpstring("The Languages object is a collection of all languages accessible by Altimail Server."),
+	pointer_default(unique)
+]
+interface IInterfaceLanguages : IDispatch{
+   [propget, id(0), defaultbind, helpstring("Returns a language by its given index in the collection.")] HRESULT Item([in] long Index, [out, retval] IInterfaceLanguage* *pVal);
+   [propget, id(1), helpstring("The number of objects in the collection.")] HRESULT Count([out, retval] long *pVal);
+   [propget, id(3), helpstring("Returns a language by its name")] HRESULT ItemByName([in] BSTR ItemName, [out, retval] IInterfaceLanguage** pVal);
+
+};
+
+[
+	object,
+	uuid(B5D3B5E9-43E1-4F05-ADCE-41A7AAABBD90),
+	dual,
+	nonextensible,
+	helpstring("The Links object contains functions which make it easier to access domains and domain objects with known IDs."),
+	pointer_default(unique)
+]
+interface IInterfaceLinks : IDispatch{
+   [propget, id(1), helpstring("Returns a domain by its database identifier")] HRESULT Domain([in] long DBID, [out, retval] IInterfaceDomain* *pVal);
+   [propget, id(2), helpstring("Returns an account by its database identifier")] HRESULT Account([in] long DBID, [out, retval] IInterfaceAccount **pVal);
+   [propget, id(3), helpstring("Returns an alias by its database identifier")] HRESULT Alias([in] long DBID, [out, retval] IInterfaceAlias **pVal);
+   [propget, id(4), helpstring("Returns a distribution list by its database identifier")] HRESULT DistributionList([in] long DBID, [out, retval] IInterfaceDistributionList **pVal);
+};
+
+
+
+[
+	object,
+	uuid(782C5753-E72A-4E7B-BDC2-F0CEFB5C9A33),
+	dual,
+	nonextensible,
+	helpstring("An incoming relay specification."),
+	pointer_default(unique)
+]
+interface IInterfaceIncomingRelay : IDispatch
+{
+		[propget, id(0), helpstring("Database identifier")] HRESULT ID([out, retval] long *pVal);
+		[propget, id(1), helpstring("Lower IP")] HRESULT LowerIP([out, retval] BSTR *pVal);
+		[propput, id(1), helpstring("Lower IP")] HRESULT LowerIP([in] BSTR pVal);
+		[propget, id(2), helpstring("Upper IP")] HRESULT UpperIP([out, retval] BSTR *pVal);
+		[propput, id(2), helpstring("Upper IP")] HRESULT UpperIP([in] BSTR pVal);
+		[propget, id(3), helpstring("The name of this object.")] HRESULT Name([out, retval] BSTR *pVal);
+		[propput, id(3), helpstring("The name of this object")] HRESULT Name([in] BSTR newVal);
+      [id(4), helpstring("Deletes the object from the database.")] HRESULT Delete();
+      [id(5), helpstring("Saves the security range to the database.")] HRESULT Save(void);
+};
+
+
+[
+	object,
+	uuid(2D661ECF-AA4A-484E-BAA9-A996AFEFB51D),
+	dual,
+	nonextensible,
+	helpstring("A collection of incoming relays set up on the server."),
+	pointer_default(unique)
+]
+interface IInterfaceIncomingRelays : IDispatch
+{
+   [propget, id(0), defaultbind, helpstring("Returns an incoming relay by a given index.")] HRESULT Item([in] long Index, [out, retval] IInterfaceIncomingRelay **pVal);
+	[propget, id(1), helpstring("Returns a incoming relay by a given database identifier.")] HRESULT ItemByDBID([in] long DBID, [out, retval] IInterfaceIncomingRelay **pVal);
+	[id(2), helpstring("Deletes the incoming relay with the specified index.")] HRESULT Delete([in] long Index);
+	[id(3), helpstring("Deletes the incoming relay with the specified database identifier.")] HRESULT DeleteByDBID([in] long DBID);
+	[id(4), helpstring("Refreshes the collection.")] HRESULT Refresh();
+	[id(5), helpstring("Adds a new incoming relay to the collection.")] HRESULT Add([out, retval] IInterfaceIncomingRelay **pVal);
+	[propget, id(6), helpstring("The number of objects in the collection.")] HRESULT Count([out, retval] long *pVal);
+	[propget, id(7), helpstring("Returns a incoming relay by a given name.")] HRESULT ItemByName([in] BSTR sName, [out, retval] IInterfaceIncomingRelay **pVal);
+
+};
+
+[
+	object,
+	uuid(4F79CBE3-18FE-4EDB-AB16-1EA7FEE9EED6),
+	dual,
+	nonextensible,
+	helpstring("IInterfaceMessageIndexing Interface"),
+	pointer_default(unique)
+]
+interface IInterfaceMessageIndexing : IDispatch
+{
+   [propget, id(1), helpstring("Gets the total number of messages in the Altimail Server installation.")] HRESULT TotalMessageCount([out, retval] long *pVal);
+   [propget, id(2), helpstring("Gets the total number of indexed messages in the Altimail Server installation.")] HRESULT TotalIndexedCount([out, retval] long *pVal);
+   [propget, id(3), helpstring("Gets or sets whether message indexing is enabled.")] HRESULT Enabled([out, retval] VARIANT_BOOL  *pVal);
+   [propput, id(3), helpstring("Gets or sets whether message indexing is enabled.")] HRESULT Enabled([in] VARIANT_BOOL newVal);
+   [id(4), helpstring("Clear the message indexing cache.")] HRESULT Clear(void);
+   [id(5), helpstring("Trigger an index start if it is not already running.")] HRESULT Index();
+};
+
+[
+	object,
+	uuid(A7168CDD-4E86-4736-83AC-3FFE47BDD4A3),
+	dual,
+	nonextensible,
+	helpstring("IInterfaceDiagnostics Interface"),
+	pointer_default(unique)
+]
+interface IInterfaceDiagnostics : IDispatch
+{
+   [id(1), helpstring("Performs diagnostics.")] HRESULT PerformTests([out, retval] IInterfaceDiagnosticResults **pVal);
+   [propget, id(2), helpstring("Gets or sets the local domain name to perform tests on.")] HRESULT LocalDomainName([out, retval] BSTR *pVal);
+   [propput, id(2), helpstring("Gets or sets the local domain name to perform tests on.")] HRESULT LocalDomainName([in] BSTR newVal);
+   [propget, id(3), helpstring("Gets or sets the test domain name to perform tests on.")] HRESULT TestDomainName([out, retval] BSTR *pVal);
+   [propput, id(3), helpstring("Gets or sets the test domain name to perform tests on.")] HRESULT TestDomainName([in] BSTR newVal);
+
+};
+
+[
+	object,
+	uuid(D42FBD20-194C-4C16-9C42-AF6A88F07556),
+	dual,
+	nonextensible,
+	helpstring("IInterfaceDiagnosticResults Interface"),
+	pointer_default(unique)
+]
+interface IInterfaceDiagnosticResults : IDispatch
+{
+   [propget, id(1), helpstring("Gets the number of objects in the collection.")] HRESULT Count([out, retval] long *pVal);
+   [propget, id(2), defaultbind, helpstring("Gets a diagnostic result by its idnex in the collection")] HRESULT Item([in] long Index, [out, retval] IInterfaceDiagnosticResult **pVal);
+};
+
+[
+	object,
+	uuid(C5C40000-35DF-41BA-8F76-B90E34DD127D),
+	dual,
+	nonextensible,
+	helpstring("IInterfaceDiagnosticResult Interface"),
+	pointer_default(unique)
+]
+interface IInterfaceDiagnosticResult : IDispatch
+{
+   [propget, id(1), helpstring("Gets the test name.")] HRESULT Name([out, retval] BSTR *pVal);
+   [propget, id(2), helpstring("Gets the test description.")] HRESULT Description([out, retval] BSTR *pVal);
+   [propget, id(3), helpstring("Gets the test execution details.")] HRESULT ExecutionDetails([out, retval] BSTR *pVal);
+   [propget, id(4), helpstring("Gets the test result.")] HRESULT Result([out, retval] VARIANT_BOOL *pVal);
+};
+
+[
+   uuid(5DF0577A-9FAF-4472-B083-B38207DD848B),
+	version(1.0),
+	helpstring("AltimailServer Type Library")
+]
+library AltimailServer
+{
+	importlib("stdole2.tlb");
+
+	importlib("stdole2.tlb");
+	[
+		uuid(BC747078-525B-4B50-B87F-A67996376771),
+		helpstring("DiagnosticResults Class")
+	]
+	coclass DiagnosticResults
+	{
+		[default] interface IInterfaceDiagnosticResults;
+	};
+	[
+		uuid(DD510567-2582-45B0-B839-32B992D7F9C8),
+		helpstring("DiagnosticResult Class")
+	]
+	coclass DiagnosticResult
+	{
+		[default] interface IInterfaceDiagnosticResult;
+	};
+
+   [
+		uuid(78C6190D-BD61-4C45-895F-A582834F1241),
+		helpstring("Diagnostics Class")
+	]
+	coclass Diagnostics
+	{
+		[default] interface IInterfaceDiagnostics;
+	};
+
+	[
+		uuid(88DD7FD6-C985-4236-9242-0D2212C2B249),
+		helpstring("Status Class")
+	]
+	coclass Status
+	{
+		[default] interface IInterfaceStatus;
+	};
+	[
+		uuid(66A22239-877A-4168-B1D5-0536F5266FAE),
+		helpstring("Settings Class")
+	]
+	coclass Settings
+	{
+		[default] interface IInterfaceSettings;
+	};
+	[
+		uuid(6C202FF6-D0E1-4543-80BF-30699DF8E7BD),
+		helpstring("Domain Class")
+	]
+	coclass Domain
+	{
+		[default] interface IInterfaceDomain;
+	};
+	[
+		uuid(F4D57B47-C99B-45B6-978D-19821E1F3F51),
+		helpstring("Accounts Class")
+	]
+	coclass Accounts
+	{
+		[default] interface IInterfaceAccounts;
+	};
+	[
+		uuid(0BC212C9-8128-4D77-B1A0-623DC73C819F),
+		helpstring("Account Class")
+	]
+	coclass Account
+	{
+		[default] interface IInterfaceAccount;
+	};
+	[
+		uuid(9A857569-F80A-4001-A781-121AD7DF33F8),
+		helpstring("Database Class")
+	]
+	coclass Database
+	{
+		[default] interface IInterfaceDatabase;
+	};
+	[
+		uuid(563E8D8C-F310-45A8-B139-79369AE60CEB),
+		helpstring("Message Class")
+	]
+	coclass Message
+	{
+		[default] interface IInterfaceMessage;
+	};
+	[
+		uuid(B66970CF-E420-46A8-BB14-F204CFAFDCED),
+		helpstring("Messages Class")
+	]
+	coclass Messages
+	{
+		[default] interface IInterfaceMessages;
+	};
+	[
+		uuid(9DDE063B-C8EA-46B1-AE51-FF37FBF2DF78),
+		helpstring("Aliases Class")
+	]
+	coclass Aliases
+	{
+		[default] interface IInterfaceAliases;
+	};
+	[
+		uuid(CECA6B7F-6454-4011-B505-F0B07BF72EE0),
+		helpstring("Utilities Class")
+	]
+	coclass Utilities
+	{
+		[default] interface IInterfaceUtilities;
+	};
+	[
+		uuid(F65EE35E-7503-4F92-82CB-51CAECB8FC5D),
+		helpstring("Alias Class")
+	]
+	coclass Alias
+	{
+		[default] interface IInterfaceAlias;
+	};
+	[
+		uuid(4D1E2C6F-2772-4875-8D22-8C7401DA0CA2),
+		helpstring("Attachment Class")
+	]
+	coclass Attachment
+	{
+		[default] interface IInterfaceAttachment;
+	};
+	[
+		uuid(F9C4A8C0-3A36-410D-A090-59ECC7D547B6),
+		helpstring("Attachments Class")
+	]
+	coclass Attachments
+	{
+		[default] interface IInterfaceAttachments;
+	};
+	[
+		uuid(5B5B8DBA-90DF-4146-9266-BEE442EB9907),
+		helpstring("Logging Class")
+	]
+	coclass Logging
+	{
+		[default] interface IInterfaceLogging;
+	};
+	[
+		uuid(3B86F73C-83C5-4100-AEEC-C22EA0C9FB9E),
+		helpstring("DistributionLists Class")
+	]
+	coclass DistributionLists
+	{
+		[default] interface IInterfaceDistributionLists;
+	};
+	[
+		uuid(7D1D883F-286E-4968-895F-B553AC5700A0),
+		helpstring("DistributionList Class")
+	]
+	coclass DistributionList
+	{
+		[default] interface IInterfaceDistributionList;
+	};
+	[
+		uuid(3AAF0FD6-1A4B-43DF-A04B-5B16DB48F513),
+		helpstring("DistributionListRecipients Class")
+	]
+	coclass DistributionListRecipients
+	{
+		[default] interface IInterfaceDistributionListRecipients;
+	};
+	[
+		uuid(5BB2B9D9-2C49-4DE4-8486-B35B51F53270),
+		helpstring("DistributionListRecipient Class")
+	]
+	coclass DistributionListRecipient
+	{
+		[default] interface IInterfaceDistributionListRecipient;
+	};
+	[
+		uuid(5B903DBD-FC8F-469E-BA1F-33DCEC701D6B),
+		helpstring("SecurityRange Class")
+	]
+	coclass SecurityRange
+	{
+		[default] interface IInterfaceSecurityRange;
+	};
+	[
+		uuid(99C7154E-7709-4E47-A0AF-17FA954CA7EE),
+		helpstring("SecurityRanges Class")
+	]
+	coclass SecurityRanges
+	{
+		[default] interface IInterfaceSecurityRanges;
+	};
+	[
+		uuid(04ECABC3-3422-45AD-A5F7-3E70DA39561A),
+		helpstring("AntiVirus Class")
+	]
+	coclass AntiVirus
+	{
+		[default] interface IInterfaceAntiVirus;
+	};
+	[
+		uuid(88F524A5-F156-4C10-87AE-436884339AB2),
+		helpstring("Route Class")
+	]
+	coclass Route
+	{
+		[default] interface IInterfaceRoute;
+	};
+	[
+		uuid(70C63DBC-1087-4AB4-A06E-C583AC4DC957),
+		helpstring("DNSBlackLists Class")
+	]
+	coclass DNSBlackLists
+	{
+		[default] interface IInterfaceDNSBlackLists;
+	};
+	[
+		uuid(8B6D04AF-47BC-443F-A8D3-57D4500CB8F3),
+		helpstring("DNSBlackList Class")
+	]
+	coclass DNSBlackList
+	{
+		[default] interface IInterfaceDNSBlackList;
+	};
+	[
+		uuid(55505443-A02D-421E-BDA9-30F03B3D0A9B),
+		helpstring("Application Class")
+	]
+	coclass Application
+	{
+		[default] interface IInterfaceApplication;
+	};
+	[
+		uuid(006EF958-6CDC-4486-BC96-ACFF9DA6D975),
+		helpstring("Domains Class")
+	]
+	coclass Domains
+	{
+		[default] interface IInterfaceDomains;
+	};
+	[
+		uuid(06272CA2-C64B-4217-9E3D-F39E35334134),
+		helpstring("Routes Class")
+	]
+	coclass Routes
+	{
+		[default] interface IInterfaceRoutes;
+	};
+	[
+		uuid(A110E007-40F7-440E-B6FB-EAD917E2563F),
+		helpstring("RouteAddress Class")
+	]
+	coclass RouteAddress
+	{
+		[default] interface IInterfaceRouteAddress;
+	};
+	[
+		uuid(F572B89B-A21B-4C05-A4B0-0683FA1D8A82),
+		helpstring("RouteAddresses Class")
+	]
+	coclass RouteAddresses
+	{
+		[default] interface IInterfaceRouteAddresses;
+	};
+
+	[
+		uuid(CEACA958-4492-44B3-A2A0-302AE26E20F0),
+		helpstring("Result Class")
+	]
+	coclass Result
+	{
+		[default] interface IInterfaceResult;
+	};
+	[
+		uuid(8BDAAFC9-3307-43E2-9F09-D7817BBA83A6),
+		helpstring("Client Class")
+	]
+	coclass Client
+	{
+		[default] interface IInterfaceClient;
+	};
+	[
+		uuid(E193527B-76E5-4E33-9929-D93A3FEF160E),
+		helpstring("FetchAccount Class")
+	]
+	coclass FetchAccount
+	{
+		[default] interface IInterfaceFetchAccount;
+	};
+	[
+		uuid(8BC5EF72-F196-45B6-B973-A21E45D9668C),
+		helpstring("FetchAccounts Class")
+	]
+	coclass FetchAccounts
+	{
+		[default] interface IInterfaceFetchAccounts;
+	};
+	[
+		uuid(47A0A3FB-035E-402A-97F5-526AC4D3709A),
+		helpstring("Scripting Class")
+	]
+	coclass Scripting
+	{
+		[default] interface IInterfaceScripting;
+	};
+	[
+		uuid(E1DE842F-E99A-4483-92A3-272F279CB48B),
+		helpstring("DomainAliases Class")
+	]
+	coclass DomainAliases
+	{
+		[default] interface IInterfaceDomainAliases;
+	};
+	[
+		uuid(C4397B3E-D65D-4DEC-AFBA-0D763C6CCF3E),
+		helpstring("DomainAlias Class")
+	]
+	coclass DomainAlias
+	{
+		[default] interface IInterfaceDomainAlias;
+	};
+	[
+		uuid(C7370F00-7F95-45AE-BD52-E135548B7091),
+		helpstring("Rules Class")
+	]
+	coclass Rules
+	{
+		[default] interface IInterfaceRules;
+	};
+	[
+		uuid(B542250B-5123-4401-8D99-77E10D9B2B75),
+		helpstring("Rule Class")
+	]
+	coclass Rule
+	{
+		[default] interface IInterfaceRule;
+	};
+	[
+		uuid(986EF0EF-7E8A-4351-9293-56C296444263),
+		helpstring("RuleCriteria Class")
+	]
+	coclass RuleCriteria
+	{
+		[default] interface IInterfaceRuleCriteria;
+	};
+	[
+		uuid(D8E7C0D6-8647-4858-9654-85FE1F64B23E),
+		helpstring("RuleCriterias Class")
+	]
+	coclass RuleCriterias
+	{
+		[default] interface IInterfaceRuleCriterias;
+	};
+	[
+		uuid(F2DB7440-D603-42D1-B9C2-910D527728FD),
+		helpstring("RuleAction Class")
+	]
+	coclass RuleAction
+	{
+		[default] interface IInterfaceRuleAction;
+	};
+	[
+		uuid(6E116618-80AE-423B-9275-0DF1ACA5E534),
+		helpstring("RuleActions Class")
+	]
+	coclass RuleActions
+	{
+		[default] interface IInterfaceRuleActions;
+	};
+	[
+		uuid(C6509A81-DA83-470B-9DD8-01F1E65A7A72),
+		helpstring("Recipients Class")
+	]
+	coclass Recipients
+	{
+		[default] interface IInterfaceRecipients;
+	};
+	[
+		uuid(4A630BA3-00B6-456D-8BBC-DEDC1DC6E0AB),
+		helpstring("Recipient Class")
+	]
+	coclass Recipient
+	{
+		[default] interface IInterfaceRecipient;
+	};
+	[
+		uuid(BEAB5DAA-A43B-4931-8E37-6068D9550A2F),
+		helpstring("Cache Class")
+	]
+	coclass Cache
+	{
+		[default] interface IInterfaceCache;
+	};
+	[
+		uuid(A8444964-2567-4CDB-B8F9-BE1C1672415F),
+		helpstring("BackupManager Class")
+	]
+	coclass BackupManager
+	{
+		[default] interface IInterfaceBackupManager;
+	};
+	[
+		uuid(A5883AD3-12C2-4FF7-917C-E67907AE0FFA),
+		helpstring("BackupSettings Class")
+	]
+	coclass BackupSettings
+	{
+		[default] interface IInterfaceBackupSettings;
+	};
+	[
+		uuid(F3AB9470-A8F2-4486-8A68-AA0231607390),
+		helpstring("Backup Class")
+	]
+	coclass Backup
+	{
+		[default] interface IInterfaceBackup;
+	};
+
+	[
+		uuid(D83ACC45-D3D1-4B00-9160-B4CD496A70D9),
+		helpstring("GlobalObjects Class")
+	]
+	coclass GlobalObjects
+	{
+		[default] interface IInterfaceGlobalObjects;
+	};
+	[
+		uuid(377B5CD7-D4C9-406C-A804-8804332BF5F0),
+		helpstring("DeliveryQueue Class")
+	]
+	coclass DeliveryQueue
+	{
+		[default] interface IInterfaceDeliveryQueue;
+	};
+	[
+		uuid(CAD39F6B-1132-4C7B-826B-9126176A75AB),
+		helpstring("Language Class")
+	]
+	coclass Language
+	{
+		[default] interface IInterfaceLanguage;
+	};
+	[
+		uuid(E2BFD448-C3F2-4BCF-888D-223524225DF1),
+		helpstring("IMAPFolder Class")
+	]
+	coclass IMAPFolder
+	{
+		[default] interface IInterfaceIMAPFolder;
+	};
+	[
+		uuid(719DE15B-A172-4016-A790-DE7E27052B75),
+		helpstring("IMAPFolders Class")
+	]
+	coclass IMAPFolders
+	{
+		[default] interface IInterfaceIMAPFolders;
+	};
+	[
+		uuid(9A843A3D-BFCE-4EE1-9C28-64222C3F0436),
+		helpstring("EventLog Class")
+	]
+	coclass EventLog
+	{
+		[default] interface IInterfaceEventLog;
+	};
+	[
+		uuid(95FF75CD-3FF3-41EF-AA28-C8C728A254BA),
+		helpstring("SURBLServers Class")
+	]
+	coclass SURBLServers
+	{
+		[default] interface IInterfaceSURBLServers;
+	};
+	[
+		uuid(EA9E4C99-DCFF-45ED-AA99-BB4D12A6C4CB),
+		helpstring("SURBLServer Class")
+	]
+	coclass SURBLServer
+	{
+		[default] interface IInterfaceSURBLServer;
+	};
+	[
+		uuid(CF184C4A-D307-4462-96A1-A2CD976FB427),
+		helpstring("AntiSpam Class")
+	]
+	coclass AntiSpam
+	{
+		[default] interface IInterfaceAntiSpam;
+	};
+	[
+		uuid(131E8DBC-EADD-46DD-AF22-BCF67D01E25B),
+		helpstring("BlockedAttachment Class")
+	]
+	coclass BlockedAttachment
+	{
+		[default] interface IInterfaceBlockedAttachment;
+	};
+	[
+		uuid(3FFF0DAA-4EAC-4DD5-A70A-9BEA3A598049),
+		helpstring("BlockedAttachments Class")
+	]
+	coclass BlockedAttachments
+	{
+		[default] interface IInterfaceBlockedAttachments;
+	};
+	[
+		uuid(5B9B974A-DC87-4845-9130-33DA4FAD6866),
+		helpstring("ServerMessages Class")
+	]
+	coclass ServerMessages
+	{
+		[default] interface IInterfaceServerMessages;
+	};
+	[
+		uuid(A0D329E0-16B3-4C6F-81A4-ED7095885C12),
+		helpstring("ServerMessage Class")
+	]
+	coclass ServerMessage
+	{
+		[default] interface IInterfaceServerMessage;
+	};
+	[
+		uuid(3BA8C622-6759-4EAA-A9E9-9A2019A8E705),
+		helpstring("TCPIPPort Class")
+	]
+	coclass TCPIPPort
+	{
+		[default] interface IInterfaceTCPIPPort;
+	};
+	[
+		uuid(4B960448-783B-4A5D-ABBE-8B1C44931DC1),
+		helpstring("TCPIPPorts Class")
+	]
+	coclass TCPIPPorts
+	{
+		[default] interface IInterfaceTCPIPPorts;
+	};
+	[
+		uuid(2A0BCDCA-AD99-4660-88EC-7C5CB6FF6A79),
+		helpstring("GreyListingWhiteAddress Class")
+	]
+	coclass GreyListingWhiteAddress
+	{
+		[default] interface IInterfaceGreyListingWhiteAddress;
+	};
+
+	[
+		uuid(6FB10979-D32F-4A35-B357-C451F52C4B74),
+		helpstring("GreyListingWhiteAddresses Class")
+	]
+	coclass GreyListingWhiteAddresses
+	{
+		[default] interface IInterfaceGreyListingWhiteAddresses;
+	};
+
+	[
+		uuid(FAF15CC8-B832-4061-B7F4-CEAEADBFA4A9), //already updated
+		helpstring("WhiteListAddresses Class")
+	]
+	coclass WhiteListAddresses
+	{
+		[default] interface IInterfaceWhiteListAddresses;
+	};
+	
+	[
+		uuid(455FA581-DD15-48D7-BEB1-8575FE977BC0),
+		helpstring("WhiteListAddress Class")
+	]
+	coclass WhiteListAddress
+	{
+		[default] interface IInterfaceWhiteListAddress;
+	};
+
+	[
+		uuid(D37C203F-4D1E-43E1-92E8-7ED5FC5B8129),
+		helpstring("MessageHeader Class")
+	]
+	coclass MessageHeader
+	{
+		[default] interface IInterfaceMessageHeader;
+	};
+	[
+		uuid(3D83ECDA-666C-438E-80BA-ED67D0527E60),
+		helpstring("MessageHeaders Class")
+	]
+	coclass MessageHeaders
+	{
+		[default] interface IInterfaceMessageHeaders;
+	};
+
+	[
+		uuid(22F46B8C-F881-4ECF-83FB-59DE9058F0F7),
+		helpstring("SSLCertificate Class")
+	]
+   coclass SSLCertificate
+	{
+		[default] interface IInterfaceSSLCertificate;
+	};
+   [
+		uuid(21F539FE-8E3B-4328-B076-0998FEE0649D),
+		helpstring("SSLCertificates Class")
+	]
+	coclass SSLCertificates
+	{
+		[default] interface IInterfaceSSLCertificates;
+	};
+	[
+		uuid(4D744B0D-A8B5-4E73-88F9-067960BB8B60),
+		helpstring("Groups Class")
+	]
+	coclass Groups
+	{
+		[default] interface IInterfaceGroups;
+	};
+	[
+		uuid(0083FBA1-9450-4230-97FF-EEF9EF5D8C92),
+		helpstring("Group Class")
+	]
+	coclass Group
+	{
+		[default] interface IInterfaceGroup;
+	};
+	[
+		uuid(9B3C726A-EF2E-4374-80BA-791D40787E8B),
+		helpstring("GroupMembers Class")
+	]
+	coclass GroupMembers
+	{
+		[default] interface IInterfaceGroupMembers;
+	};
+	[
+		uuid(545B7AC1-0CF5-40F8-8D0E-AD4432B57B1C),
+		helpstring("GroupMember Class")
+	]
+	coclass GroupMember
+	{
+		[default] interface IInterfaceGroupMember;
+	};
+	[
+		uuid(5C7C2466-DA9B-4D4B-A4A7-B8B88265D92C),
+		helpstring("IMAPFolderPermission Class")
+	]
+	coclass IMAPFolderPermission
+	{
+		[default] interface IInterfaceIMAPFolderPermission;
+	};
+	[
+		uuid(EC85F22C-C33D-47A6-8DCD-15FAB6A4D0E3),
+		helpstring("IMAPFolderPermissions Class")
+	]
+	coclass IMAPFolderPermissions
+	{
+		[default] interface IInterfaceIMAPFolderPermissions;
+	};
+	
+	[
+		uuid(649C683D-E2DA-4F93-9F82-445A702E0210),
+		helpstring("Directories Class")
+	]
+	coclass Directories
+	{
+		[default] interface IInterfaceDirectories;
+	};
+
+   	[
+		uuid(D90FB204-5299-449D-B8E6-1ACE0F68B3B9),
+		helpstring("Languages Class")
+	]
+	coclass Languages
+	{
+		[default] interface IInterfaceLanguages;
+	};
+
+   	[
+		uuid(B107B8DC-A506-4A80-846B-3CF5804C4ABC),
+		helpstring("Links Class")
+	]
+	coclass Links
+	{
+		[default] interface IInterfaceLinks;
+	};
+   [
+		uuid(0C4007AD-B5C9-480C-9D91-62C33210438A),
+		helpstring("IncomingRelay Class")
+	]
+	coclass IncomingRelay
+	{
+		[default] interface IInterfaceIncomingRelay;
+	};
+	[
+		uuid(24AD838E-1FDF-4ACA-A02C-BB4F99C6A3A7),
+		helpstring("IncomingRelays Class")
+	]
+	coclass IncomingRelays
+	{
+		[default] interface IInterfaceIncomingRelays;
+	};
+
+   	[
+		uuid(DA02E648-E3A4-4F1F-9051-D68DF8C4B72F),
+		helpstring("MessageIndexing Class")
+	]
+	coclass MessageIndexing
+	{
+		[default] interface IInterfaceMessageIndexing;
+	};
+};
+

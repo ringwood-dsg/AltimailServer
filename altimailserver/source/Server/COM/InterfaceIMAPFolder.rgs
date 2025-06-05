@@ -1,0 +1,24 @@
+HKCR
+{
+	AltimailServer.IMAPFolder.1 = s 'IMAPFolder Class'
+	{
+		CLSID = s '{E2BFD448-C3F2-4BCF-888D-223524225DF1}'
+	}
+	AltimailServer.IMAPFolder = s 'IMAPFolder Class'
+	{
+		CLSID = s '{E2BFD448-C3F2-4BCF-888D-223524225DF1}'
+		CurVer = s 'AltimailServer.IMAPFolder.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {E2BFD448-C3F2-4BCF-888D-223524225DF1} = s 'IMAPFolder Class'
+		{
+			ProgID = s 'AltimailServer.IMAPFolder.1'
+			VersionIndependentProgID = s 'AltimailServer.IMAPFolder'
+			ForceRemove 'Programmable'
+			LocalServer32 = s '%MODULE%'
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{5DF0577A-9FAF-4472-B083-B38207DD848B}'
+		}
+	}
+}

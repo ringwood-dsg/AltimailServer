@@ -1,0 +1,24 @@
+HKCR
+{
+	AltimailServer.Directories.1 = s 'Directories Class'
+	{
+		CLSID = s '{649C683D-E2DA-4F93-9F82-445A702E0210}'
+	}
+	AltimailServer.Directories = s 'Directories Class'
+	{
+		CLSID = s '{649C683D-E2DA-4F93-9F82-445A702E0210}'
+		CurVer = s 'AltimailServer.Directories.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {649C683D-E2DA-4F93-9F82-445A702E0210} = s 'Directories Class'
+		{
+			ProgID = s 'AltimailServer.Directories.1'
+			VersionIndependentProgID = s 'AltimailServer.Directories'
+			ForceRemove 'Programmable'
+			LocalServer32 = s '%MODULE%'
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{86301C62-7574-43CA-ABD8-A617A2B7B697}'
+		}
+	}
+}

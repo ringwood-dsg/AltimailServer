@@ -1,0 +1,24 @@
+HKCR
+{
+	AltimailServer.Cache.1 = s 'Cache Class'
+	{
+		CLSID = s '{BEAB5DAA-A43B-4931-8E37-6068D9550A2F}'
+	}
+	AltimailServer.Cache = s 'Cache Class'
+	{
+		CLSID = s '{BEAB5DAA-A43B-4931-8E37-6068D9550A2F}'
+		CurVer = s 'AltimailServer.Cache.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {BEAB5DAA-A43B-4931-8E37-6068D9550A2F} = s 'Cache Class'
+		{
+			ProgID = s 'AltimailServer.Cache.1'
+			VersionIndependentProgID = s 'AltimailServer.Cache'
+			ForceRemove 'Programmable'
+			LocalServer32 = s '%MODULE%'
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{5DF0577A-9FAF-4472-B083-B38207DD848B}'
+		}
+	}
+}

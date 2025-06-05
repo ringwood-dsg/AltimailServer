@@ -1,0 +1,24 @@
+HKCR
+{
+	AltimailServer.TCPIPPort.1 = s 'TCPIPPort Class'
+	{
+		CLSID = s '{3BA8C622-6759-4EAA-A9E9-9A2019A8E705}'
+	}
+	AltimailServer.TCPIPPort = s 'TCPIPPort Class'
+	{
+		CLSID = s '{3BA8C622-6759-4EAA-A9E9-9A2019A8E705}'
+		CurVer = s 'AltimailServer.TCPIPPort.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {3BA8C622-6759-4EAA-A9E9-9A2019A8E705} = s 'TCPIPPort Class'
+		{
+			ProgID = s 'AltimailServer.TCPIPPort.1'
+			VersionIndependentProgID = s 'AltimailServer.TCPIPPort'
+			ForceRemove 'Programmable'
+			LocalServer32 = s '%MODULE%'
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{5DF0577A-9FAF-4472-B083-B38207DD848B}'
+		}
+	}
+}

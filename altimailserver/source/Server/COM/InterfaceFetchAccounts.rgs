@@ -1,0 +1,24 @@
+HKCR
+{
+	AltimailServer.FetchAccounts.1 = s 'FetchAccounts Class'
+	{
+		CLSID = s '{8BC5EF72-F196-45B6-B973-A21E45D9668C}'
+	}
+	AltimailServer.FetchAccounts = s 'FetchAccounts Class'
+	{
+		CLSID = s '{8BC5EF72-F196-45B6-B973-A21E45D9668C}'
+		CurVer = s 'AltimailServer.FetchAccounts.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {8BC5EF72-F196-45B6-B973-A21E45D9668C} = s 'FetchAccounts Class'
+		{
+			ProgID = s 'AltimailServer.FetchAccounts.1'
+			VersionIndependentProgID = s 'AltimailServer.FetchAccounts'
+			ForceRemove 'Programmable'
+			LocalServer32 = s '%MODULE%'
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{5DF0577A-9FAF-4472-B083-B38207DD848B}'
+		}
+	}
+}

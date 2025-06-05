@@ -1,0 +1,26 @@
+HKCR
+{
+	AltimailServer.Links.1 = s 'Links Class'
+	{
+		CLSID = s '{B107B8DC-A506-4A80-846B-3CF5804C4ABC}'
+	}
+	AltimailServer.Links = s 'Links Class'
+	{
+		CLSID = s '{B107B8DC-A506-4A80-846B-3CF5804C4ABC}'
+		CurVer = s 'AltimailServer.Links.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {B107B8DC-A506-4A80-846B-3CF5804C4ABC} = s 'Links Class'
+		{
+			ProgID = s 'AltimailServer.Links.1'
+			VersionIndependentProgID = s 'AltimailServer.Links'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{AD7A0C43-E8CC-4BC1-8207-F90D9EEA6007}'
+		}
+	}
+}

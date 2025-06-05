@@ -1,0 +1,24 @@
+HKCR
+{
+	AltimailServer.Status.1 = s 'Status Class'
+	{
+		CLSID = s '{88DD7FD6-C985-4236-9242-0D2212C2B249}'
+	}
+	AltimailServer.Status = s 'Status Class'
+	{
+		CLSID = s '{88DD7FD6-C985-4236-9242-0D2212C2B249}'
+		CurVer = s 'AltimailServer.Status.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {88DD7FD6-C985-4236-9242-0D2212C2B249} = s 'Status Class'
+		{
+			ProgID = s 'AltimailServer.Status.1'
+			VersionIndependentProgID = s 'AltimailServer.Status'
+			ForceRemove 'Programmable'
+			LocalServer32 = s '%MODULE%'
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{5DF0577A-9FAF-4472-B083-B38207DD848B}'
+		}
+	}
+}
