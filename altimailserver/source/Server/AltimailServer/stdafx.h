@@ -24,9 +24,9 @@
 // Modify the following defines if you have to target a platform prior to the ones specified below.
 // Refer to MSDN for the latest info on corresponding values for different platforms.
 
-#define WINVER 0x0600 // Windows Vista
-#define _WIN32_WINNT 0x0600 // Windows Vista
-#define _WIN32_WINDOWS 0x0600 // Windows Vista
+#define WINVER 0x0601 // Windows 7/Server 2008 R2
+#define _WIN32_WINNT 0x0601 // Windows 7/Server 2008 R2
+#define _WIN32_WINDOWS 0x0601 // Windows 7/Server 2008 R2
 
 // START: ATL settings
 	#define _ATL_FREE_THREADEDLPCWSTR
@@ -71,7 +71,7 @@
 //
 // BOOST INCLUDES
 //
-#define BOOST_USE_WINAPI_VERSION 0x0600 // Windows Vista
+#define BOOST_USE_WINAPI_VERSION 0x0601 // Windows 7/Server 2008 R2
 #include <boost/winapi/config.hpp>
 #include <boost/bind.hpp>
 #include <boost/thread.hpp>
