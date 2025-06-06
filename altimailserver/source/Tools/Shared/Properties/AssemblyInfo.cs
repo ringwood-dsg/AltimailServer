@@ -5,12 +5,16 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Shared")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("Shared")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2010")]
+[assembly: AssemblyTitle("Altimail Server Shared Assembly")]
+[assembly: AssemblyDescription("Altimail Server Shared Assembly")]
+#if DEBUG
+[assembly: AssemblyConfiguration("debug")]
+#else 
+[assembly: AssemblyConfiguration("release")]
+#endif
+[assembly: AssemblyCompany("Altimail Server Authors and Contributors")]
+[assembly: AssemblyProduct("part of Altimail Server")]
+[assembly: AssemblyCopyright("(c) 2025 Altimail Server Authors and Contributors. All rights reserved.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,5 +36,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("6.0.0.2506")]
+[assembly: AssemblyFileVersion("6.0.0.2506")]

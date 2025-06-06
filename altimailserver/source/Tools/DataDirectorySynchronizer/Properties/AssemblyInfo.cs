@@ -8,12 +8,16 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DataDirectorySynchronizer")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("HI")]
-[assembly: AssemblyProduct("DataDirectorySynchronizer")]
-[assembly: AssemblyCopyright("Copyright © HI 2008")]
+[assembly: AssemblyTitle("Altimail Server Data Directory Synchronisation Utility")]
+[assembly: AssemblyDescription("Altimail Server Data Directory Synchronisation Utility")]
+#if DEBUG
+[assembly: AssemblyConfiguration("debug")]
+#else 
+[assembly: AssemblyConfiguration("release")]
+#endif
+[assembly: AssemblyCompany("Altimail Server Authors and Contributors")]
+[assembly: AssemblyProduct("part of Altimail Server")]
+[assembly: AssemblyCopyright("(c) 2025 Altimail Server Authors and Contributors. All rights reserved.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,5 +36,5 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("6.0.0.2506")]
+[assembly: AssemblyFileVersion("6.0.0.2506")]
