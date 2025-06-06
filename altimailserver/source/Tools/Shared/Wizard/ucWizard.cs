@@ -31,8 +31,13 @@ namespace AltimailServer.Shared
          _currentPage = 0;
 
          // Check if we should run the wizard in silent mode...
-         if (CommandLineParser.ContainsArgument("/silent"))
-            _state = CommandLineParser.GetArguments();
+         try
+         {
+            //We wrap this in a try...catch so the Designer doesn't throw an ugly error.
+            if (CommandLineParser.ContainsArgument("/silent"))
+               _state = CommandLineParser.GetArguments();
+         }
+         catch { }
       }
 
       public void AddPage(UserControl page)
