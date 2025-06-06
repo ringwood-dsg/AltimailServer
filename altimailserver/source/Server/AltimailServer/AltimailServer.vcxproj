@@ -1160,9 +1160,6 @@ xcopy /F /Y $(ProjectDir)..\..\..\..\libraries\libmariadb\*.dll $(OutDir)
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\DBScripts\CreateTablesMSSQL.sql" />
-    <None Include="..\..\DBScripts\CreateTablesMYSQL.sql" />
-    <None Include="..\..\DBScripts\CreateTablesPGSQL.sql" />
     <None Include="..\..\DBScripts\ScriptPrerequisitesMSSQL.sql" />
     <None Include="..\..\DBScripts\ScriptPrerequisitesPGSQL.sql" />
     <None Include="..\..\DBScripts\Upgrade0to1100MSSQL.sql" />
