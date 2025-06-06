@@ -1,3 +1,3 @@
 [Types]
-Name: "full"; Description: "Full installation"
-Name: "custom"; Description: "Custom installation"; Flags: iscustom
+Name: "full"; Description: "Full Installation"
+Name: "custom"; Description: "Custom Installation"; Flags: iscustom

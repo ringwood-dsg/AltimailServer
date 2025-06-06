@@ -1,3 +1,3 @@
 [Components]
-Name: "server"; Description: "Server"; Types: full custom
-Name: "admintools"; Description: "Administrative tools"; Types: full custom
+Name: "server"; Description: "Core Email Server"; Types: full custom
+Name: "admintools"; Description: "Administration Tools"; Types: full custom

@@ -1,32 +1,42 @@
 [Setup]
-AppId={{498BFBCF-97A5-4AA9-AF45-F93D63D35A82}
-AppName=hMailServer
-AppVersion=5.8.0.2506
-AppVerName=hMailServer 5.8.0.2506
-AppCopyright=(c) 2008-2025 hMailServer Authors and Contributors. All rights reserved.
-AppPublisher=Ringwood Digital Solutions Group (Pty) Ltd
-AppPublisherURL=https://www.ringwoodgroup.co.za
-AppSupportURL=http://www.hmailserver.com
-AppUpdatesURL=https://www.altimailserver.org
+AppId={{78203AB6-A5A9-46B4-8F17-E4B3D4D9FE25}
+AppName={#MyAppName}
+AppVersion={#MyAppVersionStd}
+AppVerName={#MyAppName} {#MyAppVersion}
+AppCopyright=(c) 2008-{#CurrentYearVal} Altimail Server Authors and Contributors. All rights reserved.
+AppPublisher={#MyAppPublisher}
+AppPublisherURL={#MyAppPublisherUrl}
+AppSupportURL={#MyAppSupportUrl}
+AppUpdatesURL={#MyAppUpdatesUrl}
+
 ;For the setup bootstrap:
-VersionInfoVersion=5.8.0.2506
-VersionInfoCopyright=(c) 2008-2025 hMailServer Authors and Contributors. All rights reserved.
-DefaultDirName={pf}\hMailServer
-DefaultGroupName=hMailServer
+VersionInfoVersion={#MyAppVersionStd}
+VersionInfoCopyright=(c) 2008-{#CurrentYearVal} Altimail Server Authors and Contributors. All rights reserved.
+
+DefaultDirName={pf}\{#MyAppName}
+DefaultGroupName={#MyAppName}
+
 PrivilegesRequired=admin
 SolidCompression=yes
+
 WizardImageFile=setup.bmp
 WizardStyle=modern
 DisableWelcomePage=False
-AllowNoIcons=yes
-LicenseFile=license.rtf
+
+LicenseFile=License.rtf
 ;InfoBeforeFile=C:\...
+SetupIconFile=main-setup-icon.ico
+
+AllowNoIcons=yes
 CreateAppDir=true
 DirExistsWarning=no
+
 Uninstallable=true
-UninstallDisplayName=hMailServer 5.8.0
+UninstallDisplayName={#MyAppName} {#MyAppVersion}
 UninstallDisplayIcon={uninstallexe}
+
 MinVersion=6.1.7601
 ArchitecturesInstallIn64BitMode=x64
 ArchitecturesAllowed=x64
-OutputBaseFilename=hMailServer-5.8.0B2506.15-x64
+
+OutputBaseFilename={#MyAppNameShort}-{#MyAppVersionFull}_Setup-amd64

@@ -209,20 +209,20 @@ var
 begin
 
    // Check if the file exists in the selected installation directory.
-   szInifile := ExpandConstant('{app}\Bin\hMailServer.ini');
+   szInifile := ExpandConstant('{app}\Bin\AltimailServer.ini');
 
    if (FileExists(szInifile) = False) then
    begin
 
-      if RegQueryStringValue(HKLM32, 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\hMailServer_is1','InstallLocation', szInifile) then
+      if RegQueryStringValue(HKLM32, 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\AltimailServer_is1','InstallLocation', szInifile) then
       begin
-         szInifile := szInifile + 'Bin\hMailServer.ini';
+         szInifile := szInifile + 'Bin\AltimailServer.ini';
       end;
 
       if (FileExists(szInifile) = False) then
       begin
         // File doesn't exist in the old installation directory.
-        szInifile := ExpandConstant('{win}\hMailServer.ini');
+        szInifile := ExpandConstant('{win}\AltimailServer.ini');
 
         if (FileExists(szInifile) = False) then
         begin
@@ -421,7 +421,7 @@ begin
    end;
 
  	 // Create key page
-   g_pageAccessKey := CreateInputQueryPage(wpSelectTasks, 'hMailServer Security', 'Specify main password','The installation program will now create a hMailServer user with administration rights. Please enter a password below. You will need this password to be able to manage your hMailServer installation, so please remember it.');	
+   g_pageAccessKey := CreateInputQueryPage(wpSelectTasks, 'Altimail Server Security', 'Specify main password','The installation program will now create an Altimail Server user with administrator rights. Please enter a password below. You will need this password to be able to manage your Altimail Server installation, so please remember it.');	
 
    g_pageAccessKey.Add('Password:', True);
    g_pageAccessKey.Add('Confirm password:', True);
@@ -438,7 +438,7 @@ begin
     // specifying where it was installed, we should install into the same
     // folder as before. Normally InnoSetup keeps track of this automatically,
     // but not when switching between x86 and x64 installs.
-    if RegQueryStringValue(HKLM32, 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\hMailServer_is1','InstallLocation', installFolder) then
+    if RegQueryStringValue(HKLM32, 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\AltimailServer_is1','InstallLocation', installFolder) then
     begin
        if (Length(installFolder) > 2) then
           WizardForm.DirEdit.Text := installFolder;
@@ -472,24 +472,24 @@ begin
 	Result := true;
 			
 	if not IsNetFrameworkInstalled() then begin
-        MsgBox('hMailServer requires .NET Framework 4.8'#13#13
+        MsgBox('Altimail Server requires .NET Framework 4.8'#13#13
             'Please install this version and then re-run the hMailServer setup program.', mbInformation, MB_OK);
         result := false;
 		Exit;
 	end;
 	
-	if (FindWindowByWindowName('hMailServer Administrator') > 0) then
+	if (FindWindowByWindowName('Altimail Server Administrator') > 0) then
 	begin
-		MsgBox('hMailServer Administrator is started. You must close down this application before starting the installation.',mbInformation, MB_OK);	
+		MsgBox('Altimail Server Administrator is started. You must close down this application before starting the installation.',mbInformation, MB_OK);	
 		Result := false;
 		Exit;
 	end;
 	
 	if (Result = true) then
 	begin
-		if (FindWindowByWindowName('hMailServer Database Setup') > 0) then
+		if (FindWindowByWindowName('Altimail Server Database Setup') > 0) then
 		begin
-			MsgBox('hMailServer Database Setup is started. You must close down this application before starting the installation.',mbInformation, MB_OK);	
+			MsgBox('Altimail Server Database Setup is started. You must close down this application before starting the installation.',mbInformation, MB_OK);	
 			Result := false;
 			Exit;
 		end;	
@@ -497,7 +497,7 @@ begin
 	
 	if (Result = true) then
 	begin
-		if (FindWindowByWindowName('hMailServer Database Upgrader') > 0) then
+		if (FindWindowByWindowName('Altimail Server Database Upgrade') > 0) then
 		begin
 			MsgBox('hMailServer Database Upgrader is started. You must close down this application before starting the installation.',mbInformation, MB_OK);	
 			Result := false;
@@ -520,11 +520,11 @@ begin
 	// on one of hour ports.
 	if (Result = true) then
 	begin
-		if (IsServiceRunning('hMailServer') <> True) And (CheckPorts() < 0) then
+		if (IsServiceRunning('AltimailServer') <> True) And (CheckPorts() < 0) then
 		begin
 			// The hMailServer isn't running, but someone is blocking the ports.
 			//
-			sMessage := 'The hMailServer Setup has detected that one or several of the TCP/IP ports 25, 110 and 143 are already in use.' + Chr(13) + Chr(10) + 'This indicates that there already is an email server running on this computer.' + Chr(13) + Chr(10) + 'If you plan to use any of these ports with hMailServer, the already existing server must be stopped.';
+			sMessage := 'The Altimail Server Setup has detected that one or several of the TCP/IP ports 25, 110 and 143 are already in use.' + Chr(13) + Chr(10) + 'This indicates that there already is an email server running on this computer.' + Chr(13) + Chr(10) + 'If you plan to use any of these ports with Altimail Server, the already existing server must be stopped.';
 			MsgBox(sMessage, mbInformation, MB_OK);	
 		end;
 	end;	
@@ -540,7 +540,7 @@ var
   ResultCode: Integer;
 begin
    // Register hMaiLlServer service
-   if (Exec(ExpandConstant('{app}\Bin\hMailServer.exe'), '/RegisterTypeLib', '',  SW_HIDE, ewWaitUntilTerminated, ResultCode) = False) then
+   if (Exec(ExpandConstant('{app}\Bin\AltimailServer.exe'), '/RegisterTypeLib', '',  SW_HIDE, ewWaitUntilTerminated, ResultCode) = False) then
       MsgBox(SysErrorMessage(ResultCode), mbError, MB_OK);
 
    Result := true;
@@ -570,7 +570,7 @@ var
    bUpgradeWithSQLCE : Boolean;
 begin
 
-   szIniFile := ExpandConstant('{app}\Bin\hMailServer.ini');
+   szIniFile := ExpandConstant('{app}\Bin\AltimailServer.ini');
    szDatabaseType := GetIniString('Database', 'Type', '', szIniFile);
    szDatabaseType := Lowercase(szDatabaseType);
 
@@ -630,14 +630,17 @@ begin
   	  // Install
       InstallSQLCE();
 
-      ProgressPage.SetText('Creating the hMailServer service...', '');
+      ProgressPage.SetText('Creating the Altimail Server service...', '');
       ProgressPage.SetProgress(3,6);
 
       // Register hMaillServer service
-      if (Exec(ExpandConstant('{app}\Bin\hMailServer.exe'), '/Register', '',  SW_HIDE, ewWaitUntilTerminated, ResultCode) = False) then
+      if (Exec(ExpandConstant('{app}\Bin\AltimailServer.exe'), '/Register', '',  SW_HIDE, ewWaitUntilTerminated, ResultCode) = False) then
+         MsgBox(SysErrorMessage(ResultCode), mbError, MB_OK);
+      
+      if (Exec('sc "AltimailServer" "Altimail Server Core Email Engine"', '', '', SW_HIDE, ewWaitUntilTerminated, ResultCode) = False) then 
          MsgBox(SysErrorMessage(ResultCode), mbError, MB_OK);
 
-      ProgressPage.SetText('Initializing hMailServer database...', '');
+      ProgressPage.SetText('Initializing Altimail Server database...', '');
       ProgressPage.SetProgress(4,6);
 
       if (WizardSilent() = true) then
@@ -662,11 +665,11 @@ begin
 
       end;
 
-      ProgressPage.SetText('Starting the hMailServer service...', '');
+      ProgressPage.SetText('Starting the Altimail Server service...', '');
       ProgressPage.SetProgress(5,6);
 
       // Start hMailServer
-      if (Exec(ExpandConstant('{sys}\net.exe'), 'START hMailServer', '', SW_HIDE, ewWaitUntilTerminated, ResultCode) = False) then
+      if (Exec(ExpandConstant('{sys}\net.exe'), 'START AltimailServer', '', SW_HIDE, ewWaitUntilTerminated, ResultCode) = False) then
          MsgBox(SysErrorMessage(ResultCode), mbError, MB_OK);
 
       ProgressPage.SetText('Completed', '');
@@ -686,8 +689,8 @@ function MoveIni() : Boolean;
 begin
 
    CreateDir(ExpandConstant('{app}\Bin'));
-   sOldFile := ExpandConstant('{win}\hMailServer.ini');
-   sNewFile := ExpandConstant('{app}\Bin\hMailServer.ini');
+   sOldFile := ExpandConstant('{win}\AltimailServer.ini');
+   sNewFile := ExpandConstant('{app}\Bin\AltimailServer.ini');
 
    // Copy the file from the Windows directory
    // to the Bin directory. hMailServer uses the
@@ -806,11 +809,11 @@ begin
 	else if CurPage = wpReady then
 	begin
 		// Start hMailServer and MySQL, if they are running.
-		if IsServiceRunning('hMailServer') = true then
+		if IsServiceRunning('AltimailServer') = true then
 		begin
-		 	 StopService('hMailServer');
+		 	 StopService('AltimailServer');
 		
-		   while (IsServiceStopped('hMailServer') = false) do
+		   while (IsServiceStopped('AltimailServer') = false) do
 		   begin
 		      Sleep(250);
 		   end;
@@ -850,10 +853,10 @@ begin
 	begin
    // Create a registry key that tell
 	  // other apps where we're installed.
-	  RegWriteStringValue(HKLM32, 'Software\hMailServer', 'InstallLocation', ExpandConstant('{app}'));
+	  RegWriteStringValue(HKLM32, 'Software\AltimailServer', 'InstallLocation', ExpandConstant('{app}'));
    	
 	  // Write db location to hMailServer.ini.
-	  szIniFile := ExpandConstant('{app}\Bin\hMailServer.ini');
+	  szIniFile := ExpandConstant('{app}\Bin\AltimailServer.ini');
 
   	// Create the hMailServer database
  	  if (IsComponentSelected('server')) then

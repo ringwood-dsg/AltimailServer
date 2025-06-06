@@ -5,4 +5,4 @@ Filename: {ini:{tmp}\dep.ini,install,ie}; Description: {cm:IE6Title}; StatusMsg:
 Filename: {ini:{tmp}\dep.ini,install,mdac}; Description: {cm:MDACTitle}; StatusMsg: {cm:MDACInstallMsg}; Parameters: "/Q /C:""setup /QNT"""; Flags: skipifdoesntexist
 Filename: {ini:{tmp}\dep.ini,install,jet}; Description: {cm:JETTitle}; StatusMsg: {cm:JETInstallMsg}; Parameters: /Q; Flags: skipifdoesntexist
 Filename: {ini:{tmp}\dep.ini,install,dotnet20}; Description: {cm:DOTNET20Title}; StatusMsg: {cm:DOTNET20InstallMsg}; Parameters: "/Q /T:{tmp}\dotnetfx /C:""install /q"""; Flags: skipifdoesntexist
-Filename: "{app}\Bin\hMailAdmin.exe";  Flags: skipifsilent postinstall nowait; Description: Run hMailServer Administrator; Components: admintools;
+Filename: "{app}\Bin\AltimailServerAdmin.exe";  Flags: skipifsilent postinstall nowait; Description: Run Altimail Server Administrator; Components: admintools;
