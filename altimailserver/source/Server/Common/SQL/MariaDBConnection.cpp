@@ -71,15 +71,13 @@ namespace HM
          //dbconn_ = MariaDBInterface::Instance()->p_mariadb_init(NULL);
          dbconn_ = mysql_init(NULL);
 
-         //HeidiSQL's libmariadb.dll, we're using for development, forces SSL/TLS; irrespective of whether the database is on the same host. 
-         //As a workaround, let's not enforce SSL but give it priority if it is available.
-         /*int ssl_mode = SSL_MODE_PREFERRED;
-         MariaDBInterface::Instance()->p_mariadb_options(dbconn_, MYSQL_OPT_SSL_MODE, &ssl_mode);*/
+         //TODO: We need to handler this properly!
+         //Set TLS enforcement = false.
+         bool enforce_tls = 0;
+         mysql_optionsv(dbconn_, MYSQL_OPT_SSL_ENFORCE, &enforce_tls);
 
-         /*MariaDBInterface::Instance()->p_mariadb_ssl_set(dbconn_, nullptr, nullptr, nullptr, nullptr, nullptr);
-
-         int ssl_mode = SSL_MODE_DISABLED;
-         MariaDBInterface::Instance()->p_mariadb_options(dbconn_, MYSQL_OPT_SSL_MODE, &ssl_mode);*/
+         bool verify_sc = 0;
+         mysql_optionsv(dbconn_, MYSQL_OPT_SSL_VERIFY_SERVER_CERT, &verify_sc);
 
          /*bool enforce_tls = 0;
          mysql_optionsv(dbconn_, MYSQL_OPT_SSL_ENFORCE, &enforce_tls);
