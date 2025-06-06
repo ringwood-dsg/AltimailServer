@@ -52,12 +52,13 @@ namespace DBSetup
           this.ClientSize = new System.Drawing.Size(831, 464);
           this.Controls.Add(this.wizard);
           this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-          this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-          this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+         //this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+         this.Icon = ((System.Drawing.Icon)(resources.GetObject("icon-main")));
+         this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
           this.MaximizeBox = false;
           this.Name = "formMain";
           this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-          this.Text = "hMailServer Database Setup";
+          this.Text = "Altimail Server Database Setup Utility";
           this.Shown += new System.EventHandler(this.formMain_Shown);
           this.ResumeLayout(false);
 

@@ -48,7 +48,8 @@ namespace DataDirectorySynchronizer
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(835, 447);
          this.Controls.Add(this.wizard);
-         this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+         //this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+         this.Icon = ((System.Drawing.Icon)(resources.GetObject("icon-main")));
          this.MinimumSize = new System.Drawing.Size(800, 350);
          this.Name = "formMain";
          this.Text = "Data Directory Synchronizer";

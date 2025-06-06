@@ -81,7 +81,7 @@ namespace AltimailServer.Administrator
       {
          CreateMainNodes();
 
-         this.Text = "hMailServer Administrator (Legacy Version) - [" + _serverHost + "]";
+         this.Text = "Altimail Server Administrator (Legacy Version) - [" + _serverHost + "]";
 
       }
 

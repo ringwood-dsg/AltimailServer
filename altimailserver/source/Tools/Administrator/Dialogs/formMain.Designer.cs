@@ -49,7 +49,6 @@ namespace AltimailServer.Administrator
             this.menuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemHelpIndex = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemHelpAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
@@ -290,24 +289,11 @@ namespace AltimailServer.Administrator
             this.menuItemHelpAbout.Text = "About...";
             this.menuItemHelpAbout.Click += new System.EventHandler(this.menuItemHelpAbout_Click);
             // 
-            // linkLabel1
-            // 
-            this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(6, 549);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(195, 13);
-            this.linkLabel1.TabIndex = 11;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Altimail Server is the new hMailServer 6!";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
             // formMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(792, 573);
-            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.splitContainer);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buttonExit);
@@ -318,7 +304,7 @@ namespace AltimailServer.Administrator
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "formMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "hMailServer Administrator (Legacy Version)";
+            this.Text = "Altimail Server Administrator (Legacy Version)";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.formMain_FormClosing);
             this.Load += new System.EventHandler(this.formMain_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.formMain_KeyDown);
@@ -356,7 +342,6 @@ namespace AltimailServer.Administrator
        private System.Windows.Forms.ToolStripMenuItem menuItemHelpIndex;
        private System.Windows.Forms.ToolStripMenuItem menuItemHelpAbout;
        private System.Windows.Forms.ToolStripMenuItem menuItemSelectLanguage;
-      private System.Windows.Forms.LinkLabel linkLabel1;
    }
 }
 
