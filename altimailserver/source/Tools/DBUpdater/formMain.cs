@@ -48,7 +48,7 @@ namespace DBUpdater
 
             if (script == null)
             {
-               MessageBox.Show("Upgrade path not found. Please contact support", "hMailServer");
+               MessageBox.Show("A suitable upgrade path was not found. Please reach out to us for further assistance.", "Altimail Server", MessageBoxButtons.OK, MessageBoxIcon.Error);
                return false;
             }
 
@@ -56,7 +56,7 @@ namespace DBUpdater
 
             if (!File.Exists(fileName))
             {
-               MessageBox.Show("Required file for upgrade not found:" + Environment.NewLine + fileName, "hMailServer");
+               MessageBox.Show($"A required upgrade file ({fileName}) was not found.", "Altimail Server", MessageBoxButtons.OK, MessageBoxIcon.Error);
                return false;
             }
 
@@ -85,11 +85,14 @@ namespace DBUpdater
             case AltimailServer.eDBtype.hDBTypeMySQL:
                _databaseType = "MySQL";
                break;
+            case AltimailServer.eDBtype.hDBTypeMariaDB:
+               _databaseType = "MariaDB";
+               break;
             case AltimailServer.eDBtype.hDBTypePostgreSQL:
                _databaseType = DatabaseTypePGSQL;
                break;
             default:
-               MessageBox.Show("Unknown database type");
+               MessageBox.Show("E1001: Unknown database type. Please contact us for further assistance.", "Altimail Server", MessageBoxButtons.OK, MessageBoxIcon.Error);
                return false;
          }
 
@@ -98,7 +101,7 @@ namespace DBUpdater
          _scriptPath = _application.Settings.Directories.DBScriptDirectory;
          if (_scriptPath == null || _scriptPath.Length == 0)
          {
-            MessageBox.Show("Database script directory could not be found." + Environment.NewLine + "Please check the hMailServer error log.", "hMailServer");
+            MessageBox.Show("Database script directory could not be found." + Environment.NewLine + "Please check the Altimail Server error log.", "Altimail Server");
             return false;
          }
 
@@ -168,6 +171,7 @@ namespace DBUpdater
          _upgradeScripts.Add(new UpgradeScript(5703, 5704));
          _upgradeScripts.Add(new UpgradeScript(5704, 5705));
          _upgradeScripts.Add(new UpgradeScript(5705, 5708));
+         _upgradeScripts.Add(new UpgradeScript(5708, 5800));
       }
 
       private void buttonClose_Click(object sender, EventArgs e)
@@ -283,6 +287,8 @@ namespace DBUpdater
                return "hMailServer 5.7 (5705)";
             case 5708:
                return "hMailServer 5.7 (5708)";
+            case 5800:
+               return "hMailServer 5.8.x/Altimail Server 6.0.x (5800)";
             default:
                return "Unknown version";
          }

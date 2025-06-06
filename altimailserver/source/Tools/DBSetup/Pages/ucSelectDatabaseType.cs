@@ -42,6 +42,9 @@ namespace DBSetup.Pages
                case "MySQL":
                   radioMySQL.Checked = true;
                   break;
+               case "MariaDB":
+                  radioMariaDB.Checked = true;
+                  break;
                case "PGSQL":
                   radioPGSQL.Checked = true;
                   break;
@@ -55,6 +58,8 @@ namespace DBSetup.Pages
             _state["ServerType"] = "MSSQL";
          else if (radioMySQL.Checked)
             _state["ServerType"] = "MySQL";
+         else if (radioMariaDB.Checked)
+            _state["ServerType"] = "MariaDB";
          else if (radioPGSQL.Checked)
             _state["ServerType"] = "PGSQL";
 

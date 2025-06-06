@@ -55,6 +55,8 @@ namespace AltimailServer.Administrator.Utilities.Localization
                return "MSSQL CE";
             case eDBtype.hDBTypeMySQL:
                return "MySQL";
+            case eDBtype.hDBTypeMariaDB:
+               return "MariaDB";
             case eDBtype.hDBTypePostgreSQL:
                return "PostgreSQL";
             case eDBtype.hDBTypeUnknown:

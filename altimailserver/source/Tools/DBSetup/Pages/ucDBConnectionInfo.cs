@@ -58,6 +58,7 @@ namespace DBSetup.Pages
          switch (dbType)
          {
             case AltimailServer.eDBtype.hDBTypeMySQL:
+            case AltimailServer.eDBtype.hDBTypeMariaDB:
                radioUseWindowsAuthentication.Enabled = false;
                radioUseServerAuthentication.Checked = true;
                break;
@@ -78,6 +79,7 @@ namespace DBSetup.Pages
             switch (dbType)
             {
                case AltimailServer.eDBtype.hDBTypeMySQL:
+               case AltimailServer.eDBtype.hDBTypeMariaDB:
                   textServerPort.Number = 3306;
                   break;
                case AltimailServer.eDBtype.hDBTypePostgreSQL:

@@ -47,6 +47,8 @@ namespace DataDirectorySynchronizer
                return AltimailServer.eDBtype.hDBTypeMSSQL;
             case "MySQL":
                return AltimailServer.eDBtype.hDBTypeMySQL;
+            case "MariaDB":
+               return AltimailServer.eDBtype.hDBTypeMariaDB;
             case "PGSQL":
                return AltimailServer.eDBtype.hDBTypePostgreSQL;
             default:
