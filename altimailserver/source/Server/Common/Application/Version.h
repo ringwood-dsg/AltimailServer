@@ -12,7 +12,7 @@ e.g. 6.1.2.2506 => Major = 6, Minor = 1, Revision = 2 (2nd build after release),
 
 #define ALTIMAILSERVER_VERSION "6.0.0" 
 #define ALTIMAILSERVER_VERSION_NUMERIC 6,0,0,2506
-#define ALTIMAILSERVER_BUILD "2506.1" /*YYMM.BUILD_NO where BUILD_NO is always incremented with each build/release.*/
+#define ALTIMAILSERVER_BUILD "2506.3" /*YYMM.BUILD_NO where BUILD_NO is always incremented with each build/release.*/
 /*
 [list=1]
 [*]Added: Equalize Return-Path format used within hMailServer, eg : Return-Path : <return-route-addr> (always use angle brackets)
