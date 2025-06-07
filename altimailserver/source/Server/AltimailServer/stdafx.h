@@ -115,8 +115,8 @@
    #include "..\COM\COMAuthenticator.h"
    #include "..\IMAP\IMAPResult.h"
    #include "..\Common\TCPIP\IPAddress.h"
-   #include "../Common/Util/Strings/FormatArgument.h"
-   #include "../Common/Util/Strings/Formatter.h"
+   #include "..\Common\Util\Strings\FormatArgument.h"
+   #include "..\Common\Util\Strings\Formatter.h"
 // End: Common files.
 
 #define COMPILE_NEWAPIS_STUBS

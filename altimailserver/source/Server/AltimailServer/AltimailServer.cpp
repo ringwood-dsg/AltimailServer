@@ -13,9 +13,9 @@
 #include "resource.h"
 #include "AltimailServer.h"
 
-#include "../Common/Util/ServiceManager.h"
-#include "../Common/Util/ClassTester.h"
-#include "../Common/Util/SystemInformation.h"
+#include "..\Common\Util\ServiceManager.h"
+#include "..\Common\Util\ClassTester.h"
+#include "..\Common\Util\SystemInformation.h"
 
 // #define VLD_START_DISABLED
 // #include "C:\Temp\vld-10\vldapi.h"
