@@ -1,7 +1,7 @@
 ﻿#pragma once
 #define HMAILSERVER_VERSION "5.8.1" 
 #define HMAILSERVER_VERSION_NUMERIC 5,8,1,2506
-#define HMAILSERVER_BUILD "2506.16" /*YYMM.BUILD_NO where BUILD_NO is always incremented with each build/release.*/
+#define HMAILSERVER_BUILD "2506.17" /*YYMM.BUILD_NO where BUILD_NO is always incremented with each build/release.*/
 /*
 [list=1]
 [*]Added: Equalize Return-Path format used within hMailServer, eg : Return-Path : <return-route-addr> (always use angle brackets)
