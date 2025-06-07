@@ -3,16 +3,16 @@ if (!defined('IN_WEBADMIN'))
    exit();
 
    
-$distributionlistid 	= hmailGetVar("distributionlistid",0);
-$recipientid	      = hmailGetVar("recipientid",0);
-$domainid	      = hmailGetVar("domainid",0,true);
-$action	   = hmailGetVar("action","");
+$distributionlistid 	= altimailGetVar("distributionlistid",0);
+$recipientid	      = altimailGetVar("recipientid",0);
+$domainid	      = altimailGetVar("domainid",0,true);
+$action	   = altimailGetVar("action","");
 
-if (hmailGetAdminLevel() == 0)
-   hmailHackingAttemp();
+if (altimailGetAdminLevel() == 0)
+   altimailHackingAttempt();
 
-if (hmailGetAdminLevel() == 1 && $domainid != hmailGetDomainID())
-	hmailHackingAttemp(); // Domain admin but not for this domain.
+if (altimailGetAdminLevel() == 1 && $domainid != altimailGetDomainID())
+	altimailHackingAttempt(); // Domain admin but not for this domain.
 
 $recipientaddress = "";
 

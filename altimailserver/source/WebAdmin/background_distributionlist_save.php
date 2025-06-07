@@ -3,15 +3,15 @@
    if (!defined('IN_WEBADMIN'))
       exit();
    
-   $domainid	= hmailGetVar("domainid",0,true);
-   $distributionlistid 	= hmailGetVar("distributionlistid",0);
-   $action	   = hmailGetVar("action","");
+   $domainid	= altimailGetVar("domainid",0,true);
+   $distributionlistid 	= altimailGetVar("distributionlistid",0);
+   $action	   = altimailGetVar("action","");
    
-   if (hmailGetAdminLevel() == 0)
-      hmailHackingAttemp();
+   if (altimailGetAdminLevel() == 0)
+      altimailHackingAttempt();
    
-   if (hmailGetAdminLevel() == 1 && $domainid != hmailGetDomainID())
-   	hmailHackingAttemp(); // Domain admin but not for this domain.
+   if (altimailGetAdminLevel() == 1 && $domainid != altimailGetDomainID())
+   	altimailHackingAttempt(); // Domain admin but not for this domain.
 
    $obDomain	= $obBaseApp->Domains->ItemByDBID($domainid);
 
@@ -40,11 +40,11 @@
    
    $domainname = $obDomain->Name;
    	
-   $listaddress  = hmailGetVar("listaddress","");
-   $listactive   = hmailGetVar("listactive","0");
-   $listrequiresmtpauth  = hmailGetVar("listrequiresmtpauth","0");
-   $RequireSenderAddress  = hmailGetVar("RequireSenderAddress","");
-   $Mode  = hmailGetVar("Mode","");
+   $listaddress  = altimailGetVar("listaddress","");
+   $listactive   = altimailGetVar("listactive","0");
+   $listrequiresmtpauth  = altimailGetVar("listrequiresmtpauth","0");
+   $RequireSenderAddress  = altimailGetVar("RequireSenderAddress","");
+   $Mode  = altimailGetVar("Mode","");
    
    
    $obList->Address = $listaddress . "@" . $domainname;

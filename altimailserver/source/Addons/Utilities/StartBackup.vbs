@@ -12,7 +12,7 @@
 Const sAdminPassword = "<ADMINISTRATORPASSWORD>"
 
 Dim oApp
-Set oApp = CreateObject("hMailServer.Application")
+Set oApp = CreateObject("AltimailServer.Application")
 
 ' Authenticate the client.
 Call oApp.Authenticate ("Administrator", sAdminPassword)

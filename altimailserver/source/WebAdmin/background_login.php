@@ -2,13 +2,13 @@
 if (!defined('IN_WEBADMIN'))
    exit();
 
-$username	= hmailGetVar("username","");
-$password	= hmailGetVar("password","");
+$username	= altimailGetVar("username","");
+$password	= altimailGetVar("password","");
 
 
 if (Login($username, $password))
 {
-	header("refresh: 0; url=" . $hmail_config['rooturl']);
+	header("refresh: 0; url=" . $altimail_config['rooturl']);
 	exit();		
 }
 else
@@ -43,8 +43,8 @@ function Login($username, $password)
 
 function LoginError()
 {
-	global $hmail_config;
-	header("refresh: 0; url=" . $hmail_config['rooturl'] . "index.php?page=login&error=1");
+	global $altimail_config;
+	header("refresh: 0; url=" . $altimail_config['rooturl'] . "index.php?page=login&error=1");
 	exit();	   
 }
 

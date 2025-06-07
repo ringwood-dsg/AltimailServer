@@ -2,11 +2,11 @@
 if (!defined('IN_WEBADMIN'))
    exit();
 
-if (hmailGetAdminLevel() != ADMIN_SERVER)
-	hmailHackingAttemp(); // The user is not server administrator
+if (altimailGetAdminLevel() != ADMIN_SERVER)
+	altimailHackingAttempt(); // The user is not server administrator
 
-$relayid	            = hmailGetVar("relayid",0);
-$action	         	= hmailGetVar("action","");
+$relayid	            = altimailGetVar("relayid",0);
+$action	         	= altimailGetVar("action","");
 	
 $relayname ="";
 $relaylowerip = "0.0.0.0";

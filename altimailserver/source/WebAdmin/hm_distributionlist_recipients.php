@@ -2,14 +2,14 @@
 if (!defined('IN_WEBADMIN'))
    exit();
 
-$domainid  = hmailGetVar("domainid",null);
-$distributionlistid	= hmailGetVar("distributionlistid",0);
+$domainid  = altimailGetVar("domainid",null);
+$distributionlistid	= altimailGetVar("distributionlistid",0);
 
-if (hmailGetAdminLevel() == 0)
-   hmailHackingAttemp();
+if (altimailGetAdminLevel() == 0)
+   altimailHackingAttempt();
 
-if (hmailGetAdminLevel() == 1 && $domainid != hmailGetDomainID())
-	hmailHackingAttemp(); // Domain admin but not for this domain.
+if (altimailGetAdminLevel() == 1 && $domainid != altimailGetDomainID())
+	altimailHackingAttempt(); // Domain admin but not for this domain.
 
 ?>
 <h1><?php EchoTranslation("Members")?></h1>

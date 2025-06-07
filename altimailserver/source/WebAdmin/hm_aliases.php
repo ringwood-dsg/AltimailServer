@@ -2,13 +2,13 @@
 if (!defined('IN_WEBADMIN'))
    exit();
 
-$domainid  = hmailGetVar("domainid",null, true);
+$domainid  = altimailGetVar("domainid",null, true);
 
-if (hmailGetAdminLevel() == 0)
-	hmailHackingAttemp(); // Users are not allowed to show this page.
+if (altimailGetAdminLevel() == 0)
+	altimailHackingAttempt(); // Users are not allowed to show this page.
 
-if (hmailGetAdminLevel() == 1 && $domainid != hmailGetDomainID())
-	hmailHackingAttemp(); // Domain admin but not for this domain.
+if (altimailGetAdminLevel() == 1 && $domainid != altimailGetDomainID())
+	altimailHackingAttempt(); // Domain admin but not for this domain.
 	
 ?>
 

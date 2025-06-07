@@ -2,25 +2,25 @@
 if (!defined('IN_WEBADMIN'))
    exit();
 
-if (hmailGetAdminLevel() != 2)
-	hmailHackingAttemp();
+if (altimailGetAdminLevel() != 2)
+	altimailHackingAttempt();
 
 $obSettings	= $obBaseApp->Settings();
 $obLogging	= $obSettings->Logging();
 
-$action	   = hmailGetVar("action","");
+$action	   = altimailGetVar("action","");
 
 if($action == "save")
 {
-	$obLogging->Enabled		   = hmailGetVar("logenabled",0);
-	$obLogging->LogApplication = hmailGetVar("logapplication",0); 
-	$obLogging->LogSMTP		   = hmailGetVar("logsmtp",0);
-	$obLogging->LogPOP3	   	= hmailGetVar("logpop3",0);
-	$obLogging->LogIMAP	   	= hmailGetVar("logimap",0);
-	$obLogging->LogTCPIP	      = hmailGetVar("logtcpip",0);
-	$obLogging->LogDebug	      = hmailGetVar("logdebug",0);
-	$obLogging->AwstatsEnabled  	= hmailGetVar("logawstats",0);
-    $obLogging->KeepFilesOpen = hmailGetVar("KeepFilesOpen",0);
+	$obLogging->Enabled		   = altimailGetVar("logenabled",0);
+	$obLogging->LogApplication = altimailGetVar("logapplication",0); 
+	$obLogging->LogSMTP		   = altimailGetVar("logsmtp",0);
+	$obLogging->LogPOP3	   	= altimailGetVar("logpop3",0);
+	$obLogging->LogIMAP	   	= altimailGetVar("logimap",0);
+	$obLogging->LogTCPIP	      = altimailGetVar("logtcpip",0);
+	$obLogging->LogDebug	      = altimailGetVar("logdebug",0);
+	$obLogging->AwstatsEnabled  	= altimailGetVar("logawstats",0);
+    $obLogging->KeepFilesOpen = altimailGetVar("KeepFilesOpen",0);
 }
 
 $logenabled= $obLogging->Enabled;

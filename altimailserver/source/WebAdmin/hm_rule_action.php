@@ -2,14 +2,14 @@
 if (!defined('IN_WEBADMIN'))
    exit();
 
-$action = hmailGetVar("action", "");   
-$domainid = hmailGetVar("domainid", 0, true);
-$accountid = hmailGetVar("accountid", 0, true);
-$ruleid = hmailGetVar("ruleid", 0);
-$actionid = hmailGetVar("actionid", 0);
+$action = altimailGetVar("action", "");   
+$domainid = altimailGetVar("domainid", 0, true);
+$accountid = altimailGetVar("accountid", 0, true);
+$ruleid = altimailGetVar("ruleid", 0);
+$actionid = altimailGetVar("actionid", 0);
 
 if (!GetHasRuleAccess($domainid, $accountid))
-   hmailHackingAttemp(); // The user is not server administrator
+   altimailHackingAttempt(); // The user is not server administrator
 
    
 include "include/rule_strings.php";  
@@ -132,7 +132,7 @@ function hideAllPanels()
                         echo "<option value= " . eRASetHeaderValue . " $eRASetHeaderValueSelected>" . GetRuleActionString(eRASetHeaderValue) .  "</option>";
                         echo "<option value= " . eRAStopRuleProcessing . " $eRAStopRuleProcessingSelected>" . GetRuleActionString(eRAStopRuleProcessing) .  "</option>";
 						
-                        $disabled = hmailGetAdminLevel() == ADMIN_SERVER ? "": "disabled=\"disabled\"";
+                        $disabled = altimailGetAdminLevel() == ADMIN_SERVER ? "": "disabled=\"disabled\"";
                         echo "<option $disabled value= " . eRARunScriptFunction . " $eRARunScriptFunctionSelected>" . GetRuleActionString(eRARunScriptFunction) .  "</option>";
                         echo "<option $disabled value= " . eRACreateCopy . " $eRACreateCopy>" . GetRuleActionString(eRACreateCopy) .  "</option>";
 
@@ -217,7 +217,7 @@ function hideAllPanels()
                      
                      <select name="RouteID">
                      <?php
-                        if (hmailGetAdminLevel() == ADMIN_SERVER)
+                        if (altimailGetAdminLevel() == ADMIN_SERVER)
                         {
                            $obSettings = $obBaseApp->Settings;
                            $obRoutes	= $obSettings->Routes();

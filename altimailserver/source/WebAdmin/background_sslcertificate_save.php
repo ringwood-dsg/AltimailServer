@@ -2,15 +2,15 @@
    if (!defined('IN_WEBADMIN'))
       exit();
 
-   if (hmailGetAdminLevel() != ADMIN_SERVER)
-   	hmailHackingAttemp(); // The user is not server administrator.
+   if (altimailGetAdminLevel() != ADMIN_SERVER)
+   	altimailHackingAttempt(); // The user is not server administrator.
    
-   $action	   = hmailGetVar("action","");
-   $id	      = hmailGetVar("id",0);
+   $action	   = altimailGetVar("action","");
+   $id	      = altimailGetVar("id",0);
    
-   $Name	      = hmailGetVar("Name",0);
-   $CertificateFile	      = hmailGetVar("CertificateFile","");
-   $PrivateKeyFile= hmailGetVar("PrivateKeyFile","");
+   $Name	      = altimailGetVar("Name",0);
+   $CertificateFile	      = altimailGetVar("CertificateFile","");
+   $PrivateKeyFile= altimailGetVar("PrivateKeyFile","");
    
    $sslCertificates = $obBaseApp->Settings->SSLCertificates;
    

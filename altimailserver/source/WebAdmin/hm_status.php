@@ -2,8 +2,8 @@
 if (!defined('IN_WEBADMIN'))
    exit();
 
-if (hmailGetAdminLevel() != 2)
-	hmailHackingAttemp();
+if (altimailGetAdminLevel() != 2)
+	altimailHackingAttempt();
 
 define("STSMTP", 1);
 define("STPOP3", 3);
@@ -11,7 +11,7 @@ define("STIMAP", 5);
 	
 $obStatus      = $obBaseApp->Status();
 $serverstate	= $obBaseApp->ServerState();
-$action  		= hmailGetVar("action","");
+$action  		= altimailGetVar("action","");
 
 $statusstarttime = $obStatus->StartTime();
 $statusprocessedmessages = $obStatus->ProcessedMessages();
@@ -24,7 +24,7 @@ $sessions_imap = $obStatus->SessionCount(STIMAP);
 
 if ($action == "control")
 {
-   $controlaction = hmailGetVar("controlaction","");
+   $controlaction = altimailGetVar("controlaction","");
    
    if ($controlaction == "1")
       $obBaseApp->Start();

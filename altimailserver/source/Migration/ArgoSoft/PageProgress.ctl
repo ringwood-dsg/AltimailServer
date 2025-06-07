@@ -72,7 +72,7 @@ End Function
 Private Sub DoImport()
 
    Dim obApp As Object
-   Set obApp = CreateObject("hMailServer.Application")
+   Set obApp = CreateObject("AltimailServer.Application")
    
    Dim obDomains As Object
    Dim obDomain As Object

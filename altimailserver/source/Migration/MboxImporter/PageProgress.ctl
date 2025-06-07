@@ -132,7 +132,7 @@ End Function
 Private Sub CreateDestinationFolder()
    On Error GoTo Exception
    Dim obApp As Object
-   Set obApp = CreateObject("hMailServer.Application")
+   Set obApp = CreateObject("AltimailServer.Application")
    
    Dim sIniFile As String
    sIniFile = obApp.InitializationFile

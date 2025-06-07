@@ -1,11 +1,11 @@
 option explicit
 
 dim oApp
-set oApp = CreateObject("hMailServer.Application")
+set oApp = CreateObject("AltimailServer.Application")
 
 ' BEGIN: Authenticate the client.
 Dim sAdminPwd
-sAdminPwd = InputBox("Enter administrator password", "hMailServer")
+sAdminPwd = InputBox("Enter administrator password", "Altimail Server")
 Call oApp.Authenticate ("Administrator", sAdminPwd)
 ' END: Authenticate the client.
 

@@ -3,16 +3,16 @@
 if (!defined('IN_WEBADMIN'))
    exit();
 
-$domainid	= hmailGetVar("domainid",0,true);
-$accountid	= hmailGetVar("accountid",0,true);
-$faid 		= hmailGetVar("faid",0, true);
-$action	   = hmailGetVar("action","");
+$domainid	= altimailGetVar("domainid",0,true);
+$accountid	= altimailGetVar("accountid",0,true);
+$faid 		= altimailGetVar("faid",0, true);
+$action	   = altimailGetVar("action","");
 
-if (hmailGetAdminLevel() == 0 && ($accountid != hmailGetAccountID() || $domainid != hmailGetDomainID()))
-   hmailHackingAttemp();
+if (altimailGetAdminLevel() == 0 && ($accountid != altimailGetAccountID() || $domainid != altimailGetDomainID()))
+   altimailHackingAttempt();
 
-if (hmailGetAdminLevel() == 1 && $domainid != hmailGetDomainID())
-	hmailHackingAttemp(); // Domain admin but not for this domain.
+if (altimailGetAdminLevel() == 1 && $domainid != altimailGetDomainID())
+	altimailHackingAttempt(); // Domain admin but not for this domain.
 
 $obDomain	= $obBaseApp->Domains->ItemByDBID($domainid);
 $obAccount = $obDomain->Accounts->ItemByDBID($accountid);  
@@ -56,9 +56,9 @@ else
    $ConnectionSecurity = 0;
 }
 
-$EnabledChecked = hmailCheckedIf1($Enabled);
-$ProcessMIMERecipientsChecked = hmailCheckedIf1($ProcessMIMERecipients);
-$ProcessMIMEDateChecked = hmailCheckedIf1($ProcessMIMEDate);
+$EnabledChecked = altimailCheckedIf1($Enabled);
+$ProcessMIMERecipientsChecked = altimailCheckedIf1($ProcessMIMERecipients);
+$ProcessMIMEDateChecked = altimailCheckedIf1($ProcessMIMEDate);
 
 $DaysToKeepMessagesValue = 0;
 if ($DaysToKeepMessages > 0)

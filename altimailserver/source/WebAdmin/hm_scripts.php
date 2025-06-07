@@ -2,19 +2,19 @@
 if (!defined('IN_WEBADMIN'))
    exit();
 
-if (hmailGetAdminLevel() != 2)
-	hmailHackingAttemp();
+if (altimailGetAdminLevel() != 2)
+	altimailHackingAttempt();
 
 $obSettings	= $obBaseApp->Settings();
 $obScripting    = $obSettings->Scripting();
 
-$action	   = hmailGetVar("action","");
+$action	   = altimailGetVar("action","");
 
 if($action == "save")
 {
-	$obScripting->Enabled = hmailGetVar("scriptingenabled",0);
+	$obScripting->Enabled = altimailGetVar("scriptingenabled",0);
 	
-	$langauge = hmailGetVar("scriptinglanguage",0);
+	$langauge = altimailGetVar("scriptinglanguage",0);
 	
 	if ($langauge != "VBScript" && $langauge != "JScript")
 	{
@@ -22,7 +22,7 @@ if($action == "save")
 		die;
 	}
 	
-	$obScripting->Language = hmailGetVar("scriptinglanguage",0);
+	$obScripting->Language = altimailGetVar("scriptinglanguage",0);
 
 }
 elseif ($action == "checksyntax")
@@ -38,7 +38,7 @@ elseif ($action == "reloadscripts")
 $scriptingenabled = $obScripting->Enabled;
 $scriptinglanguage = $obScripting->Language;
 
-$scriptingenabledchecked = hmailCheckedIf1($scriptingenabled);
+$scriptingenabledchecked = altimailCheckedIf1($scriptingenabled);
 
 ?>
 

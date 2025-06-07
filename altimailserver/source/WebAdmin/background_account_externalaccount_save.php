@@ -2,16 +2,16 @@
    if (!defined('IN_WEBADMIN'))
       exit();
 
-   $domainid	= hmailGetVar("domainid",0, true);
-   $accountid 	= hmailGetVar("accountid",0,true);
-   $faid 		= hmailGetVar("faid",0, true);
-   $action	   = hmailGetVar("action","");
+   $domainid	= altimailGetVar("domainid",0, true);
+   $accountid 	= altimailGetVar("accountid",0,true);
+   $faid 		= altimailGetVar("faid",0, true);
+   $action	   = altimailGetVar("action","");
    
-   if (hmailGetAdminLevel() == 0 && ($accountid != hmailGetAccountID() || $domainid != hmailGetDomainID()))
-      hmailHackingAttemp();
+   if (altimailGetAdminLevel() == 0 && ($accountid != altimailGetAccountID() || $domainid != altimailGetDomainID()))
+      altimailHackingAttempt();
 
-	if (hmailGetAdminLevel() == 1 && $domainid != hmailGetDomainID())
-		hmailHackingAttemp(); // Domain admin but not for this domain.
+	if (altimailGetAdminLevel() == 1 && $domainid != altimailGetDomainID())
+		altimailHackingAttempt(); // Domain admin but not for this domain.
 	
 	$obDomain	= $obBaseApp->Domains->ItemByDBID($domainid);
 	$obAccount  = $obDomain->Accounts->ItemByDBID($accountid);  
@@ -35,36 +35,36 @@
       exit();       
    }
    
-   $DaysToKeepMessages      = hmailGetVar("DaysToKeepMessages",0);
-   $DaysToKeepMessagesValue = hmailGetVar("DaysToKeepMessagesValue",0);
+   $DaysToKeepMessages      = altimailGetVar("DaysToKeepMessages",0);
+   $DaysToKeepMessagesValue = altimailGetVar("DaysToKeepMessagesValue",0);
    
-   $obFA->Enabled               = hmailGetVar("Enabled",0);
-   $obFA->Name                  = hmailGetVar("Name",0);
-   $obFA->MinutesBetweenFetch   = hmailGetVar("MinutesBetweenFetch",0);
-   $obFA->Port                  = hmailGetVar("Port",0);
-   $obFA->MIMERecipientHeaders  = hmailGetVar("MIMERecipientHeaders","To,CC,X-RCPT-To,X-Envelope-To");
+   $obFA->Enabled               = altimailGetVar("Enabled",0);
+   $obFA->Name                  = altimailGetVar("Name",0);
+   $obFA->MinutesBetweenFetch   = altimailGetVar("MinutesBetweenFetch",0);
+   $obFA->Port                  = altimailGetVar("Port",0);
+   $obFA->MIMERecipientHeaders  = altimailGetVar("MIMERecipientHeaders","To,CC,X-RCPT-To,X-Envelope-To");
    if (strlen($obFA->MIMERecipientHeaders) > 0)
-      $obFA->ProcessMIMERecipients = hmailGetVar("ProcessMIMERecipients",0);
+      $obFA->ProcessMIMERecipients = altimailGetVar("ProcessMIMERecipients",0);
    else
       $obFA->ProcessMIMERecipients = 0;
-   $obFA->ProcessMIMEDate       = hmailGetVar("ProcessMIMEDate",0);
-   $obFA->ServerAddress         = hmailGetVar("ServerAddress",0);
-   $obFA->ServerType            = hmailGetVar("ServerType",0);
-   $obFA->Username              = hmailGetVar("Username",0);
-   $obFA->UseAntiVirus          = hmailGetVar("UseAntiVirus",0);
-   $obFA->UseAntiSpam           = hmailGetVar("UseAntiSpam",0);
+   $obFA->ProcessMIMEDate       = altimailGetVar("ProcessMIMEDate",0);
+   $obFA->ServerAddress         = altimailGetVar("ServerAddress",0);
+   $obFA->ServerType            = altimailGetVar("ServerType",0);
+   $obFA->Username              = altimailGetVar("Username",0);
+   $obFA->UseAntiVirus          = altimailGetVar("UseAntiVirus",0);
+   $obFA->UseAntiSpam           = altimailGetVar("UseAntiSpam",0);
    if ($obFA->ProcessMIMERecipients != 0)
-      $obFA->EnableRouteRecipients = hmailGetVar("EnableRouteRecipients",0);
+      $obFA->EnableRouteRecipients = altimailGetVar("EnableRouteRecipients",0);
    else
       $obFA->EnableRouteRecipients = 0;
-   $obFA->ConnectionSecurity 	= hmailGetVar("ConnectionSecurity",0);
+   $obFA->ConnectionSecurity 	= altimailGetVar("ConnectionSecurity",0);
    
    if (strlen($DaysToKeepMessages) > 0 && $DaysToKeepMessages <= 0)
       $obFA->DaysToKeepMessages = $DaysToKeepMessages; 
    else 
       $obFA->DaysToKeepMessages = $DaysToKeepMessagesValue; 
    
-   $Password = hmailGetVar("Password",0);
+   $Password = altimailGetVar("Password",0);
    
    if (strlen($Password) > 0)
       $obFA->Password = $Password;

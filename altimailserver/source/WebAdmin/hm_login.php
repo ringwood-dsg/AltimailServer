@@ -5,7 +5,7 @@
 ?>
    <br/>
    <br/>
-   <form action="<?php echo $hmail_config['rooturl']; ?>index.php" method="post" onSubmit="return formCheck(this);" name="mainform">
+   <form action="<?php echo $altimail_config['rooturl']; ?>index.php" method="post" onSubmit="return formCheck(this);" name="mainform">
    
       <?php
 	     PrintHiddenCsrfToken();
@@ -23,7 +23,7 @@
 
             	<br/><br/>
             	<?php
-            	   $error = hmailGetVar("error");
+            	   $error = altimailGetVar("error");
             	   if ($error == "1")
             	   {
             	      EchoTranslation("Incorrect username or password.");

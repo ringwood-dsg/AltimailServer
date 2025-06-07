@@ -10,10 +10,10 @@ session_start();
 // Enable CSRF protection
 ensure_csrf_session_token_exists();
 
-// Connect to hMailServer
+// Connect to Altimail Server
 try
 {
-   $obBaseApp = new COM("hMailServer.Application", NULL, CP_UTF8);
+   $obBaseApp = new COM("AltimailServer.Application", NULL, CP_UTF8);
 }
 catch(Exception $e)
 {
@@ -27,10 +27,10 @@ catch(Exception $e)
 if ($obBaseApp->Version != REQUIRED_VERSION)
 {
    echo "<br>";
-   echo "The hMailServer version does not match the WebAdmin version.<br>";
-   echo "hMailServer version: " . $obBaseApp->Version . "<br>";
+   echo "The Altimail Server version does not match the WebAdmin version.<br>";
+   echo "Altimail Server version: " . $obBaseApp->Version . "<br>";
    echo "WebAdmin version: " . REQUIRED_VERSION . "<br>";
-   echo "Please make sure you are using the PHPWebAdmin version which came with your hMailServer installation.<br>";
+   echo "Please make sure you are using the PHPWebAdmin version which came with your Altimail Server installation.<br>";
    die;
 }
 
@@ -52,6 +52,6 @@ catch(Exception $e)
 }
 
 
-$obLanguage = $obBaseApp->GlobalObjects->Languages->ItemByName($hmail_config['defaultlanguage']);
+$obLanguage = $obBaseApp->GlobalObjects->Languages->ItemByName($altimail_config['defaultlanguage']);
 
 ?>

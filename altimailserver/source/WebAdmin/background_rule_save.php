@@ -3,16 +3,16 @@
    if (!defined('IN_WEBADMIN'))
       exit();
 
-   $action	   = hmailGetVar("action","");
-   $domainid   = hmailGetVar("domainid", 0, true);
-   $accountid  = hmailGetVar("accountid", 0, true);
-   $ruleid     = hmailGetVar("ruleid", 0);
-   $criteriaid = hmailGetVar("criteriaid", 0);
-   $actionid   = hmailGetVar("actionid", 0);
-   $savetype   = hmailGetVar("savetype", 0);
+   $action	   = altimailGetVar("action","");
+   $domainid   = altimailGetVar("domainid", 0, true);
+   $accountid  = altimailGetVar("accountid", 0, true);
+   $ruleid     = altimailGetVar("ruleid", 0);
+   $criteriaid = altimailGetVar("criteriaid", 0);
+   $actionid   = altimailGetVar("actionid", 0);
+   $savetype   = altimailGetVar("savetype", 0);
       
    if (!GetHasRuleAccess($domainid, $accountid))
-   	hmailHackingAttemp();
+   	altimailHackingAttempt();
 
    include "include/rule_strings.php";
       
@@ -67,11 +67,11 @@
          $criteria = $rule->Criterias->Add();
       }
    
-      $criteria->UsePredefined = hmailGetVar("UsePredefined", 0);
-      $criteria->PredefinedField = hmailGetVar("PredefinedField", 0);
-      $criteria->MatchType = hmailGetVar("MatchType", 0);
-      $criteria->MatchValue = hmailGetVar("MatchValue", 0);
-      $criteria->HeaderField = hmailGetVar("HeaderField", 0);
+      $criteria->UsePredefined = altimailGetVar("UsePredefined", 0);
+      $criteria->PredefinedField = altimailGetVar("PredefinedField", 0);
+      $criteria->MatchType = altimailGetVar("MatchType", 0);
+      $criteria->MatchValue = altimailGetVar("MatchValue", 0);
+      $criteria->HeaderField = altimailGetVar("HeaderField", 0);
       
       $criteria->Save();
       
@@ -88,9 +88,9 @@
       else if ($action == "add")
          $actionObj = $rule->Actions->Add();
    
-      $type = hmailGetVar("Type", 0);
+      $type = altimailGetVar("Type", 0);
       
-      if (hmailGetAdminLevel() != ADMIN_SERVER)
+      if (altimailGetAdminLevel() != ADMIN_SERVER)
       {
          if ($type != eRADeleteEmail && 
              $type != eRAForwardEmail &&
@@ -99,29 +99,29 @@
              $type != eRAStopRuleProcessing &&
              $type != eRASetHeaderValue)
          {
-            hmailHackingAttemp();
+            altimailHackingAttempt();
          }  
       }
    
-      $actionObj->To = hmailGetVar("To", "");
-      $actionObj->IMAPFolder = hmailGetVar("IMAPFolder", "");
-      $actionObj->ScriptFunction = hmailGetVar("ScriptFunction", "");
-      $actionObj->FromName = hmailGetVar("FromName", "");
-      $actionObj->FromAddress = hmailGetVar("FromAddress", "");
-      $actionObj->Subject = hmailGetVar("Subject", "");
-      $actionObj->Body = hmailGetVar("Body", "");
-      $actionObj->HeaderName = hmailGetVar("HeaderName", "");
+      $actionObj->To = altimailGetVar("To", "");
+      $actionObj->IMAPFolder = altimailGetVar("IMAPFolder", "");
+      $actionObj->ScriptFunction = altimailGetVar("ScriptFunction", "");
+      $actionObj->FromName = altimailGetVar("FromName", "");
+      $actionObj->FromAddress = altimailGetVar("FromAddress", "");
+      $actionObj->Subject = altimailGetVar("Subject", "");
+      $actionObj->Body = altimailGetVar("Body", "");
+      $actionObj->HeaderName = altimailGetVar("HeaderName", "");
       
-      $replyabortspamflagged = hmailGetVar("replyabortspamflagged", "0");
-      $forwardabortspamflagged = hmailGetVar("forwardabortspamflagged", "0");
+      $replyabortspamflagged = altimailGetVar("replyabortspamflagged", "0");
+      $forwardabortspamflagged = altimailGetVar("forwardabortspamflagged", "0");
       
 	  switch ($type)
 	  {
 		case eRASetHeaderValue:
-			$actionObj->Value = hmailGetVar("Value", "");
+			$actionObj->Value = altimailGetVar("Value", "");
 			break;
 		case eRABindToAddress:
-			$actionObj->Value = hmailGetVar("BindToAddress", "");
+			$actionObj->Value = altimailGetVar("BindToAddress", "");
 			break;
 		case eRAForwardEmail:
 			$actionObj->AbortSpamFlagged = $forwardabortspamflagged == 1;
@@ -142,9 +142,9 @@
    }
    else if ($savetype == "rule")
    {
-      $rule->Name = hmailGetVar("Name", "");
-      $rule->Active = hmailGetVar("Active", "") == "1";
-      $rule->UseAND = hmailGetVar("UseAND", "") == "1";
+      $rule->Name = altimailGetVar("Name", "");
+      $rule->Active = altimailGetVar("Active", "") == "1";
+      $rule->UseAND = altimailGetVar("UseAND", "") == "1";
       $rule->Save();
       
       $ruleid = $rule->ID;

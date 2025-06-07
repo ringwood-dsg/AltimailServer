@@ -2,14 +2,14 @@
 if (!defined('IN_WEBADMIN'))
    exit();
 
-$action = hmailGetVar("action", "");   
-$domainid = hmailGetVar("domainid", 0, true);
-$accountid = hmailGetVar("accountid", 0, true);
-$ruleid = hmailGetVar("ruleid", 0);
-$criteriaid = hmailGetVar("criteriaid", 0);
+$action = altimailGetVar("action", "");   
+$domainid = altimailGetVar("domainid", 0, true);
+$accountid = altimailGetVar("accountid", 0, true);
+$ruleid = altimailGetVar("ruleid", 0);
+$criteriaid = altimailGetVar("criteriaid", 0);
 
 if (!GetHasRuleAccess($domainid, $accountid))
-   hmailHackingAttemp(); // The user is not server administrator
+   altimailHackingAttempt(); // The user is not server administrator
    
 include "include/rule_strings.php";  
   

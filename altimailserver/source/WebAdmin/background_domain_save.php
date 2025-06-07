@@ -2,49 +2,49 @@
    if (!defined('IN_WEBADMIN'))
       exit();
 
-   $domainid	= hmailGetVar("domainid",0,true);
-   $action	   = hmailGetVar("action","");
-   $domainname     = hmailGetVar("domainname","");
-   $domainactive   = hmailGetVar("domainactive","0");
-   $domainpostmaster   =   hmailGetVar("domainpostmaster","");
-   $domainmaxsize   = hmailGetVar("domainmaxsize","0");
-   $domainmaxmessagesize   = hmailGetVar("domainmaxmessagesize","0");
-   $domainplusaddressingenabled = hmailGetVar("domainplusaddressingenabled","0");
-   $domainplusaddressingcharacter = hmailGetVar("domainplusaddressingcharacter","+");
-   $domainantispamenablegreylisting = hmailGetVar("domainantispamenablegreylisting","0");
+   $domainid	= altimailGetVar("domainid",0,true);
+   $action	   = altimailGetVar("action","");
+   $domainname     = altimailGetVar("domainname","");
+   $domainactive   = altimailGetVar("domainactive","0");
+   $domainpostmaster   =   altimailGetVar("domainpostmaster","");
+   $domainmaxsize   = altimailGetVar("domainmaxsize","0");
+   $domainmaxmessagesize   = altimailGetVar("domainmaxmessagesize","0");
+   $domainplusaddressingenabled = altimailGetVar("domainplusaddressingenabled","0");
+   $domainplusaddressingcharacter = altimailGetVar("domainplusaddressingcharacter","+");
+   $domainantispamenablegreylisting = altimailGetVar("domainantispamenablegreylisting","0");
    
-   $SignatureEnabled   = hmailGetVar("SignatureEnabled","0");
-   $SignatureHTML  	  = hmailGetVar("SignatureHTML","");
-   $SignaturePlainText = hmailGetVar("SignaturePlainText","");
-   $SignatureMethod    = hmailGetVar("SignatureMethod","1");
+   $SignatureEnabled   = altimailGetVar("SignatureEnabled","0");
+   $SignatureHTML  	  = altimailGetVar("SignatureHTML","");
+   $SignaturePlainText = altimailGetVar("SignaturePlainText","");
+   $SignatureMethod    = altimailGetVar("SignatureMethod","1");
    
-   $AddSignaturesToLocalMail = hmailGetVar("AddSignaturesToLocalMail","0");
-   $AddSignaturesToReplies   = hmailGetVar("AddSignaturesToReplies","0");
+   $AddSignaturesToLocalMail = altimailGetVar("AddSignaturesToLocalMail","0");
+   $AddSignaturesToReplies   = altimailGetVar("AddSignaturesToReplies","0");
    
-   $MaxAccountSize       = hmailGetVar("MaxAccountSize","0");
+   $MaxAccountSize       = altimailGetVar("MaxAccountSize","0");
    
-   $MaxNumberOfAccounts            = hmailGetVar("MaxNumberOfAccounts","0");
-   $MaxNumberOfAliases             = hmailGetVar("MaxNumberOfAliases","0");
-   $MaxNumberOfDistributionLists   = hmailGetVar("MaxNumberOfDistributionLists","0");
+   $MaxNumberOfAccounts            = altimailGetVar("MaxNumberOfAccounts","0");
+   $MaxNumberOfAliases             = altimailGetVar("MaxNumberOfAliases","0");
+   $MaxNumberOfDistributionLists   = altimailGetVar("MaxNumberOfDistributionLists","0");
    
-   $MaxNumberOfAccountsEnabled          = hmailGetVar("MaxNumberOfAccountsEnabled","0");
-   $MaxNumberOfAliasesEnabled           = hmailGetVar("MaxNumberOfAliasesEnabled","0");
-   $MaxNumberOfDistributionListsEnabled = hmailGetVar("MaxNumberOfDistributionListsEnabled","0");
+   $MaxNumberOfAccountsEnabled          = altimailGetVar("MaxNumberOfAccountsEnabled","0");
+   $MaxNumberOfAliasesEnabled           = altimailGetVar("MaxNumberOfAliasesEnabled","0");
+   $MaxNumberOfDistributionListsEnabled = altimailGetVar("MaxNumberOfDistributionListsEnabled","0");
    
-   $DKIMSignEnabled = hmailGetVar("DKIMSignEnabled", "0");
-   $DKIMSignAliasesEnabled = hmailGetVar("DKIMSignAliasesEnabled", "0");
-   $DKIMPrivateKeyFile = hmailGetVar("DKIMPrivateKeyFile", "");
-   $DKIMSelector = hmailGetVar("DKIMSelector", "");
+   $DKIMSignEnabled = altimailGetVar("DKIMSignEnabled", "0");
+   $DKIMSignAliasesEnabled = altimailGetVar("DKIMSignAliasesEnabled", "0");
+   $DKIMPrivateKeyFile = altimailGetVar("DKIMPrivateKeyFile", "");
+   $DKIMSelector = altimailGetVar("DKIMSelector", "");
    
-   $DKIMHeaderCanonicalizationMethod = hmailGetVar("DKIMHeaderCanonicalizationMethod", "2");
-   $DKIMBodyCanonicalizationMethod = hmailGetVar("DKIMBodyCanonicalizationMethod", "2");
-   $DKIMSigningAlgorithm = hmailGetVar("DKIMSigningAlgorithm", "2");
+   $DKIMHeaderCanonicalizationMethod = altimailGetVar("DKIMHeaderCanonicalizationMethod", "2");
+   $DKIMBodyCanonicalizationMethod = altimailGetVar("DKIMBodyCanonicalizationMethod", "2");
+   $DKIMSigningAlgorithm = altimailGetVar("DKIMSigningAlgorithm", "2");
    
    if ($domainactive == "")
       $domainactive = 0;
    
-   if (hmailGetAdminLevel() == 1 && ($domainid != hmailGetDomainID() || $action != "edit"))
-   	hmailHackingAttemp(); // Domain admin but not for this domain.   
+   if (altimailGetAdminLevel() == 1 && ($domainid != altimailGetDomainID() || $action != "edit"))
+   	altimailHackingAttempt(); // Domain admin but not for this domain.   
 
    if ($action == "edit")   
       $obDomain	= $obBaseApp->Domains->ItemByDBID($domainid);
@@ -87,7 +87,7 @@
    $obDomain->DKIMBodyCanonicalizationMethod = $DKIMBodyCanonicalizationMethod;
    $obDomain->DKIMSigningAlgorithm = $DKIMSigningAlgorithm;
    
-   if (hmailGetAdminLevel() == 2)
+   if (altimailGetAdminLevel() == 2)
    {
       // Save other properties
       $obDomain->Active = $domainactive;

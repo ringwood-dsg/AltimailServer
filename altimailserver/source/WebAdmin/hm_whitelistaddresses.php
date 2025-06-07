@@ -2,8 +2,8 @@
    if (!defined('IN_WEBADMIN'))
       exit();
    
-   if (hmailGetAdminLevel() != 2)
-   	hmailHackingAttemp(); // Only server admins can change this.
+   if (altimailGetAdminLevel() != 2)
+   	altimailHackingAttempt(); // Only server admins can change this.
    
    $obWhiteListAddresses	= $obBaseApp->Settings()->AntiSpam()->WhiteListAddresses;
 

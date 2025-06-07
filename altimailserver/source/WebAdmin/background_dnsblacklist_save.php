@@ -2,16 +2,16 @@
    if (!defined('IN_WEBADMIN'))
       exit();
 
-   if (hmailGetAdminLevel() != ADMIN_SERVER)
-   	hmailHackingAttemp(); // The user is not server administrator.
+   if (altimailGetAdminLevel() != ADMIN_SERVER)
+   	altimailHackingAttempt(); // The user is not server administrator.
    
-   $action	   = hmailGetVar("action","");
-   $id	      = hmailGetVar("id",0);
-   $Active	      = hmailGetVar("Active",0);
-   $DNSHost	      = hmailGetVar("DNSHost","");
-   $ExpectedResult= hmailGetVar("ExpectedResult","");
-   $RejectMessage	= hmailGetVar("RejectMessage","");
-   $Score	      = hmailGetVar("Score",0);
+   $action	   = altimailGetVar("action","");
+   $id	      = altimailGetVar("id",0);
+   $Active	      = altimailGetVar("Active",0);
+   $DNSHost	      = altimailGetVar("DNSHost","");
+   $ExpectedResult= altimailGetVar("ExpectedResult","");
+   $RejectMessage	= altimailGetVar("RejectMessage","");
+   $Score	      = altimailGetVar("Score",0);
    
    $dnsBlackLists = $obBaseApp->Settings->AntiSpam->DNSBlackLists;
    

@@ -5,7 +5,7 @@
    $version = explode('.', phpversion());
    if ((int) $version[0] < 5)
    {
-      echo "hMailServer WebAdmin requires PHP5 or later.";
+      echo "Altimail Server WebAdmin requires PHP5 or later.";
       die;   
    }
    

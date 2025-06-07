@@ -2,18 +2,18 @@
 if (!defined('IN_WEBADMIN'))
    exit();
 
-if (hmailGetAdminLevel() != 2)
-	hmailHackingAttemp();
+if (altimailGetAdminLevel() != 2)
+	altimailHackingAttempt();
 
 $obDiagnostics	= $obBaseApp->Diagnostics();
 
-$action = hmailGetVar("action", "");
+$action = altimailGetVar("action", "");
 
 $resultString = "";
 
 if($action == "performTests")
 {
-	$obDiagnostics->LocalDomainName = hmailGetVar("LocalDomainName", "");
+	$obDiagnostics->LocalDomainName = altimailGetVar("LocalDomainName", "");
    
    $obResults = $obDiagnostics->PerformTests();
    
@@ -72,7 +72,7 @@ if($action == "performTests")
                PrintHidden("page", "diagnostics");
                PrintHidden("action", "performTests");
 
-               EchoTranslation("This tool lets you perform diagnostics on your hMailServer installation.");
+               EchoTranslation("This tool lets you perform diagnostics on your Altimail Server installation.");
                echo "<br/><br/>";
                EchoTranslation("Select the domain you want to run tests on.");
                echo "<br/><br/>";

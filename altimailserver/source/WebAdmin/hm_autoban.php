@@ -2,19 +2,19 @@
 if (!defined('IN_WEBADMIN'))
    exit();
 
-if (hmailGetAdminLevel() != ADMIN_SERVER)
-	hmailHackingAttemp();
+if (altimailGetAdminLevel() != ADMIN_SERVER)
+	altimailHackingAttempt();
 
 $obSettings	= $obBaseApp->Settings();
 
-$action	   = hmailGetVar("action","");
+$action	   = altimailGetVar("action","");
 
 if($action == "save")
 {
-	$obSettings->AutoBanOnLogonFailure= hmailGetVar("AutoBanOnLogonFailure",0);
-   $obSettings->MaxInvalidLogonAttempts= hmailGetVar("MaxInvalidLogonAttempts",0);
-   $obSettings->MaxInvalidLogonAttemptsWithin= hmailGetVar("MaxInvalidLogonAttemptsWithin",0);
-   $obSettings->AutoBanMinutes= hmailGetVar("AutoBanMinutes",0);
+	$obSettings->AutoBanOnLogonFailure= altimailGetVar("AutoBanOnLogonFailure",0);
+   $obSettings->MaxInvalidLogonAttempts= altimailGetVar("MaxInvalidLogonAttempts",0);
+   $obSettings->MaxInvalidLogonAttemptsWithin= altimailGetVar("MaxInvalidLogonAttemptsWithin",0);
+   $obSettings->AutoBanMinutes= altimailGetVar("AutoBanMinutes",0);
 	
 }
 

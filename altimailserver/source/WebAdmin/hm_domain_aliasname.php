@@ -3,11 +3,11 @@
 if (!defined('IN_WEBADMIN'))
    exit();
 
-if (hmailGetAdminLevel() != ADMIN_SERVER)
-   	hmailHackingAttemp(); // Only server can change these settings.   
+if (altimailGetAdminLevel() != ADMIN_SERVER)
+   	altimailHackingAttempt(); // Only server can change these settings.   
    
-$domainid	= hmailGetVar("domainid",0,true);
-$action	   = hmailGetVar("action","");
+$domainid	= altimailGetVar("domainid",0,true);
+$action	   = altimailGetVar("action","");
 
 ?>
 

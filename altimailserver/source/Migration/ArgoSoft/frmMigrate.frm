@@ -1,8 +1,8 @@
 VERSION 5.00
 Begin VB.Form frmMigrate 
    BorderStyle     =   1  'Fixed Single
-   Caption         =   "ArgoSoft MailServer to hMailServer"
-   ClientHeight    =   5130
+Caption = "ArgoSoft MailServer to Altimail Server"
+ClientHeight    =   5130
    ClientLeft      =   45
    ClientTop       =   360
    ClientWidth     =   7920

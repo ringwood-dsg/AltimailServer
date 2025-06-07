@@ -3,20 +3,20 @@
    if (!defined('IN_WEBADMIN'))
       exit();
 
-   if (hmailGetAdminLevel() != 2)
-   	  hmailHackingAttemp(); // Domain admin but not for this domain.
+   if (altimailGetAdminLevel() != 2)
+   	  altimailHackingAttempt(); // Domain admin but not for this domain.
 
    $obSettings = $obBaseApp->Settings;
    $obRoutes	= $obSettings->Routes;
    
-   $routeid 	= hmailGetVar("routeid",0);
-   $routeaddressid	= hmailGetVar("routeaddressid",0);
-   $action	   = hmailGetVar("action","");
+   $routeid 	= altimailGetVar("routeid",0);
+   $routeaddressid	= altimailGetVar("routeaddressid",0);
+   $action	   = altimailGetVar("action","");
 
    $obRoute       = $obRoutes->ItemByDBID($routeid);
    $obAddresses	= $obRoute->Addresses;
    
-   $routeaddress = hmailGetVar("routeaddress","");
+   $routeaddress = altimailGetVar("routeaddress","");
    
    if ($action == "edit")
       $obAddress = $obAddresses->ItemByDBID($routeaddressid);

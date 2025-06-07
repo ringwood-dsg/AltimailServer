@@ -3,45 +3,45 @@
    if (!defined('IN_WEBADMIN'))
       exit();
 
-   $domainid	= hmailGetVar("domainid",0,true);
-   $accountid	= hmailGetVar("accountid",0,true);
-   $action	   = hmailGetVar("action","");
+   $domainid	= altimailGetVar("domainid",0,true);
+   $accountid	= altimailGetVar("accountid",0,true);
+   $action	   = altimailGetVar("action","");
    
    $obDomain	= $obBaseApp->Domains->ItemByDBID($domainid);
    
-   if (hmailGetAdminLevel() == 0 && ($accountid != hmailGetAccountID() || $action != "edit"))
-      hmailHackingAttemp();
+   if (altimailGetAdminLevel() == 0 && ($accountid != altimailGetAccountID() || $action != "edit"))
+      altimailHackingAttempt();
    
-   if (hmailGetAdminLevel() == 1 && $domainid != hmailGetDomainID())
-   	hmailHackingAttemp(); // Domain admin but not for this domain.
+   if (altimailGetAdminLevel() == 1 && $domainid != altimailGetDomainID())
+   	altimailHackingAttempt(); // Domain admin but not for this domain.
    	
-   $accountpassword  = hmailGetVar("accountpassword","");
-   $accountmaxsize   = hmailGetVar("accountmaxsize","0");
-   $accountaddress   = hmailGetVar("accountaddress","") . "@". $obDomain->Name;
-   $accountactive    = hmailGetVar("accountactive","0");
-   $accountadminlevel  = hmailGetVar("accountadminlevel","0");
-   $PersonFirstName  = hmailGetVar("PersonFirstName","0");
-   $PersonLastName   = hmailGetVar("PersonLastName","0");
+   $accountpassword  = altimailGetVar("accountpassword","");
+   $accountmaxsize   = altimailGetVar("accountmaxsize","0");
+   $accountaddress   = altimailGetVar("accountaddress","") . "@". $obDomain->Name;
+   $accountactive    = altimailGetVar("accountactive","0");
+   $accountadminlevel  = altimailGetVar("accountadminlevel","0");
+   $PersonFirstName  = altimailGetVar("PersonFirstName","0");
+   $PersonLastName   = altimailGetVar("PersonLastName","0");
    
-   $vacationmessageon  = hmailGetVar("vacationmessageon","");
-   $vacationsubject   = hmailGetVar("vacationsubject","0");
-   $vacationmessage   =   hmailGetVar("vacationmessage","");
-   $vacationmessageexpires   =   hmailGetVar("vacationmessageexpires","0");
-   $vacationmessageexpiresdate   =   hmailGetVar("vacationmessageexpiresdate","2001-01-01");
-   $vacationmessageabortspamflagged = hmailGetVar("vacationmessageabortspamflagged","0");
+   $vacationmessageon  = altimailGetVar("vacationmessageon","");
+   $vacationsubject   = altimailGetVar("vacationsubject","0");
+   $vacationmessage   =   altimailGetVar("vacationmessage","");
+   $vacationmessageexpires   =   altimailGetVar("vacationmessageexpires","0");
+   $vacationmessageexpiresdate   =   altimailGetVar("vacationmessageexpiresdate","2001-01-01");
+   $vacationmessageabortspamflagged = altimailGetVar("vacationmessageabortspamflagged","0");
    
-   $forwardenabled  = hmailGetVar("forwardenabled","0");
-   $forwardaddress   = hmailGetVar("forwardaddress","");
-   $forwardkeeporiginal   =   hmailGetVar("forwardkeeporiginal","0");
-   $forwardabortspamflagged = hmailGetVar("forwardabortspamflagged","0");
+   $forwardenabled  = altimailGetVar("forwardenabled","0");
+   $forwardaddress   = altimailGetVar("forwardaddress","");
+   $forwardkeeporiginal   =   altimailGetVar("forwardkeeporiginal","0");
+   $forwardabortspamflagged = altimailGetVar("forwardabortspamflagged","0");
    
-   $adenabled   = hmailGetVar("adenabled","");
-   $addomain    = hmailGetVar("addomain","0");
-   $adusername  =   hmailGetVar("adusername","");
+   $adenabled   = altimailGetVar("adenabled","");
+   $addomain    = altimailGetVar("addomain","0");
+   $adusername  =   altimailGetVar("adusername","");
   
-   $SignatureEnabled     = hmailGetVar("SignatureEnabled","0");
-   $SignatureHTML        = hmailGetVar("SignatureHTML","");
-   $SignaturePlainText   =   hmailGetVar("SignaturePlainText","0");
+   $SignatureEnabled     = altimailGetVar("SignatureEnabled","0");
+   $SignatureHTML        = altimailGetVar("SignatureHTML","");
+   $SignaturePlainText   =   altimailGetVar("SignaturePlainText","0");
 
   
    if ($action == "edit")
@@ -57,7 +57,7 @@
   
    // If this is the current user, we need to update the session password.
    if ($action == "edit" &&
-       $accountid == hmailGetAccountID())
+       $accountid == altimailGetAccountID())
    {
       if ($accountpassword != "")
          $_SESSION['session_password'] = $accountpassword;  
@@ -86,7 +86,7 @@
    $obAccount->SignaturePlainText	= $SignaturePlainText;
      
    
-   if (hmailGetAdminLevel() != ADMIN_USER)
+   if (altimailGetAdminLevel() != ADMIN_USER)
    {
       $accountmaxsize = str_replace(".", ",", $accountmaxsize);
 
@@ -99,7 +99,7 @@
       $obAccount->ADDomain     = $addomain;
       $obAccount->ADUsername   = $adusername;   
       
-      if (hmailGetAdminLevel() == 1)
+      if (altimailGetAdminLevel() == 1)
       {
          // The web user is domain administrator. Don't allow him
          // to change the user to server admin, unless he already
@@ -110,7 +110,7 @@
             $obAccount->AdminLevel = $accountadminlevel;
          }
       }
-      else if (hmailGetAdminLevel() == 2)
+      else if (altimailGetAdminLevel() == 2)
       {
          // The web user is server administrator. Allow any change
          $obAccount->AdminLevel = $accountadminlevel;

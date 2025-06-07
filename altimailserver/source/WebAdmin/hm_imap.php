@@ -2,28 +2,28 @@
 if (!defined('IN_WEBADMIN'))
    exit();
 
-if (hmailGetAdminLevel() != 2)
-	hmailHackingAttemp();
+if (altimailGetAdminLevel() != 2)
+	altimailHackingAttempt();
 
 $obSettings	= $obBaseApp->Settings();
 
-$action	   = hmailGetVar("action","");
+$action	   = altimailGetVar("action","");
 
 if($action == "save")
 {
-	$obSettings->WelcomeIMAP= hmailGetVar("welcomeimap",0);
-	$obSettings->MaxIMAPConnections = hmailGetVar("MaxIMAPConnections",0);
+	$obSettings->WelcomeIMAP= altimailGetVar("welcomeimap",0);
+	$obSettings->MaxIMAPConnections = altimailGetVar("MaxIMAPConnections",0);
 	
-	$obSettings->IMAPSortEnabled  = hmailGetVar("IMAPSortEnabled",0);
-	$obSettings->IMAPQuotaEnabled = hmailGetVar("IMAPQuotaEnabled",0);
-	$obSettings->IMAPIdleEnabled  = hmailGetVar("IMAPIdleEnabled",0);
-	$obSettings->IMAPACLEnabled  = hmailGetVar("IMAPACLEnabled",0);
+	$obSettings->IMAPSortEnabled  = altimailGetVar("IMAPSortEnabled",0);
+	$obSettings->IMAPQuotaEnabled = altimailGetVar("IMAPQuotaEnabled",0);
+	$obSettings->IMAPIdleEnabled  = altimailGetVar("IMAPIdleEnabled",0);
+	$obSettings->IMAPACLEnabled  = altimailGetVar("IMAPACLEnabled",0);
     
-   $obSettings->IMAPSASLPlainEnabled  = hmailGetVar("IMAPSASLPlainEnabled",0);
-   $obSettings->IMAPSASLInitialResponseEnabled  = hmailGetVar("IMAPSASLInitialResponseEnabled",0);
-   $obSettings->IMAPMasterUser  = hmailGetVar("IMAPMasterUser","");
+   $obSettings->IMAPSASLPlainEnabled  = altimailGetVar("IMAPSASLPlainEnabled",0);
+   $obSettings->IMAPSASLInitialResponseEnabled  = altimailGetVar("IMAPSASLInitialResponseEnabled",0);
+   $obSettings->IMAPMasterUser  = altimailGetVar("IMAPMasterUser","");
 
-   $obSettings->IMAPHierarchyDelimiter = hmailGetVar("IMAPHierarchyDelimiter","");
+   $obSettings->IMAPHierarchyDelimiter = altimailGetVar("IMAPHierarchyDelimiter","");
 }
 
 $welcomeimap = $obSettings->WelcomeIMAP;     

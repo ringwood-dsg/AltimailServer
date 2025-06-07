@@ -2,13 +2,13 @@
 if (!defined('IN_WEBADMIN'))
    exit();
 
-if (hmailGetAdminLevel() != 2)
-	hmailHackingAttemp();
+if (altimailGetAdminLevel() != 2)
+	altimailHackingAttempt();
 
 $obSettings	= $obBaseApp->Settings();
 $obTCPIPPorts  = $obSettings->TCPIPPorts;
 
-$action	   = hmailGetVar("action","");
+$action	   = altimailGetVar("action","");
 
 ?>
 

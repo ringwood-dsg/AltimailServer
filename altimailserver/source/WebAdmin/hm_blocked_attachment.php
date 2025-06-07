@@ -3,11 +3,11 @@
 if (!defined('IN_WEBADMIN'))
    exit();
 
-if (hmailGetAdminLevel() != ADMIN_SERVER)
-   	hmailHackingAttemp(); // Only server can change these settings.   
+if (altimailGetAdminLevel() != ADMIN_SERVER)
+   	altimailHackingAttempt(); // Only server can change these settings.   
    
-$action	    = hmailGetVar("action","");
-$id          = hmailGetVar("id","");
+$action	    = altimailGetVar("action","");
+$id          = altimailGetVar("id","");
 
 $wildcard = "";
 $description = "";

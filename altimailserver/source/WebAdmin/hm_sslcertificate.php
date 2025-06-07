@@ -2,11 +2,11 @@
 if (!defined('IN_WEBADMIN'))
    exit();
 
-if (hmailGetAdminLevel() != ADMIN_SERVER)
-	hmailHackingAttemp(); // The user is not server administrator
+if (altimailGetAdminLevel() != ADMIN_SERVER)
+	altimailHackingAttempt(); // The user is not server administrator
 
-$id	            = hmailGetVar("id",0);
-$action	         	= hmailGetVar("action","");
+$id	            = altimailGetVar("id",0);
+$action	         	= altimailGetVar("action","");
 	
 $Name = "";
 $CertificateFile = "";

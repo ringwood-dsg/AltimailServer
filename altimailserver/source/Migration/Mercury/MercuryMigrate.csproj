@@ -189,8 +189,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <COMReference Include="hMailServer">
-      <Guid>{DB241B59-A1B1-4C59-98FC-8D101A2995F2}</Guid>
+    <COMReference Include="AltimailServer">
+      <Guid>{5DF0577A-9FAF-4472-B083-B38207DD848B}</Guid>
       <VersionMajor>1</VersionMajor>
       <VersionMinor>0</VersionMinor>
       <Lcid>0</Lcid>

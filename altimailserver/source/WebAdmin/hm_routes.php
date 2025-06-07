@@ -2,8 +2,8 @@
 if (!defined('IN_WEBADMIN'))
    exit();
 
-if (hmailGetAdminLevel() != 2)
-	hmailHackingAttemp(); // Users are not allowed to show this page.
+if (altimailGetAdminLevel() != 2)
+	altimailHackingAttempt(); // Users are not allowed to show this page.
 
 ?>
 <h1><?php EchoTranslation("Routes")?></h1>

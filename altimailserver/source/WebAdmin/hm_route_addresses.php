@@ -2,15 +2,15 @@
 if (!defined('IN_WEBADMIN'))
    exit();
 
-if (hmailGetAdminLevel() != 2)
-	hmailHackingAttemp(); // Users are not allowed to show this page.
+if (altimailGetAdminLevel() != 2)
+	altimailHackingAttempt(); // Users are not allowed to show this page.
 
 ?>
 <h1><?php EchoTranslation("Addresses")?></h1>
 <table border="0" width="100%" cellpadding="5">
 <?php
 
-$routeid	= hmailGetVar("routeid",0);
+$routeid	= altimailGetVar("routeid",0);
 
 $bgcolor = "#EEEEEE";
 

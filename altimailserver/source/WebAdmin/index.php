@@ -25,7 +25,7 @@
    set_exception_handler("ExceptionHandler");
    set_error_handler("ErrorHandler");
    
-   $page = hmailGetVar("page");
+   $page = altimailGetVar("page");
    
    if ($page == "")
       $page = "frontpage";
@@ -42,7 +42,7 @@
    $page = basename($page, ".php");
    
    if (!file_exists('./' . $page . '.php'))
-      hmailHackingAttemp();
+      altimailHackingAttempt();
 
    if ($_SERVER['REQUEST_METHOD'] == 'POST' || $isbackground)	
    {
@@ -110,7 +110,7 @@
       <tr> 
          <?php
          
-         if (hmail_isloggedin())
+         if (altimail_isloggedin())
          {
          ?>
             <td valign="top" width="240">

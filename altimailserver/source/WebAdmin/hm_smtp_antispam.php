@@ -2,44 +2,44 @@
 if (!defined('IN_WEBADMIN'))
    exit();
 
-if (hmailGetAdminLevel() != 2)
-	hmailHackingAttemp();
+if (altimailGetAdminLevel() != 2)
+	altimailHackingAttempt();
 
 $obSettings	= $obBaseApp->Settings();
 $obAntiSpam	= $obSettings->AntiSpam;
 
-$action	   = hmailGetVar("action","");
+$action	   = altimailGetVar("action","");
 
 $antiSpamSettings = $obSettings->AntiSpam;
 
 if($action == "save")
 {
-   $antiSpamSettings->SpamMarkThreshold = hmailGetVar("SpamMarkThreshold",0);
-   $antiSpamSettings->SpamDeleteThreshold = hmailGetVar("SpamDeleteThreshold",0);
+   $antiSpamSettings->SpamMarkThreshold = altimailGetVar("SpamMarkThreshold",0);
+   $antiSpamSettings->SpamDeleteThreshold = altimailGetVar("SpamDeleteThreshold",0);
 
-   $antiSpamSettings->SpamAssassinEnabled = hmailGetVar("SpamAssassinEnabled", 0);
-   $antiSpamSettings->SpamAssassinHost = hmailGetVar("SpamAssassinHost", 0);
-   $antiSpamSettings->SpamAssassinPort = hmailGetVar("SpamAssassinPort", 0);
-   $antiSpamSettings->SpamAssassinMergeScore = hmailGetVar("SpamAssassinMergeScore", 0);
-   $antiSpamSettings->SpamAssassinScore = hmailGetVar("SpamAssassinScore", 0);
+   $antiSpamSettings->SpamAssassinEnabled = altimailGetVar("SpamAssassinEnabled", 0);
+   $antiSpamSettings->SpamAssassinHost = altimailGetVar("SpamAssassinHost", 0);
+   $antiSpamSettings->SpamAssassinPort = altimailGetVar("SpamAssassinPort", 0);
+   $antiSpamSettings->SpamAssassinMergeScore = altimailGetVar("SpamAssassinMergeScore", 0);
+   $antiSpamSettings->SpamAssassinScore = altimailGetVar("SpamAssassinScore", 0);
 
-   $antiSpamSettings->UseSPF= hmailGetVar("usespf",0);
-   $antiSpamSettings->UseSPFScore = hmailGetVar("usespfscore",0);
-   $antiSpamSettings->UseMXChecks= hmailGetVar("usemxchecks",0);
-   $antiSpamSettings->UseMXChecksScore = hmailGetVar("usemxchecksscore",0);
-   $antiSpamSettings->CheckHostInHelo = hmailGetVar("checkhostinhelo", 0);
-   $antiSpamSettings->CheckHostInHeloScore = hmailGetVar("checkhostinheloscore", 0);
-   $antiSpamSettings->CheckPTR = hmailGetVar("checkptr", 0);
-   $antiSpamSettings->CheckPTRScore = hmailGetVar("checkptrscore", 0);
+   $antiSpamSettings->UseSPF= altimailGetVar("usespf",0);
+   $antiSpamSettings->UseSPFScore = altimailGetVar("usespfscore",0);
+   $antiSpamSettings->UseMXChecks= altimailGetVar("usemxchecks",0);
+   $antiSpamSettings->UseMXChecksScore = altimailGetVar("usemxchecksscore",0);
+   $antiSpamSettings->CheckHostInHelo = altimailGetVar("checkhostinhelo", 0);
+   $antiSpamSettings->CheckHostInHeloScore = altimailGetVar("checkhostinheloscore", 0);
+   $antiSpamSettings->CheckPTR = altimailGetVar("checkptr", 0);
+   $antiSpamSettings->CheckPTRScore = altimailGetVar("checkptrscore", 0);
 
-   $antiSpamSettings->AddHeaderSpam = hmailGetVar("AddHeaderSpam", 0);
-   $antiSpamSettings->AddHeaderReason = hmailGetVar("AddHeaderReason", 0);
-   $antiSpamSettings->PrependSubject = hmailGetVar("PrependSubject", 0);
-   $antiSpamSettings->PrependSubjectText = hmailGetVar("PrependSubjectText", "");
-   $antiSpamSettings->MaximumMessageSize = hmailGetVar("MaximumMessageSize", 0);
+   $antiSpamSettings->AddHeaderSpam = altimailGetVar("AddHeaderSpam", 0);
+   $antiSpamSettings->AddHeaderReason = altimailGetVar("AddHeaderReason", 0);
+   $antiSpamSettings->PrependSubject = altimailGetVar("PrependSubject", 0);
+   $antiSpamSettings->PrependSubjectText = altimailGetVar("PrependSubjectText", "");
+   $antiSpamSettings->MaximumMessageSize = altimailGetVar("MaximumMessageSize", 0);
 
-   $antiSpamSettings->DKIMVerificationEnabled = hmailGetVar("DKIMVerificationEnabled", 0);
-   $antiSpamSettings->DKIMVerificationFailureScore = hmailGetVar("DKIMVerificationFailureScore", 0);
+   $antiSpamSettings->DKIMVerificationEnabled = altimailGetVar("DKIMVerificationEnabled", 0);
+   $antiSpamSettings->DKIMVerificationFailureScore = altimailGetVar("DKIMVerificationFailureScore", 0);
 }
 
 $SpamMarkThreshold = $antiSpamSettings->SpamMarkThreshold;
@@ -69,9 +69,9 @@ $AddHeaderReason =   $antiSpamSettings->AddHeaderReason;
 $PrependSubject =   $antiSpamSettings->PrependSubject;
 $PrependSubjectText =   $antiSpamSettings->PrependSubjectText;
 
-$AddHeaderSpamChecked = hmailCheckedIf1($AddHeaderSpam);
-$AddHeaderReasonChecked = hmailCheckedIf1($AddHeaderReason);
-$PrependSubjectChecked = hmailCheckedIf1($PrependSubject);
+$AddHeaderSpamChecked = altimailCheckedIf1($AddHeaderSpam);
+$AddHeaderReasonChecked = altimailCheckedIf1($AddHeaderReason);
+$PrependSubjectChecked = altimailCheckedIf1($PrependSubject);
 ?>
 
 <script language="javascript" type="text/javascript">
@@ -128,11 +128,11 @@ function TestSpamAssassinConnection()
                   PrintPropertyEditRow("SpamMarkThreshold", "Spam mark threshold", $SpamMarkThreshold);
                   ?>
             	<tr>
-            		<td>&nbsp;&nbsp;&nbsp;<?php EchoTranslation("Add X-hMailServer-Spam")?></td>
+            		<td>&nbsp;&nbsp;&nbsp;<?php EchoTranslation("Add X-Altimail Server-Spam")?></td>
             		<td><input type="checkbox" name="AddHeaderSpam" value="1" <?php echo $AddHeaderSpamChecked?>></td>
             	</tr> 		
             	<tr>
-            		<td>&nbsp;&nbsp;&nbsp;<?php EchoTranslation("Add X-hMailServer-Reason")?></td>
+            		<td>&nbsp;&nbsp;&nbsp;<?php EchoTranslation("Add X-Altimail Server-Reason")?></td>
             		<td><input type="checkbox" name="AddHeaderReason" value="1" <?php echo $AddHeaderReasonChecked?>></td>
             	</tr> 		  
             	<tr>

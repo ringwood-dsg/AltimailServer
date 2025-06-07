@@ -8,10 +8,10 @@ $dtitem=0;
 $dtree = "d.add(" . $dtitem++ .",-1,'" . GetStringForJavaScript("Welcome") . "','index.php','','','','');\r\n";
 $username = $_SESSION['session_username'];
 
-if (hmailGetAdminLevel() == 0)
+if (altimailGetAdminLevel() == 0)
 {
     // User
-    $domainname = hmailGetUserDomainName($username);
+    $domainname = altimailGetUserDomainName($username);
     
     $obDomain = $obBaseApp->Domains->ItemByName($domainname);
     $obAccounts = $obDomain->Accounts;
@@ -30,12 +30,12 @@ if (hmailGetAdminLevel() == 0)
 }
 
 
-if (hmailGetAdminLevel() == 1)
+if (altimailGetAdminLevel() == 1)
 {
     // Domain
     $dtree .= "d.add(" . $dtitem++ .",0,'" . GetStringForJavaScript("Domains") . "','','','','" . "images/server.png','" . "images/server.png');\r\n";
     
-    $domainname = hmailGetUserDomainName($username);
+    $domainname = altimailGetUserDomainName($username);
     
     $obDomain = $obBaseApp->Domains->ItemByName($domainname);
     
@@ -44,7 +44,7 @@ if (hmailGetAdminLevel() == 1)
     GetStringForDomain($obDomain,1);
 }
 
-if (hmailGetAdminLevel() == 2)
+if (altimailGetAdminLevel() == 2)
 {
     $obSettings	= $obBaseApp->Settings();
     
@@ -185,8 +185,8 @@ function GetStringForDomain($obDomain, $parentid)
 {
     global $dtree, $dtitem, $domain_root;
     
-    $current_domainid = hmailGetVar("domainid",0);
-    $current_accountid = hmailGetVar("accountid",0);
+    $current_domainid = altimailGetVar("domainid",0);
+    $current_accountid = altimailGetVar("accountid",0);
     
     $domainname = $obDomain->Name;
     $domainname = PreprocessOutput($domainname);
@@ -194,7 +194,7 @@ function GetStringForDomain($obDomain, $parentid)
     
     $dtree .= "d.add($domain_root,$parentid,'" . $domainname . "','index.php?page=domain&action=edit&domainid=" . $obDomain->ID . "','','','" . "images/server.png','" . "images/server.png');\r\n";
     
-    if ($current_domainid != $obDomain->ID && hmailGetAdminLevel() == ADMIN_SERVER)
+    if ($current_domainid != $obDomain->ID && altimailGetAdminLevel() == ADMIN_SERVER)
     {
         // If the user is logged on as a system administrator, only show accounts
         // for the currently selected domain.

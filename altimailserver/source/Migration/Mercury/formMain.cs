@@ -37,7 +37,7 @@ namespace MercuryMigrate
 
       private void wizard_PageChanged(int currentPage, int lastPage)
       {
-         this.Text = "Mercury to hMailServer Migration - Step " + currentPage.ToString() + " of " + lastPage.ToString();
+         this.Text = "Mercury to Altimail Server Migration - Step " + currentPage.ToString() + " of " + lastPage.ToString();
       }
    }
 }

@@ -2,12 +2,12 @@
 if (!defined('IN_WEBADMIN'))
    exit();
 
-if (hmailGetAdminLevel() != 2)
-	hmailHackingAttemp(); 
+if (altimailGetAdminLevel() != 2)
+	altimailHackingAttempt(); 
 	
-$routeid 	= hmailGetVar("routeid",0);
-$routeaddressid	= hmailGetVar("routeaddressid",0);
-$action	   = hmailGetVar("action","");
+$routeid 	= altimailGetVar("routeid",0);
+$routeaddressid	= altimailGetVar("routeaddressid",0);
+$action	   = altimailGetVar("action","");
 
 $routeaddress = "";
 

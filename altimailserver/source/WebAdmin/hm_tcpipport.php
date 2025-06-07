@@ -3,11 +3,11 @@
 if (!defined('IN_WEBADMIN'))
    exit();
 
-if (hmailGetAdminLevel() != 2)
-	hmailHackingAttemp(); // Not server admin
+if (altimailGetAdminLevel() != 2)
+	altimailHackingAttempt(); // Not server admin
 
-$tcpipportid 	= hmailGetVar("tcpipportid",0);
-$action	      = hmailGetVar("action","");
+$tcpipportid 	= altimailGetVar("tcpipportid",0);
+$action	      = altimailGetVar("action","");
 
 $obSettings	   = $obBaseApp->Settings();
 $obTCPIPPOrts  = $obSettings->TCPIPPorts;

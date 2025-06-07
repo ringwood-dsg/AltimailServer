@@ -2,17 +2,17 @@
 if (!defined('IN_WEBADMIN'))
    exit();
 
-if (hmailGetAdminLevel() != 2)
-	hmailHackingAttemp();
+if (altimailGetAdminLevel() != 2)
+	altimailHackingAttempt();
 
 $obSettings	= $obBaseApp->Settings();
 
-$action	   = hmailGetVar("action","");
+$action	   = altimailGetVar("action","");
 
 if($action == "save")
 {
-	$obSettings->MaxPOP3Connections= hmailGetVar("maxpop3connections",0);
-	$obSettings->WelcomePOP3= hmailGetVar("welcomepop3",0);
+	$obSettings->MaxPOP3Connections= altimailGetVar("maxpop3connections",0);
+	$obSettings->WelcomePOP3= altimailGetVar("welcomepop3",0);
 }
 
 $maxpop3connections = $obSettings->MaxPOP3Connections;     

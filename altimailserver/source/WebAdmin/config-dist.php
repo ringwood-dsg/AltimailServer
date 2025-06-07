@@ -18,21 +18,21 @@ extension=php_com_dotnet.dll
 
    Example:
    
-      $hmail_config['rooturl']			= "http://www.mydomain.com/PHPWebAdmin/";
+      $altimail_config['rooturl']			= "http://www.mydomain.com/PHPWebAdmin/";
 */ 
 
-$hmail_config['rooturl']			= "http://localhost/";
+$altimail_config['rooturl']			= "http://localhost/";
 
 /*
    The user interface language for PHPWebAdmin. Note that this language
-   must be set up as a valid language in hMailServer.ini.
+   must be set up as a valid language in Altimail Server.ini.
    
    Example:
    
-      $hmail_config['defaultlanguage']	= "english";
+      $altimail_config['defaultlanguage']	= "english";
 */ 
 
-$hmail_config['defaultlanguage']	= "english";
+$altimail_config['defaultlanguage']	= "english";
 
 /*
 
@@ -62,6 +62,6 @@ $hmail_config['defaultlanguage']	= "english";
       2 - Only server administrators should be allowed access.
 */
 
-$hmail_config['rule_editing_level']	= 2;
+$altimail_config['rule_editing_level']	= 2;
 
 ?>

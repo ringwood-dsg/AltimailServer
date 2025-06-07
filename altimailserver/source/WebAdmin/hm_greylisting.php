@@ -2,23 +2,23 @@
 if (!defined('IN_WEBADMIN'))
    exit();
 
-if (hmailGetAdminLevel() != ADMIN_SERVER)
-	hmailHackingAttemp();
+if (altimailGetAdminLevel() != ADMIN_SERVER)
+	altimailHackingAttempt();
 
-$action	   = hmailGetVar("action","");   
+$action	   = altimailGetVar("action","");   
    
 $obSettings	= $obBaseApp->Settings();
 $antiSpamSettings = $obSettings->AntiSpam;
 
 if($action == "save")
 {
-	$antiSpamSettings->GreyListingEnabled = hmailGetVar("greylistingenabled", 0);
-	$antiSpamSettings->GreyListingInitialDelay = hmailGetVar("greylistinginitialdelay", 0);
-	$antiSpamSettings->GreyListingInitialDelete = hmailGetVar("greylistinginitialdelete", 0) * 24;
-	$antiSpamSettings->GreyListingFinalDelete = hmailGetVar("greylistingfinaldelete", 0) * 24;
+	$antiSpamSettings->GreyListingEnabled = altimailGetVar("greylistingenabled", 0);
+	$antiSpamSettings->GreyListingInitialDelay = altimailGetVar("greylistinginitialdelay", 0);
+	$antiSpamSettings->GreyListingInitialDelete = altimailGetVar("greylistinginitialdelete", 0) * 24;
+	$antiSpamSettings->GreyListingFinalDelete = altimailGetVar("greylistingfinaldelete", 0) * 24;
 
-   $antiSpamSettings->BypassGreylistingOnSPFSuccess = hmailGetVar("BypassGreylistingOnSPFSuccess", 0); 
-   $antiSpamSettings->BypassGreylistingOnMailFromMX = hmailGetVar("BypassGreylistingOnMailFromMX", 0); 
+   $antiSpamSettings->BypassGreylistingOnSPFSuccess = altimailGetVar("BypassGreylistingOnSPFSuccess", 0); 
+   $antiSpamSettings->BypassGreylistingOnMailFromMX = altimailGetVar("BypassGreylistingOnMailFromMX", 0); 
 	
 }
 
@@ -26,7 +26,7 @@ $greylistingenabled =   $antiSpamSettings->GreyListingEnabled;
 $greylistinginitialdelay = $antiSpamSettings->GreyListingInitialDelay;
 $greylistinginitialdelete = $antiSpamSettings->GreyListingInitialDelete / 24;
 $greylistingfinaldelete = $antiSpamSettings->GreyListingFinalDelete / 24;
-$greylistingenabledchecked = hmailCheckedIf1($greylistingenabled);
+$greylistingenabledchecked = altimailCheckedIf1($greylistingenabled);
 $BypassGreylistingOnSPFSuccess = $antiSpamSettings->BypassGreylistingOnSPFSuccess;
 $BypassGreylistingOnMailFromMX = $antiSpamSettings->BypassGreylistingOnMailFromMX;
 

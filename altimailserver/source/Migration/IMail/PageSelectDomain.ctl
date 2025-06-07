@@ -58,7 +58,7 @@ Private Function IWizardPage_Initialize(oWizard As Wizard) As Variant
 End Function
 
 Private Function IWizardPage_Caption() As String
-   IWizardPage_Caption = "Select hMailServer domain to import to"
+    IWizardPage_Caption = "Select Altimail Server domain to import to"
 End Function
 
 Private Function IWizardPage_OnLeavePage(iButton As Button) As Boolean
@@ -80,7 +80,7 @@ End Function
 
 Private Sub UserControl_Initialize()
    Dim obApp As Object
-   Set obApp = CreateObject("hMailServer.Application")
+   Set obApp = CreateObject("AltimailServer.Application")
    
    Dim obDomains As Object
    Dim obDomain As Object

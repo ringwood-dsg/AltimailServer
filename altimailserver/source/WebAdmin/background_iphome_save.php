@@ -2,12 +2,12 @@
    if (!defined('IN_WEBADMIN'))
       exit();
 
-   if (hmailGetAdminLevel() != 2)
-   	hmailHackingAttemp(); // Only server admins can change this.
+   if (altimailGetAdminLevel() != 2)
+   	altimailHackingAttempt(); // Only server admins can change this.
 
-   $iphomeid 	= hmailGetVar("iphomeid",0);
-   $iphomeaddress	= hmailGetVar("iphomeaddress",0);
-   $action	   = hmailGetVar("action","");
+   $iphomeid 	= altimailGetVar("iphomeid",0);
+   $iphomeaddress	= altimailGetVar("iphomeaddress",0);
+   $action	   = altimailGetVar("action","");
    
    $obSettings	= $obBaseApp->Settings();
    $obIPHomes  = $obSettings->IPHomes;

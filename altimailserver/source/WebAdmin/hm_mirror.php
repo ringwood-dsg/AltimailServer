@@ -2,15 +2,15 @@
 if (!defined('IN_WEBADMIN'))
    exit();
 
-if (hmailGetAdminLevel() != 2)
-	hmailHackingAttemp();
+if (altimailGetAdminLevel() != 2)
+	altimailHackingAttempt();
 
 $obSettings	= $obBaseApp->Settings();
 
-$action	   = hmailGetVar("action","");
+$action	   = altimailGetVar("action","");
 
 if($action == "save")
-	$obSettings->MirrorEMailAddress= hmailGetVar("mirroremailaddress",0);
+	$obSettings->MirrorEMailAddress= altimailGetVar("mirroremailaddress",0);
 
 $mirroremailaddress = $obSettings->MirrorEMailAddress;      
 ?>

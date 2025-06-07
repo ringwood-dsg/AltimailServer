@@ -2,11 +2,11 @@
 if (!defined('IN_WEBADMIN'))
    exit();
 
-if (hmailGetAdminLevel() != 2)
-	hmailHackingAttemp(); // Domain admin but not for this domain.
+if (altimailGetAdminLevel() != 2)
+	altimailHackingAttempt(); // Domain admin but not for this domain.
 
-$routeid	         = hmailGetVar("routeid",0);
-$action	         = hmailGetVar("action","");
+$routeid	         = altimailGetVar("routeid",0);
+$action	         = altimailGetVar("action","");
 
 $obRoutes	= $obSettings->Routes();
 

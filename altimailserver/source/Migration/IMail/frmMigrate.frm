@@ -1,8 +1,8 @@
 VERSION 5.00
 Begin VB.Form frmMigrate 
    BorderStyle     =   1  'Fixed Single
-   Caption         =   "IMail to hMailServer"
-   ClientHeight    =   5130
+Caption = "IMail to Altimail Server"
+ClientHeight    =   5130
    ClientLeft      =   45
    ClientTop       =   360
    ClientWidth     =   7920
@@ -34,7 +34,7 @@ Private Sub Form_Load()
    
    LoadLanguage
    
-   Set m_obApp = CreateObject("hMailServer.Application")
+   Set m_obApp = CreateObject("AltimailServer.Application")
    If AuthenticateUser(m_obApp) = False Then
       End
    End If

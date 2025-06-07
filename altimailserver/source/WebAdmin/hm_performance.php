@@ -2,37 +2,37 @@
 if (!defined('IN_WEBADMIN'))
    exit();
 
-if (hmailGetAdminLevel() != 2)
-	hmailHackingAttemp();
+if (altimailGetAdminLevel() != 2)
+	altimailHackingAttempt();
 
 $obSettings	= $obBaseApp->Settings();
 $obCache    = $obSettings->Cache();
 
-$action	   = hmailGetVar("action","");
+$action	   = altimailGetVar("action","");
 
 if($action == "save")
 {
-	$obCache->Enabled		            = hmailGetVar("cacheenabled",0);
-	$obCache->DomainCacheTTL         = hmailGetVar("cachedomainttl",0); 
-	$obCache->AccountCacheTTL		   = hmailGetVar("cacheaccountttl",0);
+	$obCache->Enabled		            = altimailGetVar("cacheenabled",0);
+	$obCache->DomainCacheTTL         = altimailGetVar("cachedomainttl",0); 
+	$obCache->AccountCacheTTL		   = altimailGetVar("cacheaccountttl",0);
 	
-   $obCache->AliasCacheTTL            = hmailGetVar("cachealiasttl",0);
-   $obCache->DistributionListCacheTTL = hmailGetVar("cachedistributionlistttl",0);
+   $obCache->AliasCacheTTL            = altimailGetVar("cachealiasttl",0);
+   $obCache->DistributionListCacheTTL = altimailGetVar("cachedistributionlistttl",0);
 	
-	$obSettings->TCPIPThreads        = hmailGetVar("tcpipthreads", 0);
-	$obSettings->MaxDeliveryThreads  = hmailGetVar("maxdeliverythreads", 0);
-	$obSettings->MaxAsynchronousThreads = hmailGetVar("MaxAsynchronousThreads", 0);
-   $obSettings->WorkerThreadPriority = hmailGetVar("workerthreadpriority", 0);
+	$obSettings->TCPIPThreads        = altimailGetVar("tcpipthreads", 0);
+	$obSettings->MaxDeliveryThreads  = altimailGetVar("maxdeliverythreads", 0);
+	$obSettings->MaxAsynchronousThreads = altimailGetVar("MaxAsynchronousThreads", 0);
+   $obSettings->WorkerThreadPriority = altimailGetVar("workerthreadpriority", 0);
    
    
-   $obSettings->MessageIndexing->Enabled = hmailGetVar("MessageIndexingEnabled", 0);
+   $obSettings->MessageIndexing->Enabled = altimailGetVar("MessageIndexingEnabled", 0);
 }
 else if ($action == "ClearMessageIndexingCache")
 {
    $obSettings->MessageIndexing->Clear();
 }
 
-$cacheenabledchecked = hmailCheckedIf1($obCache->Enabled);
+$cacheenabledchecked = altimailCheckedIf1($obCache->Enabled);
     
 $cachedomainttl = $obCache->DomainCacheTTL;
 $cacheaccountttl = $obCache->AccountCacheTTL;

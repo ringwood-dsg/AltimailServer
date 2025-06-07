@@ -14,7 +14,7 @@ define("CONNECTION_SECURITY_STARTTLSREQUIRED", 3);
 
 define("CSRF_TOKEN_PARAMNAME", "csrftoken");
 
-function hmailGetVar($p_varname, $p_defaultvalue = null, $p_isnumeric = false)
+function altimailGetVar($p_varname, $p_defaultvalue = null, $p_isnumeric = false)
 {
 	$retval = $p_defaultvalue;
 	if(isset($_GET[$p_varname]))
@@ -39,14 +39,14 @@ function hmailGetVar($p_varname, $p_defaultvalue = null, $p_isnumeric = false)
 }
 
 
-function hmailGetUserDomainName($username)
+function altimailGetUserDomainName($username)
 {
 	$atpos = strpos($username, "@");
 	$domain = substr($username, $atpos + 1);
 	return $domain;
 }
 
-function hmailGetAdminLevel()
+function altimailGetAdminLevel()
 {
 	if (isset($_SESSION["session_adminlevel"]))
 		return $_SESSION["session_adminlevel"];
@@ -54,7 +54,7 @@ function hmailGetAdminLevel()
 		return -1;
 }
 
-function hmailGetDomainID()
+function altimailGetDomainID()
 {
 	if (isset($_SESSION["session_domainid"]))
 		return $_SESSION["session_domainid"];
@@ -62,7 +62,7 @@ function hmailGetDomainID()
 		return -1;
 }
 
-function hmailGetAccountID()
+function altimailGetAccountID()
 {
 	if (isset($_SESSION["session_accountid"]))
 		return $_SESSION["session_accountid"];
@@ -70,7 +70,7 @@ function hmailGetAccountID()
 		return -1;
 }
 
-function hmail_isloggedin()
+function altimail_isloggedin()
 {
    if (isset($_SESSION['session_loggedin']) && 
              $_SESSION['session_loggedin'] == "1")
@@ -79,25 +79,25 @@ function hmail_isloggedin()
       return false;
 }
 
-function hmailHackingAttemp()
+function altimailHackingAttempt()
 {
 	include "hm_permission_denied.php";
 	
 	exit();
 }
 
-function hmailHasDomainAccess($domainid)
+function altimailHasDomainAccess($domainid)
 {
-	if (hmailGetAdminLevel() == 2)
+	if (altimailGetAdminLevel() == 2)
 		return true;
 
-	if (hmailGetAdminLevel() == 1 && hmailGetDomainID() == $domainid)
+	if (altimailGetAdminLevel() == 1 && altimailGetDomainID() == $domainid)
 		return true;
 		
 	return false;
 }
 
-function hmailCheckedIf1($value)
+function altimailCheckedIf1($value)
 {
    if ($value == "1")
       return "checked";  
@@ -227,7 +227,7 @@ function PrintCheckboxRow($name, $caption, $checked, $disabled = false)
    global $obLanguage;
    $caption = $obLanguage->String($caption);
    
-   $checked_text = hmailCheckedIf1($checked);
+   $checked_text = altimailCheckedIf1($checked);
    
    $disabledstr = "";
    if ($disabled){
@@ -301,19 +301,19 @@ function PreprocessOutput($outputString)
 function GetHasRuleAccess($domainid, $accountid)
 {
 
-   global $hmail_config;
+   global $altimail_config;
  
    
-   if (hmailGetAdminLevel() == ADMIN_SERVER)
+   if (altimailGetAdminLevel() == ADMIN_SERVER)
    {
       // server admin always have access.
       return true;
    }
-   else if (hmailGetAdminLevel() == ADMIN_DOMAIN)
+   else if (altimailGetAdminLevel() == ADMIN_DOMAIN)
    {
       // Domain admin has access if domain access is enabled.
-      if ($hmail_config['rule_editing_level'] == ADMIN_DOMAIN &&
-          hmailGetDomainID() == $domainid &&
+      if ($altimail_config['rule_editing_level'] == ADMIN_DOMAIN &&
+          altimailGetDomainID() == $domainid &&
           $accountid != 0)
       {
           return true;
@@ -321,18 +321,18 @@ function GetHasRuleAccess($domainid, $accountid)
       
       // Domain admin has access if user-level is permitted and the account
       // is under the domain admins control.
-      if ($hmail_config['rule_editing_level'] == ADMIN_USER &&
-          hmailGetDomainID() == $domainid)
+      if ($altimail_config['rule_editing_level'] == ADMIN_USER &&
+          altimailGetDomainID() == $domainid)
       {
          return true;
       }   
    }
-   else if (hmailGetAdminLevel() == ADMIN_USER)
+   else if (altimailGetAdminLevel() == ADMIN_USER)
    {
       // user has access if enabled and the rule is connected to his account.
-      if ($hmail_config['rule_editing_level'] == ADMIN_USER &&
-          hmailGetDomainID() == $domainid &&
-          hmailGetAccountID() == $accountid)
+      if ($altimail_config['rule_editing_level'] == ADMIN_USER &&
+          altimailGetDomainID() == $domainid &&
+          altimailGetAccountID() == $accountid)
       {
          return true;
       }         
@@ -381,7 +381,7 @@ function validate_csrf_token_supplied()
 
 	$expected_token = get_csrf_session_token();
 	
-	$actual_token = hmailGetVar("csrftoken");
+	$actual_token = altimailGetVar("csrftoken");
 	
 	if (strcmp($expected_token, $actual_token) !== 0)
 	{

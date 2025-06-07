@@ -2,8 +2,8 @@
 if (!defined('IN_WEBADMIN'))
    exit();
 
-if (hmailGetAdminLevel() != ADMIN_SERVER)
-	hmailHackingAttemp(); // Users are not allowed to show this page.
+if (altimailGetAdminLevel() != ADMIN_SERVER)
+	altimailHackingAttempt(); // Users are not allowed to show this page.
 
 ?>
 <h1><?php EchoTranslation("DNS blacklists")?></h1>

@@ -21,7 +21,7 @@ Private m_sDatabase As String
 
 Private Sub LoadDBSettings()
    Dim obApp As Object
-   Set obApp = CreateObject("hMailServer.Application")
+   Set obApp = CreateObject("AltimailServer.Application")
    
    Dim sIniFile As String
    sIniFile = obApp.InitializationFile

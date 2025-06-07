@@ -2,21 +2,21 @@
 if (!defined('IN_WEBADMIN'))
    exit();
 
-if (hmailGetAdminLevel() != 2)
-	hmailHackingAttemp();
+if (altimailGetAdminLevel() != 2)
+	altimailHackingAttempt();
 
 $obSettings	= $obBaseApp->Settings();
 $obBackup    = $obSettings->Backup();
 
-$action	   = hmailGetVar("action","");
+$action	   = altimailGetVar("action","");
 
 if($action == "save")
 {
-	$obBackup->Destination = hmailGetVar("backupdestination",0);
-	$obBackup->BackupSettings = hmailGetVar("backupsettings",0);
-	$obBackup->BackupDomains = hmailGetVar("backupdomains",0);
-	$obBackup->BackupMessages = hmailGetVar("backupmessages",0);
-	$obBackup->CompressDestinationFiles = hmailGetVar("backupcompress",0);
+	$obBackup->Destination = altimailGetVar("backupdestination",0);
+	$obBackup->BackupSettings = altimailGetVar("backupsettings",0);
+	$obBackup->BackupDomains = altimailGetVar("backupdomains",0);
+	$obBackup->BackupMessages = altimailGetVar("backupmessages",0);
+	$obBackup->CompressDestinationFiles = altimailGetVar("backupcompress",0);
 }
 elseif ($action == "startbackup")
 {
@@ -29,10 +29,10 @@ $backupdomains = $obBackup->BackupDomains;
 $backupmessages = $obBackup->BackupMessages;
 $backupcompress = $obBackup->CompressDestinationFiles;
 
-$backupsettingschecked = hmailCheckedIf1($backupsettings);
-$backupdomainschecked = hmailCheckedIf1($backupdomains);
-$backupmessageschecked = hmailCheckedIf1($backupmessages);
-$backupcompresschecked = hmailCheckedIf1($backupcompress);
+$backupsettingschecked = altimailCheckedIf1($backupsettings);
+$backupdomainschecked = altimailCheckedIf1($backupdomains);
+$backupmessageschecked = altimailCheckedIf1($backupmessages);
+$backupcompresschecked = altimailCheckedIf1($backupcompress);
 
 ?>
 

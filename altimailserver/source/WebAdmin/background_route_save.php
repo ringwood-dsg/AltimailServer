@@ -3,11 +3,11 @@
    if (!defined('IN_WEBADMIN'))
       exit();
 
-   if (hmailGetAdminLevel() != 2)
-   	hmailHackingAttemp(); // Domain admin but not for this domain.
+   if (altimailGetAdminLevel() != 2)
+   	altimailHackingAttempt(); // Domain admin but not for this domain.
    
-   $action	            = hmailGetVar("action","");
-   $routeid	   = hmailGetVar("routeid","");
+   $action	            = altimailGetVar("action","");
+   $routeid	   = altimailGetVar("routeid","");
    
    if ($action == "edit")
       $obRoute     = $obBaseApp->Settings->Routes->ItemByDBID($routeid);
@@ -21,18 +21,18 @@
    }
    
    
-   $routedomainname  = hmailGetVar("routedomainname","");
-   $routetargetsmtphost   = hmailGetVar("routetargetsmtphost","0");
-   $routetargetsmtpport   = hmailGetVar("routetargetsmtpport","0");
-   $TreatSenderAsLocalDomain   = hmailGetVar("TreatSenderAsLocalDomain","0");
-   $TreatRecipientAsLocalDomain   = hmailGetVar("TreatRecipientAsLocalDomain","0");
+   $routedomainname  = altimailGetVar("routedomainname","");
+   $routetargetsmtphost   = altimailGetVar("routetargetsmtphost","0");
+   $routetargetsmtpport   = altimailGetVar("routetargetsmtpport","0");
+   $TreatSenderAsLocalDomain   = altimailGetVar("TreatSenderAsLocalDomain","0");
+   $TreatRecipientAsLocalDomain   = altimailGetVar("TreatRecipientAsLocalDomain","0");
    
-   $routenumberoftries        = hmailGetVar("routenumberoftries","0");
-   $routemminutesbetweentry   = hmailGetVar("routemminutesbetweentry","0");
-   $routerequiresauth   = hmailGetVar("routerequiresauth","0");
-   $routeauthusername   = hmailGetVar("routeauthusername","0");
-   $routeauthpassword   = hmailGetVar("routeauthpassword","0");
-   $ConnectionSecurity   = hmailGetVar("ConnectionSecurity","0");
+   $routenumberoftries        = altimailGetVar("routenumberoftries","0");
+   $routemminutesbetweentry   = altimailGetVar("routemminutesbetweentry","0");
+   $routerequiresauth   = altimailGetVar("routerequiresauth","0");
+   $routeauthusername   = altimailGetVar("routeauthusername","0");
+   $routeauthpassword   = altimailGetVar("routeauthpassword","0");
+   $ConnectionSecurity   = altimailGetVar("ConnectionSecurity","0");
    
    $obRoute->DomainName = $routedomainname;
    $obRoute->TargetSMTPHost = $routetargetsmtphost;
@@ -45,7 +45,7 @@
    $obRoute->RelayerRequiresAuth = $routerequiresauth;
    $obRoute->RelayerAuthUsername = $routeauthusername;
    
-   $obRoute->AllAddresses = hmailGetVar("AllAddresses","0");
+   $obRoute->AllAddresses = altimailGetVar("AllAddresses","0");
    
    $obRoute->ConnectionSecurity = $ConnectionSecurity;
    

@@ -1,7 +1,7 @@
 Option Explicit
 
 Dim oApp
-Set oApp = CreateObject("hMailServer.Application")
+Set oApp = CreateObject("AltimailServer.Application")
 
 Dim lTotalCount
 lTotalCount = 0
@@ -9,7 +9,7 @@ lTotalCount = 0
 
 ' BEGIN: Authenticate the client.
 Dim sAdminPwd
-sAdminPwd = InputBox("Enter your main hMailServer administrator password.", "hMailServer")
+sAdminPwd = InputBox("Enter your main Altimail Server administrator password.", "Altimail Server")
 Call oApp.Authenticate ("Administrator", sAdminPwd)
 ' END: Authenticate the client.
 

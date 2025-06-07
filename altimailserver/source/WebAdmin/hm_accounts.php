@@ -7,13 +7,13 @@ if (!defined('IN_WEBADMIN'))
 
 <?php
 
-$domainid  = hmailGetVar("domainid",null, true);
+$domainid  = altimailGetVar("domainid",null, true);
 
-if (hmailGetAdminLevel() == 0)
-	hmailHackingAttemp(); // Users are not allowed to show this page.
+if (altimailGetAdminLevel() == 0)
+	altimailHackingAttempt(); // Users are not allowed to show this page.
 
-if (hmailGetAdminLevel() == 1 && $domainid != hmailGetDomainID())
-	hmailHackingAttemp(); // Domain admin but not for this domain.
+if (altimailGetAdminLevel() == 1 && $domainid != altimailGetDomainID())
+	altimailHackingAttempt(); // Domain admin but not for this domain.
 
 echo '<table border="0" width="100%" cellpadding="5">';
 
@@ -26,7 +26,7 @@ $Count = $obAccounts->Count();
 
 $str_delete = $obLanguage->String("Remove");
 
-$currentaccountid = hmailGetAccountID();
+$currentaccountid = altimailGetAccountID();
 
 $str_accountaddress  = $obLanguage->String("Address");
 $str_maxsizemb       = $obLanguage->String("Maximum size (MB)");

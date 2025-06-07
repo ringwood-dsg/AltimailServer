@@ -2,11 +2,11 @@
    if (!defined('IN_WEBADMIN'))
       exit();
 
-   if (hmailGetAdminLevel() != 2)
-   	hmailHackingAttemp(); // Only server admins can change this.
+   if (altimailGetAdminLevel() != 2)
+   	altimailHackingAttempt(); // Only server admins can change this.
    
-   $ID 		= hmailGetVar("ID",0);
-   $action	      = hmailGetVar("action","");
+   $ID 		= altimailGetVar("ID",0);
+   $action	      = altimailGetVar("action","");
    
    $obWhiteListAddresses	= $obBaseApp->Settings()->AntiSpam()->WhiteListAddresses;
 
@@ -21,10 +21,10 @@
       exit();
    }
       
-   $LowerIPAddress = hmailGetVar("LowerIPAddress",0);
-   $UpperIPAddress = hmailGetVar("UpperIPAddress",0);
-   $EmailAddress   = hmailGetVar("EmailAddress",0);
-   $Description    = hmailGetVar("Description",0);
+   $LowerIPAddress = altimailGetVar("LowerIPAddress",0);
+   $UpperIPAddress = altimailGetVar("UpperIPAddress",0);
+   $EmailAddress   = altimailGetVar("EmailAddress",0);
+   $Description    = altimailGetVar("Description",0);
    
    if ($LowerIPAddress == "")
       $LowerIPAddress = "0.0.0.0";

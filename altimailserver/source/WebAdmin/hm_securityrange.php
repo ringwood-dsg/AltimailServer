@@ -2,11 +2,11 @@
 if (!defined('IN_WEBADMIN'))
    exit();
 
-if (hmailGetAdminLevel() != 2)
-	hmailHackingAttemp(); // The user is not server administrator
+if (altimailGetAdminLevel() != 2)
+	altimailHackingAttempt(); // The user is not server administrator
 
-$securityrangeid	= hmailGetVar("securityrangeid",0);
-$action	         	= hmailGetVar("action","");
+$securityrangeid	= altimailGetVar("securityrangeid",0);
+$action	         	= altimailGetVar("action","");
 	
 $securityrangename="";
 $securityrangepriority = 100;
@@ -67,16 +67,16 @@ if ($action == "edit")
    $ExpiresTime            = $obSecurityRange->ExpiresTime;
 }
 
-$allowsmtpconnectionschecked	= hmailCheckedIf1($allowsmtpconnections);
-$allowpop3connectionschecked	= hmailCheckedIf1($allowpop3connections);
-$allowimapconnectionschecked	= hmailCheckedIf1($allowimapconnections);
+$allowsmtpconnectionschecked	= altimailCheckedIf1($allowsmtpconnections);
+$allowpop3connectionschecked	= altimailCheckedIf1($allowpop3connections);
+$allowimapconnectionschecked	= altimailCheckedIf1($allowimapconnections);
 
-$allowlocaltolocalchecked	= hmailCheckedIf1($allowlocaltolocal);
-$allowlocaltoremotechecked	= hmailCheckedIf1($allowlocaltoremote);
-$allowremotetolocalchecked	= hmailCheckedIf1($allowremotetolocal);
-$allowremotetoremotechecked = hmailCheckedIf1($allowremotetoremote);
+$allowlocaltolocalchecked	= altimailCheckedIf1($allowlocaltolocal);
+$allowlocaltoremotechecked	= altimailCheckedIf1($allowlocaltoremote);
+$allowremotetolocalchecked	= altimailCheckedIf1($allowremotetolocal);
+$allowremotetoremotechecked = altimailCheckedIf1($allowremotetoremote);
 
-$IsForwardingRelayChecked   = hmailCheckedIf1($IsForwardingRelay);
+$IsForwardingRelayChecked   = altimailCheckedIf1($IsForwardingRelay);
 ?>
 
 <h1><?php EchoTranslation("IP range")?></h1>

@@ -2,22 +2,22 @@
 if (!defined('IN_WEBADMIN'))
    exit();
 
-$domainid	= hmailGetVar("domainid",0,true);
-$accountid	= hmailGetVar("accountid",0,true);
-$action	   = hmailGetVar("action","");
+$domainid	= altimailGetVar("domainid",0,true);
+$accountid	= altimailGetVar("accountid",0,true);
+$action	   = altimailGetVar("action","");
 
-$error_message	   = hmailGetVar("error_message","");
+$error_message	   = altimailGetVar("error_message","");
 
-if (hmailGetAdminLevel() == 0 && ($accountid != hmailGetAccountID() || $action != "edit" || $domainid != hmailGetDomainID()))
-   hmailHackingAttemp();
+if (altimailGetAdminLevel() == 0 && ($accountid != altimailGetAccountID() || $action != "edit" || $domainid != altimailGetDomainID()))
+   altimailHackingAttempt();
 
-if (hmailGetAdminLevel() == 1 && $domainid != hmailGetDomainID())
-	hmailHackingAttemp(); // Domain admin but not for this domain.
+if (altimailGetAdminLevel() == 1 && $domainid != altimailGetDomainID())
+	altimailHackingAttempt(); // Domain admin but not for this domain.
 
 $obDomain	= $obBaseApp->Domains->ItemByDBID($domainid);
 
-$admin_rights = (hmailGetAdminLevel()  === ADMIN_SERVER || 
-				     hmailGetAdminLevel()  === ADMIN_DOMAIN);
+$admin_rights = (altimailGetAdminLevel()  === ADMIN_SERVER || 
+				     altimailGetAdminLevel()  === ADMIN_DOMAIN);
 				
 $accountactive = 1;
 $accountmaxsize = 0;
@@ -86,9 +86,9 @@ if ($action == "edit")
    $SignaturePlainText = $obAccount->SignaturePlainText;
 }
 
-$SignatureEnabledChecked = hmailCheckedIf1($SignatureEnabled);   
-$vacationmessageexpireschecked = hmailCheckedIf1($vacationmessageexpires);   
-$accountactivechecked = hmailCheckedIf1($accountactive);
+$SignatureEnabledChecked = altimailCheckedIf1($SignatureEnabled);   
+$vacationmessageexpireschecked = altimailCheckedIf1($vacationmessageexpires);   
+$accountactivechecked = altimailCheckedIf1($accountactive);
 
 $domainname = $obDomain->Name;
 
@@ -277,7 +277,7 @@ $str_server = $obLanguage->String("Server");
          </table>
       </div>       
        
-      <?php if (hmailGetAdminLevel() != ADMIN_USER)
+      <?php if (altimailGetAdminLevel() != ADMIN_USER)
       {
       ?>
          <div class="tabbertab">

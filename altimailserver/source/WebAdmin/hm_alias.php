@@ -3,17 +3,17 @@
 if (!defined('IN_WEBADMIN'))
    exit();
 
-$domainid	= hmailGetVar("domainid",0,true);
-$aliasid	   = hmailGetVar("aliasid",0, true);
-$action	   = hmailGetVar("action","");
+$domainid	= altimailGetVar("domainid",0,true);
+$aliasid	   = altimailGetVar("aliasid",0, true);
+$action	   = altimailGetVar("action","");
 
-$error_message	   = hmailGetVar("error_message","");
+$error_message	   = altimailGetVar("error_message","");
 
-if (hmailGetAdminLevel() == 0)
-   hmailHackingAttemp();
+if (altimailGetAdminLevel() == 0)
+   altimailHackingAttempt();
 
-if (hmailGetAdminLevel() == 1 && $domainid != hmailGetDomainID())
-	hmailHackingAttemp(); // Domain admin but not for this domain.
+if (altimailGetAdminLevel() == 1 && $domainid != altimailGetDomainID())
+	altimailHackingAttempt(); // Domain admin but not for this domain.
 				     
 $obDomain	= $obBaseApp->Domains->ItemByDBID($domainid);
 
@@ -32,7 +32,7 @@ if ($action == "edit")
 
 $domainname = $obDomain->Name;
 
-$aliasactivechecked = hmailCheckedIf1($aliasactive);
+$aliasactivechecked = altimailCheckedIf1($aliasactive);
 
 ?>
 

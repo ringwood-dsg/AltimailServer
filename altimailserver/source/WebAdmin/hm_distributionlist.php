@@ -2,17 +2,17 @@
 if (!defined('IN_WEBADMIN'))
    exit();
 
-$domainid  = hmailGetVar("domainid",null);
-$distributionlistid	         = hmailGetVar("distributionlistid",0);
-$action	                     = hmailGetVar("action","");
+$domainid  = altimailGetVar("domainid",null);
+$distributionlistid	         = altimailGetVar("distributionlistid",0);
+$action	                     = altimailGetVar("action","");
 
-$error_message	   = hmailGetVar("error_message","");
+$error_message	   = altimailGetVar("error_message","");
 
-if (hmailGetAdminLevel() == 0)
-   hmailHackingAttemp();
+if (altimailGetAdminLevel() == 0)
+   altimailHackingAttempt();
 
-if (hmailGetAdminLevel() == 1 && $domainid != hmailGetDomainID())
-	hmailHackingAttemp(); // Domain admin but not for this domain.
+if (altimailGetAdminLevel() == 1 && $domainid != altimailGetDomainID())
+	altimailHackingAttempt(); // Domain admin but not for this domain.
 
 $obDomain	= $obBaseApp->Domains->ItemByDBID($domainid);
 
@@ -43,8 +43,8 @@ else
 
 $domainname = $obDomain->Name;
 
-$listactivechecked = hmailCheckedIf1($listactive);
-$listrequiresmtpauthchecked = hmailCheckedIf1($listrequiresmtpauth);
+$listactivechecked = altimailCheckedIf1($listactive);
+$listrequiresmtpauthchecked = altimailCheckedIf1($listrequiresmtpauth);
 ?>
 
 <h1><?php EchoTranslation("Distribution list")?></h1>

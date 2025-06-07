@@ -2,15 +2,15 @@
    if (!defined('IN_WEBADMIN'))
       exit();
 
-   if (hmailGetAdminLevel() != 2)
-      hmailHackingAttemp(); // Server admin required
+   if (altimailGetAdminLevel() != 2)
+      altimailHackingAttempt(); // Server admin required
 
-   $tcpipportid 	= hmailGetVar("tcpipportid",0);
-   $protocol	   = hmailGetVar("protocol",0);
-   $portnumber	   = hmailGetVar("portnumber",0);
-   $action	      = hmailGetVar("action","");
-   $ConnectionSecurity	      = hmailGetVar("ConnectionSecurity","0");
-   $SSLCertificateID	      = hmailGetVar("SSLCertificateID","0");
+   $tcpipportid 	= altimailGetVar("tcpipportid",0);
+   $protocol	   = altimailGetVar("protocol",0);
+   $portnumber	   = altimailGetVar("portnumber",0);
+   $action	      = altimailGetVar("action","");
+   $ConnectionSecurity	      = altimailGetVar("ConnectionSecurity","0");
+   $SSLCertificateID	      = altimailGetVar("SSLCertificateID","0");
    
    $obSettings   = $obBaseApp->Settings();
    $obTCPIPPorts  = $obSettings->TCPIPPorts;
@@ -30,7 +30,7 @@
    $obTCPIPPort->PortNumber = $portnumber;
    $obTCPIPPort->ConnectionSecurity = $ConnectionSecurity;
    $obTCPIPPort->SSLCertificateID = $SSLCertificateID;
-   $obTCPIPPort->Address = hmailGetVar("Address","0");
+   $obTCPIPPort->Address = altimailGetVar("Address","0");
    
    $obTCPIPPort->Save();
    

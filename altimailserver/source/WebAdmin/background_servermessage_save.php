@@ -2,17 +2,17 @@
    if (!defined('IN_WEBADMIN'))
       exit();
 
-   if (hmailGetAdminLevel() != ADMIN_SERVER)
-   	hmailHackingAttemp(); // The user is not server administrator.
+   if (altimailGetAdminLevel() != ADMIN_SERVER)
+   	altimailHackingAttempt(); // The user is not server administrator.
    
-   $messageid	      = hmailGetVar("messageid",0);
-   $messagename	   = hmailGetVar("messagename",0);
-   $messagetext	   = hmailGetVar("messagetext",0);
+   $messageid	      = altimailGetVar("messageid",0);
+   $messagename	   = altimailGetVar("messagename",0);
+   $messagetext	   = altimailGetVar("messagetext",0);
    
    $obServerMessage     = $obBaseApp->Settings->ServerMessages->ItemByDBID($messageid);
    
    if ($obServerMessage->Name != $messagename)
-      hmailHackingAttemp();
+      altimailHackingAttempt();
       
    $obServerMessage->Text = $messagetext;
    $obServerMessage->Save();

@@ -2,36 +2,36 @@
 if (!defined('IN_WEBADMIN'))
    exit();
 
-if (hmailGetAdminLevel() != 2)
-	hmailHackingAttemp();
+if (altimailGetAdminLevel() != 2)
+	altimailHackingAttempt();
 
 $obSettings	= $obBaseApp->Settings();
 $obAntivirus	= $obSettings->AntiVirus();
 
-$action	   = hmailGetVar("action","");
+$action	   = altimailGetVar("action","");
 
 $str_delete = $obLanguage->String("Remove");
 
 if($action == "save")
 {
-	$obAntivirus->Action            = hmailGetVar("avaction",0);
-	$obAntivirus->NotifySender      = hmailGetVar("avnotifysender",0);
-	$obAntivirus->NotifyReceiver    = hmailGetVar("avnotifyreceiver",0);
-	$obAntivirus->MaximumMessageSize = hmailGetVar("MaximumMessageSize",0);
+	$obAntivirus->Action            = altimailGetVar("avaction",0);
+	$obAntivirus->NotifySender      = altimailGetVar("avnotifysender",0);
+	$obAntivirus->NotifyReceiver    = altimailGetVar("avnotifyreceiver",0);
+	$obAntivirus->MaximumMessageSize = altimailGetVar("MaximumMessageSize",0);
    
-	$obAntivirus->ClamWinEnabled    = hmailGetVar("clamwinenabled",0);
-	$obAntivirus->ClamWinExecutable = hmailGetVar("clamwinexecutable",0);
-	$obAntivirus->ClamWinDBFolder   = hmailGetVar("clamwindbfolder",0);
+	$obAntivirus->ClamWinEnabled    = altimailGetVar("clamwinenabled",0);
+	$obAntivirus->ClamWinExecutable = altimailGetVar("clamwinexecutable",0);
+	$obAntivirus->ClamWinDBFolder   = altimailGetVar("clamwindbfolder",0);
 	
-	$obAntivirus->ClamAVEnabled    = hmailGetVar("ClamAVEnabled",0);
-	$obAntivirus->ClamAVHost = hmailGetVar("ClamAVHost","");
-	$obAntivirus->ClamAVPort   = hmailGetVar("ClamAVPort","");
+	$obAntivirus->ClamAVEnabled    = altimailGetVar("ClamAVEnabled",0);
+	$obAntivirus->ClamAVHost = altimailGetVar("ClamAVHost","");
+	$obAntivirus->ClamAVPort   = altimailGetVar("ClamAVPort","");
 	
-	$obAntivirus->CustomScannerEnabled    = hmailGetVar("customscannerenabled",0);
-	$obAntivirus->CustomScannerExecutable = hmailGetVar("customscannerexecutable",0);
-	$obAntivirus->CustomScannerReturnValue = hmailGetVar("customscannerreturnvalue",0);	
+	$obAntivirus->CustomScannerEnabled    = altimailGetVar("customscannerenabled",0);
+	$obAntivirus->CustomScannerExecutable = altimailGetVar("customscannerexecutable",0);
+	$obAntivirus->CustomScannerReturnValue = altimailGetVar("customscannerreturnvalue",0);	
 	
-   $obAntivirus->EnableAttachmentBlocking = hmailGetVar("EnableAttachmentBlocking",0);	
+   $obAntivirus->EnableAttachmentBlocking = altimailGetVar("EnableAttachmentBlocking",0);	
 }
 
 
@@ -56,8 +56,8 @@ $customscannerenabled    = $obAntivirus->CustomScannerEnabled;
 $customscannerexecutable = $obAntivirus->CustomScannerExecutable;     
 $customscannerreturnvalue    = $obAntivirus->CustomScannerReturnValue;  
 
-$avactiondeletemailchecked = hmailCheckedIf1($avaction == 0);
-$avactiondeletattachmentschecked = hmailCheckedIf1($avaction == 1);
+$avactiondeletemailchecked = altimailCheckedIf1($avaction == 0);
+$avactiondeletattachmentschecked = altimailCheckedIf1($avaction == 1);
 
 ?>
 

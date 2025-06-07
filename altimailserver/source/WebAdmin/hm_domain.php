@@ -4,13 +4,13 @@ if (!defined('IN_WEBADMIN'))
    exit();
    
 
-$domainid	= hmailGetVar("domainid",0,true);
-$action	   = hmailGetVar("action","");
+$domainid	= altimailGetVar("domainid",0,true);
+$action	   = altimailGetVar("action","");
 
-if (hmailGetAdminLevel() == 1 && ($domainid != hmailGetDomainID() || $action != "edit"))
-	hmailHackingAttemp(); 
+if (altimailGetAdminLevel() == 1 && ($domainid != altimailGetDomainID() || $action != "edit"))
+	altimailHackingAttempt(); 
 
-$admin_rights = (hmailGetAdminLevel()  === ADMIN_SERVER);
+$admin_rights = (altimailGetAdminLevel()  === ADMIN_SERVER);
 
 $domainname = "";
 $domainactive = 1;
@@ -96,17 +96,17 @@ if ($action == "edit")
    
 }
 
-$domainactivechecked = hmailCheckedIf1($domainactive);
-$domainplusaddressingenabledchecked = hmailCheckedIf1($domainplusaddressingenabled);
-$domainantispamenablegreylistingchecked = hmailCheckedIf1($domainantispamenablegreylisting);
+$domainactivechecked = altimailCheckedIf1($domainactive);
+$domainplusaddressingenabledchecked = altimailCheckedIf1($domainplusaddressingenabled);
+$domainantispamenablegreylistingchecked = altimailCheckedIf1($domainantispamenablegreylisting);
 
-$SignatureEnabledChecked = hmailCheckedIf1($SignatureEnabled);
-$AddSignaturesToLocalMailChecked = hmailCheckedIf1($AddSignaturesToLocalMail);
-$AddSignaturesToRepliesChecked   = hmailCheckedIf1($AddSignaturesToReplies);
+$SignatureEnabledChecked = altimailCheckedIf1($SignatureEnabled);
+$AddSignaturesToLocalMailChecked = altimailCheckedIf1($AddSignaturesToLocalMail);
+$AddSignaturesToRepliesChecked   = altimailCheckedIf1($AddSignaturesToReplies);
 
-$MaxNumberOfAccountsEnabledChecked          = hmailCheckedIf1($MaxNumberOfAccountsEnabled);
-$MaxNumberOfAliasesEnabledChecked           = hmailCheckedIf1($MaxNumberOfAliasesEnabled);
-$MaxNumberOfDistributionListsEnabledChecked = hmailCheckedIf1($MaxNumberOfDistributionListsEnabled);
+$MaxNumberOfAccountsEnabledChecked          = altimailCheckedIf1($MaxNumberOfAccountsEnabled);
+$MaxNumberOfAliasesEnabledChecked           = altimailCheckedIf1($MaxNumberOfAliasesEnabled);
+$MaxNumberOfDistributionListsEnabledChecked = altimailCheckedIf1($MaxNumberOfDistributionListsEnabled);
 ?>
 
      
@@ -162,7 +162,7 @@ $MaxNumberOfDistributionListsEnabledChecked = hmailCheckedIf1($MaxNumberOfDistri
       </div>
       
       <?php
-         if (isset($obDomain) && hmailGetAdminLevel() == ADMIN_SERVER)
+         if (isset($obDomain) && altimailGetAdminLevel() == ADMIN_SERVER)
          {
          
          $str_delete = $obLanguage->String("Remove");

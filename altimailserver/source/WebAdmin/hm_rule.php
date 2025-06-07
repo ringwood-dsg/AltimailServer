@@ -2,14 +2,14 @@
 if (!defined('IN_WEBADMIN'))
    exit();
 
-$action = hmailGetVar("action", "");   
-$domainid = hmailGetVar("domainid", 0, true);
-$accountid = hmailGetVar("accountid", 0, true);
-$ruleid = hmailGetVar("ruleid", 0, true);
+$action = altimailGetVar("action", "");   
+$domainid = altimailGetVar("domainid", 0, true);
+$accountid = altimailGetVar("accountid", 0, true);
+$ruleid = altimailGetVar("ruleid", 0, true);
    
 // check permissions
 if (!GetHasRuleAccess($domainid, $accountid))
-	hmailHackingAttemp(); // The user has no rule editing permissions.
+	altimailHackingAttempt(); // The user has no rule editing permissions.
 
 include "include/rule_strings.php";
 

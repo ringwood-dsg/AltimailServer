@@ -2,56 +2,56 @@
 if (!defined('IN_WEBADMIN'))
    exit();
 
-if (hmailGetAdminLevel() != 2)
-	hmailHackingAttemp();
+if (altimailGetAdminLevel() != 2)
+	altimailHackingAttempt();
 
 $obSettings	= $obBaseApp->Settings();
 
-$action	   = hmailGetVar("action","");
+$action	   = altimailGetVar("action","");
 
 if($action == "save")
 {
 	// General
-	$obSettings->MaxSMTPConnections = hmailGetVar("maxsmtpconnections",0);
-	$obSettings->WelcomeSMTP 	    = hmailGetVar("welcomesmtp",0);
+	$obSettings->MaxSMTPConnections = altimailGetVar("maxsmtpconnections",0);
+	$obSettings->WelcomeSMTP 	    = altimailGetVar("welcomesmtp",0);
 
 
 	// Delivery of email
-	$obSettings->SMTPNoOfTries= hmailGetVar("smtpnooftries",0);
-	$obSettings->SMTPMinutesBetweenTry= hmailGetVar("smtpminutesbetweentry",0);
-	$obSettings->HostName= hmailGetVar("HostName", "");
+	$obSettings->SMTPNoOfTries= altimailGetVar("smtpnooftries",0);
+	$obSettings->SMTPMinutesBetweenTry= altimailGetVar("smtpminutesbetweentry",0);
+	$obSettings->HostName= altimailGetVar("HostName", "");
    
    
-    $obSettings->SMTPRelayer= hmailGetVar("smtprelayer",0);
-	$obSettings->SMTPRelayerPort= hmailGetVar("smtprelayerport",0);
-    $obSettings->SMTPRelayerRequiresAuthentication = hmailGetVar("SMTPRelayerRequiresAuthentication",0);
-    $obSettings->SMTPRelayerUsername = hmailGetVar("SMTPRelayerUsername","");
-    $obSettings->SMTPRelayerConnectionSecurity = hmailGetVar("SMTPRelayerConnectionSecurity","0");
+    $obSettings->SMTPRelayer= altimailGetVar("smtprelayer",0);
+	$obSettings->SMTPRelayerPort= altimailGetVar("smtprelayerport",0);
+    $obSettings->SMTPRelayerRequiresAuthentication = altimailGetVar("SMTPRelayerRequiresAuthentication",0);
+    $obSettings->SMTPRelayerUsername = altimailGetVar("SMTPRelayerUsername","");
+    $obSettings->SMTPRelayerConnectionSecurity = altimailGetVar("SMTPRelayerConnectionSecurity","0");
 	  
-    if (hmailGetVar("SMTPRelayerPassword","") != "")
-      $obSettings->SetSMTPRelayerPassword(hmailGetVar("SMTPRelayerPassword",""));
+    if (altimailGetVar("SMTPRelayerPassword","") != "")
+      $obSettings->SetSMTPRelayerPassword(altimailGetVar("SMTPRelayerPassword",""));
    
 	
-	$obSettings->RuleLoopLimit = hmailGetVar("smtprulelooplimit",0);
+	$obSettings->RuleLoopLimit = altimailGetVar("smtprulelooplimit",0);
 	
-	$obSettings->MaxMessageSize = hmailGetVar("maxmessagesize",0);
+	$obSettings->MaxMessageSize = altimailGetVar("maxmessagesize",0);
 	
-	$obSettings->SMTPDeliveryBindToIP = hmailGetVar("smtpdeliverybindtoip", "");
-	$obSettings->MaxSMTPRecipientsInBatch = hmailGetVar("maxsmtprecipientsinbatch", "0");
+	$obSettings->SMTPDeliveryBindToIP = altimailGetVar("smtpdeliverybindtoip", "");
+	$obSettings->MaxSMTPRecipientsInBatch = altimailGetVar("maxsmtprecipientsinbatch", "0");
 	
 	// RFC compliance
-	$obSettings->AllowSMTPAuthPlain = hmailGetVar("AllowSMTPAuthPlain",0);
-	$obSettings->DenyMailFromNull = hmailGetVar("AllowMailFromNull",0) == "0";
-	$obSettings->AllowIncorrectLineEndings = hmailGetVar("AllowIncorrectLineEndings",0);
-	$obSettings->DisconnectInvalidClients = hmailGetVar("DisconnectInvalidClients",0);
-	$obSettings->MaxNumberOfInvalidCommands = hmailGetVar("MaxNumberOfInvalidCommands",0);
+	$obSettings->AllowSMTPAuthPlain = altimailGetVar("AllowSMTPAuthPlain",0);
+	$obSettings->DenyMailFromNull = altimailGetVar("AllowMailFromNull",0) == "0";
+	$obSettings->AllowIncorrectLineEndings = altimailGetVar("AllowIncorrectLineEndings",0);
+	$obSettings->DisconnectInvalidClients = altimailGetVar("DisconnectInvalidClients",0);
+	$obSettings->MaxNumberOfInvalidCommands = altimailGetVar("MaxNumberOfInvalidCommands",0);
 	
-	$obSettings->AddDeliveredToHeader = hmailGetVar("AddDeliveredToHeader",0);		
+	$obSettings->AddDeliveredToHeader = altimailGetVar("AddDeliveredToHeader",0);		
 
-	$obSettings->MaxNumberOfMXHosts = hmailGetVar("MaxNumberOfMXHosts", 15);
+	$obSettings->MaxNumberOfMXHosts = altimailGetVar("MaxNumberOfMXHosts", 15);
 	
 	// Advanced
-	$obSettings->SMTPConnectionSecurity = hmailGetVar("SMTPConnectionSecurity", 0) ? CONNECTION_SECURITY_STARTTLSOPTIONAL : CONNECTION_SECURITY_NONE;
+	$obSettings->SMTPConnectionSecurity = altimailGetVar("SMTPConnectionSecurity", 0) ? CONNECTION_SECURITY_STARTTLSOPTIONAL : CONNECTION_SECURITY_NONE;
 }
 
 // General
@@ -84,10 +84,10 @@ $DisconnectInvalidClients     = $obSettings->DisconnectInvalidClients;
 $MaxNumberOfInvalidCommands     = $obSettings->MaxNumberOfInvalidCommands;
 $AddDeliveredToHeader = $obSettings->AddDeliveredToHeader;
 
-$AllowSMTPAuthPlainChecked = hmailCheckedIf1($AllowSMTPAuthPlain);
-$AllowMailFromNullChecked    = hmailCheckedIf1($AllowMailFromNull);
-$AllowIncorrectLineEndingsChecked = hmailCheckedIf1($AllowIncorrectLineEndings);
-$DisconnectInvalidClientsChecked = hmailCheckedIf1($DisconnectInvalidClients);
+$AllowSMTPAuthPlainChecked = altimailCheckedIf1($AllowSMTPAuthPlain);
+$AllowMailFromNullChecked    = altimailCheckedIf1($AllowMailFromNull);
+$AllowIncorrectLineEndingsChecked = altimailCheckedIf1($AllowIncorrectLineEndings);
+$DisconnectInvalidClientsChecked = altimailCheckedIf1($DisconnectInvalidClients);
 
 $MaxNumberOfMXHosts = $obSettings->MaxNumberOfMXHosts;
 

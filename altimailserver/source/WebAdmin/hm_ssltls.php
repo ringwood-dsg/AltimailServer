@@ -2,26 +2,26 @@
 if (!defined('IN_WEBADMIN'))
    exit();
 
-if (hmailGetAdminLevel() != 2)
-	hmailHackingAttemp();
+if (altimailGetAdminLevel() != 2)
+	altimailHackingAttempt();
 
 $obSettings	= $obBaseApp->Settings();
 
-$action	   = hmailGetVar("action","");
+$action	   = altimailGetVar("action","");
 
 if($action == "save")
 {
-	$obSettings->VerifyRemoteSslCertificate= hmailGetVar("VerifyRemoteSslCertificate",0);
-	$obSettings->SslCipherList = hmailGetVar("SslCipherList", "");
+	$obSettings->VerifyRemoteSslCertificate= altimailGetVar("VerifyRemoteSslCertificate",0);
+	$obSettings->SslCipherList = altimailGetVar("SslCipherList", "");
 	
-	$obSettings->TlsVersion10Enabled = hmailGetVar("TlsVersion10Enabled", 0);
-	$obSettings->TlsVersion11Enabled = hmailGetVar("TlsVersion11Enabled", 0);
-	$obSettings->TlsVersion12Enabled = hmailGetVar("TlsVersion12Enabled", 0);
-	$obSettings->TlsVersion13Enabled = hmailGetVar("TlsVersion13Enabled", 0);
+	$obSettings->TlsVersion10Enabled = altimailGetVar("TlsVersion10Enabled", 0);
+	$obSettings->TlsVersion11Enabled = altimailGetVar("TlsVersion11Enabled", 0);
+	$obSettings->TlsVersion12Enabled = altimailGetVar("TlsVersion12Enabled", 0);
+	$obSettings->TlsVersion13Enabled = altimailGetVar("TlsVersion13Enabled", 0);
 
-	$obSettings->TlsOptionPreferServerCiphersEnabled = hmailGetVar("TlsOptionPreferServerCiphersEnabled", 0);
-	if (hmailGetVar("TlsVersion12Enabled", 0) > 0 || hmailGetVar("TlsVersion13Enabled", 0) > 0 ) {
-		$obSettings->TlsOptionPrioritizeChaChaEnabled = hmailGetVar("TlsOptionPrioritizeChaChaEnabled", 0);
+	$obSettings->TlsOptionPreferServerCiphersEnabled = altimailGetVar("TlsOptionPreferServerCiphersEnabled", 0);
+	if (altimailGetVar("TlsVersion12Enabled", 0) > 0 || altimailGetVar("TlsVersion13Enabled", 0) > 0 ) {
+		$obSettings->TlsOptionPrioritizeChaChaEnabled = altimailGetVar("TlsOptionPrioritizeChaChaEnabled", 0);
 	}
 	else {
 		$obSettings->TlsOptionPrioritizeChaChaEnabled = 0;	
