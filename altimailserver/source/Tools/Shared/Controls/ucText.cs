@@ -2,10 +2,6 @@
 // http://www.hmailserver.com
 
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace AltimailServer.Shared
@@ -118,6 +114,5 @@ namespace AltimailServer.Shared
 
          base.OnKeyPress(e);
       }
-
    }
 }
