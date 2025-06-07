@@ -24,7 +24,8 @@ Altimail Server is an open-source free-to-use email server for Microsoft Windows
 - Scripting engine for custom logic (using VBScript)
 - Domain and user management
 - SQL-database support (Microsoft SQL Server, MySQL, MariaDB, and PostgreSQL)
-- Web-based administration interface (`php` currently)
+- Web-based administration interface (`php` currently - being retired)
+- ASP.NET Core administration interface (planned)
 - Active development roadmap toward Altimail Server/hMailServer 6 and beyond
 
 It's an ideal solution for self-hosters, hobbyists, businesses, and developers who need full control over their email infrastructure on Windows platforms.
@@ -52,7 +53,7 @@ structural changes to be aware of.
 > [!WARNING]
 > Altimail Server **is not binary compatible** with hMailServer.
 > 
-> 32-bit support **is being deprecated** and should **no longer** be relied upon.
+> 32-bit support **is being phased out** and only **64-bit** builds will be released.
 
 Altimail Server introduces the following **breaking** changes:
 
@@ -77,9 +78,10 @@ changes apart from any required database upgrades.
 
 ## 💾 System Requirements
 
-- **Microsoft Windows Server 2008 R2+SP1/Windows 7+SP1 or later**
+- **Microsoft Windows 7 (64-bit) with SP1** or later
+- **Microsoft Windows Server 2008 R2 with SP1** or later
 - **.NET Framework 4.8**
-- A **supported database engine**, either local or remote
+- A **supported database engine**, either locally installed or accessed remotely
 
 Altimail Server currently supports the following database engines:
 
@@ -100,11 +102,14 @@ To deliver a secure and future-ready email server, **Altimail Server drops suppo
 2. **Access to Modern Features** 
    By focusing on supported Windows versions and modern databases, Altimail Server can **take full advantage of newer APIs**, **security models**, **performance improvements**, and **developer tooling** - 
    all of which contribute to a more stable and feature-rich mail server.
+3. **Vulnerability Awareness**
+   Older operating systems and database engines, no longer being supported, may contain vulnerabilities fixed in newer versions. We prioritise security over 
+   convenience and this may lead to some versions of a given database engine or OS being deprecated in future builds of Altimail Server.
    
 #### What This Means:
 
-- **Altimail Server only runs on versions of Windows that are currently under Microsoft's mainstream or extended support**.
-- Older database engines that lack current support or security updates may not be compatible. 
+- Altimail Server only runs on versions of Windows that are currently under **Microsoft's mainstream or extended support**.
+- Older database engines that lack current support or security updates will be deprecated in future releases.
 - If your infrastructure _depends on legacy platforms_, you can continue using your current hMailServer setup - but Altimail Server is designed for those ready to move forward.
 
 By narrowing our support scope, we make Altimail Server **safer**, **faster**, and **better equipped for the future** of Windows-based mail services.
@@ -117,14 +122,15 @@ Altimail Server supports both **MySQL** and **MariaDB** databases, but there are
 
 #### ✅ MariaDB - Native Support 
 
-Altimail Server now provides **built-in support for MariaDB** through the **MariaDB C Connector**, which is compiled and distributed as part of the Altimail Server application. This ensures seamless integration, 
-improved performance, and avoids external licensing issues. No additional setup is required - it's ready out of the box.
+Altimail Server now provides **built-in support for MariaDB** through the [**MariaDB Connector/C**](https://mariadb.com/kb/en/mariadb-connector-c/), which is compiled and distributed as part of the Altimail 
+Server application. This ensures seamless integration, improved performance, and avoids external licensing issues. The MariaDB Connector/C is licensed under 
+the GNU LGPL v2 or later, making it compatible with Altimail Server's AGPLv3 license. No additional setup is required - it's ready out of the box.
 
 #### ⚠️ MySQL - User-Supplied Connector Required 
 
-While MySQL databases are still supported, Altimail Server **does not ship with the MySQL connector**. This is due to license incompatibilities: the MySQL Connector/C is licensed under GPLv2, which is not 
-compatible with Altimail Server's AGPLv3 license. If you wish to use MySQL as your database of choice, you will need to provide this connector (also known as `libmysql.dll`) when configuring your 
-database.
+Altimail Server maintains full support for MySQL databases **but does not ship with the MySQL connector**. This is due to license incompatibilities: the MySQL 
+Connector/C is licensed under GPLv2, which is not compatible with Altimail Server's AGPLv3 license. If you wish to use MySQL as your database of choice, you will 
+need to provide this connector (also known as `libmysql.dll`) when configuring your database.
 
 > [!WARNING]
 > Altimail Server is built for x64 architectures. When supplying the `libmysql.dll` connector file, please ensure that you supply the **64-bit/x64/amd64** version!
@@ -181,14 +187,18 @@ Next, make sure the following **individual components** are selected:
 
 - .NET Framework 4.8 SDK
 - .NET Framework 4.8 targeting pack
+- Git for Windows
 - C++ ATL for latest v143 build tools (x86 & x64) 
 - Windows 10 SDK (10.0.26100.0)
 
 #### Environment Variable
-Altimail Server requires a system environment variable to resolve some of its assemblies during build. Create a **system environment variable** named `AltimailServerLibs` and set its value to the path 
-where you will store your extra assemblies, such as `C:\Dev\AltimailServerLibs`. From this point forward we will refer to this location as `AltimailServerLibs`.
+Altimail Server requires a system environment variable to resolve some of its assemblies during build. 
 
-_If you happened to forget to follow this step, and Visual Studio is open, make sure you **restart** Visual Studio to make the new environment variable visible._
+Create a **system environment variable** named `AltimailServerLibs` and set its value to the path 
+where you will store your extra assemblies, such as `C:\Dev\AltimailServerLibs`. From this point forward we will refer to this location as `%AltimailServerLibs%`.
+
+> [!TIP]
+> If you happened to forget to follow this step, and Visual Studio is open, make sure you **restart** Visual Studio to make the new environment variable visible.
 
 #### OpenSSL Setup
 1. Download [OpenSSL 3.0.16 LTS](https://openssl-library.org/source/).
@@ -199,23 +209,26 @@ _If you happened to forget to follow this step, and Visual Studio is open, make 
 
    <pre>
    SET CFLAGS=-DOPENSSL_TLS_SECURITY_LEVEL=0
-   Perl Configure no-asm VC-WIN64A --prefix=%cd%\out64 --openssldir=%cd%\out64 -D_WIN32_WINNT=0x603 --api=1.1.1 no-deprecated
+   Perl Configure no-asm VC-WIN64A --prefix=%cd%\out64 --openssldir=%cd%\out64 -D_WIN32_WINNT=0x601 --api=1.1.1 no-deprecated
    nmake clean   
    nmake install_sw
    </pre>
 
 #### Boost Setup
 #### Option A: Precompiled Binaries
-Contrary to popular belief, you can use the precompiled binaries directly from the Boost website. By ensuring the Altimail Server codebase uses the newest standards, and follows Boost' usage of these standards, along with those of OpenSSL, we can make Altimail Server work with Boost' precompiled binaries. This is how Altimail Server has been configured.
+Altimail Server's codebase is being modernised and as part of that modernisation strategy, the codebase is becoming compatible with the precompiled libraries 
+available from Boost. All you need to do is download the Windows binary and install it to your `%AltimailServerLibs%` folder.
 
 1. Download the [Boost 1.84.0 Windows Binary](https://www.boost.org/), e.g. `boost_1_84_0-msvc-14.3-64.exe`. 
 2. Run the installer and make sure you install it to `%AltimailServerLibs%\boost_1_84_0`. Again, **not** `%AltimailServerLibs%\boost_1_84_0\boost_1_84_0`!
+
+Once Boost has been installed, you should be good to go.
 
 #### Option B: Build it yourself
 If you're still old school and want to build Boost yourself, you are free to do so. This is what you need to do:
 
 > [!IMPORTANT]
-> After you have built Boost, please ensure that you set your linker to use `%AltimailServerLibs%\boost_1_84_0\stage\lib` and not `%AltimailServerLibs%\boost_1_84_0\libs`.
+> After you have built Boost, please ensure that you set your linker to use `%AltimailServerLibs%\boost_1_84_0\stage\lib` and not❗`%AltimailServerLibs%\boost_1_84_0\libs`.
 
 1. Download [Boost 1.84.0](https://www.boost.org/).
 2. Extract it to `%AltimailServerLibs%`. You should now have `%AltimailServerLibs%\boost_1_84_0` which itself contains a bunch of files. *Ensure you don't extract to `%AltimailServerLibs%\boost_1_84_0\boost_1_84_0`!*
@@ -273,7 +286,8 @@ If you find no serious issues or concerns, you can proceed with releasing your o
 - Change your current directory to where Altimail Server was built, e.g. `altimailserver\source\Server\AltimailServer\x64\Release\AltimailServer.exe`.
 - Now run `gflags /p /enable AltimailServer.exe`.
 4. Wait for **at least 500 downloads** before moving your build from `beta` to `release`.
-5. Run for **at least 1 month** in production for eligibility for inclusion as an official release on _altimailserver.org_.
+
+---
 
 ## 🧑‍🤝‍🧑 Community & Contributions
 
@@ -286,9 +300,13 @@ We welcome, and encourage, all contributions - whether it's code, documentation,
 
 We encourage **respectful**, **constructive engagement** in line with our Code of Conduct.
 
+---
+
 ## 📃 License
 
 Altimail Server is licensed under the GNU AGPLv3, in line with the original hMailServer license terms.
+
+---
 
 ## 🙏 Credits
 
