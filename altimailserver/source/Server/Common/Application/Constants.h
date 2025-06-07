@@ -138,4 +138,4 @@
 #define PROPERTY_IPV6_PREFERRED  _T("IPv6Preferred")
 
 //HINT: Also update the Client tools (DBUpgrade) to include the script for the new version!
-#define REQUIRED_DB_VERSION            6000
+#define REQUIRED_DB_VERSION            5708
