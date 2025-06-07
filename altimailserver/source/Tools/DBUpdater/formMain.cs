@@ -171,8 +171,6 @@ namespace DBUpdater
          _upgradeScripts.Add(new UpgradeScript(5703, 5704));
          _upgradeScripts.Add(new UpgradeScript(5704, 5705));
          _upgradeScripts.Add(new UpgradeScript(5705, 5708));
-         _upgradeScripts.Add(new UpgradeScript(5708, 5800));
-         _upgradeScripts.Add(new UpgradeScript(5800, 6000));
       }
 
       private void buttonClose_Click(object sender, EventArgs e)
@@ -287,11 +285,7 @@ namespace DBUpdater
             case 5705:
                return "hMailServer 5.7 (5705)";
             case 5708:
-               return "hMailServer 5.7 (5708)";
-            case 5800:
-               return "hMailServer 5.8.x/Altimail Server 6.0.x (5800)";
-            case 6000:
-               return "Altimail Server 6.0 (6000)";
+               return "hMailServer 5.7/5.8.x (5708)";
             default:
                return "Unknown version";
          }
@@ -480,6 +474,5 @@ namespace DBUpdater
                return null;
          }
       }
-
    }
 }

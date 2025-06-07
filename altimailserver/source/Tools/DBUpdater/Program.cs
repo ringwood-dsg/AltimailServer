@@ -19,7 +19,7 @@ namespace DBUpdater
          Application.EnableVisualStyles();
          Application.SetCompatibleTextRenderingDefault(false);
 
-         string databaseOldErrorMessage = "The database is too old for this version of AltimailServer.";
+         string databaseOldErrorMessage = "is too new for this version";
 
          try
          {
@@ -33,9 +33,9 @@ namespace DBUpdater
              }
              catch (Exception ex)
              {
-                 if (!ex.Message.Contains(databaseOldErrorMessage))
-                     throw ex;
-
+               if (!ex.Message.Contains(databaseOldErrorMessage))
+                  throw ex;
+               var kk = "";
              }
             
 
