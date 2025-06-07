@@ -199,12 +199,12 @@ namespace HM
          String sErrorMessage;
 
          if (iDBVersion > Configuration::Instance()->GetRequiredDBVersion())
-            sErrorMessage = "The database is too new for this version of Altimail Server. Please upgrade Altimail Server.";
+            sErrorMessage = "The database you're using is too new for this version of Altimail Server. Please upgrade Altimail Server first.";
          else
-            sErrorMessage = "The database is too old for this version of Altimail Server. Please run Altimail Server Database updater (DBUpdater.exe) to upgrade it.";
+            sErrorMessage = "The database you're using is too old for this version of Altimail Server. Please run the Altimal Server DB Upgrade Utility to upgrade it.";
 
          String sVersionInfo;
-         sVersionInfo.Format(_T(" Database version: %d, Required database version: %d"), iDBVersion, Configuration::Instance()->GetRequiredDBVersion());
+         sVersionInfo.Format(_T(" Your database version is %d, but this version of Altimal Server requires database version: %d."), iDBVersion, Configuration::Instance()->GetRequiredDBVersion());
 
          sErrorMessage += sVersionInfo;
          
