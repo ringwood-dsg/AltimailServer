@@ -4,7 +4,7 @@
 #define MyAppName "Altimail Server" 
 #define MyAppNameShort "AltimailServer"
 #define MyAppVersion "6.0"
-#define MyAppVersionFull "6.0.0B2506.3"
+#define MyAppVersionFull "6.0.0B2506.5"
 #define MyAppVersionStd "6.0.0.2506"
 #define MyAppPublisher "Ringwood Digital Solutions Group (Pty) Ltd"
 #define MyAppPublisherUrl "https://www.ringwoodgroup.co.za"

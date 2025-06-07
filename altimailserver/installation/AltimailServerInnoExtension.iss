@@ -421,7 +421,7 @@ begin
    end;
 
  	 // Create key page
-   g_pageAccessKey := CreateInputQueryPage(wpSelectTasks, 'Altimail Server Security', 'Specify main password','The installation program will now create an Altimail Server user with administrator rights. Please enter a password below. You will need this password to be able to manage your Altimail Server installation, so please remember it.');	
+   g_pageAccessKey := CreateInputQueryPage(wpSelectTasks, 'Altimail Server Administrator Account', 'Specify the administration password.','The installation program will now create an Altimail Server user with administrator rights. Please enter a password below. You will need this password to be able to manage your Altimail Server installation, so please remember it.');	
 
    g_pageAccessKey.Add('Password:', True);
    g_pageAccessKey.Add('Confirm password:', True);
