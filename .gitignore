@@ -42,6 +42,8 @@ _ReSharper.*/
 
 /libraries/libmysql.dll
 
+Changelog.txt
+
 *.vcxproj.filters
 *.orig
 *.sdf
