@@ -1,3 +1,4 @@
+// Modified, Juan Davel/ringwood-dsg, 2025/06/03
 // =============================================================================
 //  FILE:  CStdString.h
 //  AUTHOR:	Joe O'Leary (with outside help noted in comments)

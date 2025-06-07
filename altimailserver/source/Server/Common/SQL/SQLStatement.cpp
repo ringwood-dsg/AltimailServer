@@ -1,4 +1,5 @@
-﻿// Copyright (c) 2010 Martin Knafve / hmailserver.com.  
+﻿// Modified, Juan Davel/ringwood-dsg, 2025/06/06
+// Copyright (c) 2010 Martin Knafve / hmailserver.com.  
 // http://www.hmailserver.com
 
 #include "stdafx.h"

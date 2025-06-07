@@ -1,5 +1,7 @@
-// (c) 2025 Ringwood Digital Solutions Group (Pty) Ltd.
-// https://www.ringwoodgroup.co.za
+// Added: 2025/06/06, Juan Davel/ringwood-dsg.
+// Based on MySQLMacroExpander.
+// Copyright (c) 2010 Martin Knafve / hmailserver.com.  
+// http://www.hmailserver.com
 
 #pragma once
 

@@ -1,5 +1,10 @@
+// Added: 2025/06/06, Juan Davel/ringwood-dsg.
+// Based on MySQLRecordset.
+// Copyright (c) 2010 Martin Knafve / hmailserver.com.  
+// http://www.hmailserver.com
 // (c) 2025 Ringwood Digital Solutions Group (Pty) Ltd.
 // https://www.ringwoodgroup.co.za
+// Based on <MySQLRecordset>
 
 #include "stdafx.h"
 

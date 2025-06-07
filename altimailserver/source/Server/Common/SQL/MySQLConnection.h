@@ -1,3 +1,4 @@
+// Modified, Juan Davel/ringwood-dsg, 2025/06/06
 // Copyright (c) 2010 Martin Knafve / hmailserver.com.  
 // http://www.hmailserver.com
 
@@ -17,7 +18,7 @@ namespace HM
 
       enum Server
       {
-         RequiredVersion = 50709 //5.7.9 minimum now, 29/05/2025
+         RequiredVersion = 50709 //5.7.9 minimum now, 06/06/2025
          //RequiredVersion = 50505 //If using mariadb, 10.6.2 returns version 5.5.5/50505
       };
 
