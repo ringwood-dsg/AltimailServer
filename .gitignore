@@ -40,7 +40,7 @@ _ReSharper.*/
 
 /altimailserver-libs
 
-/libraries/libmysql.dll
+/libraries/libmysql*.dll
 
 Changelog.txt
 
