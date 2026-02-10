@@ -39,6 +39,7 @@
             // buttonClose
             // 
             this.buttonClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.buttonClose.Location = new System.Drawing.Point(375, 284);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(107, 27);
@@ -52,7 +53,7 @@
             this.labelErrorMessage.AutoSize = true;
             this.labelErrorMessage.Location = new System.Drawing.Point(14, 16);
             this.labelErrorMessage.Name = "labelErrorMessage";
-            this.labelErrorMessage.Size = new System.Drawing.Size(74, 13);
+            this.labelErrorMessage.Size = new System.Drawing.Size(79, 13);
             this.labelErrorMessage.TabIndex = 1;
             this.labelErrorMessage.Text = "Error message";
             // 
@@ -92,20 +93,21 @@
             this.labelErrorDetails.AutoSize = true;
             this.labelErrorDetails.Location = new System.Drawing.Point(14, 89);
             this.labelErrorDetails.Name = "labelErrorDetails";
-            this.labelErrorDetails.Size = new System.Drawing.Size(39, 13);
+            this.labelErrorDetails.Size = new System.Drawing.Size(42, 13);
             this.labelErrorDetails.TabIndex = 5;
             this.labelErrorDetails.Text = "Details";
             // 
             // formErrorMessage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(494, 323);
             this.Controls.Add(this.labelErrorDetails);
             this.Controls.Add(this.textErrorDetails);
             this.Controls.Add(this.textErrorMessage);
             this.Controls.Add(this.labelErrorMessage);
             this.Controls.Add(this.buttonClose);
+            this.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "formErrorMessage";
             this.Text = "Altimail Server Administrator";
