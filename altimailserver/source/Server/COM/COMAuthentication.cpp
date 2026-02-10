@@ -1,3 +1,5 @@
+// Modified, Juan Davel/ringwood-dsg, 2025/06/07
+// https://altimailserver.org
 // Copyright (c) 2010 Martin Knafve / hmailserver.com.  
 // http://www.hmailserver.com
 
@@ -122,7 +124,7 @@ namespace HM
    int 
    COMAuthentication::GetAccessDenied() const
    {
-      return COMError::GenerateError("You do not have access to this property / method. Ensure that hMailServer.Application.Authenticate() is called with proper login credentials.");
+      return COMError::GenerateError("You do not have access to this property / method. Ensure that AltimailServer.Application.Authenticate() is called with proper login credentials.");
    }
 
 }

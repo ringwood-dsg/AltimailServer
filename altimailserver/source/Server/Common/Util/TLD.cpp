@@ -1,3 +1,5 @@
+// Modified, Juan Davel/ringwood-dsg, 2025/06/07
+// https://altimailserver.org
 // Copyright (c) 2010 Martin Knafve / hmailserver.com.  
 // http://www.hmailserver.com
 
@@ -41,7 +43,7 @@ namespace HM
          // is not copied to the Source\hMailServer\Debug directory, 
          // we try to find it on a hard coded place.
 
-         sTLDSFile = "C:\\Program Files\\hMailServer\\Bin\\tlds.txt";
+         sTLDSFile = "C:\\Program Files\\AltimailServer\\Bin\\tlds.txt";
       }
 #endif
 

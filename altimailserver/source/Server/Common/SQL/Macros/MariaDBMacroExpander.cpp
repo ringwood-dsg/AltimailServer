@@ -1,5 +1,6 @@
 // Added: 2025/06/06, Juan Davel/ringwood-dsg.
 // Based on MySQLMacroExpander.
+// https://altimailserver.org
 // Copyright (c) 2010 Martin Knafve / hmailserver.com.  
 // http://www.hmailserver.com
 
@@ -31,7 +32,7 @@ namespace HM
          MariaDBRecordset rec;
          if (!rec.Open(connection, SQLCommand(sql)))
          {
-            sErrorMessage = "It was not possible to execute the below SQL statement. Please see hMailServer error log for details.\r\n" + sql;
+            sErrorMessage = "It was not possible to execute the below SQL statement. Please see Altimail Server error log for details.\r\n" + sql;
             return false;
          }
 

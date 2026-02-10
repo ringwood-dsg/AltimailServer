@@ -1,5 +1,6 @@
 // Added: 2025/06/06, Juan Davel/ringwood-dsg.
 // Based on MySQLConnection.
+// https://altimailserver.org
 // Copyright (c) 2010 Martin Knafve / hmailserver.com.  
 // http://www.hmailserver.com
 
@@ -150,7 +151,7 @@ namespace HM
       int serverVersion = mysql_get_server_version(dbconn_);
       if (serverVersion < RequiredVersion)
       {
-         errorMessage = Formatter::Format("hMailServer requires MariaDB 10.5.29GA or newer.", serverVersion);
+         errorMessage = Formatter::Format("Altimail Server requires MariaDB 10.5.29GA or newer.", serverVersion);
          return false;
       }
 
@@ -332,7 +333,7 @@ namespace HM
       // we check a few other properties as well.
       if (IniFileSettings::Instance()->GetDatabasePort() != 3307 || 
           IniFileSettings::Instance()->GetUsername().CompareNoCase(_T("root")) != 0 &&
-          IniFileSettings::Instance()->GetUsername().CompareNoCase(_T("hmailserver")) != 0 &&
+          IniFileSettings::Instance()->GetUsername().CompareNoCase(_T("altimailserver")) != 0 &&
           IniFileSettings::Instance()->GetIsInternalDatabase())
       {
          // The user is not using the internal database.

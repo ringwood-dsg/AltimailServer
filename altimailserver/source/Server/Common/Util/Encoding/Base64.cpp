@@ -1,3 +1,5 @@
+// Modified, Juan Davel/ringwood-dsg, 2025/06/07
+// https://altimailserver.org
 // Copyright (c) 2010 Martin Knafve / hmailserver.com.  
 // http://www.hmailserver.com
 
@@ -63,7 +65,7 @@ namespace HM
       if (s.Compare(_T("VGVzdCB0ZXN0IHRlc3QgdGVzdCB0ZXN0IHRlc3QgdGVzdCEhISE=")) != 0)
          throw;
 
-      input = "hMailServer is a free e-mail server for Microsoft Windows. It's used by Internet service providers, companies, governments, schools and enthusiasts in all parts of the world. It supports the common e-mail protocols (IMAP, SMTP and POP3) and can easily be integrated with many existing web mail systems. It has flexible score-based spam protection and can attach to your virus scanner to scan all incoming and outgoing email.";
+      input = "Altimail Server is a free e-mail server for Microsoft Windows. It's used by Internet service providers, companies, governments, schools and enthusiasts in all parts of the world. It supports the common e-mail protocols (IMAP, SMTP and POP3) and can easily be integrated with many existing web mail systems. It has flexible score-based spam protection and can attach to your virus scanner to scan all incoming and outgoing email.";
       s = Base64::Encode(input, input.GetLength());
       if (s.Compare(_T("aE1haWxTZXJ2ZXIgaXMgYSBmcmVlIGUtbWFpbCBzZXJ2ZXIgZm9yIE1pY3Jvc29mdCBXaW5kb3dzLiBJdCdzIHVzZWQgYnkgSW50ZXJuZXQgc2VydmljZSBwcm92aWRlcnMsIGNvbXBhbmllcywgZ292ZXJubWVudHMsIHNjaG9vbHMgYW5kIGVudGh1c2lhc3RzIGluIGFsbCBwYXJ0cyBvZiB0aGUgd29ybGQuIEl0IHN1cHBvcnRzIHRoZSBjb21tb24gZS1tYWlsIHByb3RvY29scyAoSU1BUCwgU01UUCBhbmQgUE9QMykgYW5kIGNhbiBlYXNpbHkgYmUgaW50ZWdyYXRlZCB3aXRoIG1hbnkgZXhpc3Rpbmcgd2ViIG1haWwgc3lzdGVtcy4gSXQgaGFzIGZsZXhpYmxlIHNjb3JlLWJhc2VkIHNwYW0gcHJvdGVjdGlvbiBhbmQgY2FuIGF0dGFjaCB0byB5b3VyIHZpcnVzIHNjYW5uZXIgdG8gc2NhbiBhbGwgaW5jb21pbmcgYW5kIG91dGdvaW5nIGVtYWlsLg==")) != 0)
          throw;
@@ -80,7 +82,7 @@ namespace HM
 
       input = "aE1haWxTZXJ2ZXIgaXMgYSBmcmVlIGUtbWFpbCBzZXJ2ZXIgZm9yIE1pY3Jvc29mdCBXaW5kb3dzLiBJdCdzIHVzZWQgYnkgSW50ZXJuZXQgc2VydmljZSBwcm92aWRlcnMsIGNvbXBhbmllcywgZ292ZXJubWVudHMsIHNjaG9vbHMgYW5kIGVudGh1c2lhc3RzIGluIGFsbCBwYXJ0cyBvZiB0aGUgd29ybGQuIEl0IHN1cHBvcnRzIHRoZSBjb21tb24gZS1tYWlsIHByb3RvY29scyAoSU1BUCwgU01UUCBhbmQgUE9QMykgYW5kIGNhbiBlYXNpbHkgYmUgaW50ZWdyYXRlZCB3aXRoIG1hbnkgZXhpc3Rpbmcgd2ViIG1haWwgc3lzdGVtcy4gSXQgaGFzIGZsZXhpYmxlIHNjb3JlLWJhc2VkIHNwYW0gcHJvdGVjdGlvbiBhbmQgY2FuIGF0dGFjaCB0byB5b3VyIHZpcnVzIHNjYW5uZXIgdG8gc2NhbiBhbGwgaW5jb21pbmcgYW5kIG91dGdvaW5nIGVtYWlsLg==";
       s = Base64::Decode(input, input.GetLength());
-      if (s.Compare(_T("hMailServer is a free e-mail server for Microsoft Windows. It's used by Internet service providers, companies, governments, schools and enthusiasts in all parts of the world. It supports the common e-mail protocols (IMAP, SMTP and POP3) and can easily be integrated with many existing web mail systems. It has flexible score-based spam protection and can attach to your virus scanner to scan all incoming and outgoing email.")) != 0)
+      if (s.Compare(_T("Altimail Server is a free e-mail server for Microsoft Windows. It's used by Internet service providers, companies, governments, schools and enthusiasts in all parts of the world. It supports the common e-mail protocols (IMAP, SMTP and POP3) and can easily be integrated with many existing web mail systems. It has flexible score-based spam protection and can attach to your virus scanner to scan all incoming and outgoing email.")) != 0)
          throw;
    }
 }

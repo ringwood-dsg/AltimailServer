@@ -1,3 +1,5 @@
+// Modified, Juan Davel/ringwood-dsg, 2025/06/07
+// https://altimailserver.org
 // Copyright (c) 2005 Martin Knafve / hmailserver.com.  
 // http://www.hmailserver.com
 
@@ -419,7 +421,7 @@ namespace HM
       
       if (majorVersion < RequiredVersion)
       {
-         errorMessage = "hMailServer requires Microsoft SQL Server 2000 or newer.";       
+         errorMessage = "Altimail Server requires Microsoft SQL Server 2000 or newer.";       
          return false;
       }
 

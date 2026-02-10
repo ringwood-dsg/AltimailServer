@@ -1,4 +1,5 @@
 // Modified, Juan Davel/ringwood-dsg, 2025/06/06
+// https://altimailserver.org
 // Copyright (c) 2005 Martin Knafve / hmailserver.com.  
 // http://www.hmailserver.com
 
@@ -879,7 +880,7 @@ namespace HM
             SendErrorResponse_(554, messageText);
 
          String sLogMessage;
-         sLogMessage.Format(_T("hMailServer SpamProtection rejected RCPT (Sender: %s, IP:%s, Reason: %s)"), sFromAddress.c_str(), String(GetIPAddressString()).c_str(), messageText.c_str());
+         sLogMessage.Format(_T("Altimail Server SpamProtection rejected RCPT (Sender: %s, IP:%s, Reason: %s)"), sFromAddress.c_str(), String(GetIPAddressString()).c_str(), messageText.c_str());
          LOG_APPLICATION(sLogMessage);
 
          return false;
