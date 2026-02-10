@@ -1,3 +1,5 @@
+// Modified, Juan Davel/ringwood-dsg, 2026/02/08
+// https://altimailserver.org
 // Copyright (c) 2010 Martin Knafve / hmailserver.com.  
 // http://www.hmailserver.com
 
@@ -35,7 +37,8 @@ namespace HM
       try
       {         
          String bin_directory = Utilities::GetBinDirectory();
-         String dh2048_file = FileUtilities::Combine(bin_directory, "dh2048.pem");
+         //String dh2048_file = FileUtilities::Combine(bin_directory, "dh2048.pem");
+         String dh2048_file = FileUtilities::Combine(bin_directory, "adh2048.pem");
 
          if (FileUtilities::Exists(dh2048_file))
          {
