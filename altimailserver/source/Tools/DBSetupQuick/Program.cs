@@ -1,11 +1,12 @@
+// Modified, Juan Davel/ringwood-dsg, 2025/06/08
+// https://altimailserver.org
 // Copyright (c) 2010 Martin Knafve / hmailserver.com.  
 // http://www.hmailserver.com
 
-using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-using System.Diagnostics;
 using AltimailServer.Shared;
+using System;
+using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace DBSetupQuick
 {
@@ -50,7 +51,7 @@ namespace DBSetupQuick
          }
          catch (Exception ex)
          {
-            MessageBox.Show("Failed to start DBUpdater.exe" + Environment.NewLine + ex.Message, "hMailServer");
+            MessageBox.Show("Failed to start DBUpdater.exe" + Environment.NewLine + ex.Message, "Altimail Server");
          }
       }
 
@@ -73,22 +74,22 @@ namespace DBSetupQuick
 
       private static void InitializeInternalDatabase()
       {
-          try
-          {
-              AltimailServer.Database database = _application.Database;
+         try
+         {
+            AltimailServer.Database database = _application.Database;
 
-              database.CreateInternalDatabase();
+            database.CreateInternalDatabase();
 
-              // Database has been upgraded. Reinitialize the connections.
-              _application.Reinitialize();
+            // Database has been upgraded. Reinitialize the connections.
+            _application.Reinitialize();
 
-              // Re-initialize to connect to the newly created database.
-              _application.Reinitialize();
-          }
-          catch (Exception ex)
-          {
-              MessageBox.Show(ex.Message, "hMailServer", MessageBoxButtons.OK, MessageBoxIcon.Error);
-          }
+            // Re-initialize to connect to the newly created database.
+            _application.Reinitialize();
+         }
+         catch (Exception ex)
+         {
+            MessageBox.Show(ex.Message, "Altimail Server", MessageBoxButtons.OK, MessageBoxIcon.Error);
+         }
       }
 
    }
