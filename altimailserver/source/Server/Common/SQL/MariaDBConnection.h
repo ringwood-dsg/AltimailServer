@@ -1,5 +1,6 @@
 // Added: 2025/06/06, Juan Davel/ringwood-dsg.
 // Based on MySQLConnection.
+// https://altimailserver.org
 // Copyright (c) 2010 Martin Knafve / hmailserver.com.  
 // http://www.hmailserver.com
 
