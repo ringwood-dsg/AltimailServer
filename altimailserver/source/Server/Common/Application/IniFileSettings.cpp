@@ -479,8 +479,11 @@ namespace HM
    {
       password_ = sNewVal;
 
-      WriteIniSetting_("Database", "Password", Crypt::Instance()->EnCrypt(password_, Crypt::ETBlowFish));
-      WriteIniSetting_("Database", "PasswordEncryption", Crypt::ETBlowFish);
+      //WriteIniSetting_("Database", "Password", Crypt::Instance()->EnCrypt(password_, Crypt::ETBlowFish));
+      //WriteIniSetting_("Database", "PasswordEncryption", Crypt::ETBlowFish);
+
+      WriteIniSetting_("Database", "Password", Crypt::Instance()->EnCrypt(password_, Crypt::ETSHA256));
+      WriteIniSetting_("Database", "PasswordEncryption", Crypt::ETSHA256);
    }
 
    void 
