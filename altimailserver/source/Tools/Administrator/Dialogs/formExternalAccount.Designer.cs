@@ -161,6 +161,7 @@ namespace AltimailServer.Administrator.Dialogs
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnCancel.Location = new System.Drawing.Point(286, 587);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(89, 25);
@@ -172,6 +173,7 @@ namespace AltimailServer.Administrator.Dialogs
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnOK.Location = new System.Drawing.Point(191, 587);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(89, 25);
@@ -182,6 +184,7 @@ namespace AltimailServer.Administrator.Dialogs
             // buttonDownloadNow
             // 
             this.buttonDownloadNow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonDownloadNow.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.buttonDownloadNow.Location = new System.Drawing.Point(36, 587);
             this.buttonDownloadNow.Name = "buttonDownloadNow";
             this.buttonDownloadNow.Size = new System.Drawing.Size(116, 25);
@@ -221,6 +224,7 @@ namespace AltimailServer.Administrator.Dialogs
             // comboConnectionSecurity
             // 
             this.comboConnectionSecurity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboConnectionSecurity.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.comboConnectionSecurity.FormattingEnabled = true;
             this.comboConnectionSecurity.Location = new System.Drawing.Point(24, 216);
             this.comboConnectionSecurity.Name = "comboConnectionSecurity";
@@ -231,9 +235,10 @@ namespace AltimailServer.Administrator.Dialogs
             // checkEnableRouteRecipients
             // 
             this.checkEnableRouteRecipients.AutoSize = true;
+            this.checkEnableRouteRecipients.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.checkEnableRouteRecipients.Location = new System.Drawing.Point(45, 413);
             this.checkEnableRouteRecipients.Name = "checkEnableRouteRecipients";
-            this.checkEnableRouteRecipients.Size = new System.Drawing.Size(126, 17);
+            this.checkEnableRouteRecipients.Size = new System.Drawing.Size(132, 18);
             this.checkEnableRouteRecipients.TabIndex = 22;
             this.checkEnableRouteRecipients.Text = "Allow route recipients";
             this.checkEnableRouteRecipients.UseVisualStyleBackColor = true;
@@ -241,9 +246,10 @@ namespace AltimailServer.Administrator.Dialogs
             // checkUseAntiSpam
             // 
             this.checkUseAntiSpam.AutoSize = true;
+            this.checkUseAntiSpam.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.checkUseAntiSpam.Location = new System.Drawing.Point(24, 459);
             this.checkUseAntiSpam.Name = "checkUseAntiSpam";
-            this.checkUseAntiSpam.Size = new System.Drawing.Size(72, 17);
+            this.checkUseAntiSpam.Size = new System.Drawing.Size(78, 18);
             this.checkUseAntiSpam.TabIndex = 24;
             this.checkUseAntiSpam.Text = "Anti-spam";
             this.checkUseAntiSpam.UseVisualStyleBackColor = true;
@@ -251,9 +257,10 @@ namespace AltimailServer.Administrator.Dialogs
             // checkUseAntiVirus
             // 
             this.checkUseAntiVirus.AutoSize = true;
+            this.checkUseAntiVirus.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.checkUseAntiVirus.Location = new System.Drawing.Point(24, 482);
             this.checkUseAntiVirus.Name = "checkUseAntiVirus";
-            this.checkUseAntiVirus.Size = new System.Drawing.Size(69, 17);
+            this.checkUseAntiVirus.Size = new System.Drawing.Size(75, 18);
             this.checkUseAntiVirus.TabIndex = 25;
             this.checkUseAntiVirus.Text = "Anti-virus";
             this.checkUseAntiVirus.UseVisualStyleBackColor = true;
@@ -281,9 +288,10 @@ namespace AltimailServer.Administrator.Dialogs
             // 
             this.radioNeverDeleteMessages.AutoSize = true;
             this.radioNeverDeleteMessages.Checked = true;
+            this.radioNeverDeleteMessages.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.radioNeverDeleteMessages.Location = new System.Drawing.Point(24, 555);
             this.radioNeverDeleteMessages.Name = "radioNeverDeleteMessages";
-            this.radioNeverDeleteMessages.Size = new System.Drawing.Size(139, 17);
+            this.radioNeverDeleteMessages.Size = new System.Drawing.Size(145, 18);
             this.radioNeverDeleteMessages.TabIndex = 30;
             this.radioNeverDeleteMessages.TabStop = true;
             this.radioNeverDeleteMessages.Text = "Do not delete messages";
@@ -292,9 +300,10 @@ namespace AltimailServer.Administrator.Dialogs
             // radioDeleteMessagesAfter
             // 
             this.radioDeleteMessagesAfter.AutoSize = true;
+            this.radioDeleteMessagesAfter.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.radioDeleteMessagesAfter.Location = new System.Drawing.Point(24, 532);
             this.radioDeleteMessagesAfter.Name = "radioDeleteMessagesAfter";
-            this.radioDeleteMessagesAfter.Size = new System.Drawing.Size(130, 17);
+            this.radioDeleteMessagesAfter.Size = new System.Drawing.Size(136, 18);
             this.radioDeleteMessagesAfter.TabIndex = 27;
             this.radioDeleteMessagesAfter.Text = "Delete messages after";
             this.radioDeleteMessagesAfter.UseVisualStyleBackColor = true;
@@ -302,9 +311,10 @@ namespace AltimailServer.Administrator.Dialogs
             // radioDeleteImmediately
             // 
             this.radioDeleteImmediately.AutoSize = true;
+            this.radioDeleteImmediately.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.radioDeleteImmediately.Location = new System.Drawing.Point(24, 509);
             this.radioDeleteImmediately.Name = "radioDeleteImmediately";
-            this.radioDeleteImmediately.Size = new System.Drawing.Size(163, 17);
+            this.radioDeleteImmediately.Size = new System.Drawing.Size(169, 18);
             this.radioDeleteImmediately.TabIndex = 26;
             this.radioDeleteImmediately.Text = "Delete messages immediately";
             this.radioDeleteImmediately.UseVisualStyleBackColor = true;
@@ -323,9 +333,10 @@ namespace AltimailServer.Administrator.Dialogs
             // checkProcessMIMEDate
             // 
             this.checkProcessMIMEDate.AutoSize = true;
+            this.checkProcessMIMEDate.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.checkProcessMIMEDate.Location = new System.Drawing.Point(24, 436);
             this.checkProcessMIMEDate.Name = "checkProcessMIMEDate";
-            this.checkProcessMIMEDate.Size = new System.Drawing.Size(198, 17);
+            this.checkProcessMIMEDate.Size = new System.Drawing.Size(204, 18);
             this.checkProcessMIMEDate.TabIndex = 23;
             this.checkProcessMIMEDate.Text = "Retrieve date from Received header";
             this.checkProcessMIMEDate.UseVisualStyleBackColor = true;
@@ -334,9 +345,10 @@ namespace AltimailServer.Administrator.Dialogs
             // checkProcessMIMERecipients
             // 
             this.checkProcessMIMERecipients.AutoSize = true;
+            this.checkProcessMIMERecipients.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.checkProcessMIMERecipients.Location = new System.Drawing.Point(24, 390);
             this.checkProcessMIMERecipients.Name = "checkProcessMIMERecipients";
-            this.checkProcessMIMERecipients.Size = new System.Drawing.Size(202, 17);
+            this.checkProcessMIMERecipients.Size = new System.Drawing.Size(208, 18);
             this.checkProcessMIMERecipients.TabIndex = 21;
             this.checkProcessMIMERecipients.Text = "Deliver to recipients in MIME headers";
             this.checkProcessMIMERecipients.UseVisualStyleBackColor = true;
@@ -386,6 +398,7 @@ namespace AltimailServer.Administrator.Dialogs
             // comboServerType
             // 
             this.comboServerType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboServerType.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.comboServerType.FormattingEnabled = true;
             this.comboServerType.Location = new System.Drawing.Point(24, 120);
             this.comboServerType.Name = "comboServerType";
@@ -405,9 +418,10 @@ namespace AltimailServer.Administrator.Dialogs
             // checkEnabled
             // 
             this.checkEnabled.AutoSize = true;
+            this.checkEnabled.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.checkEnabled.Location = new System.Drawing.Point(8, 50);
             this.checkEnabled.Name = "checkEnabled";
-            this.checkEnabled.Size = new System.Drawing.Size(65, 17);
+            this.checkEnabled.Size = new System.Drawing.Size(71, 18);
             this.checkEnabled.TabIndex = 2;
             this.checkEnabled.Text = "Enabled";
             this.checkEnabled.UseVisualStyleBackColor = true;
@@ -415,8 +429,8 @@ namespace AltimailServer.Administrator.Dialogs
             // formExternalAccount
             // 
             this.AcceptButton = this.btnOK;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(390, 626);
             this.Controls.Add(this.labelConnectionSecurity);

@@ -28,7 +28,8 @@ namespace AltimailServer.Administrator.Nodes
       {
          get
          {
-            return "disk.ico";
+            //return "disk.ico";
+            return "tree-backup.ico";
          }
       }
 

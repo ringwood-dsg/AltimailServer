@@ -43,7 +43,8 @@ namespace AltimailServer.Administrator.Nodes
       {
          get
          {
-            return "rosette.ico";
+            //return "rosette.ico";
+            return "tree-ssl-tls-certificate.ico";
          }
       }
 

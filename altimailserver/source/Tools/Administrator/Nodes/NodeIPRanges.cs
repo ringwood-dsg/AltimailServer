@@ -31,7 +31,8 @@ namespace AltimailServer.Administrator.Nodes
       {
          get
          {
-            return "folder.ico";
+            //return "folder.ico";
+            return "tree-ip-ranges.ico";
          }
       }
 

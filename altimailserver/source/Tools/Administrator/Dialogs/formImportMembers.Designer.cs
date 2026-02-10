@@ -56,6 +56,7 @@ namespace AltimailServer.Administrator.Dialogs
             // 
             this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnCancel.Location = new System.Drawing.Point(510, 370);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(89, 25);
@@ -86,6 +87,7 @@ namespace AltimailServer.Administrator.Dialogs
             // 
             // buttonSelectImportFile
             // 
+            this.buttonSelectImportFile.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.buttonSelectImportFile.Location = new System.Drawing.Point(410, 29);
             this.buttonSelectImportFile.Name = "buttonSelectImportFile";
             this.buttonSelectImportFile.Size = new System.Drawing.Size(75, 23);
@@ -102,6 +104,7 @@ namespace AltimailServer.Administrator.Dialogs
             // 
             this.buttonImport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonImport.Enabled = false;
+            this.buttonImport.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.buttonImport.Location = new System.Drawing.Point(16, 320);
             this.buttonImport.Name = "buttonImport";
             this.buttonImport.Size = new System.Drawing.Size(89, 25);
@@ -123,9 +126,10 @@ namespace AltimailServer.Administrator.Dialogs
             // 
             this.ucDeleteRecipientsNotInList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.ucDeleteRecipientsNotInList.AutoSize = true;
-            this.ucDeleteRecipientsNotInList.Location = new System.Drawing.Point(17, 298);
+            this.ucDeleteRecipientsNotInList.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.ucDeleteRecipientsNotInList.Location = new System.Drawing.Point(17, 297);
             this.ucDeleteRecipientsNotInList.Name = "ucDeleteRecipientsNotInList";
-            this.ucDeleteRecipientsNotInList.Size = new System.Drawing.Size(181, 17);
+            this.ucDeleteRecipientsNotInList.Size = new System.Drawing.Size(187, 18);
             this.ucDeleteRecipientsNotInList.TabIndex = 33;
             this.ucDeleteRecipientsNotInList.Text = "Delete recipients not in import-file";
             this.ucDeleteRecipientsNotInList.UseVisualStyleBackColor = true;
@@ -154,8 +158,8 @@ namespace AltimailServer.Administrator.Dialogs
             // 
             // formImportMembers
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(611, 407);
             this.Controls.Add(this.ucDeleteRecipientsNotInList);
             this.Controls.Add(this.progressBar1);

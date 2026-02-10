@@ -212,7 +212,7 @@ namespace AltimailServer.Administrator
          }
          catch (Exception ex)
          {
-            MessageBox.Show(Strings.Localize(ex.Message), EnumStrings.hMailServerAdministrator, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(Strings.Localize(ex.Message), EnumStrings.AltimailServerAdministrator, MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;
          }
 
@@ -278,7 +278,7 @@ namespace AltimailServer.Administrator
             }
             catch (Exception ex)
             {
-               MessageBox.Show(ex.Message, EnumStrings.hMailServerAdministrator);
+               MessageBox.Show(ex.Message, EnumStrings.AltimailServerAdministrator);
                return;
             }
 
@@ -351,7 +351,7 @@ namespace AltimailServer.Administrator
             }
             catch (Exception ex)
             {
-               MessageBox.Show(Strings.Localize(ex.Message), EnumStrings.hMailServerAdministrator, MessageBoxButtons.OK, MessageBoxIcon.Error);
+               MessageBox.Show(Strings.Localize(ex.Message), EnumStrings.AltimailServerAdministrator, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             ListDomainAliases();

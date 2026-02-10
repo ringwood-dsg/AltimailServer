@@ -28,63 +28,66 @@ namespace AltimailServer.Administrator
         /// </summary>
         private void InitializeComponent()
         {
-           this.labelProtocols = new System.Windows.Forms.Label();
-           this.checkSMTP = new AltimailServer.Administrator.Controls.ucCheckbox();
-           this.checkPOP3 = new AltimailServer.Administrator.Controls.ucCheckbox();
-           this.checkIMAP = new AltimailServer.Administrator.Controls.ucCheckbox();
-           this.SuspendLayout();
-           // 
-           // labelProtocols
-           // 
-           this.labelProtocols.Location = new System.Drawing.Point(18, 14);
-           this.labelProtocols.Name = "labelProtocols";
-           this.labelProtocols.Size = new System.Drawing.Size(365, 37);
-           this.labelProtocols.TabIndex = 0;
-           this.labelProtocols.Text = "If you change the settings below you must restart the server before your changes " +
-               "take affect.";
-           // 
-           // checkSMTP
-           // 
-           this.checkSMTP.AutoSize = true;
-           this.checkSMTP.Location = new System.Drawing.Point(34, 54);
-           this.checkSMTP.Name = "checkSMTP";
-           this.checkSMTP.Size = new System.Drawing.Size(56, 17);
-           this.checkSMTP.TabIndex = 1;
-           this.checkSMTP.Text = "SMTP";
-           this.checkSMTP.UseVisualStyleBackColor = true;
-           // 
-           // checkPOP3
-           // 
-           this.checkPOP3.AutoSize = true;
-           this.checkPOP3.Location = new System.Drawing.Point(34, 77);
-           this.checkPOP3.Name = "checkPOP3";
-           this.checkPOP3.Size = new System.Drawing.Size(54, 17);
-           this.checkPOP3.TabIndex = 2;
-           this.checkPOP3.Text = "POP3";
-           this.checkPOP3.UseVisualStyleBackColor = true;
-           // 
-           // checkIMAP
-           // 
-           this.checkIMAP.AutoSize = true;
-           this.checkIMAP.Location = new System.Drawing.Point(34, 100);
-           this.checkIMAP.Name = "checkIMAP";
-           this.checkIMAP.Size = new System.Drawing.Size(52, 17);
-           this.checkIMAP.TabIndex = 3;
-           this.checkIMAP.Text = "IMAP";
-           this.checkIMAP.UseVisualStyleBackColor = true;
-           // 
-           // ucProtocols
-           // 
-           this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-           this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-           this.Controls.Add(this.checkIMAP);
-           this.Controls.Add(this.checkPOP3);
-           this.Controls.Add(this.checkSMTP);
-           this.Controls.Add(this.labelProtocols);
-           this.Name = "ucProtocols";
-           this.Size = new System.Drawing.Size(417, 277);
-           this.ResumeLayout(false);
-           this.PerformLayout();
+            this.labelProtocols = new System.Windows.Forms.Label();
+            this.checkSMTP = new AltimailServer.Administrator.Controls.ucCheckbox();
+            this.checkPOP3 = new AltimailServer.Administrator.Controls.ucCheckbox();
+            this.checkIMAP = new AltimailServer.Administrator.Controls.ucCheckbox();
+            this.SuspendLayout();
+            // 
+            // labelProtocols
+            // 
+            this.labelProtocols.Location = new System.Drawing.Point(18, 14);
+            this.labelProtocols.Name = "labelProtocols";
+            this.labelProtocols.Size = new System.Drawing.Size(365, 37);
+            this.labelProtocols.TabIndex = 0;
+            this.labelProtocols.Text = "If you change the settings below you must restart the server before your changes " +
+    "take affect.";
+            // 
+            // checkSMTP
+            // 
+            this.checkSMTP.AutoSize = true;
+            this.checkSMTP.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.checkSMTP.Location = new System.Drawing.Point(34, 54);
+            this.checkSMTP.Name = "checkSMTP";
+            this.checkSMTP.Size = new System.Drawing.Size(62, 18);
+            this.checkSMTP.TabIndex = 1;
+            this.checkSMTP.Text = "SMTP";
+            this.checkSMTP.UseVisualStyleBackColor = true;
+            // 
+            // checkPOP3
+            // 
+            this.checkPOP3.AutoSize = true;
+            this.checkPOP3.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.checkPOP3.Location = new System.Drawing.Point(34, 77);
+            this.checkPOP3.Name = "checkPOP3";
+            this.checkPOP3.Size = new System.Drawing.Size(60, 18);
+            this.checkPOP3.TabIndex = 2;
+            this.checkPOP3.Text = "POP3";
+            this.checkPOP3.UseVisualStyleBackColor = true;
+            // 
+            // checkIMAP
+            // 
+            this.checkIMAP.AutoSize = true;
+            this.checkIMAP.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.checkIMAP.Location = new System.Drawing.Point(34, 100);
+            this.checkIMAP.Name = "checkIMAP";
+            this.checkIMAP.Size = new System.Drawing.Size(58, 18);
+            this.checkIMAP.TabIndex = 3;
+            this.checkIMAP.Text = "IMAP";
+            this.checkIMAP.UseVisualStyleBackColor = true;
+            // 
+            // ucProtocols
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.Controls.Add(this.checkIMAP);
+            this.Controls.Add(this.checkPOP3);
+            this.Controls.Add(this.checkSMTP);
+            this.Controls.Add(this.labelProtocols);
+            this.Name = "ucProtocols";
+            this.Size = new System.Drawing.Size(417, 277);
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

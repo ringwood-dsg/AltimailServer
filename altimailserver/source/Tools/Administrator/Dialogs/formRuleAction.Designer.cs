@@ -29,6 +29,7 @@ namespace AltimailServer.Administrator.Dialogs
       private void InitializeComponent()
       {
             this.panelForward = new System.Windows.Forms.Panel();
+            this.checkForwardAbortSpamFlagged = new AltimailServer.Administrator.Controls.ucCheckbox();
             this.textForwardTo = new AltimailServer.Shared.ucText();
             this.labelForwardTo = new System.Windows.Forms.Label();
             this.panelIMAP = new System.Windows.Forms.Panel();
@@ -38,6 +39,7 @@ namespace AltimailServer.Administrator.Dialogs
             this.txtActionScriptFunction = new AltimailServer.Shared.ucText();
             this.labelScriptFunction = new System.Windows.Forms.Label();
             this.panelReply = new System.Windows.Forms.Panel();
+            this.checkReplyAbortSpamFlagged = new AltimailServer.Administrator.Controls.ucCheckbox();
             this.textActionBody = new AltimailServer.Shared.ucText();
             this.label1 = new System.Windows.Forms.Label();
             this.textActionSubject = new AltimailServer.Shared.ucText();
@@ -61,8 +63,6 @@ namespace AltimailServer.Administrator.Dialogs
             this.textBindToAddress = new AltimailServer.Shared.ucText();
             this.labelIPAddress = new System.Windows.Forms.Label();
             this.comboAction = new AltimailServer.Administrator.Controls.ucComboBox();
-            this.checkForwardAbortSpamFlagged = new AltimailServer.Administrator.Controls.ucCheckbox();
-            this.checkReplyAbortSpamFlagged = new AltimailServer.Administrator.Controls.ucCheckbox();
             this.panelForward.SuspendLayout();
             this.panelIMAP.SuspendLayout();
             this.panelScriptFunction.SuspendLayout();
@@ -81,6 +81,17 @@ namespace AltimailServer.Administrator.Dialogs
             this.panelForward.Name = "panelForward";
             this.panelForward.Size = new System.Drawing.Size(274, 258);
             this.panelForward.TabIndex = 1;
+            // 
+            // checkForwardAbortSpamFlagged
+            // 
+            this.checkForwardAbortSpamFlagged.AutoSize = true;
+            this.checkForwardAbortSpamFlagged.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.checkForwardAbortSpamFlagged.Location = new System.Drawing.Point(13, 54);
+            this.checkForwardAbortSpamFlagged.Name = "checkForwardAbortSpamFlagged";
+            this.checkForwardAbortSpamFlagged.Size = new System.Drawing.Size(202, 18);
+            this.checkForwardAbortSpamFlagged.TabIndex = 2;
+            this.checkForwardAbortSpamFlagged.Text = "Abort on messages marked as spam";
+            this.checkForwardAbortSpamFlagged.UseVisualStyleBackColor = true;
             // 
             // textForwardTo
             // 
@@ -172,6 +183,16 @@ namespace AltimailServer.Administrator.Dialogs
             this.panelReply.Name = "panelReply";
             this.panelReply.Size = new System.Drawing.Size(274, 268);
             this.panelReply.TabIndex = 4;
+            // 
+            // checkReplyAbortSpamFlagged
+            // 
+            this.checkReplyAbortSpamFlagged.AutoSize = true;
+            this.checkReplyAbortSpamFlagged.Location = new System.Drawing.Point(13, 248);
+            this.checkReplyAbortSpamFlagged.Name = "checkReplyAbortSpamFlagged";
+            this.checkReplyAbortSpamFlagged.Size = new System.Drawing.Size(196, 17);
+            this.checkReplyAbortSpamFlagged.TabIndex = 8;
+            this.checkReplyAbortSpamFlagged.Text = "Abort on messages marked as spam";
+            this.checkReplyAbortSpamFlagged.UseVisualStyleBackColor = true;
             // 
             // textActionBody
             // 
@@ -299,9 +320,18 @@ namespace AltimailServer.Administrator.Dialogs
             this.labelHeaderName.TabIndex = 0;
             this.labelHeaderName.Text = "Header name";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Location = new System.Drawing.Point(8, 300);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(250, 4);
+            this.groupBox1.TabIndex = 21;
+            this.groupBox1.TabStop = false;
+            // 
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnCancel.Location = new System.Drawing.Point(165, 316);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(89, 25);
@@ -311,6 +341,7 @@ namespace AltimailServer.Administrator.Dialogs
             // 
             // btnOK
             // 
+            this.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnOK.Location = new System.Drawing.Point(70, 316);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(89, 25);
@@ -378,6 +409,7 @@ namespace AltimailServer.Administrator.Dialogs
             // comboAction
             // 
             this.comboAction.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboAction.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.comboAction.FormattingEnabled = true;
             this.comboAction.Location = new System.Drawing.Point(7, 7);
             this.comboAction.Name = "comboAction";
@@ -385,39 +417,11 @@ namespace AltimailServer.Administrator.Dialogs
             this.comboAction.TabIndex = 0;
             this.comboAction.SelectedIndexChanged += new System.EventHandler(this.comboAction_SelectedIndexChanged);
             // 
-            // checkForwardAbortSpamFlagged
-            // 
-            this.checkForwardAbortSpamFlagged.AutoSize = true;
-            this.checkForwardAbortSpamFlagged.Location = new System.Drawing.Point(13, 54);
-            this.checkForwardAbortSpamFlagged.Name = "checkForwardAbortSpamFlagged";
-            this.checkForwardAbortSpamFlagged.Size = new System.Drawing.Size(196, 17);
-            this.checkForwardAbortSpamFlagged.TabIndex = 2;
-            this.checkForwardAbortSpamFlagged.Text = "Abort on messages marked as spam";
-            this.checkForwardAbortSpamFlagged.UseVisualStyleBackColor = true;
-            // 
-            // checkReplyAbortSpamFlagged
-            // 
-            this.checkReplyAbortSpamFlagged.AutoSize = true;
-            this.checkReplyAbortSpamFlagged.Location = new System.Drawing.Point(13, 248);
-            this.checkReplyAbortSpamFlagged.Name = "checkReplyAbortSpamFlagged";
-            this.checkReplyAbortSpamFlagged.Size = new System.Drawing.Size(196, 17);
-            this.checkReplyAbortSpamFlagged.TabIndex = 8;
-            this.checkReplyAbortSpamFlagged.Text = "Abort on messages marked as spam";
-            this.checkReplyAbortSpamFlagged.UseVisualStyleBackColor = true;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Location = new System.Drawing.Point(8, 300);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(250, 4);
-            this.groupBox1.TabIndex = 21;
-            this.groupBox1.TabStop = false;
-            // 
             // formRuleAction
             // 
             this.AcceptButton = this.btnOK;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(285, 349);
             this.Controls.Add(this.groupBox1);

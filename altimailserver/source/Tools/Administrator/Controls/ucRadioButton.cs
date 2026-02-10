@@ -47,6 +47,16 @@ namespace AltimailServer.Administrator.Controls
          internalChecked = base.Checked;
       }
 
+      private void InitializeComponent()
+      {
+            this.SuspendLayout();
+            // 
+            // ucRadioButton
+            // 
+            this.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.ResumeLayout(false);
+
+      }
    }
 }
 

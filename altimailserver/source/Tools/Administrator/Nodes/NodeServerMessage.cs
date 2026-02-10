@@ -40,7 +40,8 @@ namespace AltimailServer.Administrator.Nodes
       {
          get
          {
-            return "text_align_justity.ico";
+            //return "text_align_justity.ico";
+            return "tree-server-message.ico";
          }
       }
 

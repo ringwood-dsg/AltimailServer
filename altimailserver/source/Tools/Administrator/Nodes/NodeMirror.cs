@@ -12,7 +12,8 @@ namespace AltimailServer.Administrator.Nodes
       {
          get
          {
-            return "Mirror";
+            //return "Mirror";
+            return "SMTP Forwarding";
          }
          set { }
       }
@@ -28,7 +29,8 @@ namespace AltimailServer.Administrator.Nodes
       {
          get
          {
-            return "arrow_branch.ico";
+            //return "arrow_branch.ico";
+            return "tree-smtp-forwarding.ico";
          }
       }
 

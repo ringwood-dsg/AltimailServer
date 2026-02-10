@@ -46,7 +46,8 @@ namespace AltimailServer.Administrator.Nodes
       {
          get
          {
-            return "arrow_out.ico";
+            //return "arrow_out.ico";
+            return "tree-alias.ico";
          }
       }
 

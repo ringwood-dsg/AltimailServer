@@ -43,7 +43,8 @@ namespace AltimailServer.Administrator.Nodes
       {
          get
          {
-            return "connect.ico";
+            //return "connect.ico";
+            return "tree-port.ico";
          }
       }
 

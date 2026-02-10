@@ -43,7 +43,8 @@ namespace AltimailServer.Administrator.Nodes
       {
          get
          {
-            return "email_delete.ico";
+            //return "email_delete.ico";
+            return "tree-blacklist.ico";
          }
       }
 

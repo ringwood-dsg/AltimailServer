@@ -34,7 +34,8 @@ namespace AltimailServer.Administrator.Nodes
       {
          get
          {
-            return "server_connect.ico";
+            //return "server_connect.ico";
+            return "tree-server-protocols.ico";
          }
       }
 

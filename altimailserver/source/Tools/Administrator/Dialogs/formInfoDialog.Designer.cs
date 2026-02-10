@@ -28,62 +28,64 @@ namespace AltimailServer.Administrator.Dialogs
       /// </summary>
       private void InitializeComponent()
       {
-         this.groupBox1 = new System.Windows.Forms.GroupBox();
-         this.btnOK = new System.Windows.Forms.Button();
-         this.textMessage = new AltimailServer.Shared.ucText();
-         this.SuspendLayout();
-         // 
-         // groupBox1
-         // 
-         this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-                     | System.Windows.Forms.AnchorStyles.Right)));
-         this.groupBox1.Location = new System.Drawing.Point(0, 157);
-         this.groupBox1.Name = "groupBox1";
-         this.groupBox1.Size = new System.Drawing.Size(326, 4);
-         this.groupBox1.TabIndex = 18;
-         this.groupBox1.TabStop = false;
-         // 
-         // btnOK
-         // 
-         this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-         this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-         this.btnOK.Location = new System.Drawing.Point(236, 165);
-         this.btnOK.Name = "btnOK";
-         this.btnOK.Size = new System.Drawing.Size(89, 24);
-         this.btnOK.TabIndex = 16;
-         this.btnOK.Text = "&OK";
-         this.btnOK.UseVisualStyleBackColor = true;
-         // 
-         // textMessage
-         // 
-         this.textMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                     | System.Windows.Forms.AnchorStyles.Left)
-                     | System.Windows.Forms.AnchorStyles.Right)));
-         this.textMessage.Location = new System.Drawing.Point(8, 8);
-         this.textMessage.Multiline = true;
-         this.textMessage.Name = "textMessage";
-         this.textMessage.Number = 0;
-         this.textMessage.Numeric = false;
-         this.textMessage.ReadOnly = true;
-         this.textMessage.Size = new System.Drawing.Size(315, 141);
-         this.textMessage.TabIndex = 19;
-         // 
-         // formInfoDialog
-         // 
-         this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-         this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(334, 195);
-         this.ControlBox = false;
-         this.Controls.Add(this.textMessage);
-         this.Controls.Add(this.groupBox1);
-         this.Controls.Add(this.btnOK);
-         this.MinimizeBox = false;
-         this.MinimumSize = new System.Drawing.Size(342, 222);
-         this.Name = "formInfoDialog";
-         this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-         this.Text = "hMailServer";
-         this.ResumeLayout(false);
-         this.PerformLayout();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnOK = new System.Windows.Forms.Button();
+            this.textMessage = new AltimailServer.Shared.ucText();
+            this.SuspendLayout();
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Location = new System.Drawing.Point(0, 157);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(326, 4);
+            this.groupBox1.TabIndex = 18;
+            this.groupBox1.TabStop = false;
+            // 
+            // btnOK
+            // 
+            this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnOK.Location = new System.Drawing.Point(236, 165);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(89, 24);
+            this.btnOK.TabIndex = 16;
+            this.btnOK.Text = "&OK";
+            this.btnOK.UseVisualStyleBackColor = true;
+            // 
+            // textMessage
+            // 
+            this.textMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textMessage.Location = new System.Drawing.Point(8, 8);
+            this.textMessage.Multiline = true;
+            this.textMessage.Name = "textMessage";
+            this.textMessage.Number = 0;
+            this.textMessage.Number64 = ((long)(0));
+            this.textMessage.Numeric = false;
+            this.textMessage.ReadOnly = true;
+            this.textMessage.Size = new System.Drawing.Size(315, 141);
+            this.textMessage.TabIndex = 19;
+            // 
+            // formInfoDialog
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.ClientSize = new System.Drawing.Size(334, 206);
+            this.ControlBox = false;
+            this.Controls.Add(this.textMessage);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.btnOK);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(342, 222);
+            this.Name = "formInfoDialog";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Altimail Server";
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
       }
 

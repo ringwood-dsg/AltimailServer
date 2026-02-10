@@ -91,7 +91,7 @@ namespace AltimailServer.Administrator
          catch (Exception ex)
          {
             setClean = false;
-            MessageBox.Show(ex.Message, EnumStrings.hMailServerAdministrator);
+            MessageBox.Show(ex.Message, EnumStrings.AltimailServerAdministrator);
          }
 
          Marshal.ReleaseComObject(settings);

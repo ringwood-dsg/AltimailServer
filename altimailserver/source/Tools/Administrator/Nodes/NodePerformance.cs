@@ -28,7 +28,8 @@ namespace AltimailServer.Administrator.Nodes
       {
          get
          {
-            return "speedometer.ico";
+            //return "speedometer.ico";
+            return "tree-performance.ico";
          }
       }
 

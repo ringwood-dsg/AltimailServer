@@ -117,7 +117,7 @@ namespace AltimailServer.Administrator
          }
          catch (Exception e)
          {
-            MessageBox.Show(e.Message, EnumStrings.hMailServerAdministrator);
+            MessageBox.Show(e.Message, EnumStrings.AltimailServerAdministrator);
          }
       }
 
@@ -160,7 +160,7 @@ namespace AltimailServer.Administrator
          }
          catch (Exception ex)
          {
-            MessageBox.Show(ex.Message, EnumStrings.hMailServerAdministrator);
+            MessageBox.Show(ex.Message, EnumStrings.AltimailServerAdministrator);
          }
 
       }
@@ -174,7 +174,7 @@ namespace AltimailServer.Administrator
       {
          string message = "WARNING! All settings will be cleared & ALL MESSAGES DELETED prior to restore. Are you sure?";
 
-         if (MessageBox.Show(Strings.Localize(message), EnumStrings.hMailServerAdministrator, MessageBoxButtons.YesNo) == DialogResult.Yes)
+         if (MessageBox.Show(Strings.Localize(message), EnumStrings.AltimailServerAdministrator, MessageBoxButtons.YesNo) == DialogResult.Yes)
          {
             if (_backup != null)
             {

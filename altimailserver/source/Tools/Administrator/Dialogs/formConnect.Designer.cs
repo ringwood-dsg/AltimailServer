@@ -32,30 +32,30 @@ namespace AltimailServer.Administrator
             this.listServers = new System.Windows.Forms.ListView();
             this.columnHost = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnUsername = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnAdd = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnConnect = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.checkAutoConnect = new System.Windows.Forms.CheckBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnAdd = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // listServers
             // 
-            this.listServers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.listServers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHost,
             this.columnUsername});
             this.listServers.FullRowSelect = true;
             this.listServers.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listServers.HideSelection = false;
-            this.listServers.Location = new System.Drawing.Point(6, 12);
+            this.listServers.Location = new System.Drawing.Point(172, 97);
             this.listServers.Name = "listServers";
-            this.listServers.Size = new System.Drawing.Size(487, 176);
-            this.listServers.TabIndex = 0;
+            this.listServers.Size = new System.Drawing.Size(331, 156);
+            this.listServers.TabIndex = 2;
             this.listServers.UseCompatibleStateImageBehavior = false;
             this.listServers.View = System.Windows.Forms.View.Details;
             this.listServers.DoubleClick += new System.EventHandler(this.listServers_DoubleClick);
@@ -67,85 +67,101 @@ namespace AltimailServer.Administrator
             // 
             // columnUsername
             // 
-            this.columnUsername.Text = "hMailServer Username";
+            this.columnUsername.Text = "Altimail Server Username";
             this.columnUsername.Width = 150;
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAdd.Location = new System.Drawing.Point(499, 12);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(89, 25);
-            this.btnAdd.TabIndex = 1;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnEdit
             // 
-            this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEdit.Location = new System.Drawing.Point(499, 43);
+            this.btnEdit.Image = global::AltimailServer.Administrator.Properties.Resources.Edit_16x;
+            this.btnEdit.Location = new System.Drawing.Point(509, 123);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(89, 25);
-            this.btnEdit.TabIndex = 2;
-            this.btnEdit.Text = "Edit";
+            this.btnEdit.Size = new System.Drawing.Size(24, 24);
+            this.btnEdit.TabIndex = 4;
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnRemove
             // 
-            this.btnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRemove.Location = new System.Drawing.Point(499, 74);
+            this.btnRemove.Image = global::AltimailServer.Administrator.Properties.Resources.Trash_16x;
+            this.btnRemove.Location = new System.Drawing.Point(509, 149);
             this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(89, 25);
-            this.btnRemove.TabIndex = 3;
-            this.btnRemove.Text = "Remove";
+            this.btnRemove.Size = new System.Drawing.Size(24, 24);
+            this.btnRemove.TabIndex = 5;
             this.btnRemove.UseVisualStyleBackColor = true;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnConnect
             // 
-            this.btnConnect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnConnect.Location = new System.Drawing.Point(404, 231);
+            this.btnConnect.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnConnect.Location = new System.Drawing.Point(352, 316);
             this.btnConnect.Name = "btnConnect";
             this.btnConnect.Size = new System.Drawing.Size(89, 25);
-            this.btnConnect.TabIndex = 4;
-            this.btnConnect.Text = "Connect";
+            this.btnConnect.TabIndex = 7;
+            this.btnConnect.Text = "&Connect";
             this.btnConnect.UseVisualStyleBackColor = true;
             this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(499, 231);
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnCancel.Location = new System.Drawing.Point(444, 316);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(89, 25);
-            this.btnCancel.TabIndex = 5;
-            this.btnCancel.Text = "Cancel";
+            this.btnCancel.TabIndex = 8;
+            this.btnCancel.Text = "C&ancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // checkAutoConnect
             // 
-            this.checkAutoConnect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkAutoConnect.AutoSize = true;
-            this.checkAutoConnect.Location = new System.Drawing.Point(8, 195);
+            this.checkAutoConnect.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.checkAutoConnect.Location = new System.Drawing.Point(172, 259);
             this.checkAutoConnect.Name = "checkAutoConnect";
-            this.checkAutoConnect.Size = new System.Drawing.Size(183, 17);
+            this.checkAutoConnect.Size = new System.Drawing.Size(206, 18);
             this.checkAutoConnect.TabIndex = 6;
             this.checkAutoConnect.Text = "Automatically connect on start-up";
             this.checkAutoConnect.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
+            // label1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Location = new System.Drawing.Point(6, 218);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(584, 5);
-            this.groupBox1.TabIndex = 7;
-            this.groupBox1.TabStop = false;
+            this.label1.AutoSize = true;
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label1.Location = new System.Drawing.Point(169, 81);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(147, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Select a host to connect to.";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.label2.Location = new System.Drawing.Point(167, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(149, 25);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Altimail Server 6";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::AltimailServer.Administrator.Properties.Resources.master_about;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(152, 349);
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Image = global::AltimailServer.Administrator.Properties.Resources.Add_16x;
+            this.btnAdd.Location = new System.Drawing.Point(509, 97);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(24, 24);
+            this.btnAdd.TabIndex = 3;
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // formConnect
             // 
@@ -153,8 +169,10 @@ namespace AltimailServer.Administrator
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(593, 264);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(543, 350);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.checkAutoConnect);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnConnect);
@@ -162,11 +180,16 @@ namespace AltimailServer.Administrator
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.listServers);
+            this.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "formConnect";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Connect";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Connect to Altimail Server";
             this.Load += new System.EventHandler(this.formConnect_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -181,8 +204,10 @@ namespace AltimailServer.Administrator
         private System.Windows.Forms.Button btnConnect;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.CheckBox checkAutoConnect;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ColumnHeader columnHost;
         private System.Windows.Forms.ColumnHeader columnUsername;
-    }
+      private System.Windows.Forms.PictureBox pictureBox1;
+      private System.Windows.Forms.Label label1;
+      private System.Windows.Forms.Label label2;
+   }
 }

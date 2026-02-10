@@ -54,8 +54,8 @@ namespace AltimailServer.Administrator
             // 
             // ucWelcome
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.labelGettingStarted);
             this.Controls.Add(this.buttonAddDomain);
             this.Name = "ucWelcome";

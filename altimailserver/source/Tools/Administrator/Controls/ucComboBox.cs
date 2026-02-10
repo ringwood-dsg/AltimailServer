@@ -91,5 +91,16 @@ namespace AltimailServer.Administrator.Controls
       {
          _internalText = base.Text;
       }
+
+      private void InitializeComponent()
+      {
+            this.SuspendLayout();
+            // 
+            // ucComboBox
+            // 
+            this.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.ResumeLayout(false);
+
+      }
    }
 }

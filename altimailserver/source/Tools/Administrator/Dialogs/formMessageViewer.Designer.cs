@@ -48,6 +48,7 @@ namespace AltimailServer.Administrator.Dialogs
             // 
             this.buttonClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonClose.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.buttonClose.Location = new System.Drawing.Point(470, 334);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(89, 25);
@@ -88,8 +89,8 @@ namespace AltimailServer.Administrator.Dialogs
             // formMessageViewer
             // 
             this.AcceptButton = this.buttonClose;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(571, 371);
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.textMessage);

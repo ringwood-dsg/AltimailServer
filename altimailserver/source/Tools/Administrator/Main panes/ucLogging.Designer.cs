@@ -64,6 +64,7 @@ namespace AltimailServer.Administrator
             // 
             // buttonShowLogs
             // 
+            this.buttonShowLogs.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.buttonShowLogs.Location = new System.Drawing.Point(8, 324);
             this.buttonShowLogs.Name = "buttonShowLogs";
             this.buttonShowLogs.Size = new System.Drawing.Size(112, 26);
@@ -75,9 +76,10 @@ namespace AltimailServer.Administrator
             // checkKeepFilesOpen
             // 
             this.checkKeepFilesOpen.AutoSize = true;
+            this.checkKeepFilesOpen.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.checkKeepFilesOpen.Location = new System.Drawing.Point(30, 264);
             this.checkKeepFilesOpen.Name = "checkKeepFilesOpen";
-            this.checkKeepFilesOpen.Size = new System.Drawing.Size(99, 17);
+            this.checkKeepFilesOpen.Size = new System.Drawing.Size(105, 18);
             this.checkKeepFilesOpen.TabIndex = 41;
             this.checkKeepFilesOpen.Text = "Keep files open";
             this.checkKeepFilesOpen.UseVisualStyleBackColor = true;
@@ -85,9 +87,10 @@ namespace AltimailServer.Administrator
             // checkLogAWStats
             // 
             this.checkLogAWStats.AutoSize = true;
+            this.checkLogAWStats.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.checkLogAWStats.Location = new System.Drawing.Point(30, 205);
             this.checkLogAWStats.Name = "checkLogAWStats";
-            this.checkLogAWStats.Size = new System.Drawing.Size(68, 17);
+            this.checkLogAWStats.Size = new System.Drawing.Size(74, 18);
             this.checkLogAWStats.TabIndex = 37;
             this.checkLogAWStats.Text = "AWStats";
             this.checkLogAWStats.UseVisualStyleBackColor = true;
@@ -95,9 +98,10 @@ namespace AltimailServer.Administrator
             // checkLogDebug
             // 
             this.checkLogDebug.AutoSize = true;
+            this.checkLogDebug.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.checkLogDebug.Location = new System.Drawing.Point(30, 182);
             this.checkLogDebug.Name = "checkLogDebug";
-            this.checkLogDebug.Size = new System.Drawing.Size(58, 17);
+            this.checkLogDebug.Size = new System.Drawing.Size(64, 18);
             this.checkLogDebug.TabIndex = 36;
             this.checkLogDebug.Text = "Debug";
             this.checkLogDebug.UseVisualStyleBackColor = true;
@@ -105,9 +109,10 @@ namespace AltimailServer.Administrator
             // checkLogTCPIP
             // 
             this.checkLogTCPIP.AutoSize = true;
+            this.checkLogTCPIP.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.checkLogTCPIP.Location = new System.Drawing.Point(30, 159);
             this.checkLogTCPIP.Name = "checkLogTCPIP";
-            this.checkLogTCPIP.Size = new System.Drawing.Size(62, 17);
+            this.checkLogTCPIP.Size = new System.Drawing.Size(68, 18);
             this.checkLogTCPIP.TabIndex = 35;
             this.checkLogTCPIP.Text = "TCP/IP";
             this.checkLogTCPIP.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -116,9 +121,10 @@ namespace AltimailServer.Administrator
             // checkLogIMAP
             // 
             this.checkLogIMAP.AutoSize = true;
+            this.checkLogIMAP.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.checkLogIMAP.Location = new System.Drawing.Point(30, 136);
             this.checkLogIMAP.Name = "checkLogIMAP";
-            this.checkLogIMAP.Size = new System.Drawing.Size(52, 17);
+            this.checkLogIMAP.Size = new System.Drawing.Size(58, 18);
             this.checkLogIMAP.TabIndex = 34;
             this.checkLogIMAP.Text = "IMAP";
             this.checkLogIMAP.UseVisualStyleBackColor = true;
@@ -126,9 +132,10 @@ namespace AltimailServer.Administrator
             // checkLogPOP3
             // 
             this.checkLogPOP3.AutoSize = true;
+            this.checkLogPOP3.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.checkLogPOP3.Location = new System.Drawing.Point(30, 113);
             this.checkLogPOP3.Name = "checkLogPOP3";
-            this.checkLogPOP3.Size = new System.Drawing.Size(54, 17);
+            this.checkLogPOP3.Size = new System.Drawing.Size(60, 18);
             this.checkLogPOP3.TabIndex = 33;
             this.checkLogPOP3.Text = "POP3";
             this.checkLogPOP3.UseVisualStyleBackColor = true;
@@ -136,9 +143,10 @@ namespace AltimailServer.Administrator
             // checkLogSMTP
             // 
             this.checkLogSMTP.AutoSize = true;
+            this.checkLogSMTP.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.checkLogSMTP.Location = new System.Drawing.Point(30, 90);
             this.checkLogSMTP.Name = "checkLogSMTP";
-            this.checkLogSMTP.Size = new System.Drawing.Size(56, 17);
+            this.checkLogSMTP.Size = new System.Drawing.Size(62, 18);
             this.checkLogSMTP.TabIndex = 32;
             this.checkLogSMTP.Text = "SMTP";
             this.checkLogSMTP.UseVisualStyleBackColor = true;
@@ -146,9 +154,10 @@ namespace AltimailServer.Administrator
             // chkLogApplication
             // 
             this.chkLogApplication.AutoSize = true;
+            this.chkLogApplication.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.chkLogApplication.Location = new System.Drawing.Point(30, 67);
             this.chkLogApplication.Name = "chkLogApplication";
-            this.chkLogApplication.Size = new System.Drawing.Size(78, 17);
+            this.chkLogApplication.Size = new System.Drawing.Size(84, 18);
             this.chkLogApplication.TabIndex = 31;
             this.chkLogApplication.Text = "Application";
             this.chkLogApplication.UseVisualStyleBackColor = true;
@@ -156,9 +165,10 @@ namespace AltimailServer.Administrator
             // checkEnableLogging
             // 
             this.checkEnableLogging.AutoSize = true;
+            this.checkEnableLogging.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.checkEnableLogging.Location = new System.Drawing.Point(8, 8);
             this.checkEnableLogging.Name = "checkEnableLogging";
-            this.checkEnableLogging.Size = new System.Drawing.Size(65, 17);
+            this.checkEnableLogging.Size = new System.Drawing.Size(71, 18);
             this.checkEnableLogging.TabIndex = 30;
             this.checkEnableLogging.Text = "Enabled";
             this.checkEnableLogging.UseVisualStyleBackColor = true;
@@ -166,8 +176,8 @@ namespace AltimailServer.Administrator
             // 
             // ucLogging
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.checkKeepFilesOpen);
             this.Controls.Add(this.buttonShowLogs);
             this.Controls.Add(this.labelSettings);

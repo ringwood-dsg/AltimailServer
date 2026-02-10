@@ -155,9 +155,10 @@ namespace AltimailServer.Administrator
             this.checkEnabled.AutoSize = true;
             this.checkEnabled.Checked = true;
             this.checkEnabled.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkEnabled.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.checkEnabled.Location = new System.Drawing.Point(8, 56);
             this.checkEnabled.Name = "checkEnabled";
-            this.checkEnabled.Size = new System.Drawing.Size(65, 17);
+            this.checkEnabled.Size = new System.Drawing.Size(71, 18);
             this.checkEnabled.TabIndex = 14;
             this.checkEnabled.Text = "Enabled";
             this.checkEnabled.UseVisualStyleBackColor = true;
@@ -188,6 +189,7 @@ namespace AltimailServer.Administrator
             // buttonAdd
             // 
             this.buttonAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonAdd.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.buttonAdd.Location = new System.Drawing.Point(448, 8);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(100, 25);
@@ -199,6 +201,7 @@ namespace AltimailServer.Administrator
             // buttonEdit
             // 
             this.buttonEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonEdit.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.buttonEdit.Location = new System.Drawing.Point(448, 40);
             this.buttonEdit.Name = "buttonEdit";
             this.buttonEdit.Size = new System.Drawing.Size(100, 25);
@@ -233,6 +236,7 @@ namespace AltimailServer.Administrator
             // buttonRemove
             // 
             this.buttonRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonRemove.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.buttonRemove.Location = new System.Drawing.Point(448, 72);
             this.buttonRemove.Name = "buttonRemove";
             this.buttonRemove.Size = new System.Drawing.Size(100, 25);
@@ -303,9 +307,10 @@ namespace AltimailServer.Administrator
             // radioSMAppendToAccountSignature
             // 
             this.radioSMAppendToAccountSignature.AutoSize = true;
+            this.radioSMAppendToAccountSignature.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.radioSMAppendToAccountSignature.Location = new System.Drawing.Point(32, 80);
             this.radioSMAppendToAccountSignature.Name = "radioSMAppendToAccountSignature";
-            this.radioSMAppendToAccountSignature.Size = new System.Drawing.Size(162, 17);
+            this.radioSMAppendToAccountSignature.Size = new System.Drawing.Size(168, 18);
             this.radioSMAppendToAccountSignature.TabIndex = 8;
             this.radioSMAppendToAccountSignature.Text = "Append to account signature";
             this.radioSMAppendToAccountSignature.UseVisualStyleBackColor = true;
@@ -313,9 +318,10 @@ namespace AltimailServer.Administrator
             // radioSMOverwriteAccountSignature
             // 
             this.radioSMOverwriteAccountSignature.AutoSize = true;
+            this.radioSMOverwriteAccountSignature.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.radioSMOverwriteAccountSignature.Location = new System.Drawing.Point(32, 57);
             this.radioSMOverwriteAccountSignature.Name = "radioSMOverwriteAccountSignature";
-            this.radioSMOverwriteAccountSignature.Size = new System.Drawing.Size(158, 17);
+            this.radioSMOverwriteAccountSignature.Size = new System.Drawing.Size(164, 18);
             this.radioSMOverwriteAccountSignature.TabIndex = 7;
             this.radioSMOverwriteAccountSignature.Text = "Overwrite account signature";
             this.radioSMOverwriteAccountSignature.UseVisualStyleBackColor = true;
@@ -324,9 +330,10 @@ namespace AltimailServer.Administrator
             // 
             this.radioSMSetIfNotSpecifiedInAccount.AutoSize = true;
             this.radioSMSetIfNotSpecifiedInAccount.Checked = true;
+            this.radioSMSetIfNotSpecifiedInAccount.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.radioSMSetIfNotSpecifiedInAccount.Location = new System.Drawing.Point(32, 34);
             this.radioSMSetIfNotSpecifiedInAccount.Name = "radioSMSetIfNotSpecifiedInAccount";
-            this.radioSMSetIfNotSpecifiedInAccount.Size = new System.Drawing.Size(312, 17);
+            this.radioSMSetIfNotSpecifiedInAccount.Size = new System.Drawing.Size(318, 18);
             this.radioSMSetIfNotSpecifiedInAccount.TabIndex = 6;
             this.radioSMSetIfNotSpecifiedInAccount.TabStop = true;
             this.radioSMSetIfNotSpecifiedInAccount.Text = "Use signature if none has been specified in sender\'s account";
@@ -336,9 +343,10 @@ namespace AltimailServer.Administrator
             // checkSignatureEnabled
             // 
             this.checkSignatureEnabled.AutoSize = true;
+            this.checkSignatureEnabled.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.checkSignatureEnabled.Location = new System.Drawing.Point(16, 8);
             this.checkSignatureEnabled.Name = "checkSignatureEnabled";
-            this.checkSignatureEnabled.Size = new System.Drawing.Size(65, 17);
+            this.checkSignatureEnabled.Size = new System.Drawing.Size(71, 18);
             this.checkSignatureEnabled.TabIndex = 2;
             this.checkSignatureEnabled.Text = "Enabled";
             this.checkSignatureEnabled.UseVisualStyleBackColor = true;
@@ -347,9 +355,10 @@ namespace AltimailServer.Administrator
             // checkAddSignaturesToLocalMail
             // 
             this.checkAddSignaturesToLocalMail.AutoSize = true;
+            this.checkAddSignaturesToLocalMail.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.checkAddSignaturesToLocalMail.Location = new System.Drawing.Point(16, 128);
             this.checkAddSignaturesToLocalMail.Name = "checkAddSignaturesToLocalMail";
-            this.checkAddSignaturesToLocalMail.Size = new System.Drawing.Size(160, 17);
+            this.checkAddSignaturesToLocalMail.Size = new System.Drawing.Size(166, 18);
             this.checkAddSignaturesToLocalMail.TabIndex = 1;
             this.checkAddSignaturesToLocalMail.Text = "Add signatures to local email";
             this.checkAddSignaturesToLocalMail.UseVisualStyleBackColor = true;
@@ -357,9 +366,10 @@ namespace AltimailServer.Administrator
             // checkAddSignaturesToReplies
             // 
             this.checkAddSignaturesToReplies.AutoSize = true;
+            this.checkAddSignaturesToReplies.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.checkAddSignaturesToReplies.Location = new System.Drawing.Point(16, 104);
             this.checkAddSignaturesToReplies.Name = "checkAddSignaturesToReplies";
-            this.checkAddSignaturesToReplies.Size = new System.Drawing.Size(141, 17);
+            this.checkAddSignaturesToReplies.Size = new System.Drawing.Size(147, 18);
             this.checkAddSignaturesToReplies.TabIndex = 0;
             this.checkAddSignaturesToReplies.Text = "Add signatures to replies";
             this.checkAddSignaturesToReplies.UseVisualStyleBackColor = true;
@@ -527,9 +537,10 @@ namespace AltimailServer.Administrator
             // checkMaxNumberOfDistributionListsEnabled
             // 
             this.checkMaxNumberOfDistributionListsEnabled.AutoSize = true;
+            this.checkMaxNumberOfDistributionListsEnabled.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.checkMaxNumberOfDistributionListsEnabled.Location = new System.Drawing.Point(11, 242);
             this.checkMaxNumberOfDistributionListsEnabled.Name = "checkMaxNumberOfDistributionListsEnabled";
-            this.checkMaxNumberOfDistributionListsEnabled.Size = new System.Drawing.Size(15, 14);
+            this.checkMaxNumberOfDistributionListsEnabled.Size = new System.Drawing.Size(25, 13);
             this.checkMaxNumberOfDistributionListsEnabled.TabIndex = 15;
             this.checkMaxNumberOfDistributionListsEnabled.UseVisualStyleBackColor = true;
             this.checkMaxNumberOfDistributionListsEnabled.CheckedChanged += new System.EventHandler(this.checkMaxNumberOfDistributionListsEnabled_CheckedChanged);
@@ -537,9 +548,10 @@ namespace AltimailServer.Administrator
             // checkMaxNumberOfAliasesEnabled
             // 
             this.checkMaxNumberOfAliasesEnabled.AutoSize = true;
+            this.checkMaxNumberOfAliasesEnabled.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.checkMaxNumberOfAliasesEnabled.Location = new System.Drawing.Point(11, 206);
             this.checkMaxNumberOfAliasesEnabled.Name = "checkMaxNumberOfAliasesEnabled";
-            this.checkMaxNumberOfAliasesEnabled.Size = new System.Drawing.Size(15, 14);
+            this.checkMaxNumberOfAliasesEnabled.Size = new System.Drawing.Size(25, 13);
             this.checkMaxNumberOfAliasesEnabled.TabIndex = 12;
             this.checkMaxNumberOfAliasesEnabled.UseVisualStyleBackColor = true;
             this.checkMaxNumberOfAliasesEnabled.CheckedChanged += new System.EventHandler(this.checkMaxNumberOfAliasesEnabled_CheckedChanged);
@@ -547,9 +559,10 @@ namespace AltimailServer.Administrator
             // checkMaxNumberOfAccountsEnabled
             // 
             this.checkMaxNumberOfAccountsEnabled.AutoSize = true;
+            this.checkMaxNumberOfAccountsEnabled.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.checkMaxNumberOfAccountsEnabled.Location = new System.Drawing.Point(11, 164);
             this.checkMaxNumberOfAccountsEnabled.Name = "checkMaxNumberOfAccountsEnabled";
-            this.checkMaxNumberOfAccountsEnabled.Size = new System.Drawing.Size(15, 14);
+            this.checkMaxNumberOfAccountsEnabled.Size = new System.Drawing.Size(25, 13);
             this.checkMaxNumberOfAccountsEnabled.TabIndex = 9;
             this.checkMaxNumberOfAccountsEnabled.UseVisualStyleBackColor = true;
             this.checkMaxNumberOfAccountsEnabled.CheckedChanged += new System.EventHandler(this.checkMaxNumberOfAccountsEnabled_CheckedChanged);
@@ -579,6 +592,7 @@ namespace AltimailServer.Administrator
             // 
             // buttonSelectCertificate
             // 
+            this.buttonSelectCertificate.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.buttonSelectCertificate.Location = new System.Drawing.Point(225, 60);
             this.buttonSelectCertificate.Name = "buttonSelectCertificate";
             this.buttonSelectCertificate.Size = new System.Drawing.Size(47, 19);
@@ -600,9 +614,10 @@ namespace AltimailServer.Administrator
             // 
             this.radioDKIMSigningAlgorithmSHA256.AutoSize = true;
             this.radioDKIMSigningAlgorithmSHA256.Checked = true;
+            this.radioDKIMSigningAlgorithmSHA256.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.radioDKIMSigningAlgorithmSHA256.Location = new System.Drawing.Point(82, 4);
             this.radioDKIMSigningAlgorithmSHA256.Name = "radioDKIMSigningAlgorithmSHA256";
-            this.radioDKIMSigningAlgorithmSHA256.Size = new System.Drawing.Size(65, 17);
+            this.radioDKIMSigningAlgorithmSHA256.Size = new System.Drawing.Size(71, 18);
             this.radioDKIMSigningAlgorithmSHA256.TabIndex = 41;
             this.radioDKIMSigningAlgorithmSHA256.TabStop = true;
             this.radioDKIMSigningAlgorithmSHA256.Text = "SHA256";
@@ -611,9 +626,10 @@ namespace AltimailServer.Administrator
             // radioDKIMSigningAlgorithmSHA1
             // 
             this.radioDKIMSigningAlgorithmSHA1.AutoSize = true;
+            this.radioDKIMSigningAlgorithmSHA1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.radioDKIMSigningAlgorithmSHA1.Location = new System.Drawing.Point(3, 4);
             this.radioDKIMSigningAlgorithmSHA1.Name = "radioDKIMSigningAlgorithmSHA1";
-            this.radioDKIMSigningAlgorithmSHA1.Size = new System.Drawing.Size(53, 17);
+            this.radioDKIMSigningAlgorithmSHA1.Size = new System.Drawing.Size(59, 18);
             this.radioDKIMSigningAlgorithmSHA1.TabIndex = 40;
             this.radioDKIMSigningAlgorithmSHA1.Text = "SHA1";
             this.radioDKIMSigningAlgorithmSHA1.UseVisualStyleBackColor = true;
@@ -631,9 +647,10 @@ namespace AltimailServer.Administrator
             // 
             this.radioDKIMBodyMethodRelaxed.AutoSize = true;
             this.radioDKIMBodyMethodRelaxed.Checked = true;
+            this.radioDKIMBodyMethodRelaxed.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.radioDKIMBodyMethodRelaxed.Location = new System.Drawing.Point(82, 4);
             this.radioDKIMBodyMethodRelaxed.Name = "radioDKIMBodyMethodRelaxed";
-            this.radioDKIMBodyMethodRelaxed.Size = new System.Drawing.Size(64, 17);
+            this.radioDKIMBodyMethodRelaxed.Size = new System.Drawing.Size(70, 18);
             this.radioDKIMBodyMethodRelaxed.TabIndex = 37;
             this.radioDKIMBodyMethodRelaxed.TabStop = true;
             this.radioDKIMBodyMethodRelaxed.Text = "Relaxed";
@@ -642,9 +659,10 @@ namespace AltimailServer.Administrator
             // radioDKIMBodyMethodSimple
             // 
             this.radioDKIMBodyMethodSimple.AutoSize = true;
+            this.radioDKIMBodyMethodSimple.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.radioDKIMBodyMethodSimple.Location = new System.Drawing.Point(3, 4);
             this.radioDKIMBodyMethodSimple.Name = "radioDKIMBodyMethodSimple";
-            this.radioDKIMBodyMethodSimple.Size = new System.Drawing.Size(56, 17);
+            this.radioDKIMBodyMethodSimple.Size = new System.Drawing.Size(62, 18);
             this.radioDKIMBodyMethodSimple.TabIndex = 36;
             this.radioDKIMBodyMethodSimple.Text = "Simple";
             this.radioDKIMBodyMethodSimple.UseVisualStyleBackColor = true;
@@ -662,9 +680,10 @@ namespace AltimailServer.Administrator
             // 
             this.radioDKIMHeaderMethodRelaxed.AutoSize = true;
             this.radioDKIMHeaderMethodRelaxed.Checked = true;
+            this.radioDKIMHeaderMethodRelaxed.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.radioDKIMHeaderMethodRelaxed.Location = new System.Drawing.Point(82, 4);
             this.radioDKIMHeaderMethodRelaxed.Name = "radioDKIMHeaderMethodRelaxed";
-            this.radioDKIMHeaderMethodRelaxed.Size = new System.Drawing.Size(64, 17);
+            this.radioDKIMHeaderMethodRelaxed.Size = new System.Drawing.Size(70, 18);
             this.radioDKIMHeaderMethodRelaxed.TabIndex = 35;
             this.radioDKIMHeaderMethodRelaxed.TabStop = true;
             this.radioDKIMHeaderMethodRelaxed.Text = "Relaxed";
@@ -673,9 +692,10 @@ namespace AltimailServer.Administrator
             // radioDKIMHeaderMethodSimple
             // 
             this.radioDKIMHeaderMethodSimple.AutoSize = true;
+            this.radioDKIMHeaderMethodSimple.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.radioDKIMHeaderMethodSimple.Location = new System.Drawing.Point(3, 4);
             this.radioDKIMHeaderMethodSimple.Name = "radioDKIMHeaderMethodSimple";
-            this.radioDKIMHeaderMethodSimple.Size = new System.Drawing.Size(56, 17);
+            this.radioDKIMHeaderMethodSimple.Size = new System.Drawing.Size(62, 18);
             this.radioDKIMHeaderMethodSimple.TabIndex = 33;
             this.radioDKIMHeaderMethodSimple.TabStop = true;
             this.radioDKIMHeaderMethodSimple.Text = "Simple";
@@ -749,9 +769,10 @@ namespace AltimailServer.Administrator
             // checkDKIMSignEnabled
             // 
             this.checkDKIMSignEnabled.AutoSize = true;
+            this.checkDKIMSignEnabled.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.checkDKIMSignEnabled.Location = new System.Drawing.Point(14, 14);
             this.checkDKIMSignEnabled.Name = "checkDKIMSignEnabled";
-            this.checkDKIMSignEnabled.Size = new System.Drawing.Size(65, 17);
+            this.checkDKIMSignEnabled.Size = new System.Drawing.Size(71, 18);
             this.checkDKIMSignEnabled.TabIndex = 15;
             this.checkDKIMSignEnabled.Text = "Enabled";
             this.checkDKIMSignEnabled.UseVisualStyleBackColor = true;
@@ -759,9 +780,10 @@ namespace AltimailServer.Administrator
             // checkDKIMSignAliasesEnabled
             // 
             this.checkDKIMSignAliasesEnabled.AutoSize = true;
+            this.checkDKIMSignAliasesEnabled.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.checkDKIMSignAliasesEnabled.Location = new System.Drawing.Point(90, 14);
             this.checkDKIMSignAliasesEnabled.Name = "checkDKIMSignAliasesEnabled";
-            this.checkDKIMSignAliasesEnabled.Size = new System.Drawing.Size(83, 17);
+            this.checkDKIMSignAliasesEnabled.Size = new System.Drawing.Size(89, 18);
             this.checkDKIMSignAliasesEnabled.TabIndex = 16;
             this.checkDKIMSignAliasesEnabled.Text = "Sign Aliases";
             this.checkDKIMSignAliasesEnabled.UseVisualStyleBackColor = true;
@@ -803,6 +825,7 @@ namespace AltimailServer.Administrator
             // comboPlusAddressingCharacter
             // 
             this.comboPlusAddressingCharacter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboPlusAddressingCharacter.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.comboPlusAddressingCharacter.FormattingEnabled = true;
             this.comboPlusAddressingCharacter.Items.AddRange(new object[] {
             "+",
@@ -817,9 +840,10 @@ namespace AltimailServer.Administrator
             // checkGreyListingEnabled
             // 
             this.checkGreyListingEnabled.AutoSize = true;
+            this.checkGreyListingEnabled.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.checkGreyListingEnabled.Location = new System.Drawing.Point(23, 176);
             this.checkGreyListingEnabled.Name = "checkGreyListingEnabled";
-            this.checkGreyListingEnabled.Size = new System.Drawing.Size(65, 17);
+            this.checkGreyListingEnabled.Size = new System.Drawing.Size(71, 18);
             this.checkGreyListingEnabled.TabIndex = 5;
             this.checkGreyListingEnabled.Text = "Enabled";
             this.checkGreyListingEnabled.UseVisualStyleBackColor = true;
@@ -854,9 +878,10 @@ namespace AltimailServer.Administrator
             // checkUsePlusAddressing
             // 
             this.checkUsePlusAddressing.AutoSize = true;
+            this.checkUsePlusAddressing.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.checkUsePlusAddressing.Location = new System.Drawing.Point(24, 80);
             this.checkUsePlusAddressing.Name = "checkUsePlusAddressing";
-            this.checkUsePlusAddressing.Size = new System.Drawing.Size(65, 17);
+            this.checkUsePlusAddressing.Size = new System.Drawing.Size(71, 18);
             this.checkUsePlusAddressing.TabIndex = 1;
             this.checkUsePlusAddressing.Text = "Enabled";
             this.checkUsePlusAddressing.UseVisualStyleBackColor = true;
@@ -867,8 +892,8 @@ namespace AltimailServer.Administrator
             // 
             // ucDomain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.tabControl);
             this.Name = "ucDomain";
             this.Size = new System.Drawing.Size(562, 380);

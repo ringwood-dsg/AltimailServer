@@ -28,7 +28,8 @@ namespace AltimailServer.Administrator.Nodes
       {
          get
          {
-            return "source_code.ico";
+            //return "source_code.ico";
+            return "tree-scripts.ico";
          }
       }
 

@@ -31,6 +31,7 @@ namespace AltimailServer.Administrator
         {
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageGeneral = new System.Windows.Forms.TabPage();
+            this.prgMailboxUsage = new System.Windows.Forms.ProgressBar();
             this.textPassword = new AltimailServer.Administrator.Controls.ucPassword();
             this.textAddress = new AltimailServer.Administrator.Controls.ucEmailEdit();
             this.checkEnabled = new AltimailServer.Administrator.Controls.ucCheckbox();
@@ -122,6 +123,7 @@ namespace AltimailServer.Administrator
             // 
             // tabPageGeneral
             // 
+            this.tabPageGeneral.Controls.Add(this.prgMailboxUsage);
             this.tabPageGeneral.Controls.Add(this.textPassword);
             this.tabPageGeneral.Controls.Add(this.textAddress);
             this.tabPageGeneral.Controls.Add(this.checkEnabled);
@@ -142,6 +144,14 @@ namespace AltimailServer.Administrator
             this.tabPageGeneral.TabIndex = 0;
             this.tabPageGeneral.Text = "General";
             this.tabPageGeneral.UseVisualStyleBackColor = true;
+            // 
+            // prgMailboxUsage
+            // 
+            this.prgMailboxUsage.Location = new System.Drawing.Point(8, 144);
+            this.prgMailboxUsage.Name = "prgMailboxUsage";
+            this.prgMailboxUsage.Size = new System.Drawing.Size(208, 12);
+            this.prgMailboxUsage.Step = 1;
+            this.prgMailboxUsage.TabIndex = 14;
             // 
             // textPassword
             // 
@@ -164,16 +174,17 @@ namespace AltimailServer.Administrator
             this.checkEnabled.AutoSize = true;
             this.checkEnabled.Checked = true;
             this.checkEnabled.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkEnabled.Location = new System.Drawing.Point(9, 246);
+            this.checkEnabled.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.checkEnabled.Location = new System.Drawing.Point(9, 262);
             this.checkEnabled.Name = "checkEnabled";
-            this.checkEnabled.Size = new System.Drawing.Size(65, 17);
+            this.checkEnabled.Size = new System.Drawing.Size(71, 18);
             this.checkEnabled.TabIndex = 13;
             this.checkEnabled.Text = "Enabled";
             this.checkEnabled.UseVisualStyleBackColor = true;
             // 
             // textLastLogonTime
             // 
-            this.textLastLogonTime.Location = new System.Drawing.Point(8, 216);
+            this.textLastLogonTime.Location = new System.Drawing.Point(8, 232);
             this.textLastLogonTime.Name = "textLastLogonTime";
             this.textLastLogonTime.Number = 0;
             this.textLastLogonTime.Number64 = ((long)(0));
@@ -185,7 +196,7 @@ namespace AltimailServer.Administrator
             // labelLastLogonTime
             // 
             this.labelLastLogonTime.AutoSize = true;
-            this.labelLastLogonTime.Location = new System.Drawing.Point(8, 200);
+            this.labelLastLogonTime.Location = new System.Drawing.Point(8, 216);
             this.labelLastLogonTime.Name = "labelLastLogonTime";
             this.labelLastLogonTime.Size = new System.Drawing.Size(78, 13);
             this.labelLastLogonTime.TabIndex = 11;
@@ -194,7 +205,7 @@ namespace AltimailServer.Administrator
             // labelAdministrationLevel
             // 
             this.labelAdministrationLevel.AutoSize = true;
-            this.labelAdministrationLevel.Location = new System.Drawing.Point(11, 152);
+            this.labelAdministrationLevel.Location = new System.Drawing.Point(11, 168);
             this.labelAdministrationLevel.Name = "labelAdministrationLevel";
             this.labelAdministrationLevel.Size = new System.Drawing.Size(97, 13);
             this.labelAdministrationLevel.TabIndex = 10;
@@ -203,8 +214,9 @@ namespace AltimailServer.Administrator
             // comboAdministrationLevel
             // 
             this.comboAdministrationLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboAdministrationLevel.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.comboAdministrationLevel.FormattingEnabled = true;
-            this.comboAdministrationLevel.Location = new System.Drawing.Point(8, 168);
+            this.comboAdministrationLevel.Location = new System.Drawing.Point(8, 184);
             this.comboAdministrationLevel.Name = "comboAdministrationLevel";
             this.comboAdministrationLevel.Size = new System.Drawing.Size(215, 21);
             this.comboAdministrationLevel.TabIndex = 3;
@@ -289,9 +301,10 @@ namespace AltimailServer.Administrator
             // checkVacationMessageAbortSpamFlagged
             // 
             this.checkVacationMessageAbortSpamFlagged.AutoSize = true;
+            this.checkVacationMessageAbortSpamFlagged.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.checkVacationMessageAbortSpamFlagged.Location = new System.Drawing.Point(26, 277);
             this.checkVacationMessageAbortSpamFlagged.Name = "checkVacationMessageAbortSpamFlagged";
-            this.checkVacationMessageAbortSpamFlagged.Size = new System.Drawing.Size(196, 17);
+            this.checkVacationMessageAbortSpamFlagged.Size = new System.Drawing.Size(202, 18);
             this.checkVacationMessageAbortSpamFlagged.TabIndex = 21;
             this.checkVacationMessageAbortSpamFlagged.Text = "Abort on messages marked as spam";
             this.checkVacationMessageAbortSpamFlagged.UseVisualStyleBackColor = true;
@@ -307,9 +320,10 @@ namespace AltimailServer.Administrator
             // checkVacationMessageExpires
             // 
             this.checkVacationMessageExpires.AutoSize = true;
+            this.checkVacationMessageExpires.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.checkVacationMessageExpires.Location = new System.Drawing.Point(26, 226);
             this.checkVacationMessageExpires.Name = "checkVacationMessageExpires";
-            this.checkVacationMessageExpires.Size = new System.Drawing.Size(119, 17);
+            this.checkVacationMessageExpires.Size = new System.Drawing.Size(125, 18);
             this.checkVacationMessageExpires.TabIndex = 19;
             this.checkVacationMessageExpires.Text = "Automatically expire";
             this.checkVacationMessageExpires.UseVisualStyleBackColor = true;
@@ -358,9 +372,10 @@ namespace AltimailServer.Administrator
             // checkVacationMessageEnable
             // 
             this.checkVacationMessageEnable.AutoSize = true;
+            this.checkVacationMessageEnable.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.checkVacationMessageEnable.Location = new System.Drawing.Point(8, 8);
             this.checkVacationMessageEnable.Name = "checkVacationMessageEnable";
-            this.checkVacationMessageEnable.Size = new System.Drawing.Size(65, 17);
+            this.checkVacationMessageEnable.Size = new System.Drawing.Size(71, 18);
             this.checkVacationMessageEnable.TabIndex = 14;
             this.checkVacationMessageEnable.Text = "Enabled";
             this.checkVacationMessageEnable.UseVisualStyleBackColor = true;
@@ -383,9 +398,10 @@ namespace AltimailServer.Administrator
             // checkForwardAbortSpamFlagged
             // 
             this.checkForwardAbortSpamFlagged.AutoSize = true;
+            this.checkForwardAbortSpamFlagged.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.checkForwardAbortSpamFlagged.Location = new System.Drawing.Point(26, 103);
             this.checkForwardAbortSpamFlagged.Name = "checkForwardAbortSpamFlagged";
-            this.checkForwardAbortSpamFlagged.Size = new System.Drawing.Size(196, 17);
+            this.checkForwardAbortSpamFlagged.Size = new System.Drawing.Size(202, 18);
             this.checkForwardAbortSpamFlagged.TabIndex = 19;
             this.checkForwardAbortSpamFlagged.Text = "Abort on messages marked as spam";
             this.checkForwardAbortSpamFlagged.UseVisualStyleBackColor = true;
@@ -393,9 +409,10 @@ namespace AltimailServer.Administrator
             // checkForwardKeepOriginal
             // 
             this.checkForwardKeepOriginal.AutoSize = true;
+            this.checkForwardKeepOriginal.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.checkForwardKeepOriginal.Location = new System.Drawing.Point(26, 80);
             this.checkForwardKeepOriginal.Name = "checkForwardKeepOriginal";
-            this.checkForwardKeepOriginal.Size = new System.Drawing.Size(132, 17);
+            this.checkForwardKeepOriginal.Size = new System.Drawing.Size(138, 18);
             this.checkForwardKeepOriginal.TabIndex = 18;
             this.checkForwardKeepOriginal.Text = "Keep original message";
             this.checkForwardKeepOriginal.UseVisualStyleBackColor = true;
@@ -421,9 +438,10 @@ namespace AltimailServer.Administrator
             // checkForwardEnabled
             // 
             this.checkForwardEnabled.AutoSize = true;
+            this.checkForwardEnabled.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.checkForwardEnabled.Location = new System.Drawing.Point(8, 8);
             this.checkForwardEnabled.Name = "checkForwardEnabled";
-            this.checkForwardEnabled.Size = new System.Drawing.Size(65, 17);
+            this.checkForwardEnabled.Size = new System.Drawing.Size(71, 18);
             this.checkForwardEnabled.TabIndex = 15;
             this.checkForwardEnabled.Text = "Enabled";
             this.checkForwardEnabled.UseVisualStyleBackColor = true;
@@ -486,9 +504,10 @@ namespace AltimailServer.Administrator
             // checkSignatureEnabled
             // 
             this.checkSignatureEnabled.AutoSize = true;
+            this.checkSignatureEnabled.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.checkSignatureEnabled.Location = new System.Drawing.Point(12, 15);
             this.checkSignatureEnabled.Name = "checkSignatureEnabled";
-            this.checkSignatureEnabled.Size = new System.Drawing.Size(65, 17);
+            this.checkSignatureEnabled.Size = new System.Drawing.Size(71, 18);
             this.checkSignatureEnabled.TabIndex = 15;
             this.checkSignatureEnabled.Text = "Enabled";
             this.checkSignatureEnabled.UseVisualStyleBackColor = true;
@@ -511,6 +530,7 @@ namespace AltimailServer.Administrator
             // 
             this.buttonEditExternalAccount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonEditExternalAccount.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.buttonEditExternalAccount.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.buttonEditExternalAccount.Location = new System.Drawing.Point(475, 42);
             this.buttonEditExternalAccount.Name = "buttonEditExternalAccount";
             this.buttonEditExternalAccount.Size = new System.Drawing.Size(100, 25);
@@ -523,6 +543,7 @@ namespace AltimailServer.Administrator
             // 
             this.buttonDeleteExternalAccount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonDeleteExternalAccount.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.buttonDeleteExternalAccount.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.buttonDeleteExternalAccount.Location = new System.Drawing.Point(475, 73);
             this.buttonDeleteExternalAccount.Name = "buttonDeleteExternalAccount";
             this.buttonDeleteExternalAccount.Size = new System.Drawing.Size(100, 25);
@@ -535,6 +556,7 @@ namespace AltimailServer.Administrator
             // 
             this.buttonAddExternalAccount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonAddExternalAccount.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.buttonAddExternalAccount.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.buttonAddExternalAccount.Location = new System.Drawing.Point(475, 11);
             this.buttonAddExternalAccount.Name = "buttonAddExternalAccount";
             this.buttonAddExternalAccount.Size = new System.Drawing.Size(100, 25);
@@ -556,7 +578,7 @@ namespace AltimailServer.Administrator
             this.listFetchAccounts.HideSelection = false;
             this.listFetchAccounts.Location = new System.Drawing.Point(12, 11);
             this.listFetchAccounts.Name = "listFetchAccounts";
-            this.listFetchAccounts.Size = new System.Drawing.Size(457, 359);
+            this.listFetchAccounts.Size = new System.Drawing.Size(457, 355);
             this.listFetchAccounts.TabIndex = 43;
             this.listFetchAccounts.UseCompatibleStateImageBehavior = false;
             this.listFetchAccounts.View = System.Windows.Forms.View.Details;
@@ -618,7 +640,7 @@ namespace AltimailServer.Administrator
             this.labelAccountADInfo.Size = new System.Drawing.Size(470, 50);
             this.labelAccountADInfo.TabIndex = 22;
             this.labelAccountADInfo.Text = "By entering the fields below, you can connect this account to an Active Directory" +
-    ". When a user connects to the server, hMailServer will use the Active Directory " +
+    ". When a user connects to the server, Altimail Server will use the Active Directory " +
     "to validate the user\'s password.";
             // 
             // labelUsername
@@ -662,9 +684,10 @@ namespace AltimailServer.Administrator
             // checkAccountIsAD
             // 
             this.checkAccountIsAD.AutoSize = true;
+            this.checkAccountIsAD.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.checkAccountIsAD.Location = new System.Drawing.Point(26, 67);
             this.checkAccountIsAD.Name = "checkAccountIsAD";
-            this.checkAccountIsAD.Size = new System.Drawing.Size(143, 17);
+            this.checkAccountIsAD.Size = new System.Drawing.Size(149, 18);
             this.checkAccountIsAD.TabIndex = 17;
             this.checkAccountIsAD.Text = "Active Directory account";
             this.checkAccountIsAD.UseVisualStyleBackColor = true;
@@ -690,6 +713,7 @@ namespace AltimailServer.Administrator
             // 
             // buttonEditFolders
             // 
+            this.buttonEditFolders.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.buttonEditFolders.Location = new System.Drawing.Point(32, 112);
             this.buttonEditFolders.Name = "buttonEditFolders";
             this.buttonEditFolders.Size = new System.Drawing.Size(100, 25);
@@ -700,6 +724,7 @@ namespace AltimailServer.Administrator
             // 
             // buttonUnlock
             // 
+            this.buttonUnlock.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.buttonUnlock.Location = new System.Drawing.Point(32, 178);
             this.buttonUnlock.Name = "buttonUnlock";
             this.buttonUnlock.Size = new System.Drawing.Size(100, 25);
@@ -710,6 +735,7 @@ namespace AltimailServer.Administrator
             // 
             // buttonEmptyAccount
             // 
+            this.buttonEmptyAccount.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.buttonEmptyAccount.Location = new System.Drawing.Point(32, 144);
             this.buttonEmptyAccount.Name = "buttonEmptyAccount";
             this.buttonEmptyAccount.Size = new System.Drawing.Size(100, 25);
@@ -778,8 +804,8 @@ namespace AltimailServer.Administrator
             // 
             // ucAccount
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.tabControl);
             this.Name = "ucAccount";
             this.Size = new System.Drawing.Size(733, 395);
@@ -867,5 +893,6 @@ namespace AltimailServer.Administrator
        private System.Windows.Forms.Button buttonEditFolders;
        private Controls.ucCheckbox checkVacationMessageAbortSpamFlagged;
        private Controls.ucCheckbox checkForwardAbortSpamFlagged;
+      private System.Windows.Forms.ProgressBar prgMailboxUsage;
    }
 }

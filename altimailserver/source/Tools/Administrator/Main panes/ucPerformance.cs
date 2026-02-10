@@ -182,7 +182,7 @@ namespace AltimailServer.Administrator
       private void buttonMessageIndexingClear_Click(object sender, EventArgs e)
       {
          if (MessageBox.Show(Strings.Localize("Are you sure you want to clear the message index?"),
-                             EnumStrings.hMailServerAdministrator, MessageBoxButtons.YesNo,
+                             EnumStrings.AltimailServerAdministrator, MessageBoxButtons.YesNo,
                              MessageBoxIcon.Question) == DialogResult.Yes)
          {
             AltimailServer.Settings settings = APICreator.Application.Settings;

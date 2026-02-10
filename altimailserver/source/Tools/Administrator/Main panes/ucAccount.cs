@@ -113,6 +113,15 @@ namespace AltimailServer.Administrator
          checkEnabled.Checked = _representedAccount.Active;
          textSize.Text = Math.Round(_representedAccount.Size, 3).ToString();
 
+         //var calcResult = _representedAccount.Size / (_representedAccount.MaxSize == 0 ? 1 : _representedAccount.MaxSize);
+
+         if (_representedAccount.MaxSize == 0) prgMailboxUsage.Value = 100; //We can't show a progress.
+         else
+         {
+            decimal accUsage = ((Convert.ToDecimal(_representedAccount.Size) / Convert.ToDecimal(_representedAccount.MaxSize)) * 100);
+            prgMailboxUsage.Value = Convert.ToInt32(Math.Floor(accUsage));
+         }
+
          checkVacationMessageEnable.Checked = _representedAccount.VacationMessageIsOn;
          textVacationMessageSubject.Text = _representedAccount.VacationSubject;
          textVacationMessageText.Text = _representedAccount.VacationMessage;
@@ -163,7 +172,7 @@ namespace AltimailServer.Administrator
          {
             if (!APICreator.Application.Utilities.IsStrongPassword(textAddress.Text, textPassword.Password))
             {
-               if (MessageBox.Show(Strings.Localize("The password appears to be weak. Are you sure you want to use it?"), EnumStrings.hMailServerAdministrator, MessageBoxButtons.YesNo) != DialogResult.Yes)
+               if (MessageBox.Show(Strings.Localize("The password appears to be weak. Are you sure you want to use it?"), EnumStrings.AltimailServerAdministrator, MessageBoxButtons.YesNo) != DialogResult.Yes)
                {
                   return false;
                }
@@ -256,7 +265,7 @@ namespace AltimailServer.Administrator
       private void buttonEmptyAccount_Click(object sender, EventArgs e)
       {
          if (MessageBox.Show(Strings.Localize("Are you sure you want to remove all messages in the account?"),
-                             EnumStrings.hMailServerAdministrator,
+                             EnumStrings.AltimailServerAdministrator,
                              MessageBoxButtons.YesNo,
                              MessageBoxIcon.Question) == DialogResult.Yes)
          {
@@ -272,7 +281,7 @@ namespace AltimailServer.Administrator
       {
          if (_representedAccount == null)
          {
-            MessageBox.Show("The account must be saved first.", EnumStrings.hMailServerAdministrator);
+            MessageBox.Show("The account must be saved first.", EnumStrings.AltimailServerAdministrator);
             return;
          }
 
@@ -425,7 +434,7 @@ namespace AltimailServer.Administrator
       {
          if (_representedAccount == null)
          {
-            MessageBox.Show("The account must be saved first.", EnumStrings.hMailServerAdministrator);
+            MessageBox.Show("The account must be saved first.", EnumStrings.AltimailServerAdministrator);
             return;
          }
 

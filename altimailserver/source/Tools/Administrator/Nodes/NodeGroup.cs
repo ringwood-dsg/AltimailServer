@@ -44,7 +44,8 @@ namespace AltimailServer.Administrator.Nodes
       {
          get
          {
-            return "chart_organisation.ico";
+            //return "chart_organisation.ico";
+            return "tree-imap-group.ico";
          }
       }
 

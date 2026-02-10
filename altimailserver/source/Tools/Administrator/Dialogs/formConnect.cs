@@ -106,7 +106,7 @@ namespace AltimailServer.Administrator
 
          if (listServers.SelectedItems.Count > 1)
          {
-            MessageBox.Show("You can only connect to one server at a time.", EnumStrings.hMailServerAdministrator, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("You can only connect to one server at a time.", EnumStrings.AltimailServerAdministrator, MessageBoxButtons.OK, MessageBoxIcon.Information);
             return;
          }
 
@@ -119,7 +119,7 @@ namespace AltimailServer.Administrator
 
          if (item == null)
          {
-            MessageBox.Show("Please choose which server to connect to.", EnumStrings.hMailServerAdministrator, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Please choose which server to connect to.", EnumStrings.AltimailServerAdministrator, MessageBoxButtons.OK, MessageBoxIcon.Information);
             return;
          }
 
@@ -154,7 +154,7 @@ namespace AltimailServer.Administrator
                                               application.Database.RequiredVersion);
 
 
-               MessageBox.Show(message, EnumStrings.hMailServerAdministrator, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+               MessageBox.Show(message, EnumStrings.AltimailServerAdministrator, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                return false;
             }
 
@@ -170,7 +170,7 @@ namespace AltimailServer.Administrator
          }
          catch (Exception ex)
          {
-            MessageBox.Show(ex.Message, EnumStrings.hMailServerAdministrator, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            MessageBox.Show(ex.Message, EnumStrings.AltimailServerAdministrator, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             return false;
          }
       }

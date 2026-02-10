@@ -42,6 +42,7 @@ namespace AltimailServer.Administrator.Dialogs
             // 
             this.buttonOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.buttonOK.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.buttonOK.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonOK.Location = new System.Drawing.Point(236, 277);
             this.buttonOK.Name = "buttonOK";
@@ -55,6 +56,7 @@ namespace AltimailServer.Administrator.Dialogs
             // 
             this.buttonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonCancel.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.buttonCancel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCancel.Location = new System.Drawing.Point(340, 277);
             this.buttonCancel.Name = "buttonCancel";
@@ -66,6 +68,7 @@ namespace AltimailServer.Administrator.Dialogs
             // comboDomain
             // 
             this.comboDomain.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboDomain.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.comboDomain.FormattingEnabled = true;
             this.comboDomain.Location = new System.Drawing.Point(24, 32);
             this.comboDomain.Name = "comboDomain";
@@ -115,8 +118,8 @@ namespace AltimailServer.Administrator.Dialogs
             // formActiveDirectoryAccounts
             // 
             this.AcceptButton = this.buttonOK;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.CancelButton = this.buttonCancel;
             this.ClientSize = new System.Drawing.Size(455, 313);
             this.Controls.Add(this.labelAccounts);

@@ -1,12 +1,15 @@
 // Copyright (c) 2010 Martin Knafve / hmailserver.com.  
 // http://www.hmailserver.com
 
+using AltimailServer.Administrator.Dialogs;
 using AltimailServer.Administrator.Nodes;
 using AltimailServer.Administrator.Utilities;
+using AltimailServer.Administrator.Utilities.Settings;
 using AltimailServer.Shared;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Reflection;
 using System.Windows.Forms;
@@ -19,11 +22,13 @@ namespace AltimailServer.Administrator
       private string _serverHost;
       private TreeNode currentlySelectedNode;
       private string _language;
+      private UserSettings userSettings;
 
       public formMain(AltimailServer.Application app, string serverHost)
       {
          InitializeComponent();
 
+         userSettings = UserSettings.Load();
          application = app;
          _serverHost = serverHost;
          currentlySelectedNode = null;
@@ -79,24 +84,30 @@ namespace AltimailServer.Administrator
 
       private void Initialize()
       {
+         slConnection.Text = $"Connected to {_serverHost}";
+         slConnection.Image = Properties.Resources.Connected;
          CreateMainNodes();
 
-         this.Text = "Altimail Server Administrator (Legacy Version) - [" + _serverHost + "]";
+         //this.Text = $"Altimail Server Administrator [Connected to {_serverHost}]";
 
+#if DEBUG
+         this.Text = $"{this.Text}{(Debugger.IsAttached ? " DEBUG" : " (alpha)")}";
+#endif
       }
 
       private void CreateMainNodes()
       {
          treeNodes.Nodes.Clear();
 
-         AddNode(null, new NodeWelcome(), 1);
+         //AddNode(null, new NodeWelcome(), 1);
          AddNode(null, new NodeStatus(), 1);
          AddNode(null, new NodeDomains(this), 1);
          AddNode(null, new NodeGlobalRules(), 1);
          AddNode(null, new NodeSettings(), 1);
          AddNode(null, new NodeUtilities(), 1);
 
-         SearchNodeType crit = new SearchNodeType(typeof(NodeWelcome));
+         //SearchNodeType crit = new SearchNodeType(typeof(NodeWelcome));
+         SearchNodeType crit = new SearchNodeType(typeof(NodeStatus));
          SelectNode(crit);
 
 
@@ -119,10 +130,12 @@ namespace AltimailServer.Administrator
       {
          TreeNode node = new TreeNode(internalNode.Title);
 
+         node.NodeFont = new Font("Segoe UI", 8, FontStyle.Regular);
+
          if (!internalNode.IsUserCreated)
             Strings.Localize(node);
 
-         node.NodeFont = new Font("MS Sans Serif", 8, FontStyle.Regular);
+         
 
          string icon = internalNode.Icon;
 
@@ -244,8 +257,7 @@ namespace AltimailServer.Administrator
 
          if (settingsControl.Dirty)
          {
-            DialogResult dr = MessageBox.Show("Do you want to save the changes?", EnumStrings.hMailServerAdministrator, MessageBoxButtons.YesNoCancel);
-
+            DialogResult dr = MessageBox.Show("You have unsaved changes. Do you want to save it now?", EnumStrings.AltimailServerAdministrator, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
             switch (dr)
             {
                case DialogResult.Cancel:
@@ -296,6 +308,9 @@ namespace AltimailServer.Administrator
 
       private void menuItemExit_Click(object sender, EventArgs e)
       {
+         slConnection.Text = "Disconnecting...";
+         slConnection.Image = Properties.Resources.Disconnected;
+
          this.Close();
       }
 
@@ -458,7 +473,7 @@ namespace AltimailServer.Administrator
          }
          catch (Exception e)
          {
-            MessageBox.Show("Changes could not be saved" + Environment.NewLine + e.Message, EnumStrings.hMailServerAdministrator, MessageBoxButtons.OK);
+            MessageBox.Show("Changes could not be saved" + Environment.NewLine + e.Message, EnumStrings.AltimailServerAdministrator, MessageBoxButtons.OK);
          }
 
          return false;
@@ -561,7 +576,7 @@ namespace AltimailServer.Administrator
       private void SaveWindowSettings()
       {
          RegistryKey currentUserKey = Registry.CurrentUser;
-         RegistryKey administratorKey = currentUserKey.CreateSubKey("Software\\hMailServer\\Administrator");
+         RegistryKey administratorKey = currentUserKey.CreateSubKey("Software\\AltimailServer\\Administrator");
 
          administratorKey.SetValue("WindowState", this.WindowState);
 
@@ -582,7 +597,7 @@ namespace AltimailServer.Administrator
       private void LoadWindowSettings()
       {
          RegistryKey currentUserKey = Registry.CurrentUser;
-         RegistryKey administratorKey = currentUserKey.CreateSubKey("Software\\hMailServer\\Administrator");
+         RegistryKey administratorKey = currentUserKey.CreateSubKey("Software\\AltimailServer\\Administrator");
 
          object value = administratorKey.GetValue("WindowWidth", "800");
          if (value != null)
@@ -660,7 +675,7 @@ namespace AltimailServer.Administrator
                break;
          }
 
-         string url = "http://www.AltimailServer.com/documentation/?page=reference_" + name;
+         string url = "https://www.altimailserver.org/documentation/?page=reference_" + name;
 
          try
          {
@@ -668,7 +683,7 @@ namespace AltimailServer.Administrator
          }
          catch (Exception ex)
          {
-            MessageBox.Show("Web browser could not be started." + Environment.NewLine + ex.Message, EnumStrings.hMailServerAdministrator, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            MessageBox.Show("Web browser could not be started." + Environment.NewLine + ex.Message, EnumStrings.AltimailServerAdministrator, MessageBoxButtons.OK, MessageBoxIcon.Warning);
          }
 
 
@@ -676,7 +691,7 @@ namespace AltimailServer.Administrator
 
       private void menuItemHelpIndex_Click(object sender, EventArgs e)
       {
-         string url = "http://www.AltimailServer.com/documentation/";
+         string url = "https://www.altimailserver.org/documentation/";
 
          try
          {
@@ -684,14 +699,16 @@ namespace AltimailServer.Administrator
          }
          catch (Exception ex)
          {
-            MessageBox.Show("Web browser could not be started." + Environment.NewLine + ex.Message, EnumStrings.hMailServerAdministrator, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            MessageBox.Show("Web browser could not be started." + Environment.NewLine + ex.Message, EnumStrings.AltimailServerAdministrator, MessageBoxButtons.OK, MessageBoxIcon.Warning);
          }
       }
 
       private void menuItemHelpAbout_Click(object sender, EventArgs e)
       {
-         formAbout aboutDlg = new formAbout();
-         aboutDlg.ShowDialog();
+         //formAbout aboutDlg = new formAbout();
+         frmAbout frmAbout = new frmAbout();
+         //aboutDlg.ShowDialog();
+         frmAbout.ShowDialog();
       }
 
       private void menuItemSelectLanguage_Click(object sender, EventArgs e)
@@ -736,7 +753,7 @@ namespace AltimailServer.Administrator
          }
          catch (Exception ex)
          {
-            MessageBox.Show("Web browser could not be started." + Environment.NewLine + ex.Message, EnumStrings.hMailServerAdministrator, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            MessageBox.Show("Web browser could not be started." + Environment.NewLine + ex.Message, EnumStrings.AltimailServerAdministrator, MessageBoxButtons.OK, MessageBoxIcon.Warning);
          }
       }
    }

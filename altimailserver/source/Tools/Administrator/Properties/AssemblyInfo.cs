@@ -1,4 +1,6 @@
-﻿// Copyright (c) 2010 Martin Knafve / hmailserver.com.  
+﻿// Modified, Juan Davel/ringwood-dsg, 2025/06/07
+// https://altimailserver.org
+// Copyright (c) 2010 Martin Knafve / hmailserver.com.  
 // http://www.hmailserver.com
 
 using System.Reflection;
@@ -16,7 +18,7 @@ using System.Runtime.InteropServices;
 #endif
 [assembly: AssemblyCompany("Altimail Server Authors and Contributors")]
 [assembly: AssemblyProduct("part of Altimail Server")]
-[assembly: AssemblyCopyright("(c) 2025 Altimail Server Authors and Contributors. All rights reserved.")]
+[assembly: AssemblyCopyright("Copyright (c) 2025-2026 Altimail Server Authors and Contributors. All rights reserved.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -35,5 +37,5 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("6.0.0.2506")]
-[assembly: AssemblyFileVersion("6.0.0.2506")]
+[assembly: AssemblyVersion("6.0.0.2602")]
+[assembly: AssemblyFileVersion("6.0.0.2602")]

@@ -30,8 +30,6 @@ namespace AltimailServer.Administrator
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formMain));
-            this.buttonExit = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.treeNodes = new System.Windows.Forms.TreeView();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
@@ -42,41 +40,28 @@ namespace AltimailServer.Administrator
             this.panelMain = new System.Windows.Forms.Panel();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.menuItemFile = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemSelectLanguage = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemConnect = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.preferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemSelectLanguage = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.tOOLSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dataSynchronisationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemHelpIndex = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuItemHelpAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.slConnection = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
             this.splitContainer.SuspendLayout();
             this.panelTopBar.SuspendLayout();
             this.menuStrip.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // buttonExit
-            // 
-            this.buttonExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonExit.Location = new System.Drawing.Point(691, 544);
-            this.buttonExit.Name = "buttonExit";
-            this.buttonExit.Size = new System.Drawing.Size(89, 25);
-            this.buttonExit.TabIndex = 1;
-            this.buttonExit.Text = "Exit";
-            this.buttonExit.UseVisualStyleBackColor = true;
-            this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Location = new System.Drawing.Point(4, 533);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(785, 5);
-            this.groupBox1.TabIndex = 8;
-            this.groupBox1.TabStop = false;
             // 
             // splitContainer
             // 
@@ -97,7 +82,7 @@ namespace AltimailServer.Administrator
             this.splitContainer.Panel2.Controls.Add(this.buttonSave);
             this.splitContainer.Panel2.Controls.Add(this.panelTopBar);
             this.splitContainer.Panel2.Controls.Add(this.panelMain);
-            this.splitContainer.Size = new System.Drawing.Size(786, 505);
+            this.splitContainer.Size = new System.Drawing.Size(786, 524);
             this.splitContainer.SplitterDistance = 282;
             this.splitContainer.TabIndex = 9;
             this.splitContainer.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer_SplitterMoved);
@@ -106,7 +91,7 @@ namespace AltimailServer.Administrator
             // 
             this.treeNodes.BackColor = System.Drawing.SystemColors.Window;
             this.treeNodes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeNodes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.treeNodes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.treeNodes.ForeColor = System.Drawing.SystemColors.WindowText;
             this.treeNodes.ImageIndex = 0;
             this.treeNodes.ImageList = this.imageList;
@@ -114,7 +99,7 @@ namespace AltimailServer.Administrator
             this.treeNodes.Location = new System.Drawing.Point(0, 0);
             this.treeNodes.Name = "treeNodes";
             this.treeNodes.SelectedImageIndex = 0;
-            this.treeNodes.Size = new System.Drawing.Size(282, 505);
+            this.treeNodes.Size = new System.Drawing.Size(282, 524);
             this.treeNodes.TabIndex = 0;
             this.treeNodes.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeNodes_BeforeExpand);
             this.treeNodes.AfterExpand += new System.Windows.Forms.TreeViewEventHandler(this.treeNodes_AfterExpand);
@@ -161,22 +146,71 @@ namespace AltimailServer.Administrator
             this.imageList.Images.SetKeyName(33, "information.ico");
             this.imageList.Images.SetKeyName(34, "setting_tools.ico");
             this.imageList.Images.SetKeyName(35, "chart_organisation.ico");
+            this.imageList.Images.SetKeyName(36, "tree-home.ico");
+            this.imageList.Images.SetKeyName(37, "tree-server-settings.ico");
+            this.imageList.Images.SetKeyName(38, "tree-domain.ico");
+            this.imageList.Images.SetKeyName(39, "tree-server-protocols.ico");
+            this.imageList.Images.SetKeyName(40, "tree-protocol.ico");
+            this.imageList.Images.SetKeyName(41, "tree-anti-virus.ico");
+            this.imageList.Images.SetKeyName(42, "tree-logging.ico");
+            this.imageList.Images.SetKeyName(43, "tree-ports.ico");
+            this.imageList.Images.SetKeyName(44, "tree-performance.ico");
+            this.imageList.Images.SetKeyName(45, "tree-rules.ico");
+            this.imageList.Images.SetKeyName(46, "tree-ssl-tls.ico");
+            this.imageList.Images.SetKeyName(47, "tree-ssl-tls-settings.ico");
+            this.imageList.Images.SetKeyName(48, "tree-settings-advanced.ico");
+            this.imageList.Images.SetKeyName(49, "tree-scripts.ico");
+            this.imageList.Images.SetKeyName(50, "tree-server-sendout.ico");
+            this.imageList.Images.SetKeyName(51, "tree-smtp-forwarding.ico");
+            this.imageList.Images.SetKeyName(52, "tree-ip-ranges.ico");
+            this.imageList.Images.SetKeyName(53, "tree-domain-accounts.ico");
+            this.imageList.Images.SetKeyName(54, "tree-incoming-relays.ico");
+            this.imageList.Images.SetKeyName(55, "tree-incoming-relay.ico");
+            this.imageList.Images.SetKeyName(56, "tree-server-message.ico");
+            this.imageList.Images.SetKeyName(57, "tree-server-messages.ico");
+            this.imageList.Images.SetKeyName(58, "tree-auto-ban.ico");
+            this.imageList.Images.SetKeyName(59, "tree-tools.ico");
+            this.imageList.Images.SetKeyName(60, "tree-server-status.ico");
+            this.imageList.Images.SetKeyName(61, "tree-backup.ico");
+            this.imageList.Images.SetKeyName(62, "tree-ssl-tls-certificate.ico");
+            this.imageList.Images.SetKeyName(63, "tree-mx-query.ico");
+            this.imageList.Images.SetKeyName(64, "tree-domain-account.ico");
+            this.imageList.Images.SetKeyName(65, "tree-anti-spam.ico");
+            this.imageList.Images.SetKeyName(66, "tree-smtp-routes.ico");
+            this.imageList.Images.SetKeyName(67, "tree-folder.ico");
+            this.imageList.Images.SetKeyName(68, "tree-diagnostics.ico");
+            this.imageList.Images.SetKeyName(69, "tree-imap-group.ico");
+            this.imageList.Images.SetKeyName(70, "tree-smtp-route.ico");
+            this.imageList.Images.SetKeyName(71, "tree-alias.ico");
+            this.imageList.Images.SetKeyName(72, "tree-aliases.ico");
+            this.imageList.Images.SetKeyName(73, "tree-distribution-lists.ico");
+            this.imageList.Images.SetKeyName(74, "tree-domains.ico");
+            this.imageList.Images.SetKeyName(75, "tree-lookup-antispam.ico");
+            this.imageList.Images.SetKeyName(76, "tree-port.ico");
+            this.imageList.Images.SetKeyName(77, "tree-blacklist.ico");
+            this.imageList.Images.SetKeyName(78, "tree-greylist.ico");
+            this.imageList.Images.SetKeyName(79, "tree-whitelist.ico");
             // 
             // buttonHelp
             // 
             this.buttonHelp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonHelp.Location = new System.Drawing.Point(5, 473);
+            this.buttonHelp.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.buttonHelp.Image = global::AltimailServer.Administrator.Properties.Resources.HelpApplication_16x;
+            this.buttonHelp.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonHelp.Location = new System.Drawing.Point(5, 492);
             this.buttonHelp.Name = "buttonHelp";
             this.buttonHelp.Size = new System.Drawing.Size(89, 25);
             this.buttonHelp.TabIndex = 5;
             this.buttonHelp.Text = "&Help";
+            this.buttonHelp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonHelp.UseVisualStyleBackColor = true;
             this.buttonHelp.Click += new System.EventHandler(this.buttonHelp_Click);
             // 
             // buttonSave
             // 
             this.buttonSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSave.Location = new System.Drawing.Point(403, 473);
+            this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.buttonSave.Location = new System.Drawing.Point(403, 492);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(89, 25);
             this.buttonSave.TabIndex = 4;
@@ -214,13 +248,14 @@ namespace AltimailServer.Administrator
             this.panelMain.BackColor = System.Drawing.SystemColors.Control;
             this.panelMain.Location = new System.Drawing.Point(5, 33);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(494, 434);
+            this.panelMain.Size = new System.Drawing.Size(494, 453);
             this.panelMain.TabIndex = 0;
             // 
             // menuStrip
             // 
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuItemFile,
+            this.tOOLSToolStripMenuItem,
             this.menuItemHelp});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
@@ -231,80 +266,133 @@ namespace AltimailServer.Administrator
             // menuItemFile
             // 
             this.menuItemFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuItemSelectLanguage,
             this.menuItemConnect,
+            this.toolStripMenuItem2,
+            this.preferencesToolStripMenuItem,
+            this.menuItemSelectLanguage,
             this.toolStripSeparator1,
             this.menuItemExit});
             this.menuItemFile.Name = "menuItemFile";
-            this.menuItemFile.Size = new System.Drawing.Size(37, 20);
-            this.menuItemFile.Text = "&File";
-            // 
-            // menuItemSelectLanguage
-            // 
-            this.menuItemSelectLanguage.Name = "menuItemSelectLanguage";
-            this.menuItemSelectLanguage.Size = new System.Drawing.Size(166, 22);
-            this.menuItemSelectLanguage.Text = "Select language...";
-            this.menuItemSelectLanguage.Click += new System.EventHandler(this.menuItemSelectLanguage_Click);
+            this.menuItemFile.Size = new System.Drawing.Size(57, 20);
+            this.menuItemFile.Text = "&System";
             // 
             // menuItemConnect
             // 
             this.menuItemConnect.Name = "menuItemConnect";
-            this.menuItemConnect.Size = new System.Drawing.Size(166, 22);
-            this.menuItemConnect.Text = "Connect...";
+            this.menuItemConnect.Size = new System.Drawing.Size(180, 22);
+            this.menuItemConnect.Text = "C&hange Connection";
             this.menuItemConnect.Click += new System.EventHandler(this.menuItemConnect_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
+            // 
+            // preferencesToolStripMenuItem
+            // 
+            this.preferencesToolStripMenuItem.Enabled = false;
+            this.preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
+            this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.preferencesToolStripMenuItem.Text = "&Preferences";
+            // 
+            // menuItemSelectLanguage
+            // 
+            this.menuItemSelectLanguage.Enabled = false;
+            this.menuItemSelectLanguage.Name = "menuItemSelectLanguage";
+            this.menuItemSelectLanguage.Size = new System.Drawing.Size(180, 22);
+            this.menuItemSelectLanguage.Text = "Select language...";
+            this.menuItemSelectLanguage.Click += new System.EventHandler(this.menuItemSelectLanguage_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(163, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // menuItemExit
             // 
             this.menuItemExit.Name = "menuItemExit";
             this.menuItemExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.menuItemExit.Size = new System.Drawing.Size(166, 22);
+            this.menuItemExit.Size = new System.Drawing.Size(180, 22);
             this.menuItemExit.Text = "Exit";
             this.menuItemExit.Click += new System.EventHandler(this.menuItemExit_Click);
+            // 
+            // tOOLSToolStripMenuItem
+            // 
+            this.tOOLSToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dataSynchronisationToolStripMenuItem});
+            this.tOOLSToolStripMenuItem.Enabled = false;
+            this.tOOLSToolStripMenuItem.Name = "tOOLSToolStripMenuItem";
+            this.tOOLSToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.tOOLSToolStripMenuItem.Text = "&Tools";
+            // 
+            // dataSynchronisationToolStripMenuItem
+            // 
+            this.dataSynchronisationToolStripMenuItem.Name = "dataSynchronisationToolStripMenuItem";
+            this.dataSynchronisationToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.dataSynchronisationToolStripMenuItem.Text = "&Data Synchronisation";
             // 
             // menuItemHelp
             // 
             this.menuItemHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuItemHelpIndex,
+            this.toolStripMenuItem1,
             this.menuItemHelpAbout});
             this.menuItemHelp.Name = "menuItemHelp";
             this.menuItemHelp.Size = new System.Drawing.Size(44, 20);
-            this.menuItemHelp.Text = "Help";
+            this.menuItemHelp.Text = "&Help";
             // 
             // menuItemHelpIndex
             // 
             this.menuItemHelpIndex.Name = "menuItemHelpIndex";
-            this.menuItemHelpIndex.Size = new System.Drawing.Size(116, 22);
-            this.menuItemHelpIndex.Text = "Index...";
+            this.menuItemHelpIndex.Size = new System.Drawing.Size(186, 22);
+            this.menuItemHelpIndex.Text = "H&elp";
             this.menuItemHelpIndex.Click += new System.EventHandler(this.menuItemHelpIndex_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(183, 6);
             // 
             // menuItemHelpAbout
             // 
             this.menuItemHelpAbout.Name = "menuItemHelpAbout";
-            this.menuItemHelpAbout.Size = new System.Drawing.Size(116, 22);
-            this.menuItemHelpAbout.Text = "About...";
+            this.menuItemHelpAbout.Size = new System.Drawing.Size(186, 22);
+            this.menuItemHelpAbout.Text = "&About Altimail Server";
             this.menuItemHelpAbout.Click += new System.EventHandler(this.menuItemHelpAbout_Click);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.slConnection});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 551);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(792, 22);
+            this.statusStrip1.TabIndex = 11;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // slConnection
+            // 
+            this.slConnection.Image = global::AltimailServer.Administrator.Properties.Resources.Disconnected;
+            this.slConnection.Name = "slConnection";
+            this.slConnection.Size = new System.Drawing.Size(94, 17);
+            this.slConnection.Text = "Connecting...";
             // 
             // formMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(792, 573);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.splitContainer);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.menuStrip);
+            this.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip;
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "formMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "Altimail Server Administrator (Legacy Version)";
+            this.Text = "Altimail Server Administrator";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.formMain_FormClosing);
             this.Load += new System.EventHandler(this.formMain_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.formMain_KeyDown);
@@ -316,15 +404,14 @@ namespace AltimailServer.Administrator
             this.panelTopBar.PerformLayout();
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button buttonExit;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.SplitContainer splitContainer;
         private System.Windows.Forms.TreeView treeNodes;
         private System.Windows.Forms.Panel panelMain;
@@ -342,6 +429,13 @@ namespace AltimailServer.Administrator
        private System.Windows.Forms.ToolStripMenuItem menuItemHelpIndex;
        private System.Windows.Forms.ToolStripMenuItem menuItemHelpAbout;
        private System.Windows.Forms.ToolStripMenuItem menuItemSelectLanguage;
+      private System.Windows.Forms.ToolStripMenuItem tOOLSToolStripMenuItem;
+      private System.Windows.Forms.ToolStripMenuItem dataSynchronisationToolStripMenuItem;
+      private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+      private System.Windows.Forms.StatusStrip statusStrip1;
+      private System.Windows.Forms.ToolStripStatusLabel slConnection;
+      private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+      private System.Windows.Forms.ToolStripMenuItem preferencesToolStripMenuItem;
    }
 }
 

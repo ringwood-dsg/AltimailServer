@@ -30,7 +30,8 @@ namespace AltimailServer.Administrator.Nodes
       {
          get
          {
-            return "bug_delete.ico";
+            //return "bug_delete.ico";
+            return "tree-anti-virus.ico";
          }
       }
 

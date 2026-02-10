@@ -72,6 +72,7 @@ namespace AltimailServer.Administrator.Dialogs
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnCancel.Location = new System.Drawing.Point(489, 334);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(89, 25);
@@ -83,6 +84,7 @@ namespace AltimailServer.Administrator.Dialogs
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnOK.Location = new System.Drawing.Point(394, 334);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(89, 25);
@@ -116,6 +118,7 @@ namespace AltimailServer.Administrator.Dialogs
             // comboDomains
             // 
             this.comboDomains.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboDomains.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.comboDomains.FormattingEnabled = true;
             this.comboDomains.Location = new System.Drawing.Point(12, 68);
             this.comboDomains.Name = "comboDomains";
@@ -126,6 +129,7 @@ namespace AltimailServer.Administrator.Dialogs
             // comboType
             // 
             this.comboType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboType.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.comboType.FormattingEnabled = true;
             this.comboType.Location = new System.Drawing.Point(12, 24);
             this.comboType.Name = "comboType";
@@ -135,8 +139,8 @@ namespace AltimailServer.Administrator.Dialogs
             // 
             // formSelectUsers
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(595, 371);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnCancel);

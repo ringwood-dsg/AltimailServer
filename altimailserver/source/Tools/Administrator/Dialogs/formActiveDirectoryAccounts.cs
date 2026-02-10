@@ -55,7 +55,7 @@ namespace AltimailServer.Administrator.Dialogs
          }
          catch (Exception e)
          {
-            MessageBox.Show("Retrieving of domains failed:" + Environment.NewLine + e.Message, EnumStrings.hMailServerAdministrator);
+            MessageBox.Show("Retrieving of domains failed:" + Environment.NewLine + e.Message, EnumStrings.AltimailServerAdministrator);
          }
       }
 

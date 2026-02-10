@@ -68,7 +68,7 @@ namespace AltimailServer.Administrator
 
       private void buttonDefault_Click(object sender, EventArgs e)
       {
-         if (MessageBox.Show(Strings.Localize("This operation will change the configuration of the TCP/IP ports to their default values. Are you sure you want to do this?"), EnumStrings.hMailServerAdministrator, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+         if (MessageBox.Show(Strings.Localize("This operation will change the configuration of the TCP/IP ports to their default values. Are you sure you want to do this?"), EnumStrings.AltimailServerAdministrator, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
          {
             AltimailServer.Application app = APICreator.Application;
 

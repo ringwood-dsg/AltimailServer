@@ -31,8 +31,8 @@ namespace AltimailServer.Administrator
          }
          catch (Exception)
          {
-            string message = string.Format("The language which hMailServer is configured to use {0} is not available.\r\nEnglish will be used instead.", language);
-            MessageBox.Show(message, EnumStrings.hMailServerAdministrator, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            string message = string.Format("The language which Altimail Server is configured to use {0} is not available.\r\nEnglish will be used instead.", language);
+            MessageBox.Show(message, EnumStrings.AltimailServerAdministrator, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             try
             {

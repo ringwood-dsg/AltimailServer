@@ -62,7 +62,8 @@ namespace AltimailServer.Administrator.Nodes
       {
          get
          {
-            return "construction.ico";
+            //return "construction.ico";
+            return "tree-ip-ranges.ico";
          }
       }
 

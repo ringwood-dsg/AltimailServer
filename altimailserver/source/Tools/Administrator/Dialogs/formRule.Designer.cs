@@ -88,6 +88,7 @@ namespace AltimailServer.Administrator.Dialogs
             // buttonAddCriteria
             // 
             this.buttonAddCriteria.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonAddCriteria.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.buttonAddCriteria.Location = new System.Drawing.Point(344, 149);
             this.buttonAddCriteria.Name = "buttonAddCriteria";
             this.buttonAddCriteria.Size = new System.Drawing.Size(89, 25);
@@ -99,6 +100,7 @@ namespace AltimailServer.Administrator.Dialogs
             // buttonDeleteCriteria
             // 
             this.buttonDeleteCriteria.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonDeleteCriteria.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.buttonDeleteCriteria.Location = new System.Drawing.Point(344, 211);
             this.buttonDeleteCriteria.Name = "buttonDeleteCriteria";
             this.buttonDeleteCriteria.Size = new System.Drawing.Size(89, 25);
@@ -110,6 +112,7 @@ namespace AltimailServer.Administrator.Dialogs
             // buttonEditCriteria
             // 
             this.buttonEditCriteria.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonEditCriteria.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.buttonEditCriteria.Location = new System.Drawing.Point(344, 180);
             this.buttonEditCriteria.Name = "buttonEditCriteria";
             this.buttonEditCriteria.Size = new System.Drawing.Size(89, 25);
@@ -132,6 +135,7 @@ namespace AltimailServer.Administrator.Dialogs
             // buttonEditAction
             // 
             this.buttonEditAction.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonEditAction.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.buttonEditAction.Location = new System.Drawing.Point(344, 323);
             this.buttonEditAction.Name = "buttonEditAction";
             this.buttonEditAction.Size = new System.Drawing.Size(89, 25);
@@ -143,6 +147,7 @@ namespace AltimailServer.Administrator.Dialogs
             // buttonDeleteAction
             // 
             this.buttonDeleteAction.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonDeleteAction.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.buttonDeleteAction.Location = new System.Drawing.Point(344, 354);
             this.buttonDeleteAction.Name = "buttonDeleteAction";
             this.buttonDeleteAction.Size = new System.Drawing.Size(89, 25);
@@ -154,6 +159,7 @@ namespace AltimailServer.Administrator.Dialogs
             // buttonAddAction
             // 
             this.buttonAddAction.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonAddAction.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.buttonAddAction.Location = new System.Drawing.Point(344, 292);
             this.buttonAddAction.Name = "buttonAddAction";
             this.buttonAddAction.Size = new System.Drawing.Size(89, 25);
@@ -165,6 +171,7 @@ namespace AltimailServer.Administrator.Dialogs
             // buttonMoveUp
             // 
             this.buttonMoveUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMoveUp.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.buttonMoveUp.Location = new System.Drawing.Point(344, 385);
             this.buttonMoveUp.Name = "buttonMoveUp";
             this.buttonMoveUp.Size = new System.Drawing.Size(89, 25);
@@ -176,6 +183,7 @@ namespace AltimailServer.Administrator.Dialogs
             // buttonMoveDown
             // 
             this.buttonMoveDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMoveDown.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.buttonMoveDown.Location = new System.Drawing.Point(344, 416);
             this.buttonMoveDown.Name = "buttonMoveDown";
             this.buttonMoveDown.Size = new System.Drawing.Size(89, 25);
@@ -198,6 +206,7 @@ namespace AltimailServer.Administrator.Dialogs
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnCancel.Location = new System.Drawing.Point(250, 459);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(89, 25);
@@ -209,6 +218,7 @@ namespace AltimailServer.Administrator.Dialogs
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnOK.Location = new System.Drawing.Point(156, 459);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(89, 25);
@@ -243,9 +253,10 @@ namespace AltimailServer.Administrator.Dialogs
             // radioUseOR
             // 
             this.radioUseOR.AutoSize = true;
+            this.radioUseOR.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.radioUseOR.Location = new System.Drawing.Point(143, 126);
             this.radioUseOR.Name = "radioUseOR";
-            this.radioUseOR.Size = new System.Drawing.Size(63, 17);
+            this.radioUseOR.Size = new System.Drawing.Size(69, 18);
             this.radioUseOR.TabIndex = 38;
             this.radioUseOR.TabStop = true;
             this.radioUseOR.Text = "Use OR";
@@ -254,9 +265,10 @@ namespace AltimailServer.Administrator.Dialogs
             // radioUseAND
             // 
             this.radioUseAND.AutoSize = true;
+            this.radioUseAND.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.radioUseAND.Location = new System.Drawing.Point(29, 126);
             this.radioUseAND.Name = "radioUseAND";
-            this.radioUseAND.Size = new System.Drawing.Size(70, 17);
+            this.radioUseAND.Size = new System.Drawing.Size(76, 18);
             this.radioUseAND.TabIndex = 37;
             this.radioUseAND.TabStop = true;
             this.radioUseAND.Text = "Use AND";
@@ -300,9 +312,10 @@ namespace AltimailServer.Administrator.Dialogs
             // checkEnabled
             // 
             this.checkEnabled.AutoSize = true;
+            this.checkEnabled.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.checkEnabled.Location = new System.Drawing.Point(29, 71);
             this.checkEnabled.Name = "checkEnabled";
-            this.checkEnabled.Size = new System.Drawing.Size(65, 17);
+            this.checkEnabled.Size = new System.Drawing.Size(71, 18);
             this.checkEnabled.TabIndex = 29;
             this.checkEnabled.Text = "Enabled";
             this.checkEnabled.UseVisualStyleBackColor = true;
@@ -319,8 +332,8 @@ namespace AltimailServer.Administrator.Dialogs
             // 
             // formRule
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(438, 489);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);

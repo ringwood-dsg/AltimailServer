@@ -40,7 +40,8 @@ namespace AltimailServer.Administrator.Nodes
       {
          get
          {
-            return "arrow_in.ico";
+            //return "arrow_in.ico";
+            return "tree-incoming-relay.ico";
          }
       }
 

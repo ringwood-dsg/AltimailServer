@@ -28,7 +28,8 @@ namespace AltimailServer.Administrator.Nodes
       {
          get
          {
-            return "star.ico";
+            //return "star.ico";
+            return "tree-home.ico";
          }
       }
 

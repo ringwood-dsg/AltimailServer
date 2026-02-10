@@ -29,7 +29,7 @@ namespace AltimailServer.Administrator
             }
             catch (Exception)
             {
-               MessageBox.Show(Strings.Localize("The IP range does not exist."), EnumStrings.hMailServerAdministrator, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+               MessageBox.Show(Strings.Localize("The IP range does not exist."), EnumStrings.AltimailServerAdministrator, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                this.Enabled = false;
             }
@@ -151,7 +151,7 @@ namespace AltimailServer.Administrator
          }
          catch (Exception e)
          {
-            MessageBox.Show(e.Message, EnumStrings.hMailServerAdministrator, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            MessageBox.Show(e.Message, EnumStrings.AltimailServerAdministrator, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return false;
          }
 

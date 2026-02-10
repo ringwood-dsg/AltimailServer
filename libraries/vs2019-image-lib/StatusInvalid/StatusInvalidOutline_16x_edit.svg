@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
+<path id="outline" fill="#F6F6F6" d="M40,20c0,11.046-8.954,20-20,20S0,31.046,0,20S8.954,0,20,0S40,8.954,40,20z"/>
+<path id="iconBg" fill="#E51400" d="M20,2.5C10.335,2.5,2.5,10.335,2.5,20S10.335,37.5,20,37.5S37.5,29.665,37.5,20
+	S29.665,2.5,20,2.5z M20,35c-8.272,0-15-6.728-15-15c0-8.27,6.728-15,15-15s15,6.728,15,15S28.272,35,20,35z M17.5,7.5h5V25h-5V7.5z
+	 M17.5,27.5h5v5h-5V27.5z"/>
+<g id="iconFg">
+	<path fill="#F6F6F6" d="M20,5C11.728,5,5,11.73,5,20c0,8.272,6.728,15,15,15s15-6.728,15-15C35,11.73,28.272,5,20,5z M22.5,32.5h-5
+		v-5h5V32.5z M22.5,25h-5V7.5h5V25z"/>
+</g>
+</svg>

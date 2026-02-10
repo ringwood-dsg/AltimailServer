@@ -68,6 +68,7 @@ namespace AltimailServer.Administrator
             // 
             // buttonSelectCertificate
             // 
+            this.buttonSelectCertificate.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.buttonSelectCertificate.Location = new System.Drawing.Point(293, 67);
             this.buttonSelectCertificate.Name = "buttonSelectCertificate";
             this.buttonSelectCertificate.Size = new System.Drawing.Size(47, 19);
@@ -78,6 +79,7 @@ namespace AltimailServer.Administrator
             // 
             // buttonSelectKey
             // 
+            this.buttonSelectKey.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.buttonSelectKey.Location = new System.Drawing.Point(293, 109);
             this.buttonSelectKey.Name = "buttonSelectKey";
             this.buttonSelectKey.Size = new System.Drawing.Size(47, 19);
@@ -91,6 +93,7 @@ namespace AltimailServer.Administrator
             this.textPrivateKeyFile.Location = new System.Drawing.Point(8, 108);
             this.textPrivateKeyFile.Name = "textPrivateKeyFile";
             this.textPrivateKeyFile.Number = 0;
+            this.textPrivateKeyFile.Number64 = ((long)(0));
             this.textPrivateKeyFile.Numeric = false;
             this.textPrivateKeyFile.Size = new System.Drawing.Size(279, 20);
             this.textPrivateKeyFile.TabIndex = 19;
@@ -100,6 +103,7 @@ namespace AltimailServer.Administrator
             this.textCertificateFile.Location = new System.Drawing.Point(8, 67);
             this.textCertificateFile.Name = "textCertificateFile";
             this.textCertificateFile.Number = 0;
+            this.textCertificateFile.Number64 = ((long)(0));
             this.textCertificateFile.Numeric = false;
             this.textCertificateFile.Size = new System.Drawing.Size(279, 20);
             this.textCertificateFile.TabIndex = 17;
@@ -109,14 +113,15 @@ namespace AltimailServer.Administrator
             this.textName.Location = new System.Drawing.Point(8, 24);
             this.textName.Name = "textName";
             this.textName.Number = 0;
+            this.textName.Number64 = ((long)(0));
             this.textName.Numeric = false;
             this.textName.Size = new System.Drawing.Size(175, 20);
             this.textName.TabIndex = 15;
             // 
             // ucSSLCertificate
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.buttonSelectKey);
             this.Controls.Add(this.buttonSelectCertificate);
             this.Controls.Add(this.labelPrivateKeyFile);

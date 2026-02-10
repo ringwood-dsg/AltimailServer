@@ -74,7 +74,7 @@ namespace AltimailServer.Administrator
          string question = Strings.Localize("Are you sure you want to delete %s?");
          question = question.Replace("%s", objectName);
 
-         if (MessageBox.Show(question, EnumStrings.hMailServerAdministrator, MessageBoxButtons.YesNo) == DialogResult.Yes)
+         if (MessageBox.Show(question, EnumStrings.AltimailServerAdministrator, MessageBoxButtons.YesNo) == DialogResult.Yes)
             return true;
          else
             return false;
@@ -85,7 +85,7 @@ namespace AltimailServer.Administrator
       {
          string question = Strings.Localize("Are you sure you want to delete the selected items?");
 
-         if (MessageBox.Show(question, EnumStrings.hMailServerAdministrator, MessageBoxButtons.YesNo) == DialogResult.Yes)
+         if (MessageBox.Show(question, EnumStrings.AltimailServerAdministrator, MessageBoxButtons.YesNo) == DialogResult.Yes)
             return true;
          else
             return false;
@@ -93,8 +93,8 @@ namespace AltimailServer.Administrator
 
       static internal void AskRestartServer()
       {
-         if (MessageBox.Show(Strings.Localize("hMailServer needs to be restarted for the changes to take effect.") + Environment.NewLine +
-                    Strings.Localize("Do you want to restart hMailServer now?"), EnumStrings.hMailServerAdministrator, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+         if (MessageBox.Show(Strings.Localize("Altimail Server needs to be restarted for the changes to take effect.") + Environment.NewLine +
+                    Strings.Localize("Do you want to restart Altimail Server now?"), EnumStrings.AltimailServerAdministrator, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
          {
             using (new WaitCursor())
             {
@@ -102,7 +102,7 @@ namespace AltimailServer.Administrator
                application.Stop();
                application.Start();
 
-               MessageBox.Show(Strings.Localize("The hMailServer server has been restarted."), EnumStrings.hMailServerAdministrator, MessageBoxButtons.OK, MessageBoxIcon.Information);
+               MessageBox.Show(Strings.Localize("The Altimail Server server has been restarted."), EnumStrings.AltimailServerAdministrator, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
          }
       }

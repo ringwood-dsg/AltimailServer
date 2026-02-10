@@ -28,7 +28,8 @@ namespace AltimailServer.Administrator.Nodes
       {
          get
          {
-            return "compass.ico";
+            //return "compass.ico";
+            return "tree-mx-query.ico";
          }
       }
 

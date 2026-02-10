@@ -113,7 +113,7 @@ namespace AltimailServer.Administrator
             icon = MessageBoxIcon.Information;
          }
 
-         MessageBox.Show(result, EnumStrings.hMailServerAdministrator, MessageBoxButtons.OK, icon);
+         MessageBox.Show(result, EnumStrings.AltimailServerAdministrator, MessageBoxButtons.OK, icon);
       }
 
       private void buttonReloadScripts_Click(object sender, EventArgs e)

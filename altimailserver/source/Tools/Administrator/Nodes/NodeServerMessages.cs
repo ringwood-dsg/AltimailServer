@@ -30,7 +30,8 @@ namespace AltimailServer.Administrator.Nodes
       {
          get
          {
-            return "folder.ico";
+            //return "folder.ico";
+            return "tree-server-messages.ico";
          }
       }
 

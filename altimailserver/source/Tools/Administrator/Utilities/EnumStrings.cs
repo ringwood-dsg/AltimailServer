@@ -5,11 +5,11 @@ namespace AltimailServer.Administrator.Utilities
 {
    class EnumStrings
    {
-      public static string hMailServerAdministrator
+      public static string AltimailServerAdministrator
       {
          get
          {
-            return "hMailServer Administrator";
+            return "Altimail Server Administrator";
          }
       }
 

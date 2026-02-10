@@ -52,6 +52,7 @@ namespace AltimailServer.Administrator.Dialogs
             this.comboDomain.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.comboDomain.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboDomain.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.comboDomain.FormattingEnabled = true;
             this.comboDomain.Location = new System.Drawing.Point(29, 33);
             this.comboDomain.Name = "comboDomain";
@@ -84,6 +85,7 @@ namespace AltimailServer.Administrator.Dialogs
             // buttonAdd
             // 
             this.buttonAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonAdd.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.buttonAdd.Location = new System.Drawing.Point(355, 325);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(89, 25);
@@ -94,18 +96,21 @@ namespace AltimailServer.Administrator.Dialogs
             // buttonClose
             // 
             this.buttonClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.buttonClose.Location = new System.Drawing.Point(450, 325);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(89, 25);
             this.buttonClose.TabIndex = 17;
             this.buttonClose.Text = "&Close";
             this.buttonClose.UseVisualStyleBackColor = true;
-            // 
-            // formUserAccounts
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(548, 356);
+         // 
+         // formUserAccounts
+         // 
+         //this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+         //this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+         this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+         this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+         this.ClientSize = new System.Drawing.Size(548, 356);
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.ucListView1);

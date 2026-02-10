@@ -29,7 +29,8 @@ namespace AltimailServer.Administrator.Nodes
       {
          get
          {
-            return "multitool.ico";
+            //return "multitool.ico";
+            return "tree-tools.ico";
          }
       }
 

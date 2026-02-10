@@ -45,7 +45,7 @@ namespace AltimailServer.Administrator
                }
                catch (Exception e)
                {
-                  MessageBox.Show(e.Message, EnumStrings.hMailServerAdministrator);
+                  MessageBox.Show(e.Message, EnumStrings.AltimailServerAdministrator);
                   return false;
                }
             }
@@ -81,7 +81,7 @@ namespace AltimailServer.Administrator
                if (node.Text == currentNode.Text)
                {
                   MessageBox.Show(Strings.Localize("There is already an folder with this name."),
-                     EnumStrings.hMailServerAdministrator);
+                     EnumStrings.AltimailServerAdministrator);
 
                   textName.Focus();
 
@@ -98,7 +98,7 @@ namespace AltimailServer.Administrator
 
          if (textName.Text.Contains(_folderHierarchyDelimiter))
          {
-            MessageBox.Show(Strings.Localize("A folder name can not contain the hierarchy delimiter."), EnumStrings.hMailServerAdministrator);
+            MessageBox.Show(Strings.Localize("A folder name can not contain the hierarchy delimiter."), EnumStrings.AltimailServerAdministrator);
             return false;
          }
 
@@ -206,7 +206,7 @@ namespace AltimailServer.Administrator
          }
          catch (Exception ex)
          {
-            MessageBox.Show(ex.Message, EnumStrings.hMailServerAdministrator, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(ex.Message, EnumStrings.AltimailServerAdministrator, MessageBoxButtons.OK, MessageBoxIcon.Information);
             return;
          }
 
@@ -234,7 +234,7 @@ namespace AltimailServer.Administrator
             return;
 
          if (MessageBox.Show(Strings.Localize("Are you sure you want to delete all messages in the folder?"),
-            EnumStrings.hMailServerAdministrator,
+            EnumStrings.AltimailServerAdministrator,
             MessageBoxButtons.YesNo,
             MessageBoxIcon.Question) == DialogResult.Yes)
          {
@@ -251,7 +251,7 @@ namespace AltimailServer.Administrator
             return;
 
          if (MessageBox.Show(Strings.Localize("Are you sure you want to delete the folder?"),
-            EnumStrings.hMailServerAdministrator,
+            EnumStrings.AltimailServerAdministrator,
             MessageBoxButtons.YesNo,
             MessageBoxIcon.Question) == DialogResult.Yes)
          {
@@ -316,7 +316,7 @@ namespace AltimailServer.Administrator
          }
          catch (Exception ex)
          {
-            MessageBox.Show("Creation of folder failed." + Environment.NewLine + ex.Message, EnumStrings.hMailServerAdministrator);
+            MessageBox.Show("Creation of folder failed." + Environment.NewLine + ex.Message, EnumStrings.AltimailServerAdministrator);
          }
 
       }

@@ -49,11 +49,11 @@ namespace AltimailServer.Administrator.Utilities.Settings
          if (!Directory.Exists(localData))
             Directory.CreateDirectory(localData);
 
-         string companyFolder = Path.Combine(localData, "Halvar Information");
+         string companyFolder = Path.Combine(localData, "Ringwood Digital Solutions Group");
          if (!Directory.Exists(companyFolder))
             Directory.CreateDirectory(localData);
 
-         string appFolder = Path.Combine(companyFolder, "hMailServer");
+         string appFolder = Path.Combine(companyFolder, "AltimailServer");
          if (!Directory.Exists(appFolder))
             Directory.CreateDirectory(appFolder);
 
@@ -62,7 +62,7 @@ namespace AltimailServer.Administrator.Utilities.Settings
 
       public static void Save(UserSettings settings)
       {
-         string settingsFile = Path.Combine(CreateSettingsFolder(), "hMailAdmin.exe.config");
+         string settingsFile = Path.Combine(CreateSettingsFolder(), "AltimailServerAdmin.exe.config");
 
          XmlTextWriter writer = new XmlTextWriter(settingsFile, Encoding.UTF8);
 
@@ -86,7 +86,7 @@ namespace AltimailServer.Administrator.Utilities.Settings
 
       public static UserSettings Load()
       {
-         string settingsFile = Path.Combine(CreateSettingsFolder(), "hMailAdmin.exe.config");
+         string settingsFile = Path.Combine(CreateSettingsFolder(), "AltimailServerAdmin.exe.config");
 
          if (!File.Exists(settingsFile))
             return CreateDefault();

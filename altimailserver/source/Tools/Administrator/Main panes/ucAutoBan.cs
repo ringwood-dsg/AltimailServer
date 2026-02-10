@@ -102,7 +102,7 @@ namespace AltimailServer.Administrator
          }
          catch (Exception err)
          {
-            MessageBox.Show(err.Message, EnumStrings.hMailServerAdministrator);
+            MessageBox.Show(err.Message, EnumStrings.AltimailServerAdministrator);
          }
       }
 

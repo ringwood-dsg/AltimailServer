@@ -267,13 +267,13 @@ namespace AltimailServer.Administrator
             textClamScanDatabase.Text = database;
             textClamScanExecutable.Text = executable;
 
-            string warning = "hMailServer Administrator was able to auto-detect the location of ClamScan and the database.\r\nIt is still recommended you verify that the path to the executable and the database is correct.";
-            MessageBox.Show(warning, EnumStrings.hMailServerAdministrator, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            string warning = "Altimail Server Administrator was able to auto-detect the location of ClamScan and the database.\r\nIt is still recommended you verify that the path to the executable and the database is correct.";
+            MessageBox.Show(warning, EnumStrings.AltimailServerAdministrator, MessageBoxButtons.OK, MessageBoxIcon.Information);
          }
          else
          {
-            string warning = "hMailServer Administrator was unable to auto-detect the location of ClamWin.";
-            MessageBox.Show(warning, EnumStrings.hMailServerAdministrator, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            string warning = "Altimail Server Administrator was unable to auto-detect the location of ClamWin.";
+            MessageBox.Show(warning, EnumStrings.AltimailServerAdministrator, MessageBoxButtons.OK, MessageBoxIcon.Warning);
          }
 
 
@@ -322,13 +322,13 @@ namespace AltimailServer.Administrator
          {
             string message = Strings.Localize("Test virus was detected successfully. Virus name: ");
             messageText = message + messageText;
-            MessageBox.Show(messageText, EnumStrings.hMailServerAdministrator, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(messageText, EnumStrings.AltimailServerAdministrator, MessageBoxButtons.OK, MessageBoxIcon.Information);
          }
          else
          {
             string message = Strings.Localize("Virus detection failed. Reason: ");
             messageText = message + messageText;
-            MessageBox.Show(messageText, EnumStrings.hMailServerAdministrator, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(messageText, EnumStrings.AltimailServerAdministrator, MessageBoxButtons.OK, MessageBoxIcon.Error);
          }
       }
 

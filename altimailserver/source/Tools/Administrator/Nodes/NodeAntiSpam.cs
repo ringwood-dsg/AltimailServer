@@ -34,7 +34,8 @@ namespace AltimailServer.Administrator.Nodes
       {
          get
          {
-            return "spam_filter.ico";
+            //return "spam_filter.ico";
+            return "tree-anti-spam.ico";
          }
       }
 

@@ -79,8 +79,8 @@ namespace AltimailServer.Administrator
             // formAbout
             // 
             this.AcceptButton = this.btnClose;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(310, 278);
             this.Controls.Add(this.labelAttribution);
             this.Controls.Add(this.linkVisitors);

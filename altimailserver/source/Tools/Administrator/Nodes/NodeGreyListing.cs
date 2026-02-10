@@ -25,7 +25,8 @@ namespace AltimailServer.Administrator.Nodes
       {
          get
          {
-            return "time_delete.ico";
+            //return "time_delete.ico";
+            return "tree-greylist.ico";
          }
       }
 

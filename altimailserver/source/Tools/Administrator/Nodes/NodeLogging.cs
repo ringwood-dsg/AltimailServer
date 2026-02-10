@@ -28,7 +28,8 @@ namespace AltimailServer.Administrator.Nodes
       {
          get
          {
-            return "directory_listing.ico";
+            //return "directory_listing.ico";
+            return "tree-logging.ico";
          }
       }
 

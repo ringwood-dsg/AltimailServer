@@ -42,7 +42,8 @@ namespace AltimailServer.Administrator.Nodes
       {
          get
          {
-            return "routing_intersection_right.ico";
+            //return "routing_intersection_right.ico";
+            return "tree-smtp-route.ico";
          }
       }
 

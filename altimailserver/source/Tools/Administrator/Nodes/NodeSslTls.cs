@@ -28,7 +28,8 @@ namespace AltimailServer.Administrator.Nodes
       {
          get
          {
-            return "construction.ico";
+            //return "construction.ico";
+            return "tree-ssl-tls-settings.ico";
          }
       }
 

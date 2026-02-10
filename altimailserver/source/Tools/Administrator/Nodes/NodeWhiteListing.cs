@@ -28,7 +28,8 @@ namespace AltimailServer.Administrator.Nodes
       {
          get
          {
-            return "email_link.ico";
+            //return "email_link.ico";
+            return "tree-whitelist.ico";
          }
       }
 

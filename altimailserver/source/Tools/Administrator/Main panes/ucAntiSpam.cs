@@ -232,7 +232,7 @@ namespace AltimailServer.Administrator
          }
          else
          {
-            MessageBox.Show(messageText, EnumStrings.hMailServerAdministrator, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(messageText, EnumStrings.AltimailServerAdministrator, MessageBoxButtons.OK, MessageBoxIcon.Error);
          }
 
 

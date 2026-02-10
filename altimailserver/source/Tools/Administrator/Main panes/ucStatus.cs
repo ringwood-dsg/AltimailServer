@@ -63,6 +63,7 @@ namespace AltimailServer.Administrator
          _application = APICreator.Application;
 
          labelVersion.Text = string.Format("{0} ({1})", _application.Version, _application.VersionArchitecture);
+         //labelVersion.Text = $"Altimail Server 6.0 ({_application.Version}) {_application.VersionArchitecture}";
 
          ShowStatistics();
 
@@ -81,6 +82,7 @@ namespace AltimailServer.Administrator
             labelName.Text = "-";
 
          labelDBVersion.Text = database.CurrentVersion.ToString();
+         //labelName.Text += $" (Version {database.CurrentVersion.ToString()})";
 
          Marshal.ReleaseComObject(database);
 
@@ -97,12 +99,21 @@ namespace AltimailServer.Administrator
       {
          AltimailServer.Status status = _application.Status;
 
-         textProcessedMessages.Text = status.ProcessedMessages.ToString();
-         textMessagesContainingViruses.Text = status.RemovedViruses.ToString();
-         textMessagesContainingSpam.Text = status.RemovedSpamMessages.ToString();
-         textSMTPSessions.Text = status.get_SessionCount(eSessionType.eSTSMTP).ToString();
-         textPOP3Sessions.Text = status.get_SessionCount(eSessionType.eSTPOP3).ToString();
-         textIMAPSessions.Text = status.get_SessionCount(eSessionType.eSTIMAP).ToString();
+         //textProcessedMessages.Text = status.ProcessedMessages.ToString();
+         //textMessagesContainingViruses.Text = status.RemovedViruses.ToString();
+         //textMessagesContainingSpam.Text = status.RemovedSpamMessages.ToString();
+         //textSMTPSessions.Text = status.get_SessionCount(eSessionType.eSTSMTP).ToString();
+         //textPOP3Sessions.Text = status.get_SessionCount(eSessionType.eSTPOP3).ToString();
+         //textIMAPSessions.Text = status.get_SessionCount(eSessionType.eSTIMAP).ToString();
+
+         lblProcessedMessageCount.Text = status.ProcessedMessages.ToString("n0");
+         lblVirusDetectedCount.Text = status.RemovedViruses.ToString("n0");
+         lblSpamIdentifiedCount.Text = status.RemovedSpamMessages.ToString("n0");
+
+         lblOpenSmtp.Text = status.get_SessionCount(eSessionType.eSTSMTP).ToString("n0");
+         lblOpenPop3.Text = status.get_SessionCount(eSessionType.eSTPOP3).ToString("n0");
+         lblOpenImap4.Text = status.get_SessionCount(eSessionType.eSTIMAP).ToString("n0");
+
          labelStartTime.Text = status.StartTime;
 
          Marshal.ReleaseComObject(status);
@@ -116,12 +127,14 @@ namespace AltimailServer.Administrator
          switch (_application.ServerState)
          {
             case eServerState.hStateRunning:
-               buttonStartStop.Text = Strings.Localize("Pause");
+               buttonStartStop.Text = $"{Strings.Localize("Pause")} Altimail";
                buttonStartStop.Enabled = true;
+               labelCurrentStatus.ForeColor = Color.FromKnownColor(KnownColor.ControlText);
                break;
             case eServerState.hStateStopped:
-               buttonStartStop.Text = Strings.Localize("Resume");
+               buttonStartStop.Text = $"{Strings.Localize("Resume")} Altimail";
                buttonStartStop.Enabled = true;
+               labelCurrentStatus.ForeColor = Color.DarkRed;
                break;
             default:
                buttonStartStop.Enabled = false;
@@ -141,7 +154,7 @@ namespace AltimailServer.Administrator
             AddWarning("W001", Strings.Localize("High"), Strings.Localize("You haven't specified the public host name for this computer in the SMTP settings."));
 
          if (settings.DenyMailFromNull)
-            AddWarning("W002", Strings.Localize("High"), Strings.Localize("You have configured hMailServer not to allow email with empty sender address. Many email server will not accept email from your server with this configuration."));
+            AddWarning("W002", Strings.Localize("High"), Strings.Localize("You have configured Altimail Server not to allow email with empty sender address. Many email server will not accept email from your server with this configuration."));
 
          int autobanRanges = 0;
 
@@ -154,7 +167,7 @@ namespace AltimailServer.Administrator
             if (range.AllowDeliveryFromRemoteToRemote && !range.RequireSMTPAuthExternalToExternal)
             {
                string warning =
-                  Strings.Localize("hMailServer is configured to allow deliveries from external to external accounts in the IP range %s. This may make the server vulnerable to spam. It is recommended that you disable this option.");
+                  Strings.Localize("Altimail Server is configured to allow deliveries from external to external accounts in the IP range %s. This may make the server vulnerable to spam. It is recommended that you disable this option.");
 
                warning = warning.Replace("%s", range.Name);
 
@@ -212,19 +225,24 @@ namespace AltimailServer.Administrator
 
       private void buttonStartStop_Click(object sender, System.EventArgs e)
       {
-         WaitCursor cursor = new WaitCursor();
-
-         switch (_application.ServerState)
+         bool isRunning = (_application.ServerState == eServerState.hStateRunning);
+         if (!isRunning) labelCurrentStatus.Text = "Starting...";
+         if (!isRunning || MessageBox.Show("If you pause Altimail Server, no inbound or outbound mails will be processed. This will interrupt mail delivery.\n\nAre you sure you want to continue?", "Altimail Server", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
          {
-            case eServerState.hStateRunning:
-               _application.Stop();
-               break;
-            case eServerState.hStateStopped:
-               _application.Start();
-               break;
-         }
+            WaitCursor cursor = new WaitCursor();
 
-         DisplayServerState();
+            switch (_application.ServerState)
+            {
+               case eServerState.hStateRunning:
+                  _application.Stop();
+                  break;
+               case eServerState.hStateStopped:
+                  _application.Start();
+                  break;
+            }
+
+            DisplayServerState();
+         }
       }
 
       private void btnStartLiveLog_Click(object sender, System.EventArgs e)
@@ -282,7 +300,7 @@ namespace AltimailServer.Administrator
 
                MessageBox.Show("The live log was automatically disabled due to too high throughput." + Environment.NewLine +
                                "To retrieve logging information, please read the log files.",
-                               EnumStrings.hMailServerAdministrator, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                               EnumStrings.AltimailServerAdministrator, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                return;
             }
 
@@ -442,7 +460,7 @@ namespace AltimailServer.Administrator
       {
          string message = "Are you sure you want to clear the delivery queue?";
 
-         if (MessageBox.Show(message, EnumStrings.hMailServerAdministrator, MessageBoxButtons.YesNo) == DialogResult.Yes)
+         if (MessageBox.Show(message, EnumStrings.AltimailServerAdministrator, MessageBoxButtons.YesNo) == DialogResult.Yes)
          {
             WaitCursor waitCursor = new WaitCursor();
 
@@ -484,7 +502,7 @@ namespace AltimailServer.Administrator
       private void menuItemDelete_Click(object sender, EventArgs e)
       {
          string message = "Are you sure you want to delete selected message(s) from queue?";
-         if (MessageBox.Show(Strings.Localize(message), EnumStrings.hMailServerAdministrator, MessageBoxButtons.YesNo) == DialogResult.Yes)
+         if (MessageBox.Show(Strings.Localize(message), EnumStrings.AltimailServerAdministrator, MessageBoxButtons.YesNo) == DialogResult.Yes)
          {
             WaitCursor waitCursor = new WaitCursor();
 

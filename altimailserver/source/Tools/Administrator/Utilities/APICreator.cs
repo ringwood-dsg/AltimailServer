@@ -28,17 +28,17 @@ namespace AltimailServer.Administrator.Utilities
          {
             if (comException.ErrorCode == -2147023174)
             {
-               MessageBox.Show("Unable to connect to the specified server.", EnumStrings.hMailServerAdministrator);
+               MessageBox.Show("Unable to connect to the specified server.", EnumStrings.AltimailServerAdministrator);
             }
             else
             {
-               MessageBox.Show(comException.Message, EnumStrings.hMailServerAdministrator);
+               MessageBox.Show(comException.Message, EnumStrings.AltimailServerAdministrator);
             }
 
          }
          catch (Exception e)
          {
-            MessageBox.Show(e.Message, EnumStrings.hMailServerAdministrator);
+            MessageBox.Show(e.Message, EnumStrings.AltimailServerAdministrator);
          }
 
          return null;
@@ -82,7 +82,7 @@ namespace AltimailServer.Administrator.Utilities
                if (account == null)
                {
                   // Wrong password, try again.
-                  MessageBox.Show("The specified user name or password is incorrect.", EnumStrings.hMailServerAdministrator, MessageBoxButtons.OK);
+                  MessageBox.Show("The specified user name or password is incorrect.", EnumStrings.AltimailServerAdministrator, MessageBoxButtons.OK);
 
                   wrongPassword = true;
                }
@@ -93,7 +93,7 @@ namespace AltimailServer.Administrator.Utilities
                      if (account.AdminLevel != eAdminLevel.hAdminLevelServerAdmin)
                      {
                         // Wrong password, try again.
-                        MessageBox.Show("hMailServer server administration rights are required to run hMailServer Administrator.", EnumStrings.hMailServerAdministrator, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("You have insufficient privileges to access the Altimail Server Administration Utility.", EnumStrings.AltimailServerAdministrator, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                         return false;
                      }
@@ -109,7 +109,7 @@ namespace AltimailServer.Administrator.Utilities
             catch (Exception e)
             {
                // Wrong password, try again.
-               MessageBox.Show("The specified user name or password is incorrect." + Environment.NewLine + e.Message, EnumStrings.hMailServerAdministrator, MessageBoxButtons.OK);
+               MessageBox.Show("The specified user name or password is incorrect." + Environment.NewLine + e.Message, EnumStrings.AltimailServerAdministrator, MessageBoxButtons.OK);
 
                wrongPassword = true;
             }

@@ -28,7 +28,8 @@ namespace AltimailServer.Administrator.Nodes
       {
          get
          {
-            return "stop.ico";
+            //return "stop.ico";
+            return "tree-auto-ban.ico";
          }
       }
 

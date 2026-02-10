@@ -39,7 +39,8 @@ namespace AltimailServer.Administrator.Nodes
       {
          get
          {
-            return "folder.ico";
+            //return "folder.ico";
+            return "tree-domain-accounts.ico";
          }
       }
 
@@ -128,7 +129,7 @@ namespace AltimailServer.Administrator.Nodes
                }
                catch (Exception ex)
                {
-                  MessageBox.Show(ex.Message, EnumStrings.hMailServerAdministrator);
+                  MessageBox.Show(ex.Message, EnumStrings.AltimailServerAdministrator);
                }
 
             }

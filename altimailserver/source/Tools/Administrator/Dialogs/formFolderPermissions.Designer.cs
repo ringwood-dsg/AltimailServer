@@ -28,270 +28,286 @@ namespace AltimailServer.Administrator.Dialogs
       /// </summary>
       private void InitializeComponent()
       {
-         this.labelPermissions = new System.Windows.Forms.Label();
-         this.buttonDeletePermission = new System.Windows.Forms.Button();
-         this.buttonAddPermission = new System.Windows.Forms.Button();
-         this.labelPermissionsFor = new System.Windows.Forms.Label();
-         this.buttonSelectAll = new System.Windows.Forms.Button();
-         this.buttonSelectNone = new System.Windows.Forms.Button();
-         this.buttonClose = new System.Windows.Forms.Button();
-         this.listACL = new AltimailServer.Administrator.ucListView();
-         this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
-         this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
-         this.checkPermissionKeepOtherFlags = new AltimailServer.Administrator.Controls.ucCheckbox();
-         this.checkPermissionKeepDeletedFlag = new AltimailServer.Administrator.Controls.ucCheckbox();
-         this.checkPermissionKeepSeenFlag = new AltimailServer.Administrator.Controls.ucCheckbox();
-         this.checkPermissionExpunge = new AltimailServer.Administrator.Controls.ucCheckbox();
-         this.checkPermissionInsert = new AltimailServer.Administrator.Controls.ucCheckbox();
-         this.checkPermissionAdminister = new AltimailServer.Administrator.Controls.ucCheckbox();
-         this.checkPermissionDeleteMailbox = new AltimailServer.Administrator.Controls.ucCheckbox();
-         this.checkPermissionCreateMailbox = new AltimailServer.Administrator.Controls.ucCheckbox();
-         this.checkPermissionRead = new AltimailServer.Administrator.Controls.ucCheckbox();
-         this.checkPermissionLookup = new AltimailServer.Administrator.Controls.ucCheckbox();
-         this.SuspendLayout();
-         // 
-         // labelPermissions
-         // 
-         this.labelPermissions.AutoSize = true;
-         this.labelPermissions.Location = new System.Drawing.Point(16, 8);
-         this.labelPermissions.Name = "labelPermissions";
-         this.labelPermissions.Size = new System.Drawing.Size(62, 13);
-         this.labelPermissions.TabIndex = 0;
-         this.labelPermissions.Text = "Permissions";
-         // 
-         // buttonDeletePermission
-         // 
-         this.buttonDeletePermission.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-         this.buttonDeletePermission.Enabled = false;
-         this.buttonDeletePermission.Location = new System.Drawing.Point(458, 51);
-         this.buttonDeletePermission.Name = "buttonDeletePermission";
-         this.buttonDeletePermission.Size = new System.Drawing.Size(89, 25);
-         this.buttonDeletePermission.TabIndex = 43;
-         this.buttonDeletePermission.Text = "Remove";
-         this.buttonDeletePermission.UseVisualStyleBackColor = true;
-         this.buttonDeletePermission.Click += new System.EventHandler(this.buttonDeleteWhiteList_Click);
-         // 
-         // buttonAddPermission
-         // 
-         this.buttonAddPermission.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-         this.buttonAddPermission.Location = new System.Drawing.Point(458, 20);
-         this.buttonAddPermission.Name = "buttonAddPermission";
-         this.buttonAddPermission.Size = new System.Drawing.Size(89, 25);
-         this.buttonAddPermission.TabIndex = 42;
-         this.buttonAddPermission.Text = "&Add...";
-         this.buttonAddPermission.UseVisualStyleBackColor = true;
-         this.buttonAddPermission.Click += new System.EventHandler(this.buttonAddPermission_Click);
-         // 
-         // labelPermissionsFor
-         // 
-         this.labelPermissionsFor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-         this.labelPermissionsFor.AutoSize = true;
-         this.labelPermissionsFor.Location = new System.Drawing.Point(16, 176);
-         this.labelPermissionsFor.Name = "labelPermissionsFor";
-         this.labelPermissionsFor.Size = new System.Drawing.Size(93, 13);
-         this.labelPermissionsFor.TabIndex = 44;
-         this.labelPermissionsFor.Text = "Permissions for %s";
-         // 
-         // buttonSelectAll
-         // 
-         this.buttonSelectAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-         this.buttonSelectAll.Location = new System.Drawing.Point(12, 310);
-         this.buttonSelectAll.Name = "buttonSelectAll";
-         this.buttonSelectAll.Size = new System.Drawing.Size(89, 25);
-         this.buttonSelectAll.TabIndex = 55;
-         this.buttonSelectAll.Text = "Select all";
-         this.buttonSelectAll.UseVisualStyleBackColor = true;
-         this.buttonSelectAll.Click += new System.EventHandler(this.buttonSelectAll_Click);
-         // 
-         // buttonSelectNone
-         // 
-         this.buttonSelectNone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-         this.buttonSelectNone.Location = new System.Drawing.Point(107, 310);
-         this.buttonSelectNone.Name = "buttonSelectNone";
-         this.buttonSelectNone.Size = new System.Drawing.Size(89, 25);
-         this.buttonSelectNone.TabIndex = 56;
-         this.buttonSelectNone.Text = "Select none";
-         this.buttonSelectNone.UseVisualStyleBackColor = true;
-         this.buttonSelectNone.Click += new System.EventHandler(this.buttonSelectNone_Click);
-         // 
-         // buttonClose
-         // 
-         this.buttonClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-         this.buttonClose.DialogResult = System.Windows.Forms.DialogResult.OK;
-         this.buttonClose.Location = new System.Drawing.Point(361, 310);
-         this.buttonClose.Name = "buttonClose";
-         this.buttonClose.Size = new System.Drawing.Size(89, 25);
-         this.buttonClose.TabIndex = 57;
-         this.buttonClose.Text = "&Close";
-         this.buttonClose.UseVisualStyleBackColor = true;
-         this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
-         // 
-         // listACL
-         // 
-         this.listACL.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.labelPermissions = new System.Windows.Forms.Label();
+            this.buttonDeletePermission = new System.Windows.Forms.Button();
+            this.buttonAddPermission = new System.Windows.Forms.Button();
+            this.labelPermissionsFor = new System.Windows.Forms.Label();
+            this.buttonSelectAll = new System.Windows.Forms.Button();
+            this.buttonSelectNone = new System.Windows.Forms.Button();
+            this.buttonClose = new System.Windows.Forms.Button();
+            this.listACL = new AltimailServer.Administrator.ucListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.checkPermissionKeepOtherFlags = new AltimailServer.Administrator.Controls.ucCheckbox();
+            this.checkPermissionKeepDeletedFlag = new AltimailServer.Administrator.Controls.ucCheckbox();
+            this.checkPermissionKeepSeenFlag = new AltimailServer.Administrator.Controls.ucCheckbox();
+            this.checkPermissionExpunge = new AltimailServer.Administrator.Controls.ucCheckbox();
+            this.checkPermissionInsert = new AltimailServer.Administrator.Controls.ucCheckbox();
+            this.checkPermissionAdminister = new AltimailServer.Administrator.Controls.ucCheckbox();
+            this.checkPermissionDeleteMailbox = new AltimailServer.Administrator.Controls.ucCheckbox();
+            this.checkPermissionCreateMailbox = new AltimailServer.Administrator.Controls.ucCheckbox();
+            this.checkPermissionRead = new AltimailServer.Administrator.Controls.ucCheckbox();
+            this.checkPermissionLookup = new AltimailServer.Administrator.Controls.ucCheckbox();
+            this.SuspendLayout();
+            // 
+            // labelPermissions
+            // 
+            this.labelPermissions.AutoSize = true;
+            this.labelPermissions.Location = new System.Drawing.Point(16, 8);
+            this.labelPermissions.Name = "labelPermissions";
+            this.labelPermissions.Size = new System.Drawing.Size(62, 13);
+            this.labelPermissions.TabIndex = 0;
+            this.labelPermissions.Text = "Permissions";
+            // 
+            // buttonDeletePermission
+            // 
+            this.buttonDeletePermission.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonDeletePermission.Enabled = false;
+            this.buttonDeletePermission.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.buttonDeletePermission.Location = new System.Drawing.Point(458, 51);
+            this.buttonDeletePermission.Name = "buttonDeletePermission";
+            this.buttonDeletePermission.Size = new System.Drawing.Size(89, 25);
+            this.buttonDeletePermission.TabIndex = 43;
+            this.buttonDeletePermission.Text = "Remove";
+            this.buttonDeletePermission.UseVisualStyleBackColor = true;
+            this.buttonDeletePermission.Click += new System.EventHandler(this.buttonDeleteWhiteList_Click);
+            // 
+            // buttonAddPermission
+            // 
+            this.buttonAddPermission.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonAddPermission.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.buttonAddPermission.Location = new System.Drawing.Point(458, 20);
+            this.buttonAddPermission.Name = "buttonAddPermission";
+            this.buttonAddPermission.Size = new System.Drawing.Size(89, 25);
+            this.buttonAddPermission.TabIndex = 42;
+            this.buttonAddPermission.Text = "&Add...";
+            this.buttonAddPermission.UseVisualStyleBackColor = true;
+            this.buttonAddPermission.Click += new System.EventHandler(this.buttonAddPermission_Click);
+            // 
+            // labelPermissionsFor
+            // 
+            this.labelPermissionsFor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelPermissionsFor.AutoSize = true;
+            this.labelPermissionsFor.Location = new System.Drawing.Point(16, 176);
+            this.labelPermissionsFor.Name = "labelPermissionsFor";
+            this.labelPermissionsFor.Size = new System.Drawing.Size(93, 13);
+            this.labelPermissionsFor.TabIndex = 44;
+            this.labelPermissionsFor.Text = "Permissions for %s";
+            // 
+            // buttonSelectAll
+            // 
+            this.buttonSelectAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonSelectAll.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.buttonSelectAll.Location = new System.Drawing.Point(12, 310);
+            this.buttonSelectAll.Name = "buttonSelectAll";
+            this.buttonSelectAll.Size = new System.Drawing.Size(89, 25);
+            this.buttonSelectAll.TabIndex = 55;
+            this.buttonSelectAll.Text = "Select all";
+            this.buttonSelectAll.UseVisualStyleBackColor = true;
+            this.buttonSelectAll.Click += new System.EventHandler(this.buttonSelectAll_Click);
+            // 
+            // buttonSelectNone
+            // 
+            this.buttonSelectNone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonSelectNone.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.buttonSelectNone.Location = new System.Drawing.Point(107, 310);
+            this.buttonSelectNone.Name = "buttonSelectNone";
+            this.buttonSelectNone.Size = new System.Drawing.Size(89, 25);
+            this.buttonSelectNone.TabIndex = 56;
+            this.buttonSelectNone.Text = "Select none";
+            this.buttonSelectNone.UseVisualStyleBackColor = true;
+            this.buttonSelectNone.Click += new System.EventHandler(this.buttonSelectNone_Click);
+            // 
+            // buttonClose
+            // 
+            this.buttonClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonClose.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.buttonClose.Location = new System.Drawing.Point(361, 310);
+            this.buttonClose.Name = "buttonClose";
+            this.buttonClose.Size = new System.Drawing.Size(89, 25);
+            this.buttonClose.TabIndex = 57;
+            this.buttonClose.Text = "&Close";
+            this.buttonClose.UseVisualStyleBackColor = true;
+            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
+            // 
+            // listACL
+            // 
+            this.listACL.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2});
-         this.listACL.FullRowSelect = true;
-         this.listACL.Location = new System.Drawing.Point(24, 24);
-         this.listACL.Name = "listACL";
-         this.listACL.Size = new System.Drawing.Size(422, 139);
-         this.listACL.TabIndex = 58;
-         this.listACL.UseCompatibleStateImageBehavior = false;
-         this.listACL.View = System.Windows.Forms.View.Details;
-         this.listACL.SelectedIndexChanged += new System.EventHandler(this.listACL_SelectedIndexChanged);
-         this.listACL.BeforeSelectedIndexChanged += new AltimailServer.Administrator.ucListView.BeforeSelectedIndexChangedHandler(this.listACL_BeforeSelectedIndexChanged);
-         // 
-         // columnHeader1
-         // 
-         this.columnHeader1.Text = "Type";
-         this.columnHeader1.Width = 100;
-         // 
-         // columnHeader2
-         // 
-         this.columnHeader2.Text = "Object";
-         this.columnHeader2.Width = 200;
-         // 
-         // checkPermissionKeepOtherFlags
-         // 
-         this.checkPermissionKeepOtherFlags.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-         this.checkPermissionKeepOtherFlags.AutoSize = true;
-         this.checkPermissionKeepOtherFlags.Location = new System.Drawing.Point(352, 248);
-         this.checkPermissionKeepOtherFlags.Name = "checkPermissionKeepOtherFlags";
-         this.checkPermissionKeepOtherFlags.Size = new System.Drawing.Size(103, 17);
-         this.checkPermissionKeepOtherFlags.TabIndex = 54;
-         this.checkPermissionKeepOtherFlags.Text = "Keep other flags";
-         this.checkPermissionKeepOtherFlags.UseVisualStyleBackColor = true;
-         // 
-         // checkPermissionKeepDeletedFlag
-         // 
-         this.checkPermissionKeepDeletedFlag.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-         this.checkPermissionKeepDeletedFlag.AutoSize = true;
-         this.checkPermissionKeepDeletedFlag.Location = new System.Drawing.Point(352, 225);
-         this.checkPermissionKeepDeletedFlag.Name = "checkPermissionKeepDeletedFlag";
-         this.checkPermissionKeepDeletedFlag.Size = new System.Drawing.Size(109, 17);
-         this.checkPermissionKeepDeletedFlag.TabIndex = 53;
-         this.checkPermissionKeepDeletedFlag.Text = "Keep deleted flag";
-         this.checkPermissionKeepDeletedFlag.UseVisualStyleBackColor = true;
-         // 
-         // checkPermissionKeepSeenFlag
-         // 
-         this.checkPermissionKeepSeenFlag.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-         this.checkPermissionKeepSeenFlag.AutoSize = true;
-         this.checkPermissionKeepSeenFlag.Location = new System.Drawing.Point(352, 202);
-         this.checkPermissionKeepSeenFlag.Name = "checkPermissionKeepSeenFlag";
-         this.checkPermissionKeepSeenFlag.Size = new System.Drawing.Size(97, 17);
-         this.checkPermissionKeepSeenFlag.TabIndex = 52;
-         this.checkPermissionKeepSeenFlag.Text = "Keep seen flag";
-         this.checkPermissionKeepSeenFlag.UseVisualStyleBackColor = true;
-         // 
-         // checkPermissionExpunge
-         // 
-         this.checkPermissionExpunge.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-         this.checkPermissionExpunge.AutoSize = true;
-         this.checkPermissionExpunge.Location = new System.Drawing.Point(177, 248);
-         this.checkPermissionExpunge.Name = "checkPermissionExpunge";
-         this.checkPermissionExpunge.Size = new System.Drawing.Size(68, 17);
-         this.checkPermissionExpunge.TabIndex = 51;
-         this.checkPermissionExpunge.Text = "Expunge";
-         this.checkPermissionExpunge.UseVisualStyleBackColor = true;
-         // 
-         // checkPermissionInsert
-         // 
-         this.checkPermissionInsert.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-         this.checkPermissionInsert.AutoSize = true;
-         this.checkPermissionInsert.Location = new System.Drawing.Point(177, 225);
-         this.checkPermissionInsert.Name = "checkPermissionInsert";
-         this.checkPermissionInsert.Size = new System.Drawing.Size(73, 17);
-         this.checkPermissionInsert.TabIndex = 50;
-         this.checkPermissionInsert.Text = "Insert mail";
-         this.checkPermissionInsert.UseVisualStyleBackColor = true;
-         // 
-         // checkPermissionAdminister
-         // 
-         this.checkPermissionAdminister.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-         this.checkPermissionAdminister.AutoSize = true;
-         this.checkPermissionAdminister.Location = new System.Drawing.Point(177, 202);
-         this.checkPermissionAdminister.Name = "checkPermissionAdminister";
-         this.checkPermissionAdminister.Size = new System.Drawing.Size(74, 17);
-         this.checkPermissionAdminister.TabIndex = 49;
-         this.checkPermissionAdminister.Text = "Administer";
-         this.checkPermissionAdminister.UseVisualStyleBackColor = true;
-         // 
-         // checkPermissionDeleteMailbox
-         // 
-         this.checkPermissionDeleteMailbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-         this.checkPermissionDeleteMailbox.AutoSize = true;
-         this.checkPermissionDeleteMailbox.Location = new System.Drawing.Point(24, 271);
-         this.checkPermissionDeleteMailbox.Name = "checkPermissionDeleteMailbox";
-         this.checkPermissionDeleteMailbox.Size = new System.Drawing.Size(95, 17);
-         this.checkPermissionDeleteMailbox.TabIndex = 48;
-         this.checkPermissionDeleteMailbox.Text = "Delete mailbox";
-         this.checkPermissionDeleteMailbox.UseVisualStyleBackColor = true;
-         // 
-         // checkPermissionCreateMailbox
-         // 
-         this.checkPermissionCreateMailbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-         this.checkPermissionCreateMailbox.AutoSize = true;
-         this.checkPermissionCreateMailbox.Location = new System.Drawing.Point(24, 248);
-         this.checkPermissionCreateMailbox.Name = "checkPermissionCreateMailbox";
-         this.checkPermissionCreateMailbox.Size = new System.Drawing.Size(95, 17);
-         this.checkPermissionCreateMailbox.TabIndex = 47;
-         this.checkPermissionCreateMailbox.Text = "Create mailbox";
-         this.checkPermissionCreateMailbox.UseVisualStyleBackColor = true;
-         // 
-         // checkPermissionRead
-         // 
-         this.checkPermissionRead.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-         this.checkPermissionRead.AutoSize = true;
-         this.checkPermissionRead.Location = new System.Drawing.Point(24, 225);
-         this.checkPermissionRead.Name = "checkPermissionRead";
-         this.checkPermissionRead.Size = new System.Drawing.Size(52, 17);
-         this.checkPermissionRead.TabIndex = 46;
-         this.checkPermissionRead.Text = "Read";
-         this.checkPermissionRead.UseVisualStyleBackColor = true;
-         // 
-         // checkPermissionLookup
-         // 
-         this.checkPermissionLookup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-         this.checkPermissionLookup.AutoSize = true;
-         this.checkPermissionLookup.Location = new System.Drawing.Point(24, 202);
-         this.checkPermissionLookup.Name = "checkPermissionLookup";
-         this.checkPermissionLookup.Size = new System.Drawing.Size(62, 17);
-         this.checkPermissionLookup.TabIndex = 45;
-         this.checkPermissionLookup.Text = "Lookup";
-         this.checkPermissionLookup.UseVisualStyleBackColor = true;
-         // 
-         // formFolderPermissions
-         // 
-         this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-         this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(553, 343);
-         this.Controls.Add(this.listACL);
-         this.Controls.Add(this.buttonClose);
-         this.Controls.Add(this.buttonSelectNone);
-         this.Controls.Add(this.buttonSelectAll);
-         this.Controls.Add(this.checkPermissionKeepOtherFlags);
-         this.Controls.Add(this.checkPermissionKeepDeletedFlag);
-         this.Controls.Add(this.checkPermissionKeepSeenFlag);
-         this.Controls.Add(this.checkPermissionExpunge);
-         this.Controls.Add(this.checkPermissionInsert);
-         this.Controls.Add(this.checkPermissionAdminister);
-         this.Controls.Add(this.checkPermissionDeleteMailbox);
-         this.Controls.Add(this.checkPermissionCreateMailbox);
-         this.Controls.Add(this.checkPermissionRead);
-         this.Controls.Add(this.checkPermissionLookup);
-         this.Controls.Add(this.labelPermissionsFor);
-         this.Controls.Add(this.buttonDeletePermission);
-         this.Controls.Add(this.buttonAddPermission);
-         this.Controls.Add(this.labelPermissions);
-         this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-         this.MaximizeBox = false;
-         this.MinimizeBox = false;
-         this.Name = "formFolderPermissions";
-         this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-         this.Text = "Permissions";
-         this.ResumeLayout(false);
-         this.PerformLayout();
+            this.listACL.FullRowSelect = true;
+            this.listACL.HideSelection = false;
+            this.listACL.Location = new System.Drawing.Point(24, 24);
+            this.listACL.Name = "listACL";
+            this.listACL.Size = new System.Drawing.Size(422, 139);
+            this.listACL.TabIndex = 58;
+            this.listACL.UseCompatibleStateImageBehavior = false;
+            this.listACL.View = System.Windows.Forms.View.Details;
+            this.listACL.BeforeSelectedIndexChanged += new AltimailServer.Administrator.ucListView.BeforeSelectedIndexChangedHandler(this.listACL_BeforeSelectedIndexChanged);
+            this.listACL.SelectedIndexChanged += new System.EventHandler(this.listACL_SelectedIndexChanged);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Type";
+            this.columnHeader1.Width = 100;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Object";
+            this.columnHeader2.Width = 200;
+            // 
+            // checkPermissionKeepOtherFlags
+            // 
+            this.checkPermissionKeepOtherFlags.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.checkPermissionKeepOtherFlags.AutoSize = true;
+            this.checkPermissionKeepOtherFlags.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.checkPermissionKeepOtherFlags.Location = new System.Drawing.Point(352, 247);
+            this.checkPermissionKeepOtherFlags.Name = "checkPermissionKeepOtherFlags";
+            this.checkPermissionKeepOtherFlags.Size = new System.Drawing.Size(109, 18);
+            this.checkPermissionKeepOtherFlags.TabIndex = 54;
+            this.checkPermissionKeepOtherFlags.Text = "Keep other flags";
+            this.checkPermissionKeepOtherFlags.UseVisualStyleBackColor = true;
+            // 
+            // checkPermissionKeepDeletedFlag
+            // 
+            this.checkPermissionKeepDeletedFlag.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.checkPermissionKeepDeletedFlag.AutoSize = true;
+            this.checkPermissionKeepDeletedFlag.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.checkPermissionKeepDeletedFlag.Location = new System.Drawing.Point(352, 224);
+            this.checkPermissionKeepDeletedFlag.Name = "checkPermissionKeepDeletedFlag";
+            this.checkPermissionKeepDeletedFlag.Size = new System.Drawing.Size(115, 18);
+            this.checkPermissionKeepDeletedFlag.TabIndex = 53;
+            this.checkPermissionKeepDeletedFlag.Text = "Keep deleted flag";
+            this.checkPermissionKeepDeletedFlag.UseVisualStyleBackColor = true;
+            // 
+            // checkPermissionKeepSeenFlag
+            // 
+            this.checkPermissionKeepSeenFlag.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.checkPermissionKeepSeenFlag.AutoSize = true;
+            this.checkPermissionKeepSeenFlag.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.checkPermissionKeepSeenFlag.Location = new System.Drawing.Point(352, 201);
+            this.checkPermissionKeepSeenFlag.Name = "checkPermissionKeepSeenFlag";
+            this.checkPermissionKeepSeenFlag.Size = new System.Drawing.Size(103, 18);
+            this.checkPermissionKeepSeenFlag.TabIndex = 52;
+            this.checkPermissionKeepSeenFlag.Text = "Keep seen flag";
+            this.checkPermissionKeepSeenFlag.UseVisualStyleBackColor = true;
+            // 
+            // checkPermissionExpunge
+            // 
+            this.checkPermissionExpunge.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.checkPermissionExpunge.AutoSize = true;
+            this.checkPermissionExpunge.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.checkPermissionExpunge.Location = new System.Drawing.Point(177, 247);
+            this.checkPermissionExpunge.Name = "checkPermissionExpunge";
+            this.checkPermissionExpunge.Size = new System.Drawing.Size(74, 18);
+            this.checkPermissionExpunge.TabIndex = 51;
+            this.checkPermissionExpunge.Text = "Expunge";
+            this.checkPermissionExpunge.UseVisualStyleBackColor = true;
+            // 
+            // checkPermissionInsert
+            // 
+            this.checkPermissionInsert.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.checkPermissionInsert.AutoSize = true;
+            this.checkPermissionInsert.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.checkPermissionInsert.Location = new System.Drawing.Point(177, 224);
+            this.checkPermissionInsert.Name = "checkPermissionInsert";
+            this.checkPermissionInsert.Size = new System.Drawing.Size(79, 18);
+            this.checkPermissionInsert.TabIndex = 50;
+            this.checkPermissionInsert.Text = "Insert mail";
+            this.checkPermissionInsert.UseVisualStyleBackColor = true;
+            // 
+            // checkPermissionAdminister
+            // 
+            this.checkPermissionAdminister.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.checkPermissionAdminister.AutoSize = true;
+            this.checkPermissionAdminister.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.checkPermissionAdminister.Location = new System.Drawing.Point(177, 201);
+            this.checkPermissionAdminister.Name = "checkPermissionAdminister";
+            this.checkPermissionAdminister.Size = new System.Drawing.Size(80, 18);
+            this.checkPermissionAdminister.TabIndex = 49;
+            this.checkPermissionAdminister.Text = "Administer";
+            this.checkPermissionAdminister.UseVisualStyleBackColor = true;
+            // 
+            // checkPermissionDeleteMailbox
+            // 
+            this.checkPermissionDeleteMailbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.checkPermissionDeleteMailbox.AutoSize = true;
+            this.checkPermissionDeleteMailbox.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.checkPermissionDeleteMailbox.Location = new System.Drawing.Point(24, 270);
+            this.checkPermissionDeleteMailbox.Name = "checkPermissionDeleteMailbox";
+            this.checkPermissionDeleteMailbox.Size = new System.Drawing.Size(101, 18);
+            this.checkPermissionDeleteMailbox.TabIndex = 48;
+            this.checkPermissionDeleteMailbox.Text = "Delete mailbox";
+            this.checkPermissionDeleteMailbox.UseVisualStyleBackColor = true;
+            // 
+            // checkPermissionCreateMailbox
+            // 
+            this.checkPermissionCreateMailbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.checkPermissionCreateMailbox.AutoSize = true;
+            this.checkPermissionCreateMailbox.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.checkPermissionCreateMailbox.Location = new System.Drawing.Point(24, 247);
+            this.checkPermissionCreateMailbox.Name = "checkPermissionCreateMailbox";
+            this.checkPermissionCreateMailbox.Size = new System.Drawing.Size(101, 18);
+            this.checkPermissionCreateMailbox.TabIndex = 47;
+            this.checkPermissionCreateMailbox.Text = "Create mailbox";
+            this.checkPermissionCreateMailbox.UseVisualStyleBackColor = true;
+            // 
+            // checkPermissionRead
+            // 
+            this.checkPermissionRead.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.checkPermissionRead.AutoSize = true;
+            this.checkPermissionRead.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.checkPermissionRead.Location = new System.Drawing.Point(24, 224);
+            this.checkPermissionRead.Name = "checkPermissionRead";
+            this.checkPermissionRead.Size = new System.Drawing.Size(58, 18);
+            this.checkPermissionRead.TabIndex = 46;
+            this.checkPermissionRead.Text = "Read";
+            this.checkPermissionRead.UseVisualStyleBackColor = true;
+            // 
+            // checkPermissionLookup
+            // 
+            this.checkPermissionLookup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.checkPermissionLookup.AutoSize = true;
+            this.checkPermissionLookup.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.checkPermissionLookup.Location = new System.Drawing.Point(24, 201);
+            this.checkPermissionLookup.Name = "checkPermissionLookup";
+            this.checkPermissionLookup.Size = new System.Drawing.Size(68, 18);
+            this.checkPermissionLookup.TabIndex = 45;
+            this.checkPermissionLookup.Text = "Lookup";
+            this.checkPermissionLookup.UseVisualStyleBackColor = true;
+            // 
+            // formFolderPermissions
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.ClientSize = new System.Drawing.Size(553, 343);
+            this.Controls.Add(this.listACL);
+            this.Controls.Add(this.buttonClose);
+            this.Controls.Add(this.buttonSelectNone);
+            this.Controls.Add(this.buttonSelectAll);
+            this.Controls.Add(this.checkPermissionKeepOtherFlags);
+            this.Controls.Add(this.checkPermissionKeepDeletedFlag);
+            this.Controls.Add(this.checkPermissionKeepSeenFlag);
+            this.Controls.Add(this.checkPermissionExpunge);
+            this.Controls.Add(this.checkPermissionInsert);
+            this.Controls.Add(this.checkPermissionAdminister);
+            this.Controls.Add(this.checkPermissionDeleteMailbox);
+            this.Controls.Add(this.checkPermissionCreateMailbox);
+            this.Controls.Add(this.checkPermissionRead);
+            this.Controls.Add(this.checkPermissionLookup);
+            this.Controls.Add(this.labelPermissionsFor);
+            this.Controls.Add(this.buttonDeletePermission);
+            this.Controls.Add(this.buttonAddPermission);
+            this.Controls.Add(this.labelPermissions);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "formFolderPermissions";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Permissions";
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
       }
 

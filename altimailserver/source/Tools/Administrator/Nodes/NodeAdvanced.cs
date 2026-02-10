@@ -29,7 +29,8 @@ namespace AltimailServer.Administrator.Nodes
       {
          get
          {
-            return "understanding.ico";
+            //return "understanding.ico";
+            return "tree-settings-advanced.ico";
          }
       }
 

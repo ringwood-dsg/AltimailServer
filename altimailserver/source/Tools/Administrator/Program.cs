@@ -79,12 +79,12 @@ namespace AltimailServer.Administrator
 
       private static void HandleConnectionLost()
       {
-         MessageBox.Show("hMailServer Administrator lost the connection to the hMailServer service.\r\n" +
-                         "This may happen for example if the hMailServer service stops or restarts.\r\n" +
+         MessageBox.Show("Altimail Server Administrator lost the connection to the Altimail Server service.\r\n" +
+                         "This may happen for example if the Altimail Server service stops or restarts.\r\n" +
                          "\r\n" +
-                         "If the stop or restart was unexpected, please review the hMailServer logs.\r\n" +
+                         "If the stop or restart was unexpected, please review the Altimail Server logs.\r\n" +
                          "\r\n" +
-                         "Press OK to restart hMailServer Administrator.", EnumStrings.hMailServerAdministrator, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                         "Press OK to restart Altimail Server Administrator.", EnumStrings.AltimailServerAdministrator, MessageBoxButtons.OK, MessageBoxIcon.Error);
          System.Windows.Forms.Application.Restart();
 
       }
