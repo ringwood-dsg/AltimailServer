@@ -1,3 +1,7 @@
+alter table hm_fetchaccounts add column famimerecipientheaders varchar(255) not null default 'To,CC,X-RCPT-TO,X-Envelope-To';
+
+insert into hm_settings (settingname, settingstring, settinginteger) values ('TlsOptions', '', 0);
+
 alter table hm_accounts add column accountvacationabortspamflagged smallint not null;
 
 alter table hm_accounts add column accountforwardabortspamflagged smallint not null;
