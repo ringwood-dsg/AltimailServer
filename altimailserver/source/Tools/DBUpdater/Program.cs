@@ -1,10 +1,11 @@
+// Modified, Juan Davel/ringwood-dsg, 2025/06/08
+// https://altimailserver.org
 // Copyright (c) 2010 Martin Knafve / hmailserver.com.  
 // http://www.hmailserver.com
 
-using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
 using AltimailServer.Shared;
+using System;
+using System.Windows.Forms;
 
 namespace DBUpdater
 {
@@ -19,7 +20,7 @@ namespace DBUpdater
          Application.EnableVisualStyles();
          Application.SetCompatibleTextRenderingDefault(false);
 
-         string databaseOldErrorMessage = "is too new for this version";
+         string databaseOldErrorMessage = "is too old for this version";
 
          try
          {
@@ -27,17 +28,16 @@ namespace DBUpdater
 
             AltimailServer.Application application = new AltimailServer.Application();
 
-             try
-             {
-                 application.Connect();
-             }
-             catch (Exception ex)
-             {
+            try
+            {
+               application.Connect();
+            }
+            catch (Exception ex)
+            {
                if (!ex.Message.Contains(databaseOldErrorMessage))
                   throw ex;
-               var kk = "";
-             }
-            
+            }
+
 
             int from = application.Database.CurrentVersion;
             int to = application.Database.RequiredVersion;
@@ -45,7 +45,7 @@ namespace DBUpdater
             if (from == to)
             {
                if (!CommandLineParser.ContainsArgument("/SilentIfOk") && !CommandLineParser.IsSilent())
-                  MessageBox.Show("Your hMailServer database is already up to date.", "hMailServer Administrator");
+                  MessageBox.Show("Good news!\n\nYour Altimail Server database is up-to-date and requires no upgrades.", "Altimail Server", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                return;
             }
@@ -73,7 +73,7 @@ namespace DBUpdater
          }
          catch (Exception ex)
          {
-             MessageBox.Show(ex.Message + Environment.NewLine + Environment.NewLine + "Please check the hMailServer error log for further details.", "hMailServer Administrator", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(ex.Message + Environment.NewLine + Environment.NewLine + "Please check the Altimail Server error log for further details.", "Altimail Server", MessageBoxButtons.OK, MessageBoxIcon.Error);
          }
       }
    }

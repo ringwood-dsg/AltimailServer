@@ -1,15 +1,13 @@
+// Modified, Juan Davel/ringwood-dsg, 2025/06/07
+// https://altimailserver.org
 // Copyright (c) 2010 Martin Knafve / hmailserver.com.  
 // http://www.hmailserver.com
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using System.IO;
 using AltimailServer.Shared;
+using System;
+using System.IO;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace DBUpdater
 {
@@ -28,7 +26,7 @@ namespace DBUpdater
       public formMain(AltimailServer.Application application)
       {
          InitializeComponent();
-         
+
          _application = application;
          _databaseType = null;
       }
@@ -36,11 +34,11 @@ namespace DBUpdater
       public bool CreateUpgradePath()
       {
          _upgradePath = new UpgradeScripts();
-         
+
          int from = _application.Database.CurrentVersion;
          int to = _application.Database.RequiredVersion;
 
-       
+
          // Actually create the path.
          while (from != to)
          {
@@ -48,7 +46,7 @@ namespace DBUpdater
 
             if (script == null)
             {
-               MessageBox.Show("A suitable upgrade path was not found. Please reach out to us for further assistance.", "Altimail Server", MessageBoxButtons.OK, MessageBoxIcon.Error);
+               MessageBox.Show("A suitable upgrade path was not found for your database.\n\nThis is often due to the database being too old and this utility not supporting its version. It can easily be fixed by updating your database to the minimum supported version by Altimail Server and then retrying this upgrade.", "Altimail Server", MessageBoxButtons.OK, MessageBoxIcon.Error);
                return false;
             }
 
@@ -56,7 +54,7 @@ namespace DBUpdater
 
             if (!File.Exists(fileName))
             {
-               MessageBox.Show($"A required upgrade file ({fileName}) was not found.", "Altimail Server", MessageBoxButtons.OK, MessageBoxIcon.Error);
+               MessageBox.Show($"A required upgrade file ({fileName}) was not found. Please re-run your Altimail Server installer to repair any issues.", "Altimail Server", MessageBoxButtons.OK, MessageBoxIcon.Error);
                return false;
             }
 
@@ -120,57 +118,22 @@ namespace DBUpdater
 
       private void LoadScripts()
       {
-         _upgradeScripts.Add(new UpgradeScript(0, 1100));
-         _upgradeScripts.Add(new UpgradeScript(1100, 1200));
-         _upgradeScripts.Add(new UpgradeScript(1200, 1400));
-         _upgradeScripts.Add(new UpgradeScript(1400, 1410));
-         _upgradeScripts.Add(new UpgradeScript(1410, 1500));
-         _upgradeScripts.Add(new UpgradeScript(1500, 1600));
-         _upgradeScripts.Add(new UpgradeScript(1600, 1700));
-         _upgradeScripts.Add(new UpgradeScript(1700, 2000));
-         _upgradeScripts.Add(new UpgradeScript(2000, 3000));
-         _upgradeScripts.Add(new UpgradeScript(3000, 3001));
-         _upgradeScripts.Add(new UpgradeScript(3001, 3100));
-         _upgradeScripts.Add(new UpgradeScript(3100, 3200));
-         _upgradeScripts.Add(new UpgradeScript(3200, 3300));
-         _upgradeScripts.Add(new UpgradeScript(3300, 3301));
-         _upgradeScripts.Add(new UpgradeScript(3301, 3400));
-         _upgradeScripts.Add(new UpgradeScript(3400, 3401));
-         _upgradeScripts.Add(new UpgradeScript(3401, 3402));
-         _upgradeScripts.Add(new UpgradeScript(3402, 4000));
-         _upgradeScripts.Add(new UpgradeScript(4000, 4100));
-         _upgradeScripts.Add(new UpgradeScript(4100, 4200));
-         _upgradeScripts.Add(new UpgradeScript(4200, 4300));
-         _upgradeScripts.Add(new UpgradeScript(4300, 4301));
-         _upgradeScripts.Add(new UpgradeScript(4301, 4400));
-         _upgradeScripts.Add(new UpgradeScript(4400, 4401));
-         _upgradeScripts.Add(new UpgradeScript(4401, 4402));
-         _upgradeScripts.Add(new UpgradeScript(4402, 5000));
-         _upgradeScripts.Add(new UpgradeScript(5000, 5001));
-         _upgradeScripts.Add(new UpgradeScript(5001, 5002));
-         _upgradeScripts.Add(new UpgradeScript(5002, 5003));
-         _upgradeScripts.Add(new UpgradeScript(5003, 5004));
-         _upgradeScripts.Add(new UpgradeScript(5004, 5005));
-         _upgradeScripts.Add(new UpgradeScript(5005, 5006));
-         _upgradeScripts.Add(new UpgradeScript(5006, 5100));
-         _upgradeScripts.Add(new UpgradeScript(5100, 5110));
-         _upgradeScripts.Add(new UpgradeScript(5110, 5200));
-         _upgradeScripts.Add(new UpgradeScript(5200, 5201));
-         _upgradeScripts.Add(new UpgradeScript(5201, 5300));
-         _upgradeScripts.Add(new UpgradeScript(5300, 5310));
-         _upgradeScripts.Add(new UpgradeScript(5310, 5320));
-         _upgradeScripts.Add(new UpgradeScript(5320, 5400));
-         _upgradeScripts.Add(new UpgradeScript(5400, 5500));
-         _upgradeScripts.Add(new UpgradeScript(5500, 5501));
-         _upgradeScripts.Add(new UpgradeScript(5501, 5502));
-         _upgradeScripts.Add(new UpgradeScript(5502, 5600));
-         _upgradeScripts.Add(new UpgradeScript(5600, 5601));
-         _upgradeScripts.Add(new UpgradeScript(5601, 5700));
-         _upgradeScripts.Add(new UpgradeScript(5700, 5702));
-         _upgradeScripts.Add(new UpgradeScript(5702, 5703));
-         _upgradeScripts.Add(new UpgradeScript(5703, 5704));
-         _upgradeScripts.Add(new UpgradeScript(5704, 5705));
+         //We only support "official" upgrade paths for hMailServer releases. The minimum supported database is 5400.
+         #region xx to 5708
+         _upgradeScripts.Add(new UpgradeScript(5400, 5708));
+         _upgradeScripts.Add(new UpgradeScript(5500, 5708));
+         _upgradeScripts.Add(new UpgradeScript(5501, 5708));
+         _upgradeScripts.Add(new UpgradeScript(5502, 5708));
+         _upgradeScripts.Add(new UpgradeScript(5600, 5708));
+         _upgradeScripts.Add(new UpgradeScript(5601, 5708));
+         _upgradeScripts.Add(new UpgradeScript(5605, 5708));
+         _upgradeScripts.Add(new UpgradeScript(5606, 5708));
+         _upgradeScripts.Add(new UpgradeScript(5700, 5708));
+         _upgradeScripts.Add(new UpgradeScript(5702, 5708));
+         _upgradeScripts.Add(new UpgradeScript(5703, 5708));
+         _upgradeScripts.Add(new UpgradeScript(5704, 5708));
          _upgradeScripts.Add(new UpgradeScript(5705, 5708));
+         #endregion
       }
 
       private void buttonClose_Click(object sender, EventArgs e)
@@ -182,86 +145,6 @@ namespace DBUpdater
       {
          switch (version)
          {
-            case 0:
-               return "hMailServer 1.0";
-            case 1100:
-               return "hMailServer 1.1";
-            case 1200:
-               return "hMailServer 1.2";
-            case 1400:
-               return "hMailServer 1.4";
-            case 1410:
-               return "hMailServer 1.4.1";
-            case 1500:
-               return "hMailServer 1.5";
-            case 1600:
-               return "hMailServer 1.6";
-            case 1700:
-               return "hMailServer 1.7";
-            case 2000:
-               return "hMailServer 2.0";
-            case 3000:
-               return "hMailServer 3.0 Alpha";
-            case 3001:
-               return "hMailServer 3.0";
-            case 3100:
-               return "hMailServer 3.1";
-            case 3200:
-               return "hMailServer 3.2";
-            case 3300:
-               return "hMailServer 3.3 Alpha";
-            case 3301:
-               return "hMailServer 3.3";
-            case 3400:
-               return "hMailServer 3.3 Alpha";
-            case 3401:
-               return "hMailServer 3.3 Beta";
-            case 3402:
-               return "hMailServer 3.3";
-            case 4000:
-               return "hMailServer 4.0";
-            case 4100:
-               return "hMailServer 4.1";
-            case 4200:
-               return "hMailServer 4.2";
-            case 4300:
-               return "hMailServer 4.3 (Alpha)";
-            case 4301:
-               return "hMailServer 4.3";
-            case 4400:
-               return "hMailServer 4.4 (Alpha)";
-            case 4401:
-               return "hMailServer 4.4";
-            case 4402:
-               return "hMailServer 4.4.2";
-            case 5000:
-               return "hMailServer 5 (Alpha 1)";
-            case 5001:
-               return "hMailServer 5 (Alpha 2)";
-            case 5002:
-               return "hMailServer 5 (Alpha 3)";
-            case 5003:
-               return "hMailServer 5 (Alpha 4)";
-            case 5004:
-               return "hMailServer 5 (Alpha 5)";
-            case 5005:
-               return "hMailServer 5 (Alpha 6)";
-            case 5006:
-               return "hMailServer 5";
-            case 5100:
-               return "hMailServer 5.1";
-            case 5110:
-               return "hMailServer 5.1.2";
-            case 5200:
-               return "hMailServer 5.2 (Alpha 1)";
-            case 5201:
-               return "hMailServer 5.2";
-            case 5300:
-               return "hMailServer 5.3";
-            case 5310:
-               return "hMailServer 5.3.1";
-            case 5320:
-               return "hMailServer 5.3.2";
             case 5400:
                return "hMailServer 5.4";
             case 5500:
@@ -274,6 +157,10 @@ namespace DBUpdater
                return "hMailServer 5.6 (Alpha 1)";
             case 5601:
                return "hMailServer 5.6";
+            case 5605:
+               return "hMailServer 5.6.9 (5605)";
+            case 5606:
+               return "hMailServer 5.6.9 (5606)";
             case 5700:
                return "hMailServer 5.7 (5700)";
             case 5702:
@@ -285,15 +172,15 @@ namespace DBUpdater
             case 5705:
                return "hMailServer 5.7 (5705)";
             case 5708:
-               return "hMailServer 5.7/5.8.x (5708)";
+               return "hMailServer 5.7/Altimail Server 6.0 (5708)";
             default:
-               return "Unknown version";
+               return "Unknown Version";
          }
       }
 
       private string GetScriptFileName(UpgradeScript script)
       {
-         string fileName = "Upgrade" + script.From.ToString() + "to" + script.To.ToString() + _databaseType + ".sql";
+         string fileName = $"Upgrade{script.From}to{script.To}{_databaseType}.sql";
          string fullPath = Path.Combine(_scriptPath, fileName);
 
          return fullPath;
@@ -406,7 +293,7 @@ namespace DBUpdater
          {
             MessageBox.Show(error.Message, scriptToExecute);
          }
-        
+
          buttonClose.Enabled = true;
          return;
       }
@@ -436,12 +323,12 @@ namespace DBUpdater
 
       private void buttonUpgrade_Click(object sender, EventArgs e)
       {
-         DialogResult result = MessageBox.Show("Have you taken a backup of the hMailServer database?", "hMailServer", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+         DialogResult result = MessageBox.Show("Have you taken a backup of the Altimail Server database?", "Altimail Server", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
 
          if (result == DialogResult.Yes)
             DoUpgrade();
          else if (result == DialogResult.No)
-            MessageBox.Show(labelRunBackup.Text, "hMailServer", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            MessageBox.Show(labelRunBackup.Text, "Altimail Server", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
       }
 
       private void listRequiredUpgrades_DoubleClick(object sender, EventArgs e)
@@ -456,7 +343,7 @@ namespace DBUpdater
          {
             System.Diagnostics.Process.Start("notepad.exe", scriptToExecute);
          }
-         catch (Exception )
+         catch (Exception)
          {
             MessageBox.Show("Notepad could not be started.");
          }
