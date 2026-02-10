@@ -3,7 +3,7 @@ AppId={{78203AB6-A5A9-46B4-8F17-E4B3D4D9FE25}
 AppName={#MyAppName}
 AppVersion={#MyAppVersionStd}
 AppVerName={#MyAppName} {#MyAppVersion}
-AppCopyright=(c) 2008-{#CurrentYearVal} Altimail Server Authors and Contributors. All rights reserved.
+AppCopyright=Copyright (c) {#CurrentYearVal} Altimail Server Authors and Contributors. All rights reserved.
 AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppPublisherUrl}
 AppSupportURL={#MyAppSupportUrl}
@@ -11,7 +11,7 @@ AppUpdatesURL={#MyAppUpdatesUrl}
 
 ;For the setup bootstrap:
 VersionInfoVersion={#MyAppVersionStd}
-VersionInfoCopyright=(c) 2008-{#CurrentYearVal} Altimail Server Authors and Contributors. All rights reserved.
+VersionInfoCopyright=Copyright (c) {#CurrentYearVal} Altimail Server Authors and Contributors. All rights reserved.
 
 DefaultDirName={pf}\{#MyAppName}
 DefaultGroupName={#MyAppName}

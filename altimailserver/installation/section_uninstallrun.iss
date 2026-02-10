@@ -6,3 +6,7 @@ Filename: "{app}\Bin\AltimailServer.exe"; Parameters: "/Unregister"; Flags: runh
 ;Filename: "{app}\MySQL\Bin\mysqld-nt.exe"; Parameters: "--remove AltimailServerMySQL"; Flags: runhidden;
 ;Filename: "{app}\Bin\hSMTPServer.exe"; Parameters: "unregister"; Flags: runhidden;
 ;Filename: "{app}\Bin\hPOP3Server.exe"; Parameters: "unregister"; Flags: runhidden;
+
+[UninstallDelete] 
+Type: filesandordirs; Name: "{app}\Bin"
+Type: filesandordirs; Name: "{app}\DBScripts"

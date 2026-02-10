@@ -487,7 +487,7 @@ begin
 	
 	if (Result = true) then
 	begin
-		if (FindWindowByWindowName('Altimail Server Database Setup') > 0) then
+		if (FindWindowByWindowName('Altimail Server Database Setup Utility') > 0) then
 		begin
 			MsgBox('Altimail Server Database Setup is started. You must close down this application before starting the installation.',mbInformation, MB_OK);	
 			Result := false;
@@ -497,7 +497,7 @@ begin
 	
 	if (Result = true) then
 	begin
-		if (FindWindowByWindowName('Altimail Server Database Upgrade') > 0) then
+		if (FindWindowByWindowName('Altimail Server Database Upgrade Utility') > 0) then
 		begin
 			MsgBox('hMailServer Database Upgrader is started. You must close down this application before starting the installation.',mbInformation, MB_OK);	
 			Result := false;
@@ -637,7 +637,7 @@ begin
       if (Exec(ExpandConstant('{app}\Bin\AltimailServer.exe'), '/Register', '',  SW_HIDE, ewWaitUntilTerminated, ResultCode) = False) then
          MsgBox(SysErrorMessage(ResultCode), mbError, MB_OK);
       
-      if (Exec('sc "AltimailServer" "Altimail Server Core Email Engine"', '', '', SW_HIDE, ewWaitUntilTerminated, ResultCode) = False) then 
+      if (Exec('sc "AltimailServer" "Altimail Server Core Engine"', '', '', SW_HIDE, ewWaitUntilTerminated, ResultCode) = False) then 
          MsgBox(SysErrorMessage(ResultCode), mbError, MB_OK);
 
       ProgressPage.SetText('Initializing Altimail Server database...', '');

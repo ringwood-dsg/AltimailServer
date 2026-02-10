@@ -3,6 +3,7 @@
 Source: "..\source\server\AltimailServer\x64\Release\AltimailServer.exe"; DestDir: "{app}\Bin"; Flags: ignoreversion; Components: server admintools;
 Source: "..\source\server\AltimailServer\AltimailServer\x64\Release\AltimailServer.tlb"; DestDir: "{app}\Bin"; Flags: ignoreversion; Components: server admintools;
 Source: "..\source\server\AltimailServer\x64\Release\AltimailServer.Minidump.exe"; DestDir: "{app}\Bin"; Flags: ignoreversion; Components: server;
+Source: "..\source\server\AltimailServer\x64\Release\libmariadb.dll"; DestDir: "{app}\Bin"; Flags: ignoreversion; Components: server admintools;
 Source: "Microsoft.VC143.CRT\*"; DestDir: "{app}\Bin"; Flags: ignoreversion; Components: server admintools;
 Source: "Microsoft.UCRT.WindowsSDK10240\*"; DestDir: "{app}\Bin"; Flags: ignoreversion; Components: server admintools;
 
@@ -12,6 +13,7 @@ Source: "SQLCE\SSCERuntime_x64-ENU.msi"; Flags: deleteafterinstall ; Excludes: "
 Source: "..\source\tools\Administrator\bin\x64\Release\AltimailServerAdmin.exe"; DestDir: "{app}\Bin"; Flags: ignoreversion; Components: admintools;
 Source: "..\source\tools\DBUpdater\Bin\x64\Release\DBUpdater.exe"; DestDir: "{app}\Bin";  Flags: ignoreversion; Components: server;
 Source: "..\source\tools\DBSetup\Bin\x64\Release\DBSetup.exe"; DestDir: "{app}\Bin";Flags: ignoreversion;Components: server;
+Source: "..\source\tools\DBSetup\Bin\x64\Release\AeroWizard.dll"; DestDir: "{app}\Bin";Flags: ignoreversion;Components: server;
 Source: "..\Source\tools\DBSetupQuick\bin\x64\release\DBSetupQuick.exe"; DestDir: "{app}\Bin"; Flags: ignoreversion; Components: server;
 Source: "..\source\tools\Administrator\bin\x64\Release\Interop.AltimailServer.dll"; DestDir: "{app}\Bin"; Flags: ignoreversion; Components: admintools;
 Source: "..\source\tools\shared\bin\x64\Release\Shared.dll"; DestDir: "{app}\Bin"; Flags: ignoreversion; Components: server admintools;
