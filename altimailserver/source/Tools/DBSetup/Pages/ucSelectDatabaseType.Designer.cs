@@ -40,10 +40,10 @@ namespace DBSetup.Pages
             this.radioMSSQL.Checked = true;
             this.radioMSSQL.Location = new System.Drawing.Point(8, 8);
             this.radioMSSQL.Name = "radioMSSQL";
-            this.radioMSSQL.Size = new System.Drawing.Size(188, 17);
+            this.radioMSSQL.Size = new System.Drawing.Size(130, 17);
             this.radioMSSQL.TabIndex = 0;
             this.radioMSSQL.TabStop = true;
-            this.radioMSSQL.Text = "Microsoft SQL Server incl. Express";
+            this.radioMSSQL.Text = "Microsoft SQL Server";
             this.radioMSSQL.UseVisualStyleBackColor = true;
             // 
             // radioMySQL
@@ -51,10 +51,10 @@ namespace DBSetup.Pages
             this.radioMySQL.AutoSize = true;
             this.radioMySQL.Location = new System.Drawing.Point(8, 40);
             this.radioMySQL.Name = "radioMySQL";
-            this.radioMySQL.Size = new System.Drawing.Size(60, 17);
+            this.radioMySQL.Size = new System.Drawing.Size(132, 17);
             this.radioMySQL.TabIndex = 1;
             this.radioMySQL.TabStop = true;
-            this.radioMySQL.Text = "MySQL";
+            this.radioMySQL.Text = "MySQL (5.7.9 or later)";
             this.radioMySQL.UseVisualStyleBackColor = true;
             // 
             // radioPGSQL
@@ -62,7 +62,7 @@ namespace DBSetup.Pages
             this.radioPGSQL.AutoSize = true;
             this.radioPGSQL.Location = new System.Drawing.Point(8, 105);
             this.radioPGSQL.Name = "radioPGSQL";
-            this.radioPGSQL.Size = new System.Drawing.Size(82, 17);
+            this.radioPGSQL.Size = new System.Drawing.Size(83, 17);
             this.radioPGSQL.TabIndex = 3;
             this.radioPGSQL.TabStop = true;
             this.radioPGSQL.Text = "PostgreSQL";
@@ -73,20 +73,21 @@ namespace DBSetup.Pages
             this.radioMariaDB.AutoSize = true;
             this.radioMariaDB.Location = new System.Drawing.Point(8, 72);
             this.radioMariaDB.Name = "radioMariaDB";
-            this.radioMariaDB.Size = new System.Drawing.Size(66, 17);
+            this.radioMariaDB.Size = new System.Drawing.Size(154, 17);
             this.radioMariaDB.TabIndex = 2;
             this.radioMariaDB.TabStop = true;
-            this.radioMariaDB.Text = "MariaDB";
+            this.radioMariaDB.Text = "MariaDB (10.5.29 or later)";
             this.radioMariaDB.UseVisualStyleBackColor = true;
             // 
             // ucSelectDatabaseType
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.radioPGSQL);
             this.Controls.Add(this.radioMySQL);
             this.Controls.Add(this.radioMariaDB);
             this.Controls.Add(this.radioMSSQL);
+            this.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.Name = "ucSelectDatabaseType";
             this.Size = new System.Drawing.Size(457, 237);
             this.ResumeLayout(false);

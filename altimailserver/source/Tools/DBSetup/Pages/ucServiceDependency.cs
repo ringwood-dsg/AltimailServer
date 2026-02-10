@@ -57,7 +57,7 @@ namespace DBSetup.Pages
 
             if (!found)
             {
-               MessageBox.Show("The entered service name was not found in the list of services." + Environment.NewLine + "Please select a service from the list", "hMailServer");
+               MessageBox.Show("The entered service name was not found in the list of services." + Environment.NewLine + "Please select a service from the list", "Altimail Server");
                return false;
             }
          }
@@ -71,7 +71,7 @@ namespace DBSetup.Pages
       {
          get
          {
-            return "Set hMailServer service dependency";
+            return "Set Altimail Server service dependency";
          }
       }
 

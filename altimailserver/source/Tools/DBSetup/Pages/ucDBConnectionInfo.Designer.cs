@@ -28,184 +28,191 @@ namespace DBSetup.Pages
       /// </summary>
       private void InitializeComponent()
       {
-          this.labelDatabaseServerAddress = new System.Windows.Forms.Label();
-          this.textServerAddress = new System.Windows.Forms.TextBox();
-          this.labelPort = new System.Windows.Forms.Label();
-          this.textDatabaseName = new System.Windows.Forms.TextBox();
-          this.labelDatabaseName = new System.Windows.Forms.Label();
-          this.labelAuthentication = new System.Windows.Forms.Label();
-          this.radioUseServerAuthentication = new System.Windows.Forms.RadioButton();
-          this.textUsername = new System.Windows.Forms.TextBox();
-          this.labelUsername = new System.Windows.Forms.Label();
-          this.labelPassword = new System.Windows.Forms.Label();
-          this.textPassword = new System.Windows.Forms.TextBox();
-          this.radioUseWindowsAuthentication = new System.Windows.Forms.RadioButton();
-          this.textServerPort = new AltimailServer.Shared.ucText();
-          this.SuspendLayout();
-          // 
-          // labelDatabaseServerAddress
-          // 
-          this.labelDatabaseServerAddress.AutoSize = true;
-          this.labelDatabaseServerAddress.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-          this.labelDatabaseServerAddress.Location = new System.Drawing.Point(11, 10);
-          this.labelDatabaseServerAddress.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-          this.labelDatabaseServerAddress.Name = "labelDatabaseServerAddress";
-          this.labelDatabaseServerAddress.Size = new System.Drawing.Size(158, 17);
-          this.labelDatabaseServerAddress.TabIndex = 0;
-          this.labelDatabaseServerAddress.Text = "Database server address";
-          // 
-          // textServerAddress
-          // 
-          this.textServerAddress.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-          this.textServerAddress.Location = new System.Drawing.Point(11, 30);
-          this.textServerAddress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-          this.textServerAddress.Name = "textServerAddress";
-          this.textServerAddress.Size = new System.Drawing.Size(255, 24);
-          this.textServerAddress.TabIndex = 4;
-          // 
-          // labelPort
-          // 
-          this.labelPort.AutoSize = true;
-          this.labelPort.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-          this.labelPort.Location = new System.Drawing.Point(299, 10);
-          this.labelPort.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-          this.labelPort.Name = "labelPort";
-          this.labelPort.Size = new System.Drawing.Size(34, 17);
-          this.labelPort.TabIndex = 2;
-          this.labelPort.Text = "Port";
-          // 
-          // textDatabaseName
-          // 
-          this.textDatabaseName.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-          this.textDatabaseName.Location = new System.Drawing.Point(11, 89);
-          this.textDatabaseName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-          this.textDatabaseName.Name = "textDatabaseName";
-          this.textDatabaseName.Size = new System.Drawing.Size(191, 24);
-          this.textDatabaseName.TabIndex = 5;
-          // 
-          // labelDatabaseName
-          // 
-          this.labelDatabaseName.AutoSize = true;
-          this.labelDatabaseName.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-          this.labelDatabaseName.Location = new System.Drawing.Point(11, 69);
-          this.labelDatabaseName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-          this.labelDatabaseName.Name = "labelDatabaseName";
-          this.labelDatabaseName.Size = new System.Drawing.Size(103, 17);
-          this.labelDatabaseName.TabIndex = 4;
-          this.labelDatabaseName.Text = "Database name";
-          // 
-          // labelAuthentication
-          // 
-          this.labelAuthentication.AutoSize = true;
-          this.labelAuthentication.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-          this.labelAuthentication.Location = new System.Drawing.Point(11, 128);
-          this.labelAuthentication.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-          this.labelAuthentication.Name = "labelAuthentication";
-          this.labelAuthentication.Size = new System.Drawing.Size(110, 17);
-          this.labelAuthentication.TabIndex = 6;
-          this.labelAuthentication.Text = "Authentication";
-          // 
-          // radioUseServerAuthentication
-          // 
-          this.radioUseServerAuthentication.AutoSize = true;
-          this.radioUseServerAuthentication.Checked = true;
-          this.radioUseServerAuthentication.Location = new System.Drawing.Point(43, 158);
-          this.radioUseServerAuthentication.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-          this.radioUseServerAuthentication.Name = "radioUseServerAuthentication";
-          this.radioUseServerAuthentication.Size = new System.Drawing.Size(188, 21);
-          this.radioUseServerAuthentication.TabIndex = 7;
-          this.radioUseServerAuthentication.TabStop = true;
-          this.radioUseServerAuthentication.Text = "Use server authentication";
-          this.radioUseServerAuthentication.UseVisualStyleBackColor = true;
-          this.radioUseServerAuthentication.CheckedChanged += new System.EventHandler(this.radioUseServerAuthentication_CheckedChanged);
-          // 
-          // textUsername
-          // 
-          this.textUsername.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-          this.textUsername.Location = new System.Drawing.Point(213, 197);
-          this.textUsername.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-          this.textUsername.Name = "textUsername";
-          this.textUsername.Size = new System.Drawing.Size(191, 24);
-          this.textUsername.TabIndex = 2;
-          // 
-          // labelUsername
-          // 
-          this.labelUsername.AutoSize = true;
-          this.labelUsername.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-          this.labelUsername.Location = new System.Drawing.Point(75, 197);
-          this.labelUsername.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-          this.labelUsername.Name = "labelUsername";
-          this.labelUsername.Size = new System.Drawing.Size(69, 17);
-          this.labelUsername.TabIndex = 9;
-          this.labelUsername.Text = "Username";
-          // 
-          // labelPassword
-          // 
-          this.labelPassword.AutoSize = true;
-          this.labelPassword.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-          this.labelPassword.Location = new System.Drawing.Point(75, 236);
-          this.labelPassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-          this.labelPassword.Name = "labelPassword";
-          this.labelPassword.Size = new System.Drawing.Size(66, 17);
-          this.labelPassword.TabIndex = 11;
-          this.labelPassword.Text = "Password";
-          // 
-          // textPassword
-          // 
-          this.textPassword.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-          this.textPassword.Location = new System.Drawing.Point(213, 236);
-          this.textPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-          this.textPassword.Name = "textPassword";
-          this.textPassword.PasswordChar = '*';
-          this.textPassword.Size = new System.Drawing.Size(191, 24);
-          this.textPassword.TabIndex = 10;
-          // 
-          // radioUseWindowsAuthentication
-          // 
-          this.radioUseWindowsAuthentication.AutoSize = true;
-          this.radioUseWindowsAuthentication.Location = new System.Drawing.Point(43, 291);
-          this.radioUseWindowsAuthentication.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-          this.radioUseWindowsAuthentication.Name = "radioUseWindowsAuthentication";
-          this.radioUseWindowsAuthentication.Size = new System.Drawing.Size(204, 21);
-          this.radioUseWindowsAuthentication.TabIndex = 12;
-          this.radioUseWindowsAuthentication.Text = "Use Windows authentication";
-          this.radioUseWindowsAuthentication.UseVisualStyleBackColor = true;
-          this.radioUseWindowsAuthentication.CheckedChanged += new System.EventHandler(this.radioUseWindowsAuthentication_CheckedChanged);
-          // 
-          // textServerPort
-          // 
-          this.textServerPort.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-          this.textServerPort.Location = new System.Drawing.Point(299, 30);
-          this.textServerPort.Margin = new System.Windows.Forms.Padding(4);
-          this.textServerPort.MaxLength = 5;
-          this.textServerPort.Name = "textServerPort";
-          this.textServerPort.Number = 0;
-          this.textServerPort.Numeric = true;
-          this.textServerPort.Size = new System.Drawing.Size(127, 24);
-          this.textServerPort.TabIndex = 3;
-          // 
-          // ucDBConnectionInfo
-          // 
-          this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-          this.Controls.Add(this.radioUseWindowsAuthentication);
-          this.Controls.Add(this.labelPassword);
-          this.Controls.Add(this.textPassword);
-          this.Controls.Add(this.labelUsername);
-          this.Controls.Add(this.textUsername);
-          this.Controls.Add(this.radioUseServerAuthentication);
-          this.Controls.Add(this.labelAuthentication);
-          this.Controls.Add(this.textDatabaseName);
-          this.Controls.Add(this.labelDatabaseName);
-          this.Controls.Add(this.textServerPort);
-          this.Controls.Add(this.labelPort);
-          this.Controls.Add(this.textServerAddress);
-          this.Controls.Add(this.labelDatabaseServerAddress);
-          this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-          this.Name = "ucDBConnectionInfo";
-          this.Size = new System.Drawing.Size(633, 336);
-          this.ResumeLayout(false);
-          this.PerformLayout();
+            this.labelDatabaseServerAddress = new System.Windows.Forms.Label();
+            this.textServerAddress = new System.Windows.Forms.TextBox();
+            this.labelPort = new System.Windows.Forms.Label();
+            this.textDatabaseName = new System.Windows.Forms.TextBox();
+            this.labelDatabaseName = new System.Windows.Forms.Label();
+            this.radioUseServerAuthentication = new System.Windows.Forms.RadioButton();
+            this.textUsername = new System.Windows.Forms.TextBox();
+            this.labelUsername = new System.Windows.Forms.Label();
+            this.labelPassword = new System.Windows.Forms.Label();
+            this.textPassword = new System.Windows.Forms.TextBox();
+            this.radioUseWindowsAuthentication = new System.Windows.Forms.RadioButton();
+            this.textServerPort = new AltimailServer.Shared.ucText();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // labelDatabaseServerAddress
+            // 
+            this.labelDatabaseServerAddress.AutoSize = true;
+            this.labelDatabaseServerAddress.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.labelDatabaseServerAddress.Location = new System.Drawing.Point(11, 23);
+            this.labelDatabaseServerAddress.Name = "labelDatabaseServerAddress";
+            this.labelDatabaseServerAddress.Size = new System.Drawing.Size(82, 13);
+            this.labelDatabaseServerAddress.TabIndex = 0;
+            this.labelDatabaseServerAddress.Text = "Server Address";
+            // 
+            // textServerAddress
+            // 
+            this.textServerAddress.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.textServerAddress.Location = new System.Drawing.Point(11, 39);
+            this.textServerAddress.Name = "textServerAddress";
+            this.textServerAddress.Size = new System.Drawing.Size(192, 22);
+            this.textServerAddress.TabIndex = 4;
+            // 
+            // labelPort
+            // 
+            this.labelPort.AutoSize = true;
+            this.labelPort.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.labelPort.Location = new System.Drawing.Point(209, 23);
+            this.labelPort.Name = "labelPort";
+            this.labelPort.Size = new System.Drawing.Size(28, 13);
+            this.labelPort.TabIndex = 2;
+            this.labelPort.Text = "Port";
+            // 
+            // textDatabaseName
+            // 
+            this.textDatabaseName.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.textDatabaseName.Location = new System.Drawing.Point(11, 87);
+            this.textDatabaseName.Name = "textDatabaseName";
+            this.textDatabaseName.Size = new System.Drawing.Size(144, 22);
+            this.textDatabaseName.TabIndex = 5;
+            // 
+            // labelDatabaseName
+            // 
+            this.labelDatabaseName.AutoSize = true;
+            this.labelDatabaseName.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.labelDatabaseName.Location = new System.Drawing.Point(11, 71);
+            this.labelDatabaseName.Name = "labelDatabaseName";
+            this.labelDatabaseName.Size = new System.Drawing.Size(87, 13);
+            this.labelDatabaseName.TabIndex = 4;
+            this.labelDatabaseName.Text = "Database Name";
+            // 
+            // radioUseServerAuthentication
+            // 
+            this.radioUseServerAuthentication.AutoSize = true;
+            this.radioUseServerAuthentication.Checked = true;
+            this.radioUseServerAuthentication.Location = new System.Drawing.Point(11, 21);
+            this.radioUseServerAuthentication.Name = "radioUseServerAuthentication";
+            this.radioUseServerAuthentication.Size = new System.Drawing.Size(156, 17);
+            this.radioUseServerAuthentication.TabIndex = 7;
+            this.radioUseServerAuthentication.TabStop = true;
+            this.radioUseServerAuthentication.Text = "Use server authentication";
+            this.radioUseServerAuthentication.UseVisualStyleBackColor = true;
+            this.radioUseServerAuthentication.CheckedChanged += new System.EventHandler(this.radioUseServerAuthentication_CheckedChanged);
+            // 
+            // textUsername
+            // 
+            this.textUsername.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.textUsername.Location = new System.Drawing.Point(102, 45);
+            this.textUsername.Name = "textUsername";
+            this.textUsername.Size = new System.Drawing.Size(144, 22);
+            this.textUsername.TabIndex = 2;
+            // 
+            // labelUsername
+            // 
+            this.labelUsername.AutoSize = true;
+            this.labelUsername.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.labelUsername.Location = new System.Drawing.Point(27, 48);
+            this.labelUsername.Name = "labelUsername";
+            this.labelUsername.Size = new System.Drawing.Size(58, 13);
+            this.labelUsername.TabIndex = 9;
+            this.labelUsername.Text = "Username";
+            // 
+            // labelPassword
+            // 
+            this.labelPassword.AutoSize = true;
+            this.labelPassword.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.labelPassword.Location = new System.Drawing.Point(27, 75);
+            this.labelPassword.Name = "labelPassword";
+            this.labelPassword.Size = new System.Drawing.Size(56, 13);
+            this.labelPassword.TabIndex = 11;
+            this.labelPassword.Text = "Password";
+            // 
+            // textPassword
+            // 
+            this.textPassword.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.textPassword.Location = new System.Drawing.Point(102, 72);
+            this.textPassword.Name = "textPassword";
+            this.textPassword.PasswordChar = '*';
+            this.textPassword.Size = new System.Drawing.Size(144, 22);
+            this.textPassword.TabIndex = 10;
+            // 
+            // radioUseWindowsAuthentication
+            // 
+            this.radioUseWindowsAuthentication.AutoSize = true;
+            this.radioUseWindowsAuthentication.Location = new System.Drawing.Point(11, 103);
+            this.radioUseWindowsAuthentication.Name = "radioUseWindowsAuthentication";
+            this.radioUseWindowsAuthentication.Size = new System.Drawing.Size(175, 17);
+            this.radioUseWindowsAuthentication.TabIndex = 12;
+            this.radioUseWindowsAuthentication.Text = "Use Windows authentication";
+            this.radioUseWindowsAuthentication.UseVisualStyleBackColor = true;
+            this.radioUseWindowsAuthentication.CheckedChanged += new System.EventHandler(this.radioUseWindowsAuthentication_CheckedChanged);
+            // 
+            // textServerPort
+            // 
+            this.textServerPort.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.textServerPort.Location = new System.Drawing.Point(209, 39);
+            this.textServerPort.MaxLength = 5;
+            this.textServerPort.Name = "textServerPort";
+            this.textServerPort.Number = 0;
+            this.textServerPort.Number64 = ((long)(0));
+            this.textServerPort.Numeric = true;
+            this.textServerPort.Size = new System.Drawing.Size(58, 22);
+            this.textServerPort.TabIndex = 3;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.labelDatabaseServerAddress);
+            this.groupBox1.Controls.Add(this.textServerAddress);
+            this.groupBox1.Controls.Add(this.labelPort);
+            this.groupBox1.Controls.Add(this.textServerPort);
+            this.groupBox1.Controls.Add(this.labelDatabaseName);
+            this.groupBox1.Controls.Add(this.textDatabaseName);
+            this.groupBox1.Location = new System.Drawing.Point(8, 8);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(459, 123);
+            this.groupBox1.TabIndex = 13;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Database Server";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.radioUseServerAuthentication);
+            this.groupBox2.Controls.Add(this.textUsername);
+            this.groupBox2.Controls.Add(this.radioUseWindowsAuthentication);
+            this.groupBox2.Controls.Add(this.labelUsername);
+            this.groupBox2.Controls.Add(this.labelPassword);
+            this.groupBox2.Controls.Add(this.textPassword);
+            this.groupBox2.Location = new System.Drawing.Point(8, 137);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(459, 128);
+            this.groupBox2.TabIndex = 14;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Authentication";
+            // 
+            // ucDBConnectionInfo
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
+            this.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.Name = "ucDBConnectionInfo";
+            this.Size = new System.Drawing.Size(475, 273);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.ResumeLayout(false);
 
       }
 
@@ -217,12 +224,13 @@ namespace DBSetup.Pages
       private AltimailServer.Shared.ucText textServerPort;
       private System.Windows.Forms.TextBox textDatabaseName;
       private System.Windows.Forms.Label labelDatabaseName;
-      private System.Windows.Forms.Label labelAuthentication;
       private System.Windows.Forms.RadioButton radioUseServerAuthentication;
       private System.Windows.Forms.TextBox textUsername;
       private System.Windows.Forms.Label labelUsername;
       private System.Windows.Forms.Label labelPassword;
       private System.Windows.Forms.TextBox textPassword;
       private System.Windows.Forms.RadioButton radioUseWindowsAuthentication;
+      private System.Windows.Forms.GroupBox groupBox1;
+      private System.Windows.Forms.GroupBox groupBox2;
    }
 }

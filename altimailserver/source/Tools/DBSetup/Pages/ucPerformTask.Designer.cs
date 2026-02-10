@@ -30,11 +30,12 @@ namespace DBSetup.Pages
       {
             this.labelEnoughInformation = new System.Windows.Forms.Label();
             this.textLog = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelEnoughInformation
             // 
+            this.labelEnoughInformation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.labelEnoughInformation.Location = new System.Drawing.Point(8, 8);
             this.labelEnoughInformation.Name = "labelEnoughInformation";
             this.labelEnoughInformation.Size = new System.Drawing.Size(536, 20);
@@ -52,29 +53,16 @@ namespace DBSetup.Pages
             this.textLog.Name = "textLog";
             this.textLog.ReadOnly = true;
             this.textLog.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textLog.Size = new System.Drawing.Size(535, 241);
+            this.textLog.Size = new System.Drawing.Size(535, 269);
             this.textLog.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.5F);
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label1.Location = new System.Drawing.Point(11, 274);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(532, 27);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Seeing SQL Syntax errors appearing?\r\nPlease cancel this wizard, uninstall hMailSe" +
-    "rver 5.8.0 and install 5.8.1 instead.";
             // 
             // ucPerformTask
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label1);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.textLog);
             this.Controls.Add(this.labelEnoughInformation);
+            this.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.Name = "ucPerformTask";
             this.Size = new System.Drawing.Size(553, 305);
             this.ResumeLayout(false);
@@ -86,6 +74,5 @@ namespace DBSetup.Pages
 
       private System.Windows.Forms.Label labelEnoughInformation;
       private System.Windows.Forms.TextBox textLog;
-      private System.Windows.Forms.Label label1;
    }
 }

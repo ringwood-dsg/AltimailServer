@@ -75,7 +75,6 @@ namespace DBSetup.Pages
             }
 
             AltimailServer.Database database = Globals.GetApp().Database;
-
             if (_state["CreateNew"] == "Yes")
             {
                AddToLog("Please wait while creating database...");
