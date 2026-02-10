@@ -54,10 +54,19 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AeroWizard, Version=2.3.0.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37, processorArchitecture=MSIL">
+      <HintPath>..\packages\AeroWizard.2.3.0\lib\net45\AeroWizard.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="formMain.cs">
@@ -65,6 +74,12 @@
     </Compile>
     <Compile Include="formMain.Designer.cs">
       <DependentUpon>formMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmWizard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWizard.Designer.cs">
+      <DependentUpon>frmWizard.cs</DependentUpon>
     </Compile>
     <Compile Include="Globals.cs" />
     <Compile Include="Pages\ucProgress.cs">
@@ -97,6 +112,9 @@
       <SubType>Designer</SubType>
       <DependentUpon>formMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmWizard.resx">
+      <DependentUpon>frmWizard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pages\ucProgress.resx">
       <SubType>Designer</SubType>
       <DependentUpon>ucProgress.cs</DependentUpon>
@@ -106,6 +124,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\ucSynchMode.resx">
       <DependentUpon>ucSynchMode.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\ucWelcome.resx">
       <SubType>Designer</SubType>
@@ -122,6 +141,8 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
+    <None Include="app.manifest" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -145,6 +166,12 @@
   <ItemGroup>
     <Content Include="georectify.ico" />
     <Content Include="icon-main.ico" />
+    <None Include="Resources\btn-select-none.png" />
+    <None Include="Resources\btn-select-all.png" />
+    <None Include="Resources\progress-running.png" />
+    <None Include="Resources\progress-pending.png" />
+    <None Include="Resources\progress-error.png" />
+    <None Include="Resources\progress-done.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">

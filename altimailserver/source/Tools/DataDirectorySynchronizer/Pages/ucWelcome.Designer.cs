@@ -37,14 +37,14 @@ namespace DataDirectorySynchronizer.Pages
          this.labelInfo.Name = "labelInfo";
          this.labelInfo.Size = new System.Drawing.Size(379, 53);
          this.labelInfo.TabIndex = 0;
-         this.labelInfo.Text = "This utility will synchronize your hMailServer data directory with your hMailServ" +
+         this.labelInfo.Text = "This utility will synchronize your Altimail Server data directory with your Altimail Serv" +
              "er database. It is very important that you backup both your database and your da" +
              "ta directory before proceeding.";
          // 
          // ucWelcome
          // 
-         this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-         this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+         this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+         this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
          this.Controls.Add(this.labelInfo);
          this.Name = "ucWelcome";
          this.Size = new System.Drawing.Size(417, 202);
